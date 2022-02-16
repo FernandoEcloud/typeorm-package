@@ -36,8 +36,6 @@ var MongoQueryRunner = /** @class */ (function () {
     // Public Methods
     // -------------------------------------------------------------------------
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     MongoQueryRunner.prototype.beforeMigration = function () {
@@ -58,7 +56,6 @@ var MongoQueryRunner = /** @class */ (function () {
         });
     };
     /**
->>>>>>> a3495c7 (INIT)
      * Creates a cursor for a query that can be used to iterate over results from MongoDB.
      */
     MongoQueryRunner.prototype.cursor = function (collectionName, query) {

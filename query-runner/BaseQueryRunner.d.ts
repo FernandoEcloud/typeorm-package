@@ -71,8 +71,6 @@ export declare abstract class BaseQueryRunner {
     protected abstract loadTables(tablePaths?: string[]): Promise<Table[]>;
     protected abstract loadViews(tablePaths?: string[]): Promise<View[]>;
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     beforeMigration(): Promise<void>;
@@ -81,7 +79,6 @@ export declare abstract class BaseQueryRunner {
      */
     afterMigration(): Promise<void>;
     /**
->>>>>>> a3495c7 (INIT)
      * Loads given table's data from the database.
      */
     getTable(tablePath: string): Promise<Table | undefined>;

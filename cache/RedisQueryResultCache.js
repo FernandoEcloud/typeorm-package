@@ -62,11 +62,7 @@ var RedisQueryResultCache = /** @class */ (function () {
                                 this.client = new this.redis.Cluster(cacheOptions.options.startupNodes, cacheOptions.options.options);
                             }
                             else {
-<<<<<<< HEAD
-                                throw new TypeORMError_1.TypeORMError("options.startupNodes required for ".concat(this.clientType, "."));
-=======
                                 throw new TypeORMError_1.TypeORMError("options.startupNodes required for " + this.clientType + ".");
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         _a.label = 4;
@@ -226,11 +222,7 @@ var RedisQueryResultCache = /** @class */ (function () {
             }
         }
         catch (e) {
-<<<<<<< HEAD
-            throw new TypeORMError_1.TypeORMError("Cannot use cache because ".concat(this.clientType, " is not installed. Please run \"npm i ").concat(this.clientType, " --save\"."));
-=======
             throw new TypeORMError_1.TypeORMError("Cannot use cache because " + this.clientType + " is not installed. Please run \"npm i " + this.clientType + " --save\".");
->>>>>>> a3495c7 (INIT)
         }
     };
     return RedisQueryResultCache;

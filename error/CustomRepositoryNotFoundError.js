@@ -9,11 +9,7 @@ var TypeORMError_1 = require("./TypeORMError");
 var CustomRepositoryNotFoundError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(CustomRepositoryNotFoundError, _super);
     function CustomRepositoryNotFoundError(repository) {
-<<<<<<< HEAD
-        return _super.call(this, "Custom repository ".concat(repository instanceof Function ? repository.name : repository.constructor.name, " was not found. ") +
-=======
         return _super.call(this, "Custom repository " + (repository instanceof Function ? repository.name : repository.constructor.name) + " was not found. " +
->>>>>>> a3495c7 (INIT)
             "Did you forgot to put @EntityRepository decorator on it?") || this;
     }
     return CustomRepositoryNotFoundError;

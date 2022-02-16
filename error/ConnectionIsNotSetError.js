@@ -9,11 +9,7 @@ var TypeORMError_1 = require("./TypeORMError");
 var ConnectionIsNotSetError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(ConnectionIsNotSetError, _super);
     function ConnectionIsNotSetError(dbType) {
-<<<<<<< HEAD
-        return _super.call(this, "Connection with ".concat(dbType, " database is not established. Check connection configuration.")) || this;
-=======
         return _super.call(this, "Connection with " + dbType + " database is not established. Check connection configuration.") || this;
->>>>>>> a3495c7 (INIT)
     }
     return ConnectionIsNotSetError;
 }(TypeORMError_1.TypeORMError));

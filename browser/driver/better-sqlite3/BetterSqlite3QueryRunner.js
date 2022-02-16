@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { __awaiter, __extends, __generator } from "tslib";
-=======
 import { __awaiter, __extends, __generator, __read } from "tslib";
->>>>>>> a3495c7 (INIT)
 import { QueryRunnerAlreadyReleasedError } from "../../error/QueryRunnerAlreadyReleasedError";
 import { QueryFailedError } from "../../error/QueryFailedError";
 import { AbstractSqliteQueryRunner } from "../sqlite-abstract/AbstractSqliteQueryRunner";
@@ -62,8 +58,6 @@ var BetterSqlite3QueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     BetterSqlite3QueryRunner.prototype.beforeMigration = function () {
@@ -94,7 +88,6 @@ var BetterSqlite3QueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
->>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     BetterSqlite3QueryRunner.prototype.query = function (query, parameters, useStructuredResult) {
@@ -151,8 +144,6 @@ var BetterSqlite3QueryRunner = /** @class */ (function (_super) {
             });
         });
     };
-<<<<<<< HEAD
-=======
     // -------------------------------------------------------------------------
     // Protected Methods
     // -------------------------------------------------------------------------
@@ -186,7 +177,6 @@ var BetterSqlite3QueryRunner = /** @class */ (function (_super) {
             });
         });
     };
->>>>>>> a3495c7 (INIT)
     return BetterSqlite3QueryRunner;
 }(AbstractSqliteQueryRunner));
 export { BetterSqlite3QueryRunner };

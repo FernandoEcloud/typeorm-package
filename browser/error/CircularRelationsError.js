@@ -6,11 +6,7 @@ import { TypeORMError } from "./TypeORMError";
 var CircularRelationsError = /** @class */ (function (_super) {
     __extends(CircularRelationsError, _super);
     function CircularRelationsError(path) {
-<<<<<<< HEAD
-        return _super.call(this, "Circular relations detected: ".concat(path, ". To resolve this issue you need to ") +
-=======
         return _super.call(this, "Circular relations detected: " + path + ". To resolve this issue you need to " +
->>>>>>> a3495c7 (INIT)
             "set nullable: true somewhere in this dependency structure.") || this;
     }
     return CircularRelationsError;

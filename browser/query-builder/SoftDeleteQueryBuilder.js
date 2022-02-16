@@ -302,11 +302,7 @@ var SoftDeleteQueryBuilder = /** @class */ (function (_super) {
     SoftDeleteQueryBuilder.prototype.createUpdateExpression = function () {
         var metadata = this.expressionMap.mainAlias.hasMetadata ? this.expressionMap.mainAlias.metadata : undefined;
         if (!metadata)
-<<<<<<< HEAD
-            throw new TypeORMError("Cannot get entity metadata for the given alias \"".concat(this.expressionMap.mainAlias, "\""));
-=======
             throw new TypeORMError("Cannot get entity metadata for the given alias \"" + this.expressionMap.mainAlias + "\"");
->>>>>>> a3495c7 (INIT)
         if (!metadata.deleteDateColumn) {
             throw new MissingDeleteDateColumnError(metadata);
         }
@@ -334,15 +330,6 @@ var SoftDeleteQueryBuilder = /** @class */ (function (_super) {
         var returningExpression = this.createReturningExpression();
         // generate and return sql update query
         if (returningExpression && (this.connection.driver instanceof PostgresDriver || this.connection.driver instanceof OracleDriver || this.connection.driver instanceof CockroachDriver)) {
-<<<<<<< HEAD
-            return "UPDATE ".concat(this.getTableName(this.getMainTableName()), " SET ").concat(updateColumnAndValues.join(", ")).concat(whereExpression, " RETURNING ").concat(returningExpression);
-        }
-        else if (returningExpression && this.connection.driver instanceof SqlServerDriver) {
-            return "UPDATE ".concat(this.getTableName(this.getMainTableName()), " SET ").concat(updateColumnAndValues.join(", "), " OUTPUT ").concat(returningExpression).concat(whereExpression);
-        }
-        else {
-            return "UPDATE ".concat(this.getTableName(this.getMainTableName()), " SET ").concat(updateColumnAndValues.join(", ")).concat(whereExpression); // todo: how do we replace aliases in where to nothing?
-=======
             return "UPDATE " + this.getTableName(this.getMainTableName()) + " SET " + updateColumnAndValues.join(", ") + whereExpression + " RETURNING " + returningExpression;
         }
         else if (returningExpression && this.connection.driver instanceof SqlServerDriver) {
@@ -350,7 +337,6 @@ var SoftDeleteQueryBuilder = /** @class */ (function (_super) {
         }
         else {
             return "UPDATE " + this.getTableName(this.getMainTableName()) + " SET " + updateColumnAndValues.join(", ") + whereExpression; // todo: how do we replace aliases in where to nothing?
->>>>>>> a3495c7 (INIT)
         }
     };
     /**

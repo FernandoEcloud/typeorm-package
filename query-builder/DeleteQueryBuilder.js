@@ -197,15 +197,6 @@ var DeleteQueryBuilder = /** @class */ (function (_super) {
         var whereExpression = this.createWhereExpression();
         var returningExpression = this.createReturningExpression();
         if (returningExpression && (this.connection.driver instanceof PostgresDriver_1.PostgresDriver || this.connection.driver instanceof CockroachDriver_1.CockroachDriver)) {
-<<<<<<< HEAD
-            return "DELETE FROM ".concat(tableName).concat(whereExpression, " RETURNING ").concat(returningExpression);
-        }
-        else if (returningExpression !== "" && this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver) {
-            return "DELETE FROM ".concat(tableName, " OUTPUT ").concat(returningExpression).concat(whereExpression);
-        }
-        else {
-            return "DELETE FROM ".concat(tableName).concat(whereExpression);
-=======
             return "DELETE FROM " + tableName + whereExpression + " RETURNING " + returningExpression;
         }
         else if (returningExpression !== "" && this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver) {
@@ -213,7 +204,6 @@ var DeleteQueryBuilder = /** @class */ (function (_super) {
         }
         else {
             return "DELETE FROM " + tableName + whereExpression;
->>>>>>> a3495c7 (INIT)
         }
     };
     return DeleteQueryBuilder;

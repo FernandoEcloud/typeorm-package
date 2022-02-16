@@ -9,10 +9,7 @@ var SqliteQueryRunner_1 = require("./SqliteQueryRunner");
 var DriverOptionNotSetError_1 = require("../../error/DriverOptionNotSetError");
 var PlatformTools_1 = require("../../platform/PlatformTools");
 var AbstractSqliteDriver_1 = require("../sqlite-abstract/AbstractSqliteDriver");
-<<<<<<< HEAD
-=======
 var PathUtils_1 = require("../../util/PathUtils");
->>>>>>> a3495c7 (INIT)
 /**
  * Organizes communication with sqlite DBMS.
  */
@@ -64,8 +61,6 @@ var SqliteDriver = /** @class */ (function (_super) {
         }
         return _super.prototype.normalizeType.call(this, column);
     };
-<<<<<<< HEAD
-=======
     SqliteDriver.prototype.afterConnect = function () {
         return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
             return (0, tslib_1.__generator)(this, function (_a) {
@@ -94,7 +89,6 @@ var SqliteDriver = /** @class */ (function (_super) {
         };
         return identifierHash + "." + tableName;
     };
->>>>>>> a3495c7 (INIT)
     // -------------------------------------------------------------------------
     // Protected Methods
     // -------------------------------------------------------------------------
@@ -130,11 +124,7 @@ var SqliteDriver = /** @class */ (function (_super) {
                     case 2:
                         databaseConnection = _a.sent();
                         if (!this.options.key) return [3 /*break*/, 4];
-<<<<<<< HEAD
-                        return [4 /*yield*/, run("PRAGMA key = ".concat(JSON.stringify(this.options.key), ";"))];
-=======
                         return [4 /*yield*/, run("PRAGMA key = " + JSON.stringify(this.options.key) + ";")];
->>>>>>> a3495c7 (INIT)
                     case 3:
                         _a.sent();
                         _a.label = 4;
@@ -184,8 +174,6 @@ var SqliteDriver = /** @class */ (function (_super) {
             });
         });
     };
-<<<<<<< HEAD
-=======
     /**
      * Performs the attaching of the database files. The attachedDatabase should have been populated during calls to #buildTableName
      * during EntityMetadata production (see EntityMetadata#buildTablePath)
@@ -240,7 +228,6 @@ var SqliteDriver = /** @class */ (function (_super) {
         var optionsDb = this.options.database;
         return path_1.default.dirname((0, PathUtils_1.isAbsolute)(optionsDb) ? optionsDb : path_1.default.join(process.cwd(), optionsDb));
     };
->>>>>>> a3495c7 (INIT)
     return SqliteDriver;
 }(AbstractSqliteDriver_1.AbstractSqliteDriver));
 exports.SqliteDriver = SqliteDriver;

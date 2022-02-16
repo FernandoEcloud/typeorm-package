@@ -624,15 +624,9 @@ var EntityManager = /** @class */ (function () {
                 metadata = this.connection.getMetadata(entityClass);
                 column = metadata.findColumnWithPropertyPath(propertyPath);
                 if (!column)
-<<<<<<< HEAD
-                    throw new TypeORMError("Column ".concat(propertyPath, " was not found in ").concat(metadata.targetName, " entity."));
-                if (isNaN(Number(value)))
-                    throw new TypeORMError("Value \"".concat(value, "\" is not a number."));
-=======
                     throw new TypeORMError("Column " + propertyPath + " was not found in " + metadata.targetName + " entity.");
                 if (isNaN(Number(value)))
                     throw new TypeORMError("Value \"" + value + "\" is not a number.");
->>>>>>> a3495c7 (INIT)
                 values = propertyPath
                     .split(".")
                     .reduceRight(function (value, key) {
@@ -659,15 +653,9 @@ var EntityManager = /** @class */ (function () {
                 metadata = this.connection.getMetadata(entityClass);
                 column = metadata.findColumnWithPropertyPath(propertyPath);
                 if (!column)
-<<<<<<< HEAD
-                    throw new TypeORMError("Column ".concat(propertyPath, " was not found in ").concat(metadata.targetName, " entity."));
-                if (isNaN(Number(value)))
-                    throw new TypeORMError("Value \"".concat(value, "\" is not a number."));
-=======
                     throw new TypeORMError("Column " + propertyPath + " was not found in " + metadata.targetName + " entity.");
                 if (isNaN(Number(value)))
                     throw new TypeORMError("Value \"" + value + "\" is not a number.");
->>>>>>> a3495c7 (INIT)
                 values = propertyPath
                     .split(".")
                     .reduceRight(function (value, key) {

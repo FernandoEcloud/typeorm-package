@@ -83,11 +83,7 @@ var SqljsDriver = /** @class */ (function (_super) {
                             return [2 /*return*/, this.createDatabaseConnectionWithImport(database)];
                         }
                         else if (checkIfFileOrLocalStorageExists) {
-<<<<<<< HEAD
-                            throw new TypeORMError("File ".concat(fileNameOrLocalStorageOrData, " does not exist"));
-=======
                             throw new TypeORMError("File " + fileNameOrLocalStorageOrData + " does not exist");
->>>>>>> a3495c7 (INIT)
                         }
                         else {
                             // File doesn't exist and checkIfFileOrLocalStorageExists is set to false.
@@ -115,11 +111,7 @@ var SqljsDriver = /** @class */ (function (_super) {
                             return [2 /*return*/, this.createDatabaseConnectionWithImport(JSON.parse(localStorageContent))];
                         }
                         else if (checkIfFileOrLocalStorageExists) {
-<<<<<<< HEAD
-                            throw new TypeORMError("File ".concat(fileNameOrLocalStorageOrData, " does not exist"));
-=======
                             throw new TypeORMError("File " + fileNameOrLocalStorageOrData + " does not exist");
->>>>>>> a3495c7 (INIT)
                         }
                         else {
                             // localStorage value doesn't exist and checkIfFileOrLocalStorageExists is set to false.
@@ -167,11 +159,7 @@ var SqljsDriver = /** @class */ (function (_super) {
                         return [3 /*break*/, 4];
                     case 3:
                         e_1 = _a.sent();
-<<<<<<< HEAD
-                        throw new TypeORMError("Could not save database, error: ".concat(e_1));
-=======
                         throw new TypeORMError("Could not save database, error: " + e_1);
->>>>>>> a3495c7 (INIT)
                     case 4: return [3 /*break*/, 10];
                     case 5:
                         database = this.databaseConnection.export();

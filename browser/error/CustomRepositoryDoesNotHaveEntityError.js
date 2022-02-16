@@ -6,11 +6,7 @@ import { TypeORMError } from "./TypeORMError";
 var CustomRepositoryDoesNotHaveEntityError = /** @class */ (function (_super) {
     __extends(CustomRepositoryDoesNotHaveEntityError, _super);
     function CustomRepositoryDoesNotHaveEntityError(repository) {
-<<<<<<< HEAD
-        return _super.call(this, "Custom repository ".concat(repository instanceof Function ? repository.name : repository.constructor.name, " does not have managed entity. ") +
-=======
         return _super.call(this, "Custom repository " + (repository instanceof Function ? repository.name : repository.constructor.name) + " does not have managed entity. " +
->>>>>>> a3495c7 (INIT)
             "Did you forget to specify entity for it @EntityRepository(MyEntity)? ") || this;
     }
     return CustomRepositoryDoesNotHaveEntityError;

@@ -47,11 +47,7 @@ var RelationQueryBuilder = /** @class */ (function (_super) {
                     throw new TypeORMError("Entity whose relation needs to be set is not set. Use .of method to define whose relation you want to set.");
                 if (relation.isManyToMany || relation.isOneToMany)
                     throw new TypeORMError("Set operation is only supported for many-to-one and one-to-one relations. " +
-<<<<<<< HEAD
-                        "However given \"".concat(relation.propertyPath, "\" has ").concat(relation.relationType, " relation. ") +
-=======
                         ("However given \"" + relation.propertyPath + "\" has " + relation.relationType + " relation. ") +
->>>>>>> a3495c7 (INIT)
                         "Use .add() method instead.");
                 // if there are multiple join columns then user must send id map as "value" argument. check if he really did it
                 if (relation.joinColumns &&
@@ -81,11 +77,7 @@ var RelationQueryBuilder = /** @class */ (function (_super) {
                     throw new TypeORMError("Entity whose relation needs to be set is not set. Use .of method to define whose relation you want to set.");
                 if (relation.isManyToOne || relation.isOneToOne)
                     throw new TypeORMError("Add operation is only supported for many-to-many and one-to-many relations. " +
-<<<<<<< HEAD
-                        "However given \"".concat(relation.propertyPath, "\" has ").concat(relation.relationType, " relation. ") +
-=======
                         ("However given \"" + relation.propertyPath + "\" has " + relation.relationType + " relation. ") +
->>>>>>> a3495c7 (INIT)
                         "Use .set() method instead.");
                 // if there are multiple join columns then user must send id map as "value" argument. check if he really did it
                 if (relation.joinColumns &&
@@ -115,11 +107,7 @@ var RelationQueryBuilder = /** @class */ (function (_super) {
                     throw new TypeORMError("Entity whose relation needs to be set is not set. Use .of method to define whose relation you want to set.");
                 if (relation.isManyToOne || relation.isOneToOne)
                     throw new TypeORMError("Add operation is only supported for many-to-many and one-to-many relations. " +
-<<<<<<< HEAD
-                        "However given \"".concat(relation.propertyPath, "\" has ").concat(relation.relationType, " relation. ") +
-=======
                         ("However given \"" + relation.propertyPath + "\" has " + relation.relationType + " relation. ") +
->>>>>>> a3495c7 (INIT)
                         "Use .set(null) method instead.");
                 remover = new RelationRemover(this, this.expressionMap);
                 return [2 /*return*/, remover.remove(value)];

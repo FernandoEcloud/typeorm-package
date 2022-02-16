@@ -27,8 +27,6 @@ var SqliteQueryRunner = /** @class */ (function (_super) {
         return _this;
     }
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     SqliteQueryRunner.prototype.beforeMigration = function () {
@@ -59,7 +57,6 @@ var SqliteQueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
->>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     SqliteQueryRunner.prototype.query = function (query, parameters, useStructuredResult) {

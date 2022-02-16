@@ -42,19 +42,11 @@ var RelationRemover = /** @class */ (function () {
                                 return (0, tslib_1.__spreadArray)((0, tslib_1.__spreadArray)([], (0, tslib_1.__read)(relation.inverseRelation.joinColumns.map(function (column, columnIndex) {
                                     var parameterName = "joinColumn_" + ofIndex + "_" + valueIndex + "_" + columnIndex;
                                     parameters_1[parameterName] = of instanceof Object ? column.referencedColumn.getEntityValue(of) : of;
-<<<<<<< HEAD
-                                    return "".concat(column.propertyPath, " = :").concat(parameterName);
-                                })), false), (0, tslib_1.__read)(relation.inverseRelation.entityMetadata.primaryColumns.map(function (column, columnIndex) {
-                                    var parameterName = "primaryColumn_" + valueIndex + "_" + valueIndex + "_" + columnIndex;
-                                    parameters_1[parameterName] = value instanceof Object ? column.getEntityValue(value) : value;
-                                    return "".concat(column.propertyPath, " = :").concat(parameterName);
-=======
                                     return column.propertyPath + " = :" + parameterName;
                                 })), false), (0, tslib_1.__read)(relation.inverseRelation.entityMetadata.primaryColumns.map(function (column, columnIndex) {
                                     var parameterName = "primaryColumn_" + valueIndex + "_" + valueIndex + "_" + columnIndex;
                                     parameters_1[parameterName] = value instanceof Object ? column.getEntityValue(value) : value;
                                     return column.propertyPath + " = :" + parameterName;
->>>>>>> a3495c7 (INIT)
                                 })), false).join(" AND ");
                             })), false));
                         });
@@ -84,19 +76,11 @@ var RelationRemover = /** @class */ (function () {
                                 return (0, tslib_1.__spreadArray)((0, tslib_1.__spreadArray)([], (0, tslib_1.__read)(junctionMetadata_1.ownerColumns.map(function (column, columnIndex) {
                                     var parameterName = "firstValue_" + firstColumnValIndex + "_" + secondColumnValIndex + "_" + columnIndex;
                                     parameters_2[parameterName] = firstColumnVal instanceof Object ? column.referencedColumn.getEntityValue(firstColumnVal) : firstColumnVal;
-<<<<<<< HEAD
-                                    return "".concat(column.databaseName, " = :").concat(parameterName);
-                                })), false), (0, tslib_1.__read)(junctionMetadata_1.inverseColumns.map(function (column, columnIndex) {
-                                    var parameterName = "secondValue_" + firstColumnValIndex + "_" + secondColumnValIndex + "_" + columnIndex;
-                                    parameters_2[parameterName] = secondColumnVal instanceof Object ? column.referencedColumn.getEntityValue(secondColumnVal) : secondColumnVal;
-                                    return "".concat(column.databaseName, " = :").concat(parameterName);
-=======
                                     return column.databaseName + " = :" + parameterName;
                                 })), false), (0, tslib_1.__read)(junctionMetadata_1.inverseColumns.map(function (column, columnIndex) {
                                     var parameterName = "secondValue_" + firstColumnValIndex + "_" + secondColumnValIndex + "_" + columnIndex;
                                     parameters_2[parameterName] = secondColumnVal instanceof Object ? column.referencedColumn.getEntityValue(secondColumnVal) : secondColumnVal;
                                     return column.databaseName + " = :" + parameterName;
->>>>>>> a3495c7 (INIT)
                                 })), false).join(" AND ");
                             })), false));
                         });

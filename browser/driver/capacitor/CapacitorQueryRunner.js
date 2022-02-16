@@ -19,8 +19,6 @@ var CapacitorQueryRunner = /** @class */ (function (_super) {
         _this.broadcaster = new Broadcaster(_this);
         return _this;
     }
-<<<<<<< HEAD
-=======
     /**
      * Called before migrations are run.
      */
@@ -51,7 +49,6 @@ var CapacitorQueryRunner = /** @class */ (function (_super) {
             });
         });
     };
->>>>>>> a3495c7 (INIT)
     CapacitorQueryRunner.prototype.executeSet = function (set) {
         return __awaiter(this, void 0, void 0, function () {
             var databaseConnection;
@@ -134,11 +131,7 @@ var CapacitorQueryRunner = /** @class */ (function (_super) {
      * Parametrizes given object of values. Used to create column=value queries.
      */
     CapacitorQueryRunner.prototype.parametrize = function (objectLiteral) {
-<<<<<<< HEAD
-        return Object.keys(objectLiteral).map(function (key) { return "\"".concat(key, "\"") + "=?"; });
-=======
         return Object.keys(objectLiteral).map(function (key) { return "\"" + key + "\"" + "=?"; });
->>>>>>> a3495c7 (INIT)
     };
     return CapacitorQueryRunner;
 }(AbstractSqliteQueryRunner));

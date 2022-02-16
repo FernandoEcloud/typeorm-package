@@ -14,14 +14,11 @@ import { ReplicationMode } from "../types/ReplicationMode";
 import { Table } from "../../schema-builder/table/Table";
 import { View } from "../../schema-builder/view/View";
 import { TableForeignKey } from "../../schema-builder/table/TableForeignKey";
-<<<<<<< HEAD
-=======
 declare type DatabasesMap = Record<string, {
     attachFilepathAbsolute: string;
     attachFilepathRelative: string;
     attachHandle: string;
 }>;
->>>>>>> a3495c7 (INIT)
 /**
  * Organizes communication with sqlite DBMS.
  */
@@ -100,13 +97,10 @@ export declare abstract class AbstractSqliteDriver implements Driver {
      * for SQLite.
      */
     maxAliasLength?: number;
-<<<<<<< HEAD
-=======
     /**
      * Any attached databases (excepting default 'main')
      */
     attachedDatabases: DatabasesMap;
->>>>>>> a3495c7 (INIT)
     constructor(connection: Connection);
     /**
      * Creates a query runner used to execute database queries.
@@ -124,12 +118,9 @@ export declare abstract class AbstractSqliteDriver implements Driver {
      * Closes connection with database.
      */
     disconnect(): Promise<void>;
-<<<<<<< HEAD
-=======
     hasAttachedDatabases(): boolean;
     getAttachedDatabaseHandleByRelativePath(path: string): string | undefined;
     getAttachedDatabasePathRelativeByHandle(handle: string): string | undefined;
->>>>>>> a3495c7 (INIT)
     /**
      * Creates a schema builder used to build and sync a schema.
      */
@@ -237,7 +228,4 @@ export declare abstract class AbstractSqliteDriver implements Driver {
      */
     protected loadDependencies(): void;
 }
-<<<<<<< HEAD
-=======
 export {};
->>>>>>> a3495c7 (INIT)

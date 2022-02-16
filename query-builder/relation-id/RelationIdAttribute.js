@@ -73,11 +73,7 @@ var RelationIdAttribute = /** @class */ (function () {
             var relationOwnerSelection = this.queryExpressionMap.findAliasByName(this.parentAlias);
             var relation = relationOwnerSelection.metadata.findRelationWithPropertyPath(this.relationPropertyPath);
             if (!relation)
-<<<<<<< HEAD
-                throw new TypeORMError_1.TypeORMError("Relation with property path ".concat(this.relationPropertyPath, " in entity was not found."));
-=======
                 throw new TypeORMError_1.TypeORMError("Relation with property path " + this.relationPropertyPath + " in entity was not found.");
->>>>>>> a3495c7 (INIT)
             return relation;
         },
         enumerable: false,

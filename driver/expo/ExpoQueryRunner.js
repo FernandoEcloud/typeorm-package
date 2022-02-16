@@ -110,8 +110,6 @@ var ExpoQueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     ExpoQueryRunner.prototype.beforeMigration = function () {
@@ -142,7 +140,6 @@ var ExpoQueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
->>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     ExpoQueryRunner.prototype.query = function (query, parameters, useStructuredResult) {

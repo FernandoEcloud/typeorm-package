@@ -71,20 +71,12 @@ var EntityCreateCommand = /** @class */ (function () {
                     case 5:
                         fileExists = _a.sent();
                         if (fileExists) {
-<<<<<<< HEAD
-                            throw "File ".concat(chalk_1.default.blue(path), " already exists");
-=======
                             throw "File " + chalk_1.default.blue(path) + " already exists";
->>>>>>> a3495c7 (INIT)
                         }
                         return [4 /*yield*/, CommandUtils_1.CommandUtils.createFile(path, fileContent)];
                     case 6:
                         _a.sent();
-<<<<<<< HEAD
-                        console.log(chalk_1.default.green("Entity ".concat(chalk_1.default.blue(path), " has been created successfully.")));
-=======
                         console.log(chalk_1.default.green("Entity " + chalk_1.default.blue(path) + " has been created successfully."));
->>>>>>> a3495c7 (INIT)
                         return [3 /*break*/, 8];
                     case 7:
                         err_2 = _a.sent();
@@ -103,11 +95,7 @@ var EntityCreateCommand = /** @class */ (function () {
      * Gets contents of the entity file.
      */
     EntityCreateCommand.getTemplate = function (name) {
-<<<<<<< HEAD
-        return "import {Entity} from \"typeorm\";\n\n@Entity()\nexport class ".concat(name, " {\n\n}\n");
-=======
         return "import {Entity} from \"typeorm\";\n\n@Entity()\nexport class " + name + " {\n\n}\n";
->>>>>>> a3495c7 (INIT)
     };
     return EntityCreateCommand;
 }());

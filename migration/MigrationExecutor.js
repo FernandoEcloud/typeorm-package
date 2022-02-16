@@ -52,14 +52,6 @@ var MigrationExecutor = /** @class */ (function () {
                                 case 0: return [4 /*yield*/, this.createMigrationsTableIfNotExist(queryRunner)];
                                 case 1:
                                     _a.sent();
-<<<<<<< HEAD
-                                    return [4 /*yield*/, migration.instance.up(queryRunner)];
-                                case 2:
-                                    _a.sent();
-                                    return [4 /*yield*/, this.insertExecutedMigration(queryRunner, migration)];
-                                case 3:
-                                    _a.sent();
-=======
                                     return [4 /*yield*/, queryRunner.beforeMigration()];
                                 case 2:
                                     _a.sent();
@@ -72,7 +64,6 @@ var MigrationExecutor = /** @class */ (function () {
                                     return [4 /*yield*/, this.insertExecutedMigration(queryRunner, migration)];
                                 case 5:
                                     _a.sent();
->>>>>>> a3495c7 (INIT)
                                     return [2 /*return*/, migration];
                             }
                         });
@@ -173,19 +164,11 @@ var MigrationExecutor = /** @class */ (function () {
                         _loop_1 = function (migration) {
                             var executedMigration = executedMigrations.find(function (executedMigration) { return executedMigration.name === migration.name; });
                             if (executedMigration) {
-<<<<<<< HEAD
-                                this_1.connection.logger.logSchemaBuild(" [X] ".concat(migration.name));
-                            }
-                            else {
-                                hasUnappliedMigrations = true;
-                                this_1.connection.logger.logSchemaBuild(" [ ] ".concat(migration.name));
-=======
                                 this_1.connection.logger.logSchemaBuild(" [X] " + migration.name);
                             }
                             else {
                                 hasUnappliedMigrations = true;
                                 this_1.connection.logger.logSchemaBuild(" [ ] " + migration.name);
->>>>>>> a3495c7 (INIT)
                             }
                         };
                         this_1 = this;
@@ -263,19 +246,11 @@ var MigrationExecutor = /** @class */ (function () {
                     case 6: return [2 /*return*/, []];
                     case 7:
                         // log information about migration execution
-<<<<<<< HEAD
-                        this.connection.logger.logSchemaBuild("".concat(executedMigrations.length, " migrations are already loaded in the database."));
-                        this.connection.logger.logSchemaBuild("".concat(allMigrations.length, " migrations were found in the source code."));
-                        if (lastTimeExecutedMigration)
-                            this.connection.logger.logSchemaBuild("".concat(lastTimeExecutedMigration.name, " is the last executed migration. It was executed on ").concat(new Date(lastTimeExecutedMigration.timestamp).toString(), "."));
-                        this.connection.logger.logSchemaBuild("".concat(pendingMigrations.length, " migrations are new migrations that needs to be executed."));
-=======
                         this.connection.logger.logSchemaBuild(executedMigrations.length + " migrations are already loaded in the database.");
                         this.connection.logger.logSchemaBuild(allMigrations.length + " migrations were found in the source code.");
                         if (lastTimeExecutedMigration)
                             this.connection.logger.logSchemaBuild(lastTimeExecutedMigration.name + " is the last executed migration. It was executed on " + new Date(lastTimeExecutedMigration.timestamp).toString() + ".");
                         this.connection.logger.logSchemaBuild(pendingMigrations.length + " migrations are new migrations that needs to be executed.");
->>>>>>> a3495c7 (INIT)
                         transactionStartedByUs = false;
                         if (!(this.transaction === "all" && !queryRunner.isTransactionActive)) return [3 /*break*/, 9];
                         return [4 /*yield*/, queryRunner.startTransaction()];
@@ -297,11 +272,7 @@ var MigrationExecutor = /** @class */ (function () {
                                         _c.label = 2;
                                     case 2: return [4 /*yield*/, migration.instance.up(queryRunner)
                                             .catch(function (error) {
-<<<<<<< HEAD
-                                            _this.connection.logger.logMigration("Migration \"".concat(migration.name, "\" failed, error: ").concat(error === null || error === void 0 ? void 0 : error.message));
-=======
                                             _this.connection.logger.logMigration("Migration \"" + migration.name + "\" failed, error: " + (error === null || error === void 0 ? void 0 : error.message));
->>>>>>> a3495c7 (INIT)
                                             throw error;
                                         })
                                             .then(function () { return (0, tslib_1.__awaiter)(_this, void 0, void 0, function () {
@@ -322,11 +293,7 @@ var MigrationExecutor = /** @class */ (function () {
                                         }); })
                                             .then(function () {
                                             successMigrations.push(migration);
-<<<<<<< HEAD
-                                            _this.connection.logger.logSchemaBuild("Migration ".concat(migration.name, " has been executed successfully."));
-=======
                                             _this.connection.logger.logSchemaBuild("Migration " + migration.name + " has been executed successfully.");
->>>>>>> a3495c7 (INIT)
                                         })];
                                     case 3:
                                         _c.sent();
@@ -422,17 +389,10 @@ var MigrationExecutor = /** @class */ (function () {
                         migrationToRevert = allMigrations.find(function (migration) { return migration.name === lastTimeExecutedMigration.name; });
                         // if no migrations found in the database then nothing to revert
                         if (!migrationToRevert)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("No migration ".concat(lastTimeExecutedMigration.name, " was found in the source code. Make sure you have this migration in your codebase and its included in the connection options."));
-                        // log information about migration execution
-                        this.connection.logger.logSchemaBuild("".concat(executedMigrations.length, " migrations are already loaded in the database."));
-                        this.connection.logger.logSchemaBuild("".concat(lastTimeExecutedMigration.name, " is the last executed migration. It was executed on ").concat(new Date(lastTimeExecutedMigration.timestamp).toString(), "."));
-=======
                             throw new error_1.TypeORMError("No migration " + lastTimeExecutedMigration.name + " was found in the source code. Make sure you have this migration in your codebase and its included in the connection options.");
                         // log information about migration execution
                         this.connection.logger.logSchemaBuild(executedMigrations.length + " migrations are already loaded in the database.");
                         this.connection.logger.logSchemaBuild(lastTimeExecutedMigration.name + " is the last executed migration. It was executed on " + new Date(lastTimeExecutedMigration.timestamp).toString() + ".");
->>>>>>> a3495c7 (INIT)
                         this.connection.logger.logSchemaBuild("Now reverting it...");
                         transactionStartedByUs = false;
                         if (!((this.transaction !== "none") && !queryRunner.isTransactionActive)) return [3 /*break*/, 4];
@@ -442,44 +402,6 @@ var MigrationExecutor = /** @class */ (function () {
                         transactionStartedByUs = true;
                         _a.label = 4;
                     case 4:
-<<<<<<< HEAD
-                        _a.trys.push([4, 9, 14, 17]);
-                        return [4 /*yield*/, migrationToRevert.instance.down(queryRunner)];
-                    case 5:
-                        _a.sent();
-                        return [4 /*yield*/, this.deleteExecutedMigration(queryRunner, migrationToRevert)];
-                    case 6:
-                        _a.sent();
-                        this.connection.logger.logSchemaBuild("Migration ".concat(migrationToRevert.name, " has been reverted successfully."));
-                        if (!transactionStartedByUs) return [3 /*break*/, 8];
-                        return [4 /*yield*/, queryRunner.commitTransaction()];
-                    case 7:
-                        _a.sent();
-                        _a.label = 8;
-                    case 8: return [3 /*break*/, 17];
-                    case 9:
-                        err_2 = _a.sent();
-                        if (!transactionStartedByUs) return [3 /*break*/, 13];
-                        _a.label = 10;
-                    case 10:
-                        _a.trys.push([10, 12, , 13]);
-                        return [4 /*yield*/, queryRunner.rollbackTransaction()];
-                    case 11:
-                        _a.sent();
-                        return [3 /*break*/, 13];
-                    case 12:
-                        rollbackError_2 = _a.sent();
-                        return [3 /*break*/, 13];
-                    case 13: throw err_2;
-                    case 14:
-                        if (!!this.queryRunner) return [3 /*break*/, 16];
-                        return [4 /*yield*/, queryRunner.release()];
-                    case 15:
-                        _a.sent();
-                        _a.label = 16;
-                    case 16: return [7 /*endfinally*/];
-                    case 17: return [2 /*return*/];
-=======
                         _a.trys.push([4, 11, 16, 19]);
                         return [4 /*yield*/, queryRunner.beforeMigration()];
                     case 5:
@@ -522,7 +444,6 @@ var MigrationExecutor = /** @class */ (function () {
                         _a.label = 18;
                     case 18: return [7 /*endfinally*/];
                     case 19: return [2 /*return*/];
->>>>>>> a3495c7 (INIT)
                 }
             });
         });
@@ -622,11 +543,7 @@ var MigrationExecutor = /** @class */ (function () {
             var migrationClassName = migration.name || migration.constructor.name;
             var migrationTimestamp = parseInt(migrationClassName.substr(-13), 10);
             if (!migrationTimestamp || isNaN(migrationTimestamp)) {
-<<<<<<< HEAD
-                throw new error_1.TypeORMError("".concat(migrationClassName, " migration name is wrong. Migration class name should have a JavaScript timestamp appended."));
-=======
                 throw new error_1.TypeORMError(migrationClassName + " migration name is wrong. Migration class name should have a JavaScript timestamp appended.");
->>>>>>> a3495c7 (INIT)
             }
             return new Migration_1.Migration(undefined, migrationTimestamp, migrationClassName, migration);
         });
@@ -638,11 +555,7 @@ var MigrationExecutor = /** @class */ (function () {
         var migrationNames = migrations.map(function (migration) { return migration.name; });
         var duplicates = Array.from(new Set(migrationNames.filter(function (migrationName, index) { return migrationNames.indexOf(migrationName) < index; })));
         if (duplicates.length > 0) {
-<<<<<<< HEAD
-            throw Error("Duplicate migrations: ".concat(duplicates.join(", ")));
-=======
             throw Error("Duplicate migrations: " + duplicates.join(", "));
->>>>>>> a3495c7 (INIT)
         }
     };
     /**
@@ -725,13 +638,8 @@ var MigrationExecutor = /** @class */ (function () {
                         qb = queryRunner.manager.createQueryBuilder();
                         return [4 /*yield*/, qb.delete()
                                 .from(this.migrationsTable)
-<<<<<<< HEAD
-                                .where("".concat(qb.escape("timestamp"), " = :timestamp"))
-                                .andWhere("".concat(qb.escape("name"), " = :name"))
-=======
                                 .where(qb.escape("timestamp") + " = :timestamp")
                                 .andWhere(qb.escape("name") + " = :name")
->>>>>>> a3495c7 (INIT)
                                 .setParameters(conditions)
                                 .execute()];
                     case 3:

@@ -53,15 +53,9 @@ var EntityMetadataValidator = /** @class */ (function () {
         // also validate if discriminator values are not empty and not repeated
         if (entityMetadata.inheritancePattern === "STI" || entityMetadata.tableType === "entity-child") {
             if (!entityMetadata.discriminatorColumn)
-<<<<<<< HEAD
-                throw new TypeORMError("Entity ".concat(entityMetadata.name, " using single-table inheritance, it should also have a discriminator column. Did you forget to put discriminator column options?"));
-            if (typeof entityMetadata.discriminatorValue === "undefined")
-                throw new TypeORMError("Entity ".concat(entityMetadata.name, " has an undefined discriminator value. Discriminator value should be defined."));
-=======
                 throw new TypeORMError("Entity " + entityMetadata.name + " using single-table inheritance, it should also have a discriminator column. Did you forget to put discriminator column options?");
             if (typeof entityMetadata.discriminatorValue === "undefined")
                 throw new TypeORMError("Entity " + entityMetadata.name + " has an undefined discriminator value. Discriminator value should be defined.");
->>>>>>> a3495c7 (INIT)
             var sameDiscriminatorValueEntityMetadata = allEntityMetadatas.find(function (metadata) {
                 return metadata !== entityMetadata
                     && (metadata.inheritancePattern === "STI" || metadata.tableType === "entity-child")
@@ -70,11 +64,7 @@ var EntityMetadataValidator = /** @class */ (function () {
                     && metadata.inheritanceTree.some(function (parent) { return entityMetadata.inheritanceTree.indexOf(parent) !== -1; });
             });
             if (sameDiscriminatorValueEntityMetadata)
-<<<<<<< HEAD
-                throw new TypeORMError("Entities ".concat(entityMetadata.name, " and ").concat(sameDiscriminatorValueEntityMetadata.name, " have the same discriminator values. Make sure they are different while using the @ChildEntity decorator."));
-=======
                 throw new TypeORMError("Entities " + entityMetadata.name + " and " + sameDiscriminatorValueEntityMetadata.name + " have the same discriminator values. Make sure they are different while using the @ChildEntity decorator.");
->>>>>>> a3495c7 (INIT)
         }
         entityMetadata.relationCounts.forEach(function (relationCount) {
             if (relationCount.relation.isManyToOne || relationCount.relation.isOneToOne)
@@ -86,25 +76,15 @@ var EntityMetadataValidator = /** @class */ (function () {
                 if (driver.supportedDataTypes.indexOf(normalizedColumn) === -1)
                     throw new DataTypeNotSupportedError(column, normalizedColumn, driver.options.type);
                 if (column.length && driver.withLengthColumnTypes.indexOf(normalizedColumn) === -1)
-<<<<<<< HEAD
-                    throw new TypeORMError("Column ".concat(column.propertyName, " of Entity ").concat(entityMetadata.name, " does not support length property."));
-                if (column.type === "enum" && !column.enum && !column.enumName)
-                    throw new TypeORMError("Column \"".concat(column.propertyName, "\" of Entity \"").concat(entityMetadata.name, "\" is defined as enum, but missing \"enum\" or \"enumName\" properties."));
-=======
                     throw new TypeORMError("Column " + column.propertyName + " of Entity " + entityMetadata.name + " does not support length property.");
                 if (column.type === "enum" && !column.enum && !column.enumName)
                     throw new TypeORMError("Column \"" + column.propertyName + "\" of Entity \"" + entityMetadata.name + "\" is defined as enum, but missing \"enum\" or \"enumName\" properties.");
->>>>>>> a3495c7 (INIT)
             });
         }
         if (driver instanceof MysqlDriver || driver instanceof AuroraDataApiDriver) {
             var generatedColumns = entityMetadata.columns.filter(function (column) { return column.isGenerated && column.generationStrategy !== "uuid"; });
             if (generatedColumns.length > 1)
-<<<<<<< HEAD
-                throw new TypeORMError("Error in ".concat(entityMetadata.name, " entity. There can be only one auto-increment column in MySql table."));
-=======
                 throw new TypeORMError("Error in " + entityMetadata.name + " entity. There can be only one auto-increment column in MySql table.");
->>>>>>> a3495c7 (INIT)
         }
         // for mysql we are able to not define a default selected database, instead all entities can have their database
         // defined in their decorators. To make everything work either all entities must have database define and we
@@ -120,11 +100,7 @@ var EntityMetadataValidator = /** @class */ (function () {
                 throw new TypeORMError("Character set specifying is not supported in Sql Server");
         }
         // check if relations are all without initialized properties
-<<<<<<< HEAD
-        var entityInstance = entityMetadata.create();
-=======
         var entityInstance = entityMetadata.create(undefined, { fromDeserializer: true });
->>>>>>> a3495c7 (INIT)
         entityMetadata.relations.forEach(function (relation) {
             if (relation.isManyToMany || relation.isOneToMany) {
                 // we skip relations for which persistence is disabled since initialization in them cannot harm somehow
@@ -193,11 +169,7 @@ var EntityMetadataValidator = /** @class */ (function () {
         entityMetadata.relations.forEach(function (relation) {
             var isCircularCascadeRemove = relation.isCascadeRemove && relation.inverseRelation && relation.inverseRelation.isCascadeRemove;
             if (isCircularCascadeRemove)
-<<<<<<< HEAD
-                throw new TypeORMError("Relation ".concat(entityMetadata.name, "#").concat(relation.propertyName, " and ").concat(relation.inverseRelation.entityMetadata.name, "#").concat(relation.inverseRelation.propertyName, " both has cascade remove set. ") +
-=======
                 throw new TypeORMError("Relation " + entityMetadata.name + "#" + relation.propertyName + " and " + relation.inverseRelation.entityMetadata.name + "#" + relation.inverseRelation.propertyName + " both has cascade remove set. " +
->>>>>>> a3495c7 (INIT)
                     "This may lead to unexpected circular removals. Please set cascade remove only from one side of relationship.");
         }); // todo: maybe better just deny removal from one to one relation without join column?
         entityMetadata.eagerRelations.forEach(function (relation) {
@@ -233,13 +205,8 @@ var EntityMetadataValidator = /** @class */ (function () {
             entityMetadata.eagerRelations.forEach(function (relation) {
                 if (relation.inverseRelation && relation.inverseRelation.isEager)
                     throw new TypeORMError("Circular eager relations are disallowed. " +
-<<<<<<< HEAD
-                        "".concat(entityMetadata.targetName, "#").concat(relation.propertyPath, " contains \"eager: true\", and its inverse side ") +
-                        "".concat(relation.inverseEntityMetadata.targetName, "#").concat(relation.inverseRelation.propertyPath, " contains \"eager: true\" as well.") +
-=======
                         (entityMetadata.targetName + "#" + relation.propertyPath + " contains \"eager: true\", and its inverse side ") +
                         (relation.inverseEntityMetadata.targetName + "#" + relation.inverseRelation.propertyPath + " contains \"eager: true\" as well.") +
->>>>>>> a3495c7 (INIT)
                         " Remove \"eager: true\" from one side of the relation.");
             });
         });

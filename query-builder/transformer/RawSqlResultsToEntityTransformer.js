@@ -113,11 +113,7 @@ var RawSqlResultsToEntityTransformer = /** @class */ (function () {
         var hasData = false;
         metadata.columns.forEach(function (column) {
             // if table inheritance is used make sure this column is not child's column
-<<<<<<< HEAD
-            if (metadata.childEntityMetadatas.length > 0 && metadata.childEntityMetadatas.map(function (metadata) { return metadata.target; }).indexOf(column.target) !== -1)
-=======
             if (metadata.childEntityMetadatas.length > 0 && metadata.childEntityMetadatas.findIndex(function (childMetadata) { return childMetadata.target === column.target; }) !== -1)
->>>>>>> a3495c7 (INIT)
                 return;
             var value = rawResults[0][DriverUtils_1.DriverUtils.buildAlias(_this.driver, alias.name, column.databaseName)];
             if (value === undefined || column.isVirtual)
@@ -181,62 +177,11 @@ var RawSqlResultsToEntityTransformer = /** @class */ (function () {
     RawSqlResultsToEntityTransformer.prototype.transformRelationIds = function (rawSqlResults, alias, entity, metadata) {
         var _this = this;
         var hasData = false;
-<<<<<<< HEAD
-        this.rawRelationIdResults.forEach(function (rawRelationIdResult) {
-=======
         this.rawRelationIdResults.forEach(function (rawRelationIdResult, index) {
->>>>>>> a3495c7 (INIT)
             if (rawRelationIdResult.relationIdAttribute.parentAlias !== alias.name)
                 return;
             var relation = rawRelationIdResult.relationIdAttribute.relation;
             var valueMap = _this.createValueMapFromJoinColumns(relation, rawRelationIdResult.relationIdAttribute.parentAlias, rawSqlResults);
-<<<<<<< HEAD
-            if (valueMap === undefined || valueMap === null)
-                return;
-            var idMaps = rawRelationIdResult.results.map(function (result) {
-                var entityPrimaryIds = _this.extractEntityPrimaryIds(relation, result);
-                if (OrmUtils_1.OrmUtils.compareIds(entityPrimaryIds, valueMap) === false)
-                    return;
-                var columns;
-                if (relation.isManyToOne || relation.isOneToOneOwner) {
-                    columns = relation.joinColumns.map(function (joinColumn) { return joinColumn; });
-                }
-                else if (relation.isOneToMany || relation.isOneToOneNotOwner) {
-                    columns = relation.inverseEntityMetadata.primaryColumns.map(function (joinColumn) { return joinColumn; });
-                    // columns = relation.inverseRelation!.joinColumns.map(joinColumn => joinColumn.referencedColumn!); //.inverseEntityMetadata.primaryColumns.map(joinColumn => joinColumn);
-                }
-                else { // ManyToMany
-                    if (relation.isOwning) {
-                        columns = relation.inverseJoinColumns.map(function (joinColumn) { return joinColumn; });
-                    }
-                    else {
-                        columns = relation.inverseRelation.joinColumns.map(function (joinColumn) { return joinColumn; });
-                    }
-                }
-                var idMap = columns.reduce(function (idMap, column) {
-                    var value = result[column.databaseName];
-                    if (relation.isOneToMany || relation.isOneToOneNotOwner) {
-                        if (column.isVirtual && column.referencedColumn && column.referencedColumn.propertyName !== column.propertyName) // if column is a relation
-                            value = column.referencedColumn.createValueMap(value);
-                        return OrmUtils_1.OrmUtils.mergeDeep(idMap, column.createValueMap(value));
-                    }
-                    else {
-                        if (column.referencedColumn.referencedColumn) // if column is a relation
-                            value = column.referencedColumn.referencedColumn.createValueMap(value);
-                        return OrmUtils_1.OrmUtils.mergeDeep(idMap, column.referencedColumn.createValueMap(value));
-                    }
-                }, {});
-                if (columns.length === 1 && rawRelationIdResult.relationIdAttribute.disableMixedMap === false) {
-                    if (relation.isOneToMany || relation.isOneToOneNotOwner) {
-                        return columns[0].getEntityValue(idMap);
-                    }
-                    else {
-                        return columns[0].referencedColumn.getEntityValue(idMap);
-                    }
-                }
-                return idMap;
-            }).filter(function (result) { return result !== undefined; });
-=======
             if (valueMap === undefined || valueMap === null) {
                 return;
             }
@@ -246,7 +191,6 @@ var RawSqlResultsToEntityTransformer = /** @class */ (function () {
             var hash = _this.hashEntityIds(relation, valueMap);
             var idMaps = _this.relationIdMaps[index][hash] || [];
             // Map data to properties
->>>>>>> a3495c7 (INIT)
             var properties = rawRelationIdResult.relationIdAttribute.mapToPropertyPropertyPath.split(".");
             var mapToProperty = function (properties, map, value) {
                 var property = properties.shift();
@@ -254,11 +198,7 @@ var RawSqlResultsToEntityTransformer = /** @class */ (function () {
                     map[property] = value;
                     return map;
                 }
-<<<<<<< HEAD
-                else if (property && properties.length > 0) {
-=======
                 if (property && properties.length > 0) {
->>>>>>> a3495c7 (INIT)
                     mapToProperty(properties, map[property], value);
                 }
                 else {
@@ -273,13 +213,7 @@ var RawSqlResultsToEntityTransformer = /** @class */ (function () {
             }
             else {
                 mapToProperty(properties, entity, idMaps);
-<<<<<<< HEAD
-                if (idMaps.length > 0) {
-                    hasData = true;
-                }
-=======
                 hasData = hasData || idMaps.length > 0;
->>>>>>> a3495c7 (INIT)
             }
         });
         return hasData;
@@ -361,8 +295,6 @@ var RawSqlResultsToEntityTransformer = /** @class */ (function () {
             return data;
         }, {});
     };
-<<<<<<< HEAD
-=======
     /*private removeVirtualColumns(entity: ObjectLiteral, alias: Alias) {
         const virtualColumns = this.expressionMap.selects
             .filter(select => select.virtual)
@@ -445,7 +377,6 @@ var RawSqlResultsToEntityTransformer = /** @class */ (function () {
         var entityPrimaryIds = this.extractEntityPrimaryIds(relation, data);
         return JSON.stringify(entityPrimaryIds);
     };
->>>>>>> a3495c7 (INIT)
     return RawSqlResultsToEntityTransformer;
 }());
 exports.RawSqlResultsToEntityTransformer = RawSqlResultsToEntityTransformer;

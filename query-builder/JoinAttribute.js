@@ -138,11 +138,7 @@ var JoinAttribute = /** @class */ (function () {
                             return relation;
                         }
                     }
-<<<<<<< HEAD
-                    throw new error_1.TypeORMError("Relation with property path ".concat(_this.relationPropertyPath, " in entity was not found."));
-=======
                     throw new error_1.TypeORMError("Relation with property path " + _this.relationPropertyPath + " in entity was not found.");
->>>>>>> a3495c7 (INIT)
                 };
                 this.relationCache = getValue.bind(this)();
                 this.relationEvaluated = true;

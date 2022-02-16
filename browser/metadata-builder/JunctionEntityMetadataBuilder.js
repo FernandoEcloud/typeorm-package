@@ -185,11 +185,7 @@ var JunctionEntityMetadataBuilder = /** @class */ (function () {
             return joinTable.joinColumns.map(function (joinColumn) {
                 var referencedColumn = relation.entityMetadata.columns.find(function (column) { return column.propertyName === joinColumn.referencedColumnName; });
                 if (!referencedColumn)
-<<<<<<< HEAD
-                    throw new TypeORMError("Referenced column ".concat(joinColumn.referencedColumnName, " was not found in entity ").concat(relation.entityMetadata.name));
-=======
                     throw new TypeORMError("Referenced column " + joinColumn.referencedColumnName + " was not found in entity " + relation.entityMetadata.name);
->>>>>>> a3495c7 (INIT)
                 return referencedColumn;
             });
         }
@@ -207,11 +203,7 @@ var JunctionEntityMetadataBuilder = /** @class */ (function () {
             return joinTable.inverseJoinColumns.map(function (joinColumn) {
                 var referencedColumn = relation.inverseEntityMetadata.ownColumns.find(function (column) { return column.propertyName === joinColumn.referencedColumnName; });
                 if (!referencedColumn)
-<<<<<<< HEAD
-                    throw new TypeORMError("Referenced column ".concat(joinColumn.referencedColumnName, " was not found in entity ").concat(relation.inverseEntityMetadata.name));
-=======
                     throw new TypeORMError("Referenced column " + joinColumn.referencedColumnName + " was not found in entity " + relation.inverseEntityMetadata.name);
->>>>>>> a3495c7 (INIT)
                 return referencedColumn;
             });
         }

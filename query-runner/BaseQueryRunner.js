@@ -47,8 +47,6 @@ var BaseQueryRunner = /** @class */ (function () {
     // Public Methods
     // -------------------------------------------------------------------------
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     BaseQueryRunner.prototype.beforeMigration = function () {
@@ -69,7 +67,6 @@ var BaseQueryRunner = /** @class */ (function () {
         });
     };
     /**
->>>>>>> a3495c7 (INIT)
      * Loads given table's data from the database.
      */
     BaseQueryRunner.prototype.getTable = function (tablePath) {
@@ -283,11 +280,7 @@ var BaseQueryRunner = /** @class */ (function () {
                             return [2 /*return*/, foundViews[0]];
                         }
                         else {
-<<<<<<< HEAD
-                            throw new TypeORMError_1.TypeORMError("View \"".concat(viewName, "\" does not exist."));
-=======
                             throw new TypeORMError_1.TypeORMError("View \"" + viewName + "\" does not exist.");
->>>>>>> a3495c7 (INIT)
                         }
                         return [2 /*return*/];
                 }
@@ -327,11 +320,7 @@ var BaseQueryRunner = /** @class */ (function () {
                             }
                         }
                         else {
-<<<<<<< HEAD
-                            throw new TypeORMError_1.TypeORMError("Table \"".concat(tableName, "\" does not exist."));
-=======
                             throw new TypeORMError_1.TypeORMError("Table \"" + tableName + "\" does not exist.");
->>>>>>> a3495c7 (INIT)
                         }
                         return [2 /*return*/];
                 }
@@ -403,18 +392,6 @@ var BaseQueryRunner = /** @class */ (function () {
         var qb = this.connection.createQueryBuilder();
         var deleteQb = qb.delete()
             .from(this.getTypeormMetadataTableName())
-<<<<<<< HEAD
-            .where("".concat(qb.escape("type"), " = :type"), { type: type })
-            .andWhere("".concat(qb.escape("name"), " = :name"), { name: name });
-        if (database) {
-            deleteQb.andWhere("".concat(qb.escape("database"), " = :database"), { database: database });
-        }
-        if (schema) {
-            deleteQb.andWhere("".concat(qb.escape("schema"), " = :schema"), { schema: schema });
-        }
-        if (table) {
-            deleteQb.andWhere("".concat(qb.escape("table"), " = :table"), { table: table });
-=======
             .where(qb.escape("type") + " = :type", { type: type })
             .andWhere(qb.escape("name") + " = :name", { name: name });
         if (database) {
@@ -425,7 +402,6 @@ var BaseQueryRunner = /** @class */ (function () {
         }
         if (table) {
             deleteQb.andWhere(qb.escape("table") + " = :table", { table: table });
->>>>>>> a3495c7 (INIT)
         }
         var _b = (0, tslib_1.__read)(deleteQb.getQueryAndParameters(), 2), query = _b[0], parameters = _b[1];
         return new Query_1.Query(query, parameters);

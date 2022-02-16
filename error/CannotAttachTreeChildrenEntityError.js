@@ -9,11 +9,7 @@ var TypeORMError_1 = require("./TypeORMError");
 var CannotAttachTreeChildrenEntityError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(CannotAttachTreeChildrenEntityError, _super);
     function CannotAttachTreeChildrenEntityError(entityName) {
-<<<<<<< HEAD
-        return _super.call(this, "Cannot attach entity \"".concat(entityName, "\" to its parent. Please make sure parent ") +
-=======
         return _super.call(this, "Cannot attach entity \"" + entityName + "\" to its parent. Please make sure parent " +
->>>>>>> a3495c7 (INIT)
             "is saved in the database before saving children nodes.") || this;
     }
     return CannotAttachTreeChildrenEntityError;

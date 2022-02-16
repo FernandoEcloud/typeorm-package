@@ -697,18 +697,11 @@ var SubjectExecutor = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, Promise.all(this.softRemoveSubjects.map(function (subject) { return __awaiter(_this, void 0, void 0, function () {
-<<<<<<< HEAD
-                            var updateResult, partialEntity, manager, softDeleteQueryBuilder;
-                            var _this = this;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-=======
                             var updateResult, partialEntity, manager, softDeleteQueryBuilder, _a, _b, relation, e_7_1;
                             var e_7, _c;
                             var _this = this;
                             return __generator(this, function (_d) {
                                 switch (_d.label) {
->>>>>>> a3495c7 (INIT)
                                     case 0:
                                         if (!subject.identifier)
                                             throw new SubjectWithoutIdentifierError(subject);
@@ -729,13 +722,8 @@ var SubjectExecutor = /** @class */ (function () {
                                         manager = this.queryRunner.manager;
                                         return [4 /*yield*/, manager.update(subject.metadata.target, subject.identifier, partialEntity)];
                                     case 1:
-<<<<<<< HEAD
-                                        updateResult = _a.sent();
-                                        return [3 /*break*/, 4];
-=======
                                         updateResult = _d.sent();
                                         return [3 /*break*/, 11];
->>>>>>> a3495c7 (INIT)
                                     case 2:
                                         softDeleteQueryBuilder = this.queryRunner
                                             .manager
@@ -752,11 +740,6 @@ var SubjectExecutor = /** @class */ (function () {
                                         }
                                         return [4 /*yield*/, softDeleteQueryBuilder.execute()];
                                     case 3:
-<<<<<<< HEAD
-                                        updateResult = _a.sent();
-                                        _a.label = 4;
-                                    case 4:
-=======
                                         updateResult = _d.sent();
                                         _d.label = 4;
                                     case 4:
@@ -787,7 +770,6 @@ var SubjectExecutor = /** @class */ (function () {
                                         finally { if (e_7) throw e_7.error; }
                                         return [7 /*endfinally*/];
                                     case 11:
->>>>>>> a3495c7 (INIT)
                                         subject.generatedMap = updateResult.generatedMaps[0];
                                         if (subject.generatedMap) {
                                             subject.metadata.columns.forEach(function (column) {
@@ -812,8 +794,6 @@ var SubjectExecutor = /** @class */ (function () {
     /**
      * Recovers all given subjects in the database.
      */
-<<<<<<< HEAD
-=======
     SubjectExecutor.prototype.executeSoftRemoveRecursive = function (relation, ids) {
         return __awaiter(this, void 0, void 0, function () {
             var primaryPropertyName, updateResult, softDeleteQueryBuilder, parentIds, _a, _b, subRelation, e_8_1;
@@ -878,7 +858,6 @@ var SubjectExecutor = /** @class */ (function () {
             });
         });
     };
->>>>>>> a3495c7 (INIT)
     SubjectExecutor.prototype.executeRecoverOperations = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;

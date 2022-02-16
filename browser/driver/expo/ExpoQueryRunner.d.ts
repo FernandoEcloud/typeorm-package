@@ -43,8 +43,6 @@ export declare class ExpoQueryRunner extends AbstractSqliteQueryRunner {
      */
     rollbackTransaction(): Promise<void>;
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     beforeMigration(): Promise<void>;
@@ -53,7 +51,6 @@ export declare class ExpoQueryRunner extends AbstractSqliteQueryRunner {
      */
     afterMigration(): Promise<void>;
     /**
->>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     query(query: string, parameters?: any[], useStructuredResult?: boolean): Promise<any>;

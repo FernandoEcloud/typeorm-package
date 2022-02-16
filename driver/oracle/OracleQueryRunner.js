@@ -300,11 +300,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-<<<<<<< HEAD
-                        return [4 /*yield*/, this.query("SELECT 1 AS \"exists\" FROM global_name@\"".concat(database, "\""))];
-=======
                         return [4 /*yield*/, this.query("SELECT 1 AS \"exists\" FROM global_name@\"" + database + "\"")];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         query = _a.sent();
                         return [2 /*return*/, query.length > 0];
@@ -368,11 +364,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         tableName = this.driver.parseTableName(tableOrName).tableName;
-<<<<<<< HEAD
-                        sql = "SELECT \"TABLE_NAME\" FROM \"USER_TABLES\" WHERE \"TABLE_NAME\" = '".concat(tableName, "'");
-=======
                         sql = "SELECT \"TABLE_NAME\" FROM \"USER_TABLES\" WHERE \"TABLE_NAME\" = '" + tableName + "'";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(sql)];
                     case 1:
                         result = _a.sent();
@@ -391,11 +383,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         tableName = this.driver.parseTableName(tableOrName).tableName;
-<<<<<<< HEAD
-                        sql = "SELECT \"COLUMN_NAME\" FROM \"USER_TAB_COLS\" WHERE \"TABLE_NAME\" = '".concat(tableName, "' AND \"COLUMN_NAME\" = '").concat(columnName, "'");
-=======
                         sql = "SELECT \"COLUMN_NAME\" FROM \"USER_TAB_COLS\" WHERE \"TABLE_NAME\" = '" + tableName + "' AND \"COLUMN_NAME\" = '" + columnName + "'";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(sql)];
                     case 1:
                         result = _a.sent();
@@ -417,11 +405,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-<<<<<<< HEAD
-                        return [4 /*yield*/, this.query("CREATE DATABASE IF NOT EXISTS \"".concat(database, "\";"))];
-=======
                         return [4 /*yield*/, this.query("CREATE DATABASE IF NOT EXISTS \"" + database + "\";")];
->>>>>>> a3495c7 (INIT)
                     case 2:
                         _a.sent();
                         return [3 /*break*/, 4];
@@ -434,11 +418,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         }
                         throw e_2;
                     case 4: return [3 /*break*/, 7];
-<<<<<<< HEAD
-                    case 5: return [4 /*yield*/, this.query("CREATE DATABASE \"".concat(database, "\""))];
-=======
                     case 5: return [4 /*yield*/, this.query("CREATE DATABASE \"" + database + "\"")];
->>>>>>> a3495c7 (INIT)
                     case 6:
                         _a.sent();
                         _a.label = 7;
@@ -648,43 +628,26 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         oldTable = _a;
                         newTable = oldTable.clone();
                         _b = this.driver.parseTableName(oldTable), dbName = _b.database, oldTableName = _b.tableName;
-<<<<<<< HEAD
-                        newTable.name = dbName ? "".concat(dbName, ".").concat(newTableName) : newTableName;
-                        // rename table
-                        upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(oldTable), " RENAME TO \"").concat(newTableName, "\"")));
-                        downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(newTable), " RENAME TO \"").concat(oldTableName, "\"")));
-=======
                         newTable.name = dbName ? dbName + "." + newTableName : newTableName;
                         // rename table
                         upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(oldTable) + " RENAME TO \"" + newTableName + "\""));
                         downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(newTable) + " RENAME TO \"" + oldTableName + "\""));
->>>>>>> a3495c7 (INIT)
                         // rename primary key constraint
                         if (newTable.primaryColumns.length > 0) {
                             columnNames = newTable.primaryColumns.map(function (column) { return column.name; });
                             oldPkName = this.connection.namingStrategy.primaryKeyName(oldTable, columnNames);
                             newPkName = this.connection.namingStrategy.primaryKeyName(newTable, columnNames);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(oldPkName, "\" TO \"").concat(newPkName, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(newPkName, "\" TO \"").concat(oldPkName, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(newTable) + " RENAME CONSTRAINT \"" + oldPkName + "\" TO \"" + newPkName + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(newTable) + " RENAME CONSTRAINT \"" + newPkName + "\" TO \"" + oldPkName + "\""));
->>>>>>> a3495c7 (INIT)
                         }
                         // rename unique constraints
                         newTable.uniques.forEach(function (unique) {
                             // build new constraint name
                             var newUniqueName = _this.connection.namingStrategy.uniqueConstraintName(newTable, unique.columnNames);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(unique.name, "\" TO \"").concat(newUniqueName, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(newUniqueName, "\" TO \"").concat(unique.name, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + unique.name + "\" TO \"" + newUniqueName + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + newUniqueName + "\" TO \"" + unique.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             unique.name = newUniqueName;
                         });
@@ -693,13 +656,8 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                             // build new constraint name
                             var newIndexName = _this.connection.namingStrategy.indexName(newTable, index.columnNames, index.where);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER INDEX \"".concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER INDEX \"".concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER INDEX \"" + index.name + "\" RENAME TO \"" + newIndexName + "\""));
                             downQueries.push(new Query_1.Query("ALTER INDEX \"" + newIndexName + "\" RENAME TO \"" + index.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             index.name = newIndexName;
                         });
@@ -708,13 +666,8 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                             // build new constraint name
                             var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(newTable, foreignKey.columnNames, _this.getTablePath(foreignKey), foreignKey.referencedColumnNames);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(foreignKey.name, "\" TO \"").concat(newForeignKeyName, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(newForeignKeyName, "\" TO \"").concat(foreignKey.name, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + foreignKey.name + "\" TO \"" + newForeignKeyName + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + newForeignKeyName + "\" TO \"" + foreignKey.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             foreignKey.name = newForeignKeyName;
                         });
@@ -750,30 +703,14 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         clonedTable = table.clone();
                         upQueries = [];
                         downQueries = [];
-<<<<<<< HEAD
-                        upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(column))));
-                        downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN \"").concat(column.name, "\"")));
-=======
                         upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(column)));
                         downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN \"" + column.name + "\""));
->>>>>>> a3495c7 (INIT)
                         // create or update primary key constraint
                         if (column.isPrimary) {
                             primaryColumns = clonedTable.primaryColumns;
                             // if table already have primary key, me must drop it and recreate again
                             if (primaryColumns.length > 0) {
                                 pkName_1 = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames_1 = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName_1, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName_1, "\" PRIMARY KEY (").concat(columnNames_1, ")")));
-                            }
-                            primaryColumns.push(column);
-                            pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-                            columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                                 columnNames_1 = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName_1 + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName_1 + "\" PRIMARY KEY (" + columnNames_1 + ")"));
@@ -783,7 +720,6 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                             columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                         }
                         columnIndex = clonedTable.indices.find(function (index) { return index.columnNames.length === 1 && index.columnNames[0] === column.name; });
                         if (columnIndex) {
@@ -798,13 +734,8 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                                 columnNames: [column.name]
                             });
                             clonedTable.uniques.push(uniqueConstraint);
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(uniqueConstraint.name, "\" UNIQUE (\"").concat(column.name, "\")")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(uniqueConstraint.name, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + uniqueConstraint.name + "\" UNIQUE (\"" + column.name + "\")"));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + uniqueConstraint.name + "\""));
->>>>>>> a3495c7 (INIT)
                         }
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
@@ -875,11 +806,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         oldColumn = oldTableColumnOrName instanceof TableColumn_1.TableColumn ? oldTableColumnOrName : table.columns.find(function (c) { return c.name === oldTableColumnOrName; });
                         if (!oldColumn)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Column \"".concat(oldTableColumnOrName, "\" was not found in the ").concat(this.escapePath(table), " table."));
-=======
                             throw new error_1.TypeORMError("Column \"" + oldTableColumnOrName + "\" was not found in the " + this.escapePath(table) + " table.");
->>>>>>> a3495c7 (INIT)
                         newColumn = undefined;
                         if (newTableColumnOrName instanceof TableColumn_1.TableColumn) {
                             newColumn = newTableColumnOrName;
@@ -922,11 +849,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                             ? oldTableColumnOrName
                             : table.columns.find(function (column) { return column.name === oldTableColumnOrName; });
                         if (!oldColumn)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Column \"".concat(oldTableColumnOrName, "\" was not found in the ").concat(this.escapePath(table), " table."));
-=======
                             throw new error_1.TypeORMError("Column \"" + oldTableColumnOrName + "\" was not found in the " + this.escapePath(table) + " table.");
->>>>>>> a3495c7 (INIT)
                         if (!((newColumn.isGenerated !== oldColumn.isGenerated && newColumn.generationStrategy !== "uuid") || oldColumn.type !== newColumn.type || oldColumn.length !== newColumn.length)) return [3 /*break*/, 6];
                         // Oracle does not support changing of IDENTITY column, so we must drop column and recreate it again.
                         // Also, we recreate column if column type changed
@@ -944,13 +867,8 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                     case 6:
                         if (newColumn.name !== oldColumn.name) {
                             // rename column
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME COLUMN \"").concat(oldColumn.name, "\" TO \"").concat(newColumn.name, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME COLUMN \"").concat(newColumn.name, "\" TO \"").concat(oldColumn.name, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " RENAME COLUMN \"" + oldColumn.name + "\" TO \"" + newColumn.name + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " RENAME COLUMN \"" + newColumn.name + "\" TO \"" + oldColumn.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // rename column primary key constraint
                             if (oldColumn.isPrimary === true) {
                                 primaryColumns = clonedTable.primaryColumns;
@@ -960,13 +878,8 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                                 columnNames.splice(columnNames.indexOf(oldColumn.name), 1);
                                 columnNames.push(newColumn.name);
                                 newPkName = this.connection.namingStrategy.primaryKeyName(clonedTable, columnNames);
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME CONSTRAINT \"").concat(oldPkName, "\" TO \"").concat(newPkName, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME CONSTRAINT \"").concat(newPkName, "\" TO \"").concat(oldPkName, "\"")));
-=======
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " RENAME CONSTRAINT \"" + oldPkName + "\" TO \"" + newPkName + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " RENAME CONSTRAINT \"" + newPkName + "\" TO \"" + oldPkName + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                             // rename unique constraints
                             clonedTable.findColumnUniques(oldColumn).forEach(function (unique) {
@@ -975,13 +888,8 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                                 unique.columnNames.push(newColumn.name);
                                 var newUniqueName = _this.connection.namingStrategy.uniqueConstraintName(clonedTable, unique.columnNames);
                                 // build queries
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(unique.name, "\" TO \"").concat(newUniqueName, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(newUniqueName, "\" TO \"").concat(unique.name, "\"")));
-=======
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + unique.name + "\" TO \"" + newUniqueName + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + newUniqueName + "\" TO \"" + unique.name + "\""));
->>>>>>> a3495c7 (INIT)
                                 // replace constraint name
                                 unique.name = newUniqueName;
                             });
@@ -992,13 +900,8 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                                 index.columnNames.push(newColumn.name);
                                 var newIndexName = _this.connection.namingStrategy.indexName(clonedTable, index.columnNames, index.where);
                                 // build queries
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER INDEX \"".concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER INDEX \"".concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"")));
-=======
                                 upQueries.push(new Query_1.Query("ALTER INDEX \"" + index.name + "\" RENAME TO \"" + newIndexName + "\""));
                                 downQueries.push(new Query_1.Query("ALTER INDEX \"" + newIndexName + "\" RENAME TO \"" + index.name + "\""));
->>>>>>> a3495c7 (INIT)
                                 // replace constraint name
                                 index.name = newIndexName;
                             });
@@ -1009,13 +912,8 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                                 foreignKey.columnNames.push(newColumn.name);
                                 var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(clonedTable, foreignKey.columnNames, _this.getTablePath(foreignKey), foreignKey.referencedColumnNames);
                                 // build queries
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(foreignKey.name, "\" TO \"").concat(newForeignKeyName, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(newForeignKeyName, "\" TO \"").concat(foreignKey.name, "\"")));
-=======
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + foreignKey.name + "\" TO \"" + newForeignKeyName + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + newForeignKeyName + "\" TO \"" + foreignKey.name + "\""));
->>>>>>> a3495c7 (INIT)
                                 // replace constraint name
                                 foreignKey.name = newForeignKeyName;
                             });
@@ -1030,15 +928,9 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                             nullableDown = "";
                             // changing column default
                             if (newColumn.default !== null && newColumn.default !== undefined) {
-<<<<<<< HEAD
-                                defaultUp = "DEFAULT ".concat(newColumn.default);
-                                if (oldColumn.default !== null && oldColumn.default !== undefined) {
-                                    defaultDown = "DEFAULT ".concat(oldColumn.default);
-=======
                                 defaultUp = "DEFAULT " + newColumn.default;
                                 if (oldColumn.default !== null && oldColumn.default !== undefined) {
                                     defaultDown = "DEFAULT " + oldColumn.default;
->>>>>>> a3495c7 (INIT)
                                 }
                                 else {
                                     defaultDown = "DEFAULT NULL";
@@ -1046,11 +938,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                             }
                             else if (oldColumn.default !== null && oldColumn.default !== undefined) {
                                 defaultUp = "DEFAULT NULL";
-<<<<<<< HEAD
-                                defaultDown = "DEFAULT ".concat(oldColumn.default);
-=======
                                 defaultDown = "DEFAULT " + oldColumn.default;
->>>>>>> a3495c7 (INIT)
                             }
                             // changing column isNullable property
                             if (newColumn.isNullable !== oldColumn.isNullable) {
@@ -1063,43 +951,26 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                                     nullableDown = "NULL";
                                 }
                             }
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " MODIFY \"").concat(oldColumn.name, "\" ").concat(this.connection.driver.createFullType(newColumn), " ").concat(defaultUp, " ").concat(nullableUp)));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " MODIFY \"").concat(oldColumn.name, "\" ").concat(this.connection.driver.createFullType(oldColumn), " ").concat(defaultDown, " ").concat(nullableDown)));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " MODIFY \"" + oldColumn.name + "\" " + this.connection.driver.createFullType(newColumn) + " " + defaultUp + " " + nullableUp));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " MODIFY \"" + oldColumn.name + "\" " + this.connection.driver.createFullType(oldColumn) + " " + defaultDown + " " + nullableDown));
->>>>>>> a3495c7 (INIT)
                         }
                         if (newColumn.isPrimary !== oldColumn.isPrimary) {
                             primaryColumns = clonedTable.primaryColumns;
                             // if primary column state changed, we must always drop existed constraint.
                             if (primaryColumns.length > 0) {
                                 pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-=======
                                 columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
->>>>>>> a3495c7 (INIT)
                             }
                             if (newColumn.isPrimary === true) {
                                 primaryColumns.push(newColumn);
                                 column = clonedTable.columns.find(function (column) { return column.name === newColumn.name; });
                                 column.isPrimary = true;
                                 pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                                 columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                             else {
                                 primaryColumn = primaryColumns.find(function (c) { return c.name === newColumn.name; });
@@ -1109,15 +980,9 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                                 // if we have another primary keys, we must recreate constraint.
                                 if (primaryColumns.length > 0) {
                                     pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                    columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                    upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-                                    downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                                     columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                     upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
                                     downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                                 }
                             }
                         }
@@ -1128,26 +993,16 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                                     columnNames: [newColumn.name]
                                 });
                                 clonedTable.uniques.push(uniqueConstraint);
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(uniqueConstraint.name, "\" UNIQUE (\"").concat(newColumn.name, "\")")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(uniqueConstraint.name, "\"")));
-=======
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + uniqueConstraint.name + "\" UNIQUE (\"" + newColumn.name + "\")"));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + uniqueConstraint.name + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                             else {
                                 uniqueConstraint = clonedTable.uniques.find(function (unique) {
                                     return unique.columnNames.length === 1 && !!unique.columnNames.find(function (columnName) { return columnName === newColumn.name; });
                                 });
                                 clonedTable.uniques.splice(clonedTable.uniques.indexOf(uniqueConstraint), 1);
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(uniqueConstraint.name, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(uniqueConstraint.name, "\" UNIQUE (\"").concat(newColumn.name, "\")")));
-=======
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + uniqueConstraint.name + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + uniqueConstraint.name + "\" UNIQUE (\"" + newColumn.name + "\")"));
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
@@ -1219,40 +1074,24 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         column = columnOrName instanceof TableColumn_1.TableColumn ? columnOrName : table.findColumnByName(columnOrName);
                         if (!column)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Column \"".concat(columnOrName, "\" was not found in table ").concat(this.escapePath(table)));
-=======
                             throw new error_1.TypeORMError("Column \"" + columnOrName + "\" was not found in table " + this.escapePath(table));
->>>>>>> a3495c7 (INIT)
                         clonedTable = table.clone();
                         upQueries = [];
                         downQueries = [];
                         // drop primary key constraint
                         if (column.isPrimary) {
                             pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, clonedTable.primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                            columnNames = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"".concat(primaryColumn.name, "\""); }).join(", ");
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-=======
                             columnNames = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"" + primaryColumn.name + "\""; }).join(", ");
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " DROP CONSTRAINT \"" + pkName + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
->>>>>>> a3495c7 (INIT)
                             tableColumn = clonedTable.findColumnByName(column.name);
                             tableColumn.isPrimary = false;
                             // if primary key have multiple columns, we must recreate it without dropped column
                             if (clonedTable.primaryColumns.length > 0) {
                                 pkName_2 = this.connection.namingStrategy.primaryKeyName(clonedTable, clonedTable.primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames_2 = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"".concat(primaryColumn.name, "\""); }).join(", ");
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " ADD CONSTRAINT \"").concat(pkName_2, "\" PRIMARY KEY (").concat(columnNames_2, ")")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " DROP CONSTRAINT \"").concat(pkName_2, "\"")));
-=======
                                 columnNames_2 = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"" + primaryColumn.name + "\""; }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " ADD CONSTRAINT \"" + pkName_2 + "\" PRIMARY KEY (" + columnNames_2 + ")"));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " DROP CONSTRAINT \"" + pkName_2 + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         columnIndex = clonedTable.indices.find(function (index) { return index.columnNames.length === 1 && index.columnNames[0] === column.name; });
@@ -1272,13 +1111,8 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                             upQueries.push(this.dropUniqueConstraintSql(table, columnUnique));
                             downQueries.push(this.createUniqueConstraintSql(table, columnUnique));
                         }
-<<<<<<< HEAD
-                        upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN \"").concat(column.name, "\"")));
-                        downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(column))));
-=======
                         upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN \"" + column.name + "\""));
                         downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(column)));
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
                         _b.sent();
@@ -1388,30 +1222,18 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         primaryColumns = clonedTable.primaryColumns;
                         if (primaryColumns.length > 0) {
                             pkName_3 = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                            columnNamesString_1 = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName_3, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName_3, "\" PRIMARY KEY (").concat(columnNamesString_1, ")")));
-=======
                             columnNamesString_1 = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName_3 + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName_3 + "\" PRIMARY KEY (" + columnNamesString_1 + ")"));
->>>>>>> a3495c7 (INIT)
                         }
                         // update columns in table.
                         clonedTable.columns
                             .filter(function (column) { return columnNames.indexOf(column.name) !== -1; })
                             .forEach(function (column) { return column.isPrimary = true; });
                         pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, columnNames);
-<<<<<<< HEAD
-                        columnNamesString = columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                        upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNamesString, ")")));
-                        downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                         columnNamesString = columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
                         upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNamesString + ")"));
                         downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
                         _b.sent();
@@ -1523,11 +1345,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         uniqueConstraint = uniqueOrName instanceof TableUnique_1.TableUnique ? uniqueOrName : table.uniques.find(function (u) { return u.name === uniqueOrName; });
                         if (!uniqueConstraint)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Supplied unique constraint was not found in table ".concat(table.name));
-=======
                             throw new error_1.TypeORMError("Supplied unique constraint was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropUniqueConstraintSql(table, uniqueConstraint);
                         down = this.createUniqueConstraintSql(table, uniqueConstraint);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -1629,11 +1447,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         checkConstraint = checkOrName instanceof TableCheck_1.TableCheck ? checkOrName : table.checks.find(function (c) { return c.name === checkOrName; });
                         if (!checkConstraint)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Supplied check constraint was not found in table ".concat(table.name));
-=======
                             throw new error_1.TypeORMError("Supplied check constraint was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropCheckConstraintSql(table, checkConstraint);
                         down = this.createCheckConstraintSql(table, checkConstraint);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -1775,11 +1589,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         foreignKey = foreignKeyOrName instanceof TableForeignKey_1.TableForeignKey ? foreignKeyOrName : table.foreignKeys.find(function (fk) { return fk.name === foreignKeyOrName; });
                         if (!foreignKey)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Supplied foreign key was not found in table ".concat(table.name));
-=======
                             throw new error_1.TypeORMError("Supplied foreign key was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropForeignKeySql(table, foreignKey);
                         down = this.createForeignKeySql(table, foreignKey);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -1881,11 +1691,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         index = indexOrName instanceof TableIndex_1.TableIndex ? indexOrName : table.indices.find(function (i) { return i.name === indexOrName; });
                         if (!index)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Supplied index ".concat(indexOrName, " was not found in table ").concat(table.name));
-=======
                             throw new error_1.TypeORMError("Supplied index " + indexOrName + " was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropIndexSql(index);
                         down = this.createIndexSql(table, index);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -1924,11 +1730,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
         return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
-<<<<<<< HEAD
-                    case 0: return [4 /*yield*/, this.query("TRUNCATE TABLE ".concat(this.escapePath(tableName)))];
-=======
                     case 0: return [4 /*yield*/, this.query("TRUNCATE TABLE " + this.escapePath(tableName))];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -2019,19 +1821,11 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                     case 3:
                         currentSchema = _a.sent();
                         viewNamesString = viewNames.map(function (name) { return "'" + name + "'"; }).join(", ");
-<<<<<<< HEAD
-                        query = "SELECT \"T\".* FROM ".concat(this.escapePath(this.getTypeormMetadataTableName()), " \"T\" ") +
-                            "INNER JOIN \"USER_OBJECTS\" \"O\" ON \"O\".\"OBJECT_NAME\" = \"T\".\"name\" AND \"O\".\"OBJECT_TYPE\" IN ( 'MATERIALIZED VIEW', 'VIEW' ) " +
-                            "WHERE \"T\".\"type\" IN ( '".concat(MetadataTableType_1.MetadataTableType.MATERIALIZED_VIEW, "', '").concat(MetadataTableType_1.MetadataTableType.VIEW, "' )");
-                        if (viewNamesString.length > 0)
-                            query += " AND \"T\".\"name\" IN (".concat(viewNamesString, ")");
-=======
                         query = "SELECT \"T\".* FROM " + this.escapePath(this.getTypeormMetadataTableName()) + " \"T\" " +
                             "INNER JOIN \"USER_OBJECTS\" \"O\" ON \"O\".\"OBJECT_NAME\" = \"T\".\"name\" AND \"O\".\"OBJECT_TYPE\" IN ( 'MATERIALIZED VIEW', 'VIEW' ) " +
                             ("WHERE \"T\".\"type\" IN ( '" + MetadataTableType_1.MetadataTableType.MATERIALIZED_VIEW + "', '" + MetadataTableType_1.MetadataTableType.VIEW + "' )");
                         if (viewNamesString.length > 0)
                             query += " AND \"T\".\"name\" IN (" + viewNamesString + ")";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(query)];
                     case 4:
                         dbViews = _a.sent();
@@ -2083,17 +1877,6 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                             var parts = tableName.split(".");
                             if (parts.length >= 3) {
                                 var _a = (0, tslib_1.__read)(parts, 3), schema = _a[1], name = _a[2];
-<<<<<<< HEAD
-                                return "(\"OWNER\" = '".concat(schema, "' AND \"TABLE_NAME\" = '").concat(name, "')");
-                            }
-                            else if (parts.length === 2) {
-                                var _b = (0, tslib_1.__read)(parts, 2), schema = _b[0], name = _b[1];
-                                return "(\"OWNER\" = '".concat(schema, "' AND \"TABLE_NAME\" = '").concat(name, "')");
-                            }
-                            else if (parts.length === 1) {
-                                var _c = (0, tslib_1.__read)(parts, 1), name = _c[0];
-                                return "(\"TABLE_NAME\" = '".concat(name, "')");
-=======
                                 return "(\"OWNER\" = '" + schema + "' AND \"TABLE_NAME\" = '" + name + "')";
                             }
                             else if (parts.length === 2) {
@@ -2103,17 +1886,12 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                             else if (parts.length === 1) {
                                 var _c = (0, tslib_1.__read)(parts, 1), name = _c[0];
                                 return "(\"TABLE_NAME\" = '" + name + "')";
->>>>>>> a3495c7 (INIT)
                             }
                             else {
                                 return "(1=0)";
                             }
                         }).join(" OR ");
-<<<<<<< HEAD
-                        tablesSql = "SELECT \"TABLE_NAME\", \"OWNER\" FROM \"ALL_TABLES\" WHERE ".concat(tablesCondition);
-=======
                         tablesSql = "SELECT \"TABLE_NAME\", \"OWNER\" FROM \"ALL_TABLES\" WHERE " + tablesCondition;
->>>>>>> a3495c7 (INIT)
                         _f = (_e = dbTables.push).apply;
                         _g = [dbTables];
                         _h = [[]];
@@ -2128,44 +1906,26 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                         }
                         columnsCondition = dbTables.map(function (_a) {
                             var TABLE_NAME = _a.TABLE_NAME, OWNER = _a.OWNER;
-<<<<<<< HEAD
-                            return "(\"C\".\"OWNER\" = '".concat(OWNER, "' AND \"C\".\"TABLE_NAME\" = '").concat(TABLE_NAME, "')");
-                        }).join(" OR ");
-                        columnsSql = "SELECT * FROM \"ALL_TAB_COLS\" \"C\" WHERE (".concat(columnsCondition, ")");
-=======
                             return "(\"C\".\"OWNER\" = '" + OWNER + "' AND \"C\".\"TABLE_NAME\" = '" + TABLE_NAME + "')";
                         }).join(" OR ");
                         columnsSql = "SELECT * FROM \"ALL_TAB_COLS\" \"C\" WHERE (" + columnsCondition + ")";
->>>>>>> a3495c7 (INIT)
                         indicesSql = "SELECT \"C\".\"INDEX_NAME\", \"C\".\"OWNER\", \"C\".\"TABLE_NAME\", \"C\".\"UNIQUENESS\", " +
                             "LISTAGG (\"COL\".\"COLUMN_NAME\", ',') WITHIN GROUP (ORDER BY \"COL\".\"COLUMN_NAME\") AS \"COLUMN_NAMES\" " +
                             "FROM \"ALL_INDEXES\" \"C\" " +
                             "INNER JOIN \"ALL_IND_COLUMNS\" \"COL\" ON \"COL\".\"INDEX_OWNER\" = \"C\".\"OWNER\" AND \"COL\".\"INDEX_NAME\" = \"C\".\"INDEX_NAME\" " +
                             "LEFT JOIN \"ALL_CONSTRAINTS\" \"CON\" ON \"CON\".\"OWNER\" = \"C\".\"OWNER\" AND \"CON\".\"CONSTRAINT_NAME\" = \"C\".\"INDEX_NAME\" " +
-<<<<<<< HEAD
-                            "WHERE (".concat(columnsCondition, ") AND \"CON\".\"CONSTRAINT_NAME\" IS NULL ") +
-=======
                             ("WHERE (" + columnsCondition + ") AND \"CON\".\"CONSTRAINT_NAME\" IS NULL ") +
->>>>>>> a3495c7 (INIT)
                             "GROUP BY \"C\".\"INDEX_NAME\", \"C\".\"OWNER\", \"C\".\"TABLE_NAME\", \"C\".\"UNIQUENESS\"";
                         foreignKeysSql = "SELECT \"C\".\"CONSTRAINT_NAME\", \"C\".\"OWNER\", \"C\".\"TABLE_NAME\", \"COL\".\"COLUMN_NAME\", \"REF_COL\".\"TABLE_NAME\" AS \"REFERENCED_TABLE_NAME\", " +
                             "\"REF_COL\".\"COLUMN_NAME\" AS \"REFERENCED_COLUMN_NAME\", \"C\".\"DELETE_RULE\" AS \"ON_DELETE\" " +
                             "FROM \"ALL_CONSTRAINTS\" \"C\" " +
                             "INNER JOIN \"ALL_CONS_COLUMNS\" \"COL\" ON \"COL\".\"OWNER\" = \"C\".\"OWNER\" AND \"COL\".\"CONSTRAINT_NAME\" = \"C\".\"CONSTRAINT_NAME\" " +
                             "INNER JOIN \"ALL_CONS_COLUMNS\" \"REF_COL\" ON \"REF_COL\".\"OWNER\" = \"C\".\"R_OWNER\" AND \"REF_COL\".\"CONSTRAINT_NAME\" = \"C\".\"R_CONSTRAINT_NAME\" AND \"REF_COL\".\"POSITION\" = \"COL\".\"POSITION\" " +
-<<<<<<< HEAD
-                            "WHERE (".concat(columnsCondition, ") AND \"C\".\"CONSTRAINT_TYPE\" = 'R'");
-                        constraintsSql = "SELECT \"C\".\"CONSTRAINT_NAME\", \"C\".\"CONSTRAINT_TYPE\", \"C\".\"OWNER\", \"C\".\"TABLE_NAME\", \"COL\".\"COLUMN_NAME\", \"C\".\"SEARCH_CONDITION\" " +
-                            "FROM \"ALL_CONSTRAINTS\" \"C\" " +
-                            "INNER JOIN \"ALL_CONS_COLUMNS\" \"COL\" ON \"COL\".\"OWNER\" = \"C\".\"OWNER\" AND \"COL\".\"CONSTRAINT_NAME\" = \"C\".\"CONSTRAINT_NAME\" " +
-                            "WHERE (".concat(columnsCondition, ") AND \"C\".\"CONSTRAINT_TYPE\" IN ('C', 'U', 'P') AND \"C\".\"GENERATED\" = 'USER NAME'");
-=======
                             ("WHERE (" + columnsCondition + ") AND \"C\".\"CONSTRAINT_TYPE\" = 'R'");
                         constraintsSql = "SELECT \"C\".\"CONSTRAINT_NAME\", \"C\".\"CONSTRAINT_TYPE\", \"C\".\"OWNER\", \"C\".\"TABLE_NAME\", \"COL\".\"COLUMN_NAME\", \"C\".\"SEARCH_CONDITION\" " +
                             "FROM \"ALL_CONSTRAINTS\" \"C\" " +
                             "INNER JOIN \"ALL_CONS_COLUMNS\" \"COL\" ON \"COL\".\"OWNER\" = \"C\".\"OWNER\" AND \"COL\".\"CONSTRAINT_NAME\" = \"C\".\"CONSTRAINT_NAME\" " +
                             ("WHERE (" + columnsCondition + ") AND \"C\".\"CONSTRAINT_TYPE\" IN ('C', 'U', 'P') AND \"C\".\"GENERATED\" = 'USER NAME'");
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, Promise.all([
                                 this.query(columnsSql),
                                 this.query(indicesSql),
@@ -2302,11 +2062,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
     OracleQueryRunner.prototype.createTableSql = function (table, createForeignKeys) {
         var _this = this;
         var columnDefinitions = table.columns.map(function (column) { return _this.buildCreateColumnSql(column); }).join(", ");
-<<<<<<< HEAD
-        var sql = "CREATE TABLE ".concat(this.escapePath(table), " (").concat(columnDefinitions);
-=======
         var sql = "CREATE TABLE " + this.escapePath(table) + " (" + columnDefinitions;
->>>>>>> a3495c7 (INIT)
         table.columns
             .filter(function (column) { return column.isUnique; })
             .forEach(function (column) {
@@ -2320,39 +2076,14 @@ var OracleQueryRunner = /** @class */ (function (_super) {
         if (table.uniques.length > 0) {
             var uniquesSql = table.uniques.map(function (unique) {
                 var uniqueName = unique.name ? unique.name : _this.connection.namingStrategy.uniqueConstraintName(table, unique.columnNames);
-<<<<<<< HEAD
-                var columnNames = unique.columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                return "CONSTRAINT \"".concat(uniqueName, "\" UNIQUE (").concat(columnNames, ")");
-            }).join(", ");
-            sql += ", ".concat(uniquesSql);
-=======
                 var columnNames = unique.columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
                 return "CONSTRAINT \"" + uniqueName + "\" UNIQUE (" + columnNames + ")";
             }).join(", ");
             sql += ", " + uniquesSql;
->>>>>>> a3495c7 (INIT)
         }
         if (table.checks.length > 0) {
             var checksSql = table.checks.map(function (check) {
                 var checkName = check.name ? check.name : _this.connection.namingStrategy.checkConstraintName(table, check.expression);
-<<<<<<< HEAD
-                return "CONSTRAINT \"".concat(checkName, "\" CHECK (").concat(check.expression, ")");
-            }).join(", ");
-            sql += ", ".concat(checksSql);
-        }
-        if (table.foreignKeys.length > 0 && createForeignKeys) {
-            var foreignKeysSql = table.foreignKeys.map(function (fk) {
-                var columnNames = fk.columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                if (!fk.name)
-                    fk.name = _this.connection.namingStrategy.foreignKeyName(table, fk.columnNames, _this.getTablePath(fk), fk.referencedColumnNames);
-                var referencedColumnNames = fk.referencedColumnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                var constraint = "CONSTRAINT \"".concat(fk.name, "\" FOREIGN KEY (").concat(columnNames, ") REFERENCES ").concat(_this.escapePath(_this.getTablePath(fk)), " (").concat(referencedColumnNames, ")");
-                if (fk.onDelete && fk.onDelete !== "NO ACTION") // Oracle does not support NO ACTION, but we set NO ACTION by default in EntityMetadata
-                    constraint += " ON DELETE ".concat(fk.onDelete);
-                return constraint;
-            }).join(", ");
-            sql += ", ".concat(foreignKeysSql);
-=======
                 return "CONSTRAINT \"" + checkName + "\" CHECK (" + check.expression + ")";
             }).join(", ");
             sql += ", " + checksSql;
@@ -2369,18 +2100,12 @@ var OracleQueryRunner = /** @class */ (function (_super) {
                 return constraint;
             }).join(", ");
             sql += ", " + foreignKeysSql;
->>>>>>> a3495c7 (INIT)
         }
         var primaryColumns = table.columns.filter(function (column) { return column.isPrimary; });
         if (primaryColumns.length > 0) {
             var primaryKeyName = this.connection.namingStrategy.primaryKeyName(table, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-            var columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-            sql += ", CONSTRAINT \"".concat(primaryKeyName, "\" PRIMARY KEY (").concat(columnNames, ")");
-=======
             var columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
             sql += ", CONSTRAINT \"" + primaryKeyName + "\" PRIMARY KEY (" + columnNames + ")";
->>>>>>> a3495c7 (INIT)
         }
         sql += ")";
         return new Query_1.Query(sql);
@@ -2389,27 +2114,16 @@ var OracleQueryRunner = /** @class */ (function (_super) {
      * Builds drop table sql.
      */
     OracleQueryRunner.prototype.dropTableSql = function (tableOrName, ifExist) {
-<<<<<<< HEAD
-        var query = ifExist ? "DROP TABLE IF EXISTS ".concat(this.escapePath(tableOrName)) : "DROP TABLE ".concat(this.escapePath(tableOrName));
-=======
         var query = ifExist ? "DROP TABLE IF EXISTS " + this.escapePath(tableOrName) : "DROP TABLE " + this.escapePath(tableOrName);
->>>>>>> a3495c7 (INIT)
         return new Query_1.Query(query);
     };
     OracleQueryRunner.prototype.createViewSql = function (view) {
         var materializedClause = view.materialized ? "MATERIALIZED " : "";
         if (typeof view.expression === "string") {
-<<<<<<< HEAD
-            return new Query_1.Query("CREATE ".concat(materializedClause, "VIEW ").concat(this.escapePath(view), " AS ").concat(view.expression));
-        }
-        else {
-            return new Query_1.Query("CREATE ".concat(materializedClause, "VIEW ").concat(this.escapePath(view), " AS ").concat(view.expression(this.connection).getQuery()));
-=======
             return new Query_1.Query("CREATE " + materializedClause + "VIEW " + this.escapePath(view) + " AS " + view.expression);
         }
         else {
             return new Query_1.Query("CREATE " + materializedClause + "VIEW " + this.escapePath(view) + " AS " + view.expression(this.connection).getQuery());
->>>>>>> a3495c7 (INIT)
         }
     };
     OracleQueryRunner.prototype.insertViewDefinitionSql = function (view) {
@@ -2422,11 +2136,7 @@ var OracleQueryRunner = /** @class */ (function (_super) {
      */
     OracleQueryRunner.prototype.dropViewSql = function (view) {
         var materializedClause = view.materialized ? "MATERIALIZED " : "";
-<<<<<<< HEAD
-        return new Query_1.Query("DROP ".concat(materializedClause, "VIEW ").concat(this.escapePath(view)));
-=======
         return new Query_1.Query("DROP " + materializedClause + "VIEW " + this.escapePath(view));
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds remove view sql.
@@ -2439,37 +2149,23 @@ var OracleQueryRunner = /** @class */ (function (_super) {
      * Builds create index sql.
      */
     OracleQueryRunner.prototype.createIndexSql = function (table, index) {
-<<<<<<< HEAD
-        var columns = index.columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-        return new Query_1.Query("CREATE ".concat(index.isUnique ? "UNIQUE " : "", "INDEX \"").concat(index.name, "\" ON ").concat(this.escapePath(table), " (").concat(columns, ")"));
-=======
         var columns = index.columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
         return new Query_1.Query("CREATE " + (index.isUnique ? "UNIQUE " : "") + "INDEX \"" + index.name + "\" ON " + this.escapePath(table) + " (" + columns + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop index sql.
      */
     OracleQueryRunner.prototype.dropIndexSql = function (indexOrName) {
         var indexName = indexOrName instanceof TableIndex_1.TableIndex ? indexOrName.name : indexOrName;
-<<<<<<< HEAD
-        return new Query_1.Query("DROP INDEX \"".concat(indexName, "\""));
-=======
         return new Query_1.Query("DROP INDEX \"" + indexName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create primary key sql.
      */
     OracleQueryRunner.prototype.createPrimaryKeySql = function (table, columnNames) {
         var primaryKeyName = this.connection.namingStrategy.primaryKeyName(table, columnNames);
-<<<<<<< HEAD
-        var columnNamesString = columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(primaryKeyName, "\" PRIMARY KEY (").concat(columnNamesString, ")"));
-=======
         var columnNamesString = columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + primaryKeyName + "\" PRIMARY KEY (" + columnNamesString + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop primary key sql.
@@ -2477,54 +2173,34 @@ var OracleQueryRunner = /** @class */ (function (_super) {
     OracleQueryRunner.prototype.dropPrimaryKeySql = function (table) {
         var columnNames = table.primaryColumns.map(function (column) { return column.name; });
         var primaryKeyName = this.connection.namingStrategy.primaryKeyName(table, columnNames);
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(primaryKeyName, "\""));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + primaryKeyName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create unique constraint sql.
      */
     OracleQueryRunner.prototype.createUniqueConstraintSql = function (table, uniqueConstraint) {
         var columnNames = uniqueConstraint.columnNames.map(function (column) { return "\"" + column + "\""; }).join(", ");
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(uniqueConstraint.name, "\" UNIQUE (").concat(columnNames, ")"));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + uniqueConstraint.name + "\" UNIQUE (" + columnNames + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop unique constraint sql.
      */
     OracleQueryRunner.prototype.dropUniqueConstraintSql = function (table, uniqueOrName) {
         var uniqueName = uniqueOrName instanceof TableUnique_1.TableUnique ? uniqueOrName.name : uniqueOrName;
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(uniqueName, "\""));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + uniqueName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create check constraint sql.
      */
     OracleQueryRunner.prototype.createCheckConstraintSql = function (table, checkConstraint) {
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(checkConstraint.name, "\" CHECK (").concat(checkConstraint.expression, ")"));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + checkConstraint.name + "\" CHECK (" + checkConstraint.expression + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop check constraint sql.
      */
     OracleQueryRunner.prototype.dropCheckConstraintSql = function (table, checkOrName) {
         var checkName = checkOrName instanceof TableCheck_1.TableCheck ? checkOrName.name : checkOrName;
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(checkName, "\""));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + checkName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create foreign key sql.
@@ -2532,19 +2208,11 @@ var OracleQueryRunner = /** @class */ (function (_super) {
     OracleQueryRunner.prototype.createForeignKeySql = function (table, foreignKey) {
         var columnNames = foreignKey.columnNames.map(function (column) { return "\"" + column + "\""; }).join(", ");
         var referencedColumnNames = foreignKey.referencedColumnNames.map(function (column) { return "\"" + column + "\""; }).join(",");
-<<<<<<< HEAD
-        var sql = "ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(foreignKey.name, "\" FOREIGN KEY (").concat(columnNames, ") ") +
-            "REFERENCES ".concat(this.escapePath(this.getTablePath(foreignKey)), " (").concat(referencedColumnNames, ")");
-        // Oracle does not support NO ACTION, but we set NO ACTION by default in EntityMetadata
-        if (foreignKey.onDelete && foreignKey.onDelete !== "NO ACTION")
-            sql += " ON DELETE ".concat(foreignKey.onDelete);
-=======
         var sql = "ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + foreignKey.name + "\" FOREIGN KEY (" + columnNames + ") " +
             ("REFERENCES " + this.escapePath(this.getTablePath(foreignKey)) + " (" + referencedColumnNames + ")");
         // Oracle does not support NO ACTION, but we set NO ACTION by default in EntityMetadata
         if (foreignKey.onDelete && foreignKey.onDelete !== "NO ACTION")
             sql += " ON DELETE " + foreignKey.onDelete;
->>>>>>> a3495c7 (INIT)
         return new Query_1.Query(sql);
     };
     /**
@@ -2552,21 +2220,13 @@ var OracleQueryRunner = /** @class */ (function (_super) {
      */
     OracleQueryRunner.prototype.dropForeignKeySql = function (table, foreignKeyOrName) {
         var foreignKeyName = foreignKeyOrName instanceof TableForeignKey_1.TableForeignKey ? foreignKeyOrName.name : foreignKeyOrName;
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(foreignKeyName, "\""));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + foreignKeyName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds a query for create column.
      */
     OracleQueryRunner.prototype.buildCreateColumnSql = function (column) {
-<<<<<<< HEAD
-        var c = "\"".concat(column.name, "\" ") + this.connection.driver.createFullType(column);
-=======
         var c = "\"" + column.name + "\" " + this.connection.driver.createFullType(column);
->>>>>>> a3495c7 (INIT)
         if (column.charset)
             c += " CHARACTER SET " + column.charset;
         if (column.collation)
@@ -2586,15 +2246,9 @@ var OracleQueryRunner = /** @class */ (function (_super) {
         // Ignore database when escaping paths
         var _a = this.driver.parseTableName(target), schema = _a.schema, tableName = _a.tableName;
         if (schema && schema !== this.driver.schema) {
-<<<<<<< HEAD
-            return "\"".concat(schema, "\".\"").concat(tableName, "\"");
-        }
-        return "\"".concat(tableName, "\"");
-=======
             return "\"" + schema + "\".\"" + tableName + "\"";
         }
         return "\"" + tableName + "\"";
->>>>>>> a3495c7 (INIT)
     };
     return OracleQueryRunner;
 }(BaseQueryRunner_1.BaseQueryRunner));

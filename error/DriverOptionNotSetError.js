@@ -9,11 +9,7 @@ var TypeORMError_1 = require("./TypeORMError");
 var DriverOptionNotSetError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(DriverOptionNotSetError, _super);
     function DriverOptionNotSetError(optionName) {
-<<<<<<< HEAD
-        return _super.call(this, "Driver option (".concat(optionName, ") is not set. ") +
-=======
         return _super.call(this, "Driver option (" + optionName + ") is not set. " +
->>>>>>> a3495c7 (INIT)
             "Please set it to perform connection to the database.") || this;
     }
     return DriverOptionNotSetError;

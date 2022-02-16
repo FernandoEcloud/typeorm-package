@@ -72,11 +72,7 @@ var RelationCountAttribute = /** @class */ (function () {
             var relationOwnerSelection = this.expressionMap.findAliasByName(parentAlias);
             var relation = relationOwnerSelection.metadata.findRelationWithPropertyPath(propertyPath);
             if (!relation)
-<<<<<<< HEAD
-                throw new TypeORMError("Relation with property path ".concat(propertyPath, " in entity was not found."));
-=======
                 throw new TypeORMError("Relation with property path " + propertyPath + " in entity was not found.");
->>>>>>> a3495c7 (INIT)
             return relation;
         },
         enumerable: false,

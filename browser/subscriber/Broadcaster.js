@@ -25,11 +25,7 @@ var Broadcaster = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         result = new BroadcasterResult();
-<<<<<<< HEAD
-                        broadcastFunction = this["broadcast".concat(event, "Event")];
-=======
                         broadcastFunction = this["broadcast" + event + "Event"];
->>>>>>> a3495c7 (INIT)
                         if (typeof broadcastFunction === "function") {
                             (_a = broadcastFunction).call.apply(_a, __spreadArray([this,
                                 result], __read(args), false));
@@ -566,20 +562,6 @@ var Broadcaster = /** @class */ (function () {
      */
     Broadcaster.prototype.broadcastLoadEvent = function (result, metadata, entities) {
         var _this = this;
-<<<<<<< HEAD
-        entities.forEach(function (entity) {
-            if (entity instanceof Promise) // todo: check why need this?
-                return;
-            // collect load events for all children entities that were loaded with the main entity
-            if (metadata.relations.length) {
-                metadata.relations.forEach(function (relation) {
-                    // in lazy relations we cannot simply access to entity property because it will cause a getter and a database query
-                    if (relation.isLazy && !entity.hasOwnProperty(relation.propertyName))
-                        return;
-                    var value = relation.getEntityValue(entity);
-                    if (value instanceof Object)
-                        _this.broadcastLoadEvent(result, relation.inverseEntityMetadata, Array.isArray(value) ? value : [value]);
-=======
         // Calculate which subscribers are fitting for the given entity type
         var fittingSubscribers = this.queryRunner.connection.subscribers.filter(function (subscriber) { return _this.isAllowedSubscriber(subscriber, metadata.target) && subscriber.afterLoad; });
         if (metadata.relations.length || metadata.afterLoadListeners.length || fittingSubscribers.length) {
@@ -596,38 +578,10 @@ var Broadcaster = /** @class */ (function () {
                         if (value instanceof Object)
                             _this.broadcastLoadEvent(result, relation.inverseEntityMetadata, Array.isArray(value) ? value : [value]);
                     });
->>>>>>> a3495c7 (INIT)
                 });
             }
             if (metadata.afterLoadListeners.length) {
                 metadata.afterLoadListeners.forEach(function (listener) {
-<<<<<<< HEAD
-                    if (listener.isAllowed(entity)) {
-                        var executionResult = listener.execute(entity);
-                        if (executionResult instanceof Promise)
-                            result.promises.push(executionResult);
-                        result.count++;
-                    }
-                });
-            }
-            if (_this.queryRunner.connection.subscribers.length) {
-                _this.queryRunner.connection.subscribers.forEach(function (subscriber) {
-                    if (_this.isAllowedSubscriber(subscriber, metadata.target) && subscriber.afterLoad) {
-                        var executionResult = subscriber.afterLoad(entity, {
-                            connection: _this.queryRunner.connection,
-                            queryRunner: _this.queryRunner,
-                            manager: _this.queryRunner.manager,
-                            entity: entity,
-                            metadata: metadata
-                        });
-                        if (executionResult instanceof Promise)
-                            result.promises.push(executionResult);
-                        result.count++;
-                    }
-                });
-            }
-        });
-=======
                     nonPromiseEntities_1.forEach(function (entity) {
                         if (listener.isAllowed(entity)) {
                             var executionResult = listener.execute(entity);
@@ -653,7 +607,6 @@ var Broadcaster = /** @class */ (function () {
                 });
             });
         }
->>>>>>> a3495c7 (INIT)
     };
     // -------------------------------------------------------------------------
     // Protected Methods

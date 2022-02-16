@@ -8,11 +8,7 @@ var EntityMetadataNotFoundError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(EntityMetadataNotFoundError, _super);
     function EntityMetadataNotFoundError(target) {
         var _this = _super.call(this) || this;
-<<<<<<< HEAD
-        _this.message = "No metadata for \"".concat(_this.stringifyTarget(target), "\" was found.");
-=======
         _this.message = "No metadata for \"" + _this.stringifyTarget(target) + "\" was found.";
->>>>>>> a3495c7 (INIT)
         return _this;
     }
     EntityMetadataNotFoundError.prototype.stringifyTarget = function (target) {

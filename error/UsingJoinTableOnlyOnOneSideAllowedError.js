@@ -7,11 +7,7 @@ var UsingJoinTableOnlyOnOneSideAllowedError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(UsingJoinTableOnlyOnOneSideAllowedError, _super);
     function UsingJoinTableOnlyOnOneSideAllowedError(entityMetadata, relation) {
         return _super.call(this, "Using JoinTable is allowed only on one side of the many-to-many relationship. " +
-<<<<<<< HEAD
-            "Both ".concat(entityMetadata.name, "#").concat(relation.propertyName, " and ").concat(relation.inverseEntityMetadata.name, "#").concat(relation.inverseRelation.propertyName, " ") +
-=======
             ("Both " + entityMetadata.name + "#" + relation.propertyName + " and " + relation.inverseEntityMetadata.name + "#" + relation.inverseRelation.propertyName + " ") +
->>>>>>> a3495c7 (INIT)
             "has JoinTable decorators. Choose one of them and left JoinColumn decorator only on it.") || this;
     }
     return UsingJoinTableOnlyOnOneSideAllowedError;

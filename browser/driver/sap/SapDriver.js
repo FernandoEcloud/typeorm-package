@@ -191,11 +191,7 @@ var SapDriver = /** @class */ (function () {
                         if (this.options.pool && this.options.pool.idleTimeout)
                             options.idleTimeout = this.options.pool.idleTimeout;
                         logger = this.connection.logger;
-<<<<<<< HEAD
-                        poolErrorHandler = options.poolErrorHandler || (function (error) { return logger.log("warn", "SAP Hana pool raised an error. ".concat(error)); });
-=======
                         poolErrorHandler = options.poolErrorHandler || (function (error) { return logger.log("warn", "SAP Hana pool raised an error. " + error); });
->>>>>>> a3495c7 (INIT)
                         this.client.eventEmitter.on("poolError", poolErrorHandler);
                         // create the pool
                         this.master = this.client.createPool(dbParams, options);
@@ -295,11 +291,7 @@ var SapDriver = /** @class */ (function () {
      * Escapes a column name.
      */
     SapDriver.prototype.escape = function (columnName) {
-<<<<<<< HEAD
-        return "\"".concat(columnName, "\"");
-=======
         return "\"" + columnName + "\"";
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Build full table name with schema name and table name.
@@ -383,11 +375,7 @@ var SapDriver = /** @class */ (function () {
             return DateUtils.simpleEnumToString(value);
         }
         else if (columnMetadata.isArray) {
-<<<<<<< HEAD
-            return function () { return "ARRAY(".concat(value.map(function (it) { return "'".concat(it, "'"); }), ")"); };
-=======
             return function () { return "ARRAY(" + value.map(function (it) { return "'" + it + "'"; }) + ")"; };
->>>>>>> a3495c7 (INIT)
         }
         return value;
     };
@@ -462,11 +450,7 @@ var SapDriver = /** @class */ (function () {
     SapDriver.prototype.normalizeDefault = function (columnMetadata) {
         var defaultValue = columnMetadata.default;
         if (typeof defaultValue === "number") {
-<<<<<<< HEAD
-            return "".concat(defaultValue);
-=======
             return "" + defaultValue;
->>>>>>> a3495c7 (INIT)
         }
         if (typeof defaultValue === "boolean") {
             return defaultValue ? "true" : "false";
@@ -475,20 +459,12 @@ var SapDriver = /** @class */ (function () {
             return defaultValue();
         }
         if (typeof defaultValue === "string") {
-<<<<<<< HEAD
-            return "'".concat(defaultValue, "'");
-=======
             return "'" + defaultValue + "'";
->>>>>>> a3495c7 (INIT)
         }
         if (defaultValue === null || defaultValue === undefined) {
             return undefined;
         }
-<<<<<<< HEAD
-        return "".concat(defaultValue);
-=======
         return "" + defaultValue;
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Normalizes "isUnique" value of the column.
@@ -524,15 +500,6 @@ var SapDriver = /** @class */ (function () {
         var type = column.type;
         // used 'getColumnLength()' method, because SqlServer sets `varchar` and `nvarchar` length to 1 by default.
         if (this.getColumnLength(column)) {
-<<<<<<< HEAD
-            type += "(".concat(this.getColumnLength(column), ")");
-        }
-        else if (column.precision !== null && column.precision !== undefined && column.scale !== null && column.scale !== undefined) {
-            type += "(".concat(column.precision, ",").concat(column.scale, ")");
-        }
-        else if (column.precision !== null && column.precision !== undefined) {
-            type += "(".concat(column.precision, ")");
-=======
             type += "(" + this.getColumnLength(column) + ")";
         }
         else if (column.precision !== null && column.precision !== undefined && column.scale !== null && column.scale !== undefined) {
@@ -540,7 +507,6 @@ var SapDriver = /** @class */ (function () {
         }
         else if (column.precision !== null && column.precision !== undefined) {
             type += "(" + column.precision + ")";
->>>>>>> a3495c7 (INIT)
         }
         if (column.isArray)
             type += " array";

@@ -727,11 +727,7 @@ var MongoEntityManager = /** @class */ (function (_super) {
         };
     };
     MongoEntityManager.prototype.filterSoftDeleted = function (cursor, deleteDateColumn) {
-<<<<<<< HEAD
-        cursor.filter({ $where: "this.".concat(deleteDateColumn.propertyName, "==null") });
-=======
         cursor.filter({ $where: "this." + deleteDateColumn.propertyName + "==null" });
->>>>>>> a3495c7 (INIT)
     };
     return MongoEntityManager;
 }(EntityManager));

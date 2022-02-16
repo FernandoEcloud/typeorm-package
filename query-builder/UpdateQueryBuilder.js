@@ -358,32 +358,18 @@ var UpdateQueryBuilder = /** @class */ (function (_super) {
                             var useLegacy = _this.connection.driver.options.legacySpatialSupport;
                             var geomFromText = useLegacy ? "GeomFromText" : "ST_GeomFromText";
                             if (column.srid != null) {
-<<<<<<< HEAD
-                                expression = "".concat(geomFromText, "(").concat(paramName, ", ").concat(column.srid, ")");
-                            }
-                            else {
-                                expression = "".concat(geomFromText, "(").concat(paramName, ")");
-=======
                                 expression = geomFromText + "(" + paramName + ", " + column.srid + ")";
                             }
                             else {
                                 expression = geomFromText + "(" + paramName + ")";
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         else if (_this.connection.driver instanceof PostgresDriver_1.PostgresDriver && _this.connection.driver.spatialTypes.indexOf(column.type) !== -1) {
                             if (column.srid != null) {
-<<<<<<< HEAD
-                                expression = "ST_SetSRID(ST_GeomFromGeoJSON(".concat(paramName, "), ").concat(column.srid, ")::").concat(column.type);
-                            }
-                            else {
-                                expression = "ST_GeomFromGeoJSON(".concat(paramName, ")::").concat(column.type);
-=======
                                 expression = "ST_SetSRID(ST_GeomFromGeoJSON(" + paramName + "), " + column.srid + ")::" + column.type;
                             }
                             else {
                                 expression = "ST_GeomFromGeoJSON(" + paramName + ")::" + column.type;
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         else if (_this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver && _this.connection.driver.spatialTypes.indexOf(column.type) !== -1) {
@@ -431,15 +417,6 @@ var UpdateQueryBuilder = /** @class */ (function (_super) {
         var returningExpression = this.createReturningExpression();
         // generate and return sql update query
         if (returningExpression && (this.connection.driver instanceof PostgresDriver_1.PostgresDriver || this.connection.driver instanceof OracleDriver_1.OracleDriver || this.connection.driver instanceof CockroachDriver_1.CockroachDriver)) {
-<<<<<<< HEAD
-            return "UPDATE ".concat(this.getTableName(this.getMainTableName()), " SET ").concat(updateColumnAndValues.join(", ")).concat(whereExpression, " RETURNING ").concat(returningExpression);
-        }
-        else if (returningExpression && this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver) {
-            return "UPDATE ".concat(this.getTableName(this.getMainTableName()), " SET ").concat(updateColumnAndValues.join(", "), " OUTPUT ").concat(returningExpression).concat(whereExpression);
-        }
-        else {
-            return "UPDATE ".concat(this.getTableName(this.getMainTableName()), " SET ").concat(updateColumnAndValues.join(", ")).concat(whereExpression); // todo: how do we replace aliases in where to nothing?
-=======
             return "UPDATE " + this.getTableName(this.getMainTableName()) + " SET " + updateColumnAndValues.join(", ") + whereExpression + " RETURNING " + returningExpression;
         }
         else if (returningExpression && this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver) {
@@ -447,7 +424,6 @@ var UpdateQueryBuilder = /** @class */ (function (_super) {
         }
         else {
             return "UPDATE " + this.getTableName(this.getMainTableName()) + " SET " + updateColumnAndValues.join(", ") + whereExpression; // todo: how do we replace aliases in where to nothing?
->>>>>>> a3495c7 (INIT)
         }
     };
     /**

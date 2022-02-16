@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { __awaiter, __extends, __generator } from "tslib";
-=======
 import { __asyncValues, __awaiter, __extends, __generator } from "tslib";
->>>>>>> a3495c7 (INIT)
 import mkdirp from "mkdirp";
 import path from "path";
 import { DriverPackageNotInstalledError } from "../../error/DriverPackageNotInstalledError";
@@ -10,10 +6,7 @@ import { SqliteQueryRunner } from "./SqliteQueryRunner";
 import { DriverOptionNotSetError } from "../../error/DriverOptionNotSetError";
 import { PlatformTools } from "../../platform/PlatformTools";
 import { AbstractSqliteDriver } from "../sqlite-abstract/AbstractSqliteDriver";
-<<<<<<< HEAD
-=======
 import { filepathToName, isAbsolute } from "../../util/PathUtils";
->>>>>>> a3495c7 (INIT)
 /**
  * Organizes communication with sqlite DBMS.
  */
@@ -65,8 +58,6 @@ var SqliteDriver = /** @class */ (function (_super) {
         }
         return _super.prototype.normalizeType.call(this, column);
     };
-<<<<<<< HEAD
-=======
     SqliteDriver.prototype.afterConnect = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -95,7 +86,6 @@ var SqliteDriver = /** @class */ (function (_super) {
         };
         return identifierHash + "." + tableName;
     };
->>>>>>> a3495c7 (INIT)
     // -------------------------------------------------------------------------
     // Protected Methods
     // -------------------------------------------------------------------------
@@ -131,11 +121,7 @@ var SqliteDriver = /** @class */ (function (_super) {
                     case 2:
                         databaseConnection = _a.sent();
                         if (!this.options.key) return [3 /*break*/, 4];
-<<<<<<< HEAD
-                        return [4 /*yield*/, run("PRAGMA key = ".concat(JSON.stringify(this.options.key), ";"))];
-=======
                         return [4 /*yield*/, run("PRAGMA key = " + JSON.stringify(this.options.key) + ";")];
->>>>>>> a3495c7 (INIT)
                     case 3:
                         _a.sent();
                         _a.label = 4;
@@ -185,8 +171,6 @@ var SqliteDriver = /** @class */ (function (_super) {
             });
         });
     };
-<<<<<<< HEAD
-=======
     /**
      * Performs the attaching of the database files. The attachedDatabase should have been populated during calls to #buildTableName
      * during EntityMetadata production (see EntityMetadata#buildTablePath)
@@ -241,7 +225,6 @@ var SqliteDriver = /** @class */ (function (_super) {
         var optionsDb = this.options.database;
         return path.dirname(isAbsolute(optionsDb) ? optionsDb : path.join(process.cwd(), optionsDb));
     };
->>>>>>> a3495c7 (INIT)
     return SqliteDriver;
 }(AbstractSqliteDriver));
 export { SqliteDriver };

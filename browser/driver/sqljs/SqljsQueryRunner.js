@@ -26,8 +26,6 @@ var SqljsQueryRunner = /** @class */ (function (_super) {
     // -------------------------------------------------------------------------
     // Public methods
     // -------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
     /**
      * Called before migrations are run.
      */
@@ -58,7 +56,6 @@ var SqljsQueryRunner = /** @class */ (function (_super) {
             });
         });
     };
->>>>>>> a3495c7 (INIT)
     SqljsQueryRunner.prototype.flush = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {

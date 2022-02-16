@@ -16,14 +16,11 @@ export declare class RawSqlResultsToEntityTransformer {
     protected rawRelationIdResults: RelationIdLoadResult[];
     protected rawRelationCountResults: RelationCountLoadResult[];
     protected queryRunner?: QueryRunner | undefined;
-<<<<<<< HEAD
-=======
     /**
       * Contains a hashmap for every rawRelationIdResults given.
       * In the hashmap you will find the idMaps of a result under the hash of this.hashEntityIds for the result.
       */
     private relationIdMaps;
->>>>>>> a3495c7 (INIT)
     constructor(expressionMap: QueryExpressionMap, driver: Driver, rawRelationIdResults: RelationIdLoadResult[], rawRelationCountResults: RelationCountLoadResult[], queryRunner?: QueryRunner | undefined);
     /**
      * Since db returns a duplicated rows of the data where accuracies of the same object can be duplicated
@@ -47,8 +44,6 @@ export declare class RawSqlResultsToEntityTransformer {
     protected transformRelationCounts(rawSqlResults: any[], alias: Alias, entity: ObjectLiteral): boolean;
     private createValueMapFromJoinColumns;
     private extractEntityPrimaryIds;
-<<<<<<< HEAD
-=======
     /** Prepare data to run #transformRelationIds, as a lot of result independent data is needed in every call */
     private prepareDataForTransformRelationIds;
     /**
@@ -57,5 +52,4 @@ export declare class RawSqlResultsToEntityTransformer {
      * given, a simple JSON.stringify should be enough to get a unique hash per entity!
      */
     private hashEntityIds;
->>>>>>> a3495c7 (INIT)
 }

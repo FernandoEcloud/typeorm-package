@@ -33,17 +33,10 @@ export function importClassesFromDirectories(logger, directories, formats) {
                         return allDirs.concat(glob.sync(PlatformTools.pathNormalize(dir)));
                     }, []);
                     if (directories.length > 0 && allFiles.length === 0) {
-<<<<<<< HEAD
-                        logger.log(logLevel, "".concat(classesNotFoundMessage, " \"").concat(directories, "\""));
-                    }
-                    else if (allFiles.length > 0) {
-                        logger.log(logLevel, "".concat(classesFoundMessage, " \"").concat(directories, "\" : \"").concat(allFiles, "\""));
-=======
                         logger.log(logLevel, classesNotFoundMessage + " \"" + directories + "\"");
                     }
                     else if (allFiles.length > 0) {
                         logger.log(logLevel, classesFoundMessage + " \"" + directories + "\" : \"" + allFiles + "\"");
->>>>>>> a3495c7 (INIT)
                     }
                     dirPromises = allFiles
                         .filter(function (file) {

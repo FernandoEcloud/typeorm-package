@@ -96,11 +96,7 @@ var DateUtils = /** @class */ (function () {
                 this.formatZerolessValue(value.getMinutes()) + ":" +
                 this.formatZerolessValue(value.getSeconds());
             if (useMilliseconds)
-<<<<<<< HEAD
-                finalValue += ".".concat(this.formatMilliseconds(value.getMilliseconds()));
-=======
                 finalValue += "." + this.formatMilliseconds(value.getMilliseconds());
->>>>>>> a3495c7 (INIT)
             value = finalValue;
         }
         return value;

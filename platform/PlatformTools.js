@@ -113,11 +113,7 @@ var PlatformTools = /** @class */ (function () {
         // and is an Invalid Package.  To make it explicit that this is NOT the intended use case for
         // PlatformTools.load - it's not just a way to replace `require` all willy-nilly - let's throw
         // an error.
-<<<<<<< HEAD
-        throw new TypeError("Invalid Package for PlatformTools.load: ".concat(name));
-=======
         throw new TypeError("Invalid Package for PlatformTools.load: " + name);
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Normalizes given path. Does "path.normalize".

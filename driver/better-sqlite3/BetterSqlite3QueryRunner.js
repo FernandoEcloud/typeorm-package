@@ -61,8 +61,6 @@ var BetterSqlite3QueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     BetterSqlite3QueryRunner.prototype.beforeMigration = function () {
@@ -93,7 +91,6 @@ var BetterSqlite3QueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
->>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     BetterSqlite3QueryRunner.prototype.query = function (query, parameters, useStructuredResult) {
@@ -150,8 +147,6 @@ var BetterSqlite3QueryRunner = /** @class */ (function (_super) {
             });
         });
     };
-<<<<<<< HEAD
-=======
     // -------------------------------------------------------------------------
     // Protected Methods
     // -------------------------------------------------------------------------
@@ -185,7 +180,6 @@ var BetterSqlite3QueryRunner = /** @class */ (function (_super) {
             });
         });
     };
->>>>>>> a3495c7 (INIT)
     return BetterSqlite3QueryRunner;
 }(AbstractSqliteQueryRunner_1.AbstractSqliteQueryRunner));
 exports.BetterSqlite3QueryRunner = BetterSqlite3QueryRunner;

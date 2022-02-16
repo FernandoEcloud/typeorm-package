@@ -6,11 +6,7 @@ import { TypeORMError } from "./TypeORMError";
 var MustBeEntityError = /** @class */ (function (_super) {
     __extends(MustBeEntityError, _super);
     function MustBeEntityError(operation, wrongValue) {
-<<<<<<< HEAD
-        return _super.call(this, "Cannot ".concat(operation, ", given value must be an entity, instead \"").concat(wrongValue, "\" is given.")) || this;
-=======
         return _super.call(this, "Cannot " + operation + ", given value must be an entity, instead \"" + wrongValue + "\" is given.") || this;
->>>>>>> a3495c7 (INIT)
     }
     return MustBeEntityError;
 }(TypeORMError));

@@ -20,8 +20,6 @@ var ReactNativeQueryRunner = /** @class */ (function (_super) {
         return _this;
     }
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     ReactNativeQueryRunner.prototype.beforeMigration = function () {
@@ -52,7 +50,6 @@ var ReactNativeQueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
->>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     ReactNativeQueryRunner.prototype.query = function (query, parameters, useStructuredResult) {
@@ -116,11 +113,7 @@ var ReactNativeQueryRunner = /** @class */ (function (_super) {
      */
     ReactNativeQueryRunner.prototype.parametrize = function (objectLiteral, startIndex) {
         if (startIndex === void 0) { startIndex = 0; }
-<<<<<<< HEAD
-        return Object.keys(objectLiteral).map(function (key, index) { return "\"".concat(key, "\"") + "=?"; });
-=======
         return Object.keys(objectLiteral).map(function (key, index) { return "\"" + key + "\"" + "=?"; });
->>>>>>> a3495c7 (INIT)
     };
     return ReactNativeQueryRunner;
 }(AbstractSqliteQueryRunner));

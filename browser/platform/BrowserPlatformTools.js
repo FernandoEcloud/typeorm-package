@@ -26,11 +26,7 @@ var PlatformTools = /** @class */ (function () {
      */
     PlatformTools.load = function (name) {
         if (this.type === "browser")
-<<<<<<< HEAD
-            throw new Error("This option/function is not supported in the browser environment. Failed operation: require(\"".concat(name, "\")."));
-=======
             throw new Error("This option/function is not supported in the browser environment. Failed operation: require(\"" + name + "\").");
->>>>>>> a3495c7 (INIT)
         return "";
     };
     /**
@@ -38,11 +34,7 @@ var PlatformTools = /** @class */ (function () {
      */
     PlatformTools.pathNormalize = function (pathStr) {
         if (this.type === "browser")
-<<<<<<< HEAD
-            throw new Error("This option/function is not supported in the browser environment. Failed operation: path.normalize(\"".concat(pathStr, "\")."));
-=======
             throw new Error("This option/function is not supported in the browser environment. Failed operation: path.normalize(\"" + pathStr + "\").");
->>>>>>> a3495c7 (INIT)
         return "";
     };
     /**
@@ -50,11 +42,7 @@ var PlatformTools = /** @class */ (function () {
      */
     PlatformTools.pathExtname = function (pathStr) {
         if (this.type === "browser")
-<<<<<<< HEAD
-            throw new Error("This option/function is not supported in the browser environment. Failed operation: path.extname(\"".concat(pathStr, "\")."));
-=======
             throw new Error("This option/function is not supported in the browser environment. Failed operation: path.extname(\"" + pathStr + "\").");
->>>>>>> a3495c7 (INIT)
         return "";
     };
     /**
@@ -62,11 +50,7 @@ var PlatformTools = /** @class */ (function () {
      */
     PlatformTools.pathResolve = function (pathStr) {
         if (this.type === "browser")
-<<<<<<< HEAD
-            throw new Error("This option/function is not supported in the browser environment. Failed operation: path.resolve(\"".concat(pathStr, "\")."));
-=======
             throw new Error("This option/function is not supported in the browser environment. Failed operation: path.resolve(\"" + pathStr + "\").");
->>>>>>> a3495c7 (INIT)
         return "";
     };
     /**
@@ -74,20 +58,12 @@ var PlatformTools = /** @class */ (function () {
      */
     PlatformTools.fileExist = function (pathStr) {
         if (this.type === "browser")
-<<<<<<< HEAD
-            throw new Error("This option/function is not supported in the browser environment. Failed operation: fs.existsSync(\"".concat(pathStr, "\")."));
-=======
             throw new Error("This option/function is not supported in the browser environment. Failed operation: fs.existsSync(\"" + pathStr + "\").");
->>>>>>> a3495c7 (INIT)
         return false;
     };
     PlatformTools.dotenv = function (pathStr) {
         if (this.type === "browser")
-<<<<<<< HEAD
-            throw new Error("This option/function is not supported in the browser environment. Failed operation: dotenv.config({ path: \"".concat(pathStr, "\" })."));
-=======
             throw new Error("This option/function is not supported in the browser environment. Failed operation: dotenv.config({ path: \"" + pathStr + "\" }).");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Gets environment variable.
@@ -99,28 +75,16 @@ var PlatformTools = /** @class */ (function () {
     };
     PlatformTools.readFileSync = function (filename) {
         if (this.type === "browser")
-<<<<<<< HEAD
-            throw new Error("This option/function is not supported in the browser environment. Failed operation: fs.readFileSync(\"".concat(filename, "\")."));
-=======
             throw new Error("This option/function is not supported in the browser environment. Failed operation: fs.readFileSync(\"" + filename + "\").");
->>>>>>> a3495c7 (INIT)
         return null;
     };
     PlatformTools.appendFileSync = function (filename, data) {
         if (this.type === "browser")
-<<<<<<< HEAD
-            throw new Error("This option/function is not supported in the browser environment. Failed operation: fs.appendFileSync(\"".concat(filename, "\")."));
-    };
-    PlatformTools.writeFile = function (path, data) {
-        if (this.type === "browser")
-            throw new Error("This option/function is not supported in the browser environment. Failed operation: fs.writeFile(\"".concat(path, "\")."));
-=======
             throw new Error("This option/function is not supported in the browser environment. Failed operation: fs.appendFileSync(\"" + filename + "\").");
     };
     PlatformTools.writeFile = function (path, data) {
         if (this.type === "browser")
             throw new Error("This option/function is not supported in the browser environment. Failed operation: fs.writeFile(\"" + path + "\").");
->>>>>>> a3495c7 (INIT)
         return Promise.reject(null);
     };
     /**

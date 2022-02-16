@@ -29,11 +29,7 @@ function createDFS(edges, leavesOnly, result) {
             }
             else if (currentPath.indexOf(node) >= 0) {
                 currentPath.push(node);
-<<<<<<< HEAD
-                throw new TypeORMError("Dependency Cycle Found: ".concat(currentPath.join(" -> ")));
-=======
                 throw new TypeORMError("Dependency Cycle Found: " + currentPath.join(" -> "));
->>>>>>> a3495c7 (INIT)
             }
         });
         currentPath.pop();
@@ -96,11 +92,7 @@ var DepGraph = /** @class */ (function () {
             return this.nodes[node];
         }
         else {
-<<<<<<< HEAD
-            throw new TypeORMError("Node does not exist: ".concat(node));
-=======
             throw new TypeORMError("Node does not exist: " + node);
->>>>>>> a3495c7 (INIT)
         }
     };
     /**
@@ -111,11 +103,7 @@ var DepGraph = /** @class */ (function () {
             this.nodes[node] = data;
         }
         else {
-<<<<<<< HEAD
-            throw new TypeORMError("Node does not exist: ".concat(node));
-=======
             throw new TypeORMError("Node does not exist: " + node);
->>>>>>> a3495c7 (INIT)
         }
     };
     /**
@@ -124,17 +112,10 @@ var DepGraph = /** @class */ (function () {
      */
     DepGraph.prototype.addDependency = function (from, to) {
         if (!this.hasNode(from)) {
-<<<<<<< HEAD
-            throw new TypeORMError("Node does not exist: ".concat(from));
-        }
-        if (!this.hasNode(to)) {
-            throw new TypeORMError("Node does not exist: ".concat(to));
-=======
             throw new TypeORMError("Node does not exist: " + from);
         }
         if (!this.hasNode(to)) {
             throw new TypeORMError("Node does not exist: " + to);
->>>>>>> a3495c7 (INIT)
         }
         if (this.outgoingEdges[from].indexOf(to) === -1) {
             this.outgoingEdges[from].push(to);
@@ -182,11 +163,7 @@ var DepGraph = /** @class */ (function () {
             return result;
         }
         else {
-<<<<<<< HEAD
-            throw new TypeORMError("Node does not exist: ".concat(node));
-=======
             throw new TypeORMError("Node does not exist: " + node);
->>>>>>> a3495c7 (INIT)
         }
     };
     /**
@@ -208,11 +185,7 @@ var DepGraph = /** @class */ (function () {
             return result;
         }
         else {
-<<<<<<< HEAD
-            throw new TypeORMError("Node does not exist: ".concat(node));
-=======
             throw new TypeORMError("Node does not exist: " + node);
->>>>>>> a3495c7 (INIT)
         }
     };
     /**

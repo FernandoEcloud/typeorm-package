@@ -31,14 +31,11 @@ export declare class BetterSqlite3Driver extends AbstractSqliteDriver {
         precision?: number | null;
         scale?: number;
     }): string;
-<<<<<<< HEAD
-=======
     afterConnect(): Promise<void>;
     /**
      * For SQLite, the database may be added in the decorator metadata. It will be a filepath to a database file.
      */
     buildTableName(tableName: string, _schema?: string, database?: string): string;
->>>>>>> a3495c7 (INIT)
     /**
      * Creates connection with the database.
      */
@@ -50,9 +47,6 @@ export declare class BetterSqlite3Driver extends AbstractSqliteDriver {
     /**
      * Auto creates database directory if it does not exist.
      */
-<<<<<<< HEAD
-    protected createDatabaseDirectory(fullPath: string): Promise<void>;
-=======
     protected createDatabaseDirectory(dbPath: string): Promise<void>;
     /**
      * Performs the attaching of the database files. The attachedDatabase should have been populated during calls to #buildTableName
@@ -62,5 +56,4 @@ export declare class BetterSqlite3Driver extends AbstractSqliteDriver {
      */
     protected attachDatabases(): Promise<void>;
     protected getMainDatabasePath(): string;
->>>>>>> a3495c7 (INIT)
 }

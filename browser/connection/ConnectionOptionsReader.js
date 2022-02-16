@@ -6,10 +6,7 @@ import { ConnectionOptionsEnvReader } from "./options-reader/ConnectionOptionsEn
 import { ConnectionOptionsYmlReader } from "./options-reader/ConnectionOptionsYmlReader";
 import { ConnectionOptionsXmlReader } from "./options-reader/ConnectionOptionsXmlReader";
 import { TypeORMError } from "../error";
-<<<<<<< HEAD
-=======
 import { isAbsolute } from "../util/PathUtils";
->>>>>>> a3495c7 (INIT)
 import { importOrRequireFile } from "../util/ImportUtils";
 /**
  * Reads connection options from the ormconfig.
@@ -57,11 +54,7 @@ var ConnectionOptionsReader = /** @class */ (function () {
                         allOptions = _a.sent();
                         targetOptions = allOptions.find(function (options) { return options.name === name || (name === "default" && !options.name); });
                         if (!targetOptions)
-<<<<<<< HEAD
-                            throw new TypeORMError("Cannot find connection ".concat(name, " because its not defined in any orm configuration files."));
-=======
                             throw new TypeORMError("Cannot find connection " + name + " because its not defined in any orm configuration files.");
->>>>>>> a3495c7 (INIT)
                         return [2 /*return*/, targetOptions];
                 }
             });
@@ -104,11 +97,7 @@ var ConnectionOptionsReader = /** @class */ (function () {
                         connectionOptions = undefined;
                         fileFormats = ["env", "js", "mjs", "cjs", "ts", "mts", "cts", "json", "yml", "yaml", "xml"];
                         possibleExtension = this.baseFilePath.substr(this.baseFilePath.lastIndexOf("."));
-<<<<<<< HEAD
-                        fileExtension = fileFormats.find(function (extension) { return ".".concat(extension) === possibleExtension; });
-=======
                         fileExtension = fileFormats.find(function (extension) { return "." + extension === possibleExtension; });
->>>>>>> a3495c7 (INIT)
                         foundFileFormat = fileExtension || fileFormats.find(function (format) {
                             return PlatformTools.fileExist(_this.baseFilePath + "." + format);
                         });
@@ -181,10 +170,7 @@ var ConnectionOptionsReader = /** @class */ (function () {
         if (!(Array.isArray(connectionOptions)))
             connectionOptions = [connectionOptions];
         connectionOptions.forEach(function (options) {
-<<<<<<< HEAD
-=======
             options.baseDirectory = _this.baseDirectory;
->>>>>>> a3495c7 (INIT)
             if (options.entities) {
                 var entities = options.entities.map(function (entity) {
                     if (typeof entity === "string" && entity.substr(0, 1) !== "/")
@@ -211,11 +197,7 @@ var ConnectionOptionsReader = /** @class */ (function () {
             }
             // make database path file in sqlite relative to package.json
             if (options.type === "sqlite" || options.type === "better-sqlite3") {
-<<<<<<< HEAD
-                if (typeof options.database === "string" &&
-=======
                 if (typeof options.database === "string" && !isAbsolute(options.database) &&
->>>>>>> a3495c7 (INIT)
                     options.database.substr(0, 1) !== "/" && // unix absolute
                     options.database.substr(1, 2) !== ":\\" && // windows absolute
                     options.database !== ":memory:") {

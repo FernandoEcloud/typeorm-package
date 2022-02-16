@@ -9,10 +9,7 @@ var DriverOptionNotSetError_1 = require("../../error/DriverOptionNotSetError");
 var PlatformTools_1 = require("../../platform/PlatformTools");
 var AbstractSqliteDriver_1 = require("../sqlite-abstract/AbstractSqliteDriver");
 var BetterSqlite3QueryRunner_1 = require("./BetterSqlite3QueryRunner");
-<<<<<<< HEAD
-=======
 var PathUtils_1 = require("../../util/PathUtils");
->>>>>>> a3495c7 (INIT)
 /**
  * Organizes communication with sqlite DBMS.
  */
@@ -62,8 +59,6 @@ var BetterSqlite3Driver = /** @class */ (function (_super) {
         }
         return _super.prototype.normalizeType.call(this, column);
     };
-<<<<<<< HEAD
-=======
     BetterSqlite3Driver.prototype.afterConnect = function () {
         return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
             return (0, tslib_1.__generator)(this, function (_a) {
@@ -92,7 +87,6 @@ var BetterSqlite3Driver = /** @class */ (function (_super) {
         };
         return identifierHash + "." + tableName;
     };
->>>>>>> a3495c7 (INIT)
     // -------------------------------------------------------------------------
     // Protected Methods
     // -------------------------------------------------------------------------
@@ -106,11 +100,7 @@ var BetterSqlite3Driver = /** @class */ (function (_super) {
                 switch (_f.label) {
                     case 0:
                         if (!(this.options.database !== ":memory:")) return [3 /*break*/, 2];
-<<<<<<< HEAD
-                        return [4 /*yield*/, this.createDatabaseDirectory(this.options.database)];
-=======
                         return [4 /*yield*/, this.createDatabaseDirectory(path_1.default.dirname(this.options.database))];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         _f.sent();
                         _f.label = 2;
@@ -120,11 +110,7 @@ var BetterSqlite3Driver = /** @class */ (function (_super) {
                         // in the options, if encryption key for SQLCipher is setted.
                         // Must invoke key pragma before trying to do any other interaction with the database.
                         if (this.options.key) {
-<<<<<<< HEAD
-                            databaseConnection.exec("PRAGMA key = ".concat(JSON.stringify(this.options.key)));
-=======
                             databaseConnection.exec("PRAGMA key = " + JSON.stringify(this.options.key));
->>>>>>> a3495c7 (INIT)
                         }
                         // function to run before a database is used in typeorm.
                         if (typeof prepareDatabase === "function") {
@@ -155,19 +141,11 @@ var BetterSqlite3Driver = /** @class */ (function (_super) {
     /**
      * Auto creates database directory if it does not exist.
      */
-<<<<<<< HEAD
-    BetterSqlite3Driver.prototype.createDatabaseDirectory = function (fullPath) {
-        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
-            return (0, tslib_1.__generator)(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, (0, mkdirp_1.default)(path_1.default.dirname(fullPath))];
-=======
     BetterSqlite3Driver.prototype.createDatabaseDirectory = function (dbPath) {
         return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, (0, mkdirp_1.default)(dbPath)];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -175,8 +153,6 @@ var BetterSqlite3Driver = /** @class */ (function (_super) {
             });
         });
     };
-<<<<<<< HEAD
-=======
     /**
      * Performs the attaching of the database files. The attachedDatabase should have been populated during calls to #buildTableName
      * during EntityMetadata production (see EntityMetadata#buildTablePath)
@@ -231,7 +207,6 @@ var BetterSqlite3Driver = /** @class */ (function (_super) {
         var optionsDb = this.options.database;
         return path_1.default.dirname((0, PathUtils_1.isAbsolute)(optionsDb) ? optionsDb : path_1.default.join(this.options.baseDirectory, optionsDb));
     };
->>>>>>> a3495c7 (INIT)
     return BetterSqlite3Driver;
 }(AbstractSqliteDriver_1.AbstractSqliteDriver));
 exports.BetterSqlite3Driver = BetterSqlite3Driver;

@@ -9,11 +9,7 @@ var TypeORMError_1 = require("./TypeORMError");
 var NoConnectionForRepositoryError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(NoConnectionForRepositoryError, _super);
     function NoConnectionForRepositoryError(connectionName) {
-<<<<<<< HEAD
-        return _super.call(this, "Cannot get a Repository for \"".concat(connectionName, " connection, because connection with the database ") +
-=======
         return _super.call(this, "Cannot get a Repository for \"" + connectionName + " connection, because connection with the database " +
->>>>>>> a3495c7 (INIT)
             "is not established yet. Call connection#connect method to establish connection.") || this;
     }
     return NoConnectionForRepositoryError;

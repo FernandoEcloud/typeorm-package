@@ -382,19 +382,6 @@ var MongoDriver = /** @class */ (function () {
     MongoDriver.prototype.buildConnectionUrl = function (options) {
         var schemaUrlPart = options.type.toLowerCase();
         var credentialsUrlPart = (options.username && options.password)
-<<<<<<< HEAD
-            ? "".concat(options.username, ":").concat(options.password, "@")
-            : "";
-        var portUrlPart = (schemaUrlPart === "mongodb+srv")
-            ? ""
-            : ":".concat(options.port || "27017");
-        var connectionString;
-        if (options.replicaSet) {
-            connectionString = "".concat(schemaUrlPart, "://").concat(credentialsUrlPart).concat(options.hostReplicaSet || options.host + portUrlPart || "127.0.0.1" + portUrlPart, "/").concat(options.database || "", "?replicaSet=").concat(options.replicaSet).concat(options.tls ? "&tls=true" : "");
-        }
-        else {
-            connectionString = "".concat(schemaUrlPart, "://").concat(credentialsUrlPart).concat(options.host || "127.0.0.1").concat(portUrlPart, "/").concat(options.database || "").concat(options.tls ? "?tls=true" : "");
-=======
             ? options.username + ":" + options.password + "@"
             : "";
         var portUrlPart = (schemaUrlPart === "mongodb+srv")
@@ -406,7 +393,6 @@ var MongoDriver = /** @class */ (function () {
         }
         else {
             connectionString = schemaUrlPart + "://" + credentialsUrlPart + (options.host || "127.0.0.1") + portUrlPart + "/" + (options.database || "") + (options.tls ? "?tls=true" : "");
->>>>>>> a3495c7 (INIT)
         }
         return connectionString;
     };

@@ -11,13 +11,8 @@ var EntityNotFoundError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(EntityNotFoundError, _super);
     function EntityNotFoundError(entityClass, criteria) {
         var _this = _super.call(this) || this;
-<<<<<<< HEAD
-        _this.message = "Could not find any entity of type \"".concat(_this.stringifyTarget(entityClass), "\" ") +
-            "matching: ".concat(_this.stringifyCriteria(criteria));
-=======
         _this.message = "Could not find any entity of type \"" + _this.stringifyTarget(entityClass) + "\" " +
             ("matching: " + _this.stringifyCriteria(criteria));
->>>>>>> a3495c7 (INIT)
         return _this;
     }
     EntityNotFoundError.prototype.stringifyTarget = function (target) {

@@ -64,8 +64,6 @@ export interface QueryRunner {
      */
     connect(): Promise<any>;
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     beforeMigration(): Promise<void>;
@@ -74,7 +72,6 @@ export interface QueryRunner {
      */
     afterMigration(): Promise<void>;
     /**
->>>>>>> a3495c7 (INIT)
      * Releases used database connection.
      * You cannot use query runner methods after connection is released.
      */

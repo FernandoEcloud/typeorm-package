@@ -93,11 +93,7 @@ var MigrationCreateCommand = /** @class */ (function () {
                         return [4 /*yield*/, CommandUtils_1.CommandUtils.createFile(path, fileContent)];
                     case 6:
                         _a.sent();
-<<<<<<< HEAD
-                        console.log("Migration ".concat(chalk_1.default.blue(path), " has been generated successfully."));
-=======
                         console.log("Migration " + chalk_1.default.blue(path) + " has been generated successfully.");
->>>>>>> a3495c7 (INIT)
                         return [3 /*break*/, 8];
                     case 7:
                         err_2 = _a.sent();
@@ -116,21 +112,13 @@ var MigrationCreateCommand = /** @class */ (function () {
      * Gets contents of the migration file.
      */
     MigrationCreateCommand.getTemplate = function (name, timestamp) {
-<<<<<<< HEAD
-        return "import {MigrationInterface, QueryRunner} from \"typeorm\";\n\nexport class ".concat((0, StringUtils_1.camelCase)(name, true)).concat(timestamp, " implements MigrationInterface {\n\n    public async up(queryRunner: QueryRunner): Promise<void> {\n    }\n\n    public async down(queryRunner: QueryRunner): Promise<void> {\n    }\n\n}\n");
-=======
         return "import {MigrationInterface, QueryRunner} from \"typeorm\";\n\nexport class " + (0, StringUtils_1.camelCase)(name, true) + timestamp + " implements MigrationInterface {\n\n    public async up(queryRunner: QueryRunner): Promise<void> {\n    }\n\n    public async down(queryRunner: QueryRunner): Promise<void> {\n    }\n\n}\n";
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Gets contents of the migration file in Javascript.
      */
     MigrationCreateCommand.getJavascriptTemplate = function (name, timestamp) {
-<<<<<<< HEAD
-        return "const { MigrationInterface, QueryRunner } = require(\"typeorm\");\n\nmodule.exports = class ".concat((0, StringUtils_1.camelCase)(name, true)).concat(timestamp, " {\n\n    async up(queryRunner) {\n    }\n\n    async down(queryRunner) {\n    }\n}\n        ");
-=======
         return "const { MigrationInterface, QueryRunner } = require(\"typeorm\");\n\nmodule.exports = class " + (0, StringUtils_1.camelCase)(name, true) + timestamp + " {\n\n    async up(queryRunner) {\n    }\n\n    async down(queryRunner) {\n    }\n}\n        ";
->>>>>>> a3495c7 (INIT)
     };
     return MigrationCreateCommand;
 }());

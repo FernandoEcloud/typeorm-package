@@ -21,8 +21,6 @@ var CordovaQueryRunner = /** @class */ (function (_super) {
         return _this;
     }
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     CordovaQueryRunner.prototype.beforeMigration = function () {
@@ -53,7 +51,6 @@ var CordovaQueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
->>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     CordovaQueryRunner.prototype.query = function (query, parameters, useStructuredResult) {
@@ -228,11 +225,7 @@ var CordovaQueryRunner = /** @class */ (function (_super) {
      */
     CordovaQueryRunner.prototype.parametrize = function (objectLiteral, startIndex) {
         if (startIndex === void 0) { startIndex = 0; }
-<<<<<<< HEAD
-        return Object.keys(objectLiteral).map(function (key, index) { return "\"".concat(key, "\"") + "=?"; });
-=======
         return Object.keys(objectLiteral).map(function (key, index) { return "\"" + key + "\"" + "=?"; });
->>>>>>> a3495c7 (INIT)
     };
     return CordovaQueryRunner;
 }(AbstractSqliteQueryRunner));

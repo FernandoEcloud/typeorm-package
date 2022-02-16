@@ -11,8 +11,6 @@ export declare class CordovaQueryRunner extends AbstractSqliteQueryRunner {
     driver: CordovaDriver;
     constructor(driver: CordovaDriver);
     /**
-<<<<<<< HEAD
-=======
      * Called before migrations are run.
      */
     beforeMigration(): Promise<void>;
@@ -21,7 +19,6 @@ export declare class CordovaQueryRunner extends AbstractSqliteQueryRunner {
      */
     afterMigration(): Promise<void>;
     /**
->>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     query(query: string, parameters?: any[], useStructuredResult?: boolean): Promise<any>;

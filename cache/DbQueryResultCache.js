@@ -125,30 +125,18 @@ var DbQueryResultCache = /** @class */ (function () {
             .from(this.queryResultCacheTable, "cache");
         if (options.identifier) {
             return qb
-<<<<<<< HEAD
-                .where("".concat(qb.escape("cache"), ".").concat(qb.escape("identifier"), " = :identifier"))
-=======
                 .where(qb.escape("cache") + "." + qb.escape("identifier") + " = :identifier")
->>>>>>> a3495c7 (INIT)
                 .setParameters({ identifier: this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver ? new MssqlParameter_1.MssqlParameter(options.identifier, "nvarchar") : options.identifier })
                 .getRawOne();
         }
         else if (options.query) {
             if (this.connection.driver instanceof OracleDriver_1.OracleDriver) {
                 return qb
-<<<<<<< HEAD
-                    .where("dbms_lob.compare(".concat(qb.escape("cache"), ".").concat(qb.escape("query"), ", :query) = 0"), { query: options.query })
-                    .getRawOne();
-            }
-            return qb
-                .where("".concat(qb.escape("cache"), ".").concat(qb.escape("query"), " = :query"))
-=======
                     .where("dbms_lob.compare(" + qb.escape("cache") + "." + qb.escape("query") + ", :query) = 0", { query: options.query })
                     .getRawOne();
             }
             return qb
                 .where(qb.escape("cache") + "." + qb.escape("query") + " = :query")
->>>>>>> a3495c7 (INIT)
                 .setParameters({ query: this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver ? new MssqlParameter_1.MssqlParameter(options.query, "nvarchar") : options.query })
                 .getRawOne();
         }
@@ -189,11 +177,7 @@ var DbQueryResultCache = /** @class */ (function () {
                             .createQueryBuilder()
                             .update(this.queryResultCacheTable)
                             .set(insertedValues);
-<<<<<<< HEAD
-                        qb.where("".concat(qb.escape("identifier"), " = :condition"), { condition: insertedValues.identifier });
-=======
                         qb.where(qb.escape("identifier") + " = :condition", { condition: insertedValues.identifier });
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, qb.execute()];
                     case 1:
                         _a.sent();
@@ -208,11 +192,7 @@ var DbQueryResultCache = /** @class */ (function () {
                             qb.where("dbms_lob.compare(\"query\", :condition) = 0", { condition: insertedValues.query });
                         }
                         else {
-<<<<<<< HEAD
-                            qb.where("".concat(qb.escape("query"), " = :condition"), { condition: insertedValues.query });
-=======
                             qb.where(qb.escape("query") + " = :condition", { condition: insertedValues.query });
->>>>>>> a3495c7 (INIT)
                         }
                         return [4 /*yield*/, qb.execute()];
                     case 3:
@@ -261,11 +241,7 @@ var DbQueryResultCache = /** @class */ (function () {
                             var qb = _this.getQueryRunner(queryRunner).manager.createQueryBuilder();
                             return qb.delete()
                                 .from(_this.queryResultCacheTable)
-<<<<<<< HEAD
-                                .where("".concat(qb.escape("identifier"), " = :identifier"), { identifier: identifier })
-=======
                                 .where(qb.escape("identifier") + " = :identifier", { identifier: identifier })
->>>>>>> a3495c7 (INIT)
                                 .execute();
                         }))];
                     case 1:

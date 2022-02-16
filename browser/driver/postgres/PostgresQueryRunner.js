@@ -305,11 +305,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
             var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-<<<<<<< HEAD
-                    case 0: return [4 /*yield*/, this.query("SELECT * FROM pg_database WHERE datname='".concat(database, "';"))];
-=======
                     case 0: return [4 /*yield*/, this.query("SELECT * FROM pg_database WHERE datname='" + database + "';")];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result.length ? true : false];
@@ -341,11 +337,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
             var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-<<<<<<< HEAD
-                    case 0: return [4 /*yield*/, this.query("SELECT * FROM \"information_schema\".\"schemata\" WHERE \"schema_name\" = '".concat(schema, "'"))];
-=======
                     case 0: return [4 /*yield*/, this.query("SELECT * FROM \"information_schema\".\"schemata\" WHERE \"schema_name\" = '" + schema + "'")];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result.length ? true : false];
@@ -386,11 +378,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         _a.schema = _b.sent();
                         _b.label = 2;
                     case 2:
-<<<<<<< HEAD
-                        sql = "SELECT * FROM \"information_schema\".\"tables\" WHERE \"table_schema\" = '".concat(parsedTableName.schema, "' AND \"table_name\" = '").concat(parsedTableName.tableName, "'");
-=======
                         sql = "SELECT * FROM \"information_schema\".\"tables\" WHERE \"table_schema\" = '" + parsedTableName.schema + "' AND \"table_name\" = '" + parsedTableName.tableName + "'";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(sql)];
                     case 3:
                         result = _b.sent();
@@ -416,11 +404,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         _a.schema = _b.sent();
                         _b.label = 2;
                     case 2:
-<<<<<<< HEAD
-                        sql = "SELECT * FROM \"information_schema\".\"columns\" WHERE \"table_schema\" = '".concat(parsedTableName.schema, "' AND \"table_name\" = '").concat(parsedTableName.tableName, "' AND \"column_name\" = '").concat(columnName, "'");
-=======
                         sql = "SELECT * FROM \"information_schema\".\"columns\" WHERE \"table_schema\" = '" + parsedTableName.schema + "' AND \"table_name\" = '" + parsedTableName.tableName + "' AND \"column_name\" = '" + columnName + "'";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(sql)];
                     case 3:
                         result = _b.sent();
@@ -447,13 +431,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             return [2 /*return*/, Promise.resolve()];
                         _a.label = 2;
                     case 2:
-<<<<<<< HEAD
-                        up = "CREATE DATABASE \"".concat(database, "\"");
-                        down = "DROP DATABASE \"".concat(database, "\"");
-=======
                         up = "CREATE DATABASE \"" + database + "\"";
                         down = "DROP DATABASE \"" + database + "\"";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query(up), new Query(down))];
                     case 3:
                         _a.sent();
@@ -472,13 +451,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-<<<<<<< HEAD
-                        up = ifExist ? "DROP DATABASE IF EXISTS \"".concat(database, "\"") : "DROP DATABASE \"".concat(database, "\"");
-                        down = "CREATE DATABASE \"".concat(database, "\"");
-=======
                         up = ifExist ? "DROP DATABASE IF EXISTS \"" + database + "\"" : "DROP DATABASE \"" + database + "\"";
                         down = "CREATE DATABASE \"" + database + "\"";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query(up), new Query(down))];
                     case 1:
                         _a.sent();
@@ -497,13 +471,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         schema = schemaPath.indexOf(".") === -1 ? schemaPath : schemaPath.split(".")[1];
-<<<<<<< HEAD
-                        up = ifNotExist ? "CREATE SCHEMA IF NOT EXISTS \"".concat(schema, "\"") : "CREATE SCHEMA \"".concat(schema, "\"");
-                        down = "DROP SCHEMA \"".concat(schema, "\" CASCADE");
-=======
                         up = ifNotExist ? "CREATE SCHEMA IF NOT EXISTS \"" + schema + "\"" : "CREATE SCHEMA \"" + schema + "\"";
                         down = "DROP SCHEMA \"" + schema + "\" CASCADE";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query(up), new Query(down))];
                     case 1:
                         _a.sent();
@@ -522,13 +491,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         schema = schemaPath.indexOf(".") === -1 ? schemaPath : schemaPath.split(".")[1];
-<<<<<<< HEAD
-                        up = ifExist ? "DROP SCHEMA IF EXISTS \"".concat(schema, "\" ").concat(isCascade ? "CASCADE" : "") : "DROP SCHEMA \"".concat(schema, "\" ").concat(isCascade ? "CASCADE" : "");
-                        down = "CREATE SCHEMA \"".concat(schema, "\"");
-=======
                         up = ifExist ? "DROP SCHEMA IF EXISTS \"" + schema + "\" " + (isCascade ? "CASCADE" : "") : "DROP SCHEMA \"" + schema + "\" " + (isCascade ? "CASCADE" : "");
                         down = "CREATE SCHEMA \"" + schema + "\"";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query(up), new Query(down))];
                     case 1:
                         _a.sent();
@@ -799,27 +763,16 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         oldTable = _a;
                         newTable = oldTable.clone();
                         _b = this.driver.parseTableName(oldTable), schemaName = _b.schema, oldTableName = _b.tableName;
-<<<<<<< HEAD
-                        newTable.name = schemaName ? "".concat(schemaName, ".").concat(newTableName) : newTableName;
-                        upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(oldTable), " RENAME TO \"").concat(newTableName, "\"")));
-                        downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(newTable), " RENAME TO \"").concat(oldTableName, "\"")));
-=======
                         newTable.name = schemaName ? schemaName + "." + newTableName : newTableName;
                         upQueries.push(new Query("ALTER TABLE " + this.escapePath(oldTable) + " RENAME TO \"" + newTableName + "\""));
                         downQueries.push(new Query("ALTER TABLE " + this.escapePath(newTable) + " RENAME TO \"" + oldTableName + "\""));
->>>>>>> a3495c7 (INIT)
                         // rename column primary key constraint
                         if (newTable.primaryColumns.length > 0) {
                             columnNames = newTable.primaryColumns.map(function (column) { return column.name; });
                             oldPkName = this.connection.namingStrategy.primaryKeyName(oldTable, columnNames);
                             newPkName = this.connection.namingStrategy.primaryKeyName(newTable, columnNames);
-<<<<<<< HEAD
-                            upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(oldPkName, "\" TO \"").concat(newPkName, "\"")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(newPkName, "\" TO \"").concat(oldPkName, "\"")));
-=======
                             upQueries.push(new Query("ALTER TABLE " + this.escapePath(newTable) + " RENAME CONSTRAINT \"" + oldPkName + "\" TO \"" + newPkName + "\""));
                             downQueries.push(new Query("ALTER TABLE " + this.escapePath(newTable) + " RENAME CONSTRAINT \"" + newPkName + "\" TO \"" + oldPkName + "\""));
->>>>>>> a3495c7 (INIT)
                         }
                         // rename sequences
                         newTable.columns.map(function (col) {
@@ -828,13 +781,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                 var sequenceName = _this.buildSequenceName(oldTable, col.name);
                                 var newSequencePath = _this.buildSequencePath(newTable, col.name);
                                 var newSequenceName = _this.buildSequenceName(newTable, col.name);
-<<<<<<< HEAD
-                                var up = "ALTER SEQUENCE ".concat(_this.escapePath(sequencePath), " RENAME TO \"").concat(newSequenceName, "\"");
-                                var down = "ALTER SEQUENCE ".concat(_this.escapePath(newSequencePath), " RENAME TO \"").concat(sequenceName, "\"");
-=======
                                 var up = "ALTER SEQUENCE " + _this.escapePath(sequencePath) + " RENAME TO \"" + newSequenceName + "\"";
                                 var down = "ALTER SEQUENCE " + _this.escapePath(newSequencePath) + " RENAME TO \"" + sequenceName + "\"";
->>>>>>> a3495c7 (INIT)
                                 upQueries.push(new Query(up));
                                 downQueries.push(new Query(down));
                             }
@@ -844,13 +792,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             // build new constraint name
                             var newUniqueName = _this.connection.namingStrategy.uniqueConstraintName(newTable, unique.columnNames);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(unique.name, "\" TO \"").concat(newUniqueName, "\"")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(newUniqueName, "\" TO \"").concat(unique.name, "\"")));
-=======
                             upQueries.push(new Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + unique.name + "\" TO \"" + newUniqueName + "\""));
                             downQueries.push(new Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + newUniqueName + "\" TO \"" + unique.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             unique.name = newUniqueName;
                         });
@@ -860,13 +803,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             var schema = _this.driver.parseTableName(newTable).schema;
                             var newIndexName = _this.connection.namingStrategy.indexName(newTable, index.columnNames, index.where);
                             // build queries
-<<<<<<< HEAD
-                            var up = schema ? "ALTER INDEX \"".concat(schema, "\".\"").concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"") : "ALTER INDEX \"".concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"");
-                            var down = schema ? "ALTER INDEX \"".concat(schema, "\".\"").concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"") : "ALTER INDEX \"".concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"");
-=======
                             var up = schema ? "ALTER INDEX \"" + schema + "\".\"" + index.name + "\" RENAME TO \"" + newIndexName + "\"" : "ALTER INDEX \"" + index.name + "\" RENAME TO \"" + newIndexName + "\"";
                             var down = schema ? "ALTER INDEX \"" + schema + "\".\"" + newIndexName + "\" RENAME TO \"" + index.name + "\"" : "ALTER INDEX \"" + newIndexName + "\" RENAME TO \"" + index.name + "\"";
->>>>>>> a3495c7 (INIT)
                             upQueries.push(new Query(up));
                             downQueries.push(new Query(down));
                             // replace constraint name
@@ -877,13 +815,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             // build new constraint name
                             var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(newTable, foreignKey.columnNames, _this.getTablePath(foreignKey), foreignKey.referencedColumnNames);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(foreignKey.name, "\" TO \"").concat(newForeignKeyName, "\"")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(newForeignKeyName, "\" TO \"").concat(foreignKey.name, "\"")));
-=======
                             upQueries.push(new Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + foreignKey.name + "\" TO \"" + newForeignKeyName + "\""));
                             downQueries.push(new Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + newForeignKeyName + "\" TO \"" + foreignKey.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             foreignKey.name = newForeignKeyName;
                         });
@@ -902,13 +835,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         return [4 /*yield*/, this.getUserDefinedTypeName(oldTable, column)];
                     case 6:
                         oldEnumType = _d.sent();
-<<<<<<< HEAD
-                        upQueries.push(new Query("ALTER TYPE \"".concat(oldEnumType.schema, "\".\"").concat(oldEnumType.name, "\" RENAME TO ").concat(this.buildEnumName(newTable, column, false))));
-                        downQueries.push(new Query("ALTER TYPE ".concat(this.buildEnumName(newTable, column), " RENAME TO \"").concat(oldEnumType.name, "\"")));
-=======
                         upQueries.push(new Query("ALTER TYPE \"" + oldEnumType.schema + "\".\"" + oldEnumType.name + "\" RENAME TO " + this.buildEnumName(newTable, column, false)));
                         downQueries.push(new Query("ALTER TYPE " + this.buildEnumName(newTable, column) + " RENAME TO \"" + oldEnumType.name + "\""));
->>>>>>> a3495c7 (INIT)
                         _d.label = 7;
                     case 7:
                         enumColumns_2_1 = enumColumns_2.next();
@@ -963,30 +891,14 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         }
                         _b.label = 5;
                     case 5:
-<<<<<<< HEAD
-                        upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(table, column))));
-                        downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN \"").concat(column.name, "\"")));
-=======
                         upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(table, column)));
                         downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN \"" + column.name + "\""));
->>>>>>> a3495c7 (INIT)
                         // create or update primary key constraint
                         if (column.isPrimary) {
                             primaryColumns = clonedTable.primaryColumns;
                             // if table already have primary key, me must drop it and recreate again
                             if (primaryColumns.length > 0) {
                                 pkName_1 = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames_1 = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName_1, "\"")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName_1, "\" PRIMARY KEY (").concat(columnNames_1, ")")));
-                            }
-                            primaryColumns.push(column);
-                            pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-                            columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                            upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                                 columnNames_1 = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName_1 + "\""));
                                 downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName_1 + "\" PRIMARY KEY (" + columnNames_1 + ")"));
@@ -996,7 +908,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                             upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
                             downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                         }
                         columnIndex = clonedTable.indices.find(function (index) { return index.columnNames.length === 1 && index.columnNames[0] === column.name; });
                         if (columnIndex) {
@@ -1010,13 +921,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                 columnNames: [column.name]
                             });
                             clonedTable.uniques.push(uniqueConstraint);
-<<<<<<< HEAD
-                            upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(uniqueConstraint.name, "\" UNIQUE (\"").concat(column.name, "\")")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(uniqueConstraint.name, "\"")));
-=======
                             upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + uniqueConstraint.name + "\" UNIQUE (\"" + column.name + "\")"));
                             downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + uniqueConstraint.name + "\""));
->>>>>>> a3495c7 (INIT)
                         }
                         if (!(column.generatedType === "STORED" && column.asExpression)) return [3 /*break*/, 7];
                         return [4 /*yield*/, this.getTableNameWithSchema(table.name)];
@@ -1046,13 +952,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                     case 7:
                         // create column's comment
                         if (column.comment) {
-<<<<<<< HEAD
-                            upQueries.push(new Query("COMMENT ON COLUMN ".concat(this.escapePath(table), ".\"").concat(column.name, "\" IS ").concat(this.escapeComment(column.comment))));
-                            downQueries.push(new Query("COMMENT ON COLUMN ".concat(this.escapePath(table), ".\"").concat(column.name, "\" IS ").concat(this.escapeComment(column.comment))));
-=======
                             upQueries.push(new Query("COMMENT ON COLUMN " + this.escapePath(table) + ".\"" + column.name + "\" IS " + this.escapeComment(column.comment)));
                             downQueries.push(new Query("COMMENT ON COLUMN " + this.escapePath(table) + ".\"" + column.name + "\" IS " + this.escapeComment(column.comment)));
->>>>>>> a3495c7 (INIT)
                         }
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 8:
@@ -1123,11 +1024,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         oldColumn = oldTableColumnOrName instanceof TableColumn ? oldTableColumnOrName : table.columns.find(function (c) { return c.name === oldTableColumnOrName; });
                         if (!oldColumn)
-<<<<<<< HEAD
-                            throw new TypeORMError("Column \"".concat(oldTableColumnOrName, "\" was not found in the \"").concat(table.name, "\" table."));
-=======
                             throw new TypeORMError("Column \"" + oldTableColumnOrName + "\" was not found in the \"" + table.name + "\" table.");
->>>>>>> a3495c7 (INIT)
                         if (newTableColumnOrName instanceof TableColumn) {
                             newColumn = newTableColumnOrName;
                         }
@@ -1167,11 +1064,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             ? oldTableColumnOrName
                             : table.columns.find(function (column) { return column.name === oldTableColumnOrName; });
                         if (!oldColumn)
-<<<<<<< HEAD
-                            throw new TypeORMError("Column \"".concat(oldTableColumnOrName, "\" was not found in the \"").concat(table.name, "\" table."));
-=======
                             throw new TypeORMError("Column \"" + oldTableColumnOrName + "\" was not found in the \"" + table.name + "\" table.");
->>>>>>> a3495c7 (INIT)
                         if (!(oldColumn.type !== newColumn.type
                             || oldColumn.length !== newColumn.length
                             || newColumn.isArray !== oldColumn.isArray
@@ -1191,24 +1084,14 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                     case 6:
                         if (!(oldColumn.name !== newColumn.name)) return [3 /*break*/, 9];
                         // rename column
-<<<<<<< HEAD
-                        upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME COLUMN \"").concat(oldColumn.name, "\" TO \"").concat(newColumn.name, "\"")));
-                        downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME COLUMN \"").concat(newColumn.name, "\" TO \"").concat(oldColumn.name, "\"")));
-=======
                         upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " RENAME COLUMN \"" + oldColumn.name + "\" TO \"" + newColumn.name + "\""));
                         downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " RENAME COLUMN \"" + newColumn.name + "\" TO \"" + oldColumn.name + "\""));
->>>>>>> a3495c7 (INIT)
                         if (!(oldColumn.type === "enum" || oldColumn.type === "simple-enum")) return [3 /*break*/, 8];
                         return [4 /*yield*/, this.getUserDefinedTypeName(table, oldColumn)];
                     case 7:
                         oldEnumType = _b.sent();
-<<<<<<< HEAD
-                        upQueries.push(new Query("ALTER TYPE \"".concat(oldEnumType.schema, "\".\"").concat(oldEnumType.name, "\" RENAME TO ").concat(this.buildEnumName(table, newColumn, false))));
-                        downQueries.push(new Query("ALTER TYPE ".concat(this.buildEnumName(table, newColumn), " RENAME TO \"").concat(oldEnumType.name, "\"")));
-=======
                         upQueries.push(new Query("ALTER TYPE \"" + oldEnumType.schema + "\".\"" + oldEnumType.name + "\" RENAME TO " + this.buildEnumName(table, newColumn, false)));
                         downQueries.push(new Query("ALTER TYPE " + this.buildEnumName(table, newColumn) + " RENAME TO \"" + oldEnumType.name + "\""));
->>>>>>> a3495c7 (INIT)
                         _b.label = 8;
                     case 8:
                         // rename column primary key constraint
@@ -1220,13 +1103,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             columnNames.splice(columnNames.indexOf(oldColumn.name), 1);
                             columnNames.push(newColumn.name);
                             newPkName = this.connection.namingStrategy.primaryKeyName(clonedTable, columnNames);
-<<<<<<< HEAD
-                            upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME CONSTRAINT \"").concat(oldPkName, "\" TO \"").concat(newPkName, "\"")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME CONSTRAINT \"").concat(newPkName, "\" TO \"").concat(oldPkName, "\"")));
-=======
                             upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " RENAME CONSTRAINT \"" + oldPkName + "\" TO \"" + newPkName + "\""));
                             downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " RENAME CONSTRAINT \"" + newPkName + "\" TO \"" + oldPkName + "\""));
->>>>>>> a3495c7 (INIT)
                         }
                         // rename column sequence
                         if (oldColumn.isGenerated === true && newColumn.generationStrategy === "increment") {
@@ -1234,13 +1112,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             sequenceName = this.buildSequenceName(table, oldColumn.name);
                             newSequencePath = this.buildSequencePath(table, newColumn.name);
                             newSequenceName = this.buildSequenceName(table, newColumn.name);
-<<<<<<< HEAD
-                            up = "ALTER SEQUENCE ".concat(this.escapePath(sequencePath), " RENAME TO \"").concat(newSequenceName, "\"");
-                            down = "ALTER SEQUENCE ".concat(this.escapePath(newSequencePath), " RENAME TO \"").concat(sequenceName, "\"");
-=======
                             up = "ALTER SEQUENCE " + this.escapePath(sequencePath) + " RENAME TO \"" + newSequenceName + "\"";
                             down = "ALTER SEQUENCE " + this.escapePath(newSequencePath) + " RENAME TO \"" + sequenceName + "\"";
->>>>>>> a3495c7 (INIT)
                             upQueries.push(new Query(up));
                             downQueries.push(new Query(down));
                         }
@@ -1251,13 +1124,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             unique.columnNames.push(newColumn.name);
                             var newUniqueName = _this.connection.namingStrategy.uniqueConstraintName(clonedTable, unique.columnNames);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(unique.name, "\" TO \"").concat(newUniqueName, "\"")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(newUniqueName, "\" TO \"").concat(unique.name, "\"")));
-=======
                             upQueries.push(new Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + unique.name + "\" TO \"" + newUniqueName + "\""));
                             downQueries.push(new Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + newUniqueName + "\" TO \"" + unique.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             unique.name = newUniqueName;
                         });
@@ -1269,13 +1137,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             var schema = _this.driver.parseTableName(table).schema;
                             var newIndexName = _this.connection.namingStrategy.indexName(clonedTable, index.columnNames, index.where);
                             // build queries
-<<<<<<< HEAD
-                            var up = schema ? "ALTER INDEX \"".concat(schema, "\".\"").concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"") : "ALTER INDEX \"".concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"");
-                            var down = schema ? "ALTER INDEX \"".concat(schema, "\".\"").concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"") : "ALTER INDEX \"".concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"");
-=======
                             var up = schema ? "ALTER INDEX \"" + schema + "\".\"" + index.name + "\" RENAME TO \"" + newIndexName + "\"" : "ALTER INDEX \"" + index.name + "\" RENAME TO \"" + newIndexName + "\"";
                             var down = schema ? "ALTER INDEX \"" + schema + "\".\"" + newIndexName + "\" RENAME TO \"" + index.name + "\"" : "ALTER INDEX \"" + newIndexName + "\" RENAME TO \"" + index.name + "\"";
->>>>>>> a3495c7 (INIT)
                             upQueries.push(new Query(up));
                             downQueries.push(new Query(down));
                             // replace constraint name
@@ -1288,13 +1151,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             foreignKey.columnNames.push(newColumn.name);
                             var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(clonedTable, foreignKey.columnNames, _this.getTablePath(foreignKey), foreignKey.referencedColumnNames);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(foreignKey.name, "\" TO \"").concat(newForeignKeyName, "\"")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(newForeignKeyName, "\" TO \"").concat(foreignKey.name, "\"")));
-=======
                             upQueries.push(new Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + foreignKey.name + "\" TO \"" + newForeignKeyName + "\""));
                             downQueries.push(new Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + newForeignKeyName + "\" TO \"" + foreignKey.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             foreignKey.name = newForeignKeyName;
                         });
@@ -1304,13 +1162,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         _b.label = 9;
                     case 9:
                         if (newColumn.precision !== oldColumn.precision || newColumn.scale !== oldColumn.scale) {
-<<<<<<< HEAD
-                            upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" TYPE ").concat(this.driver.createFullType(newColumn))));
-                            downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" TYPE ").concat(this.driver.createFullType(oldColumn))));
-=======
                             upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" TYPE " + this.driver.createFullType(newColumn)));
                             downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" TYPE " + this.driver.createFullType(oldColumn)));
->>>>>>> a3495c7 (INIT)
                         }
                         if ((newColumn.type === "enum" || newColumn.type === "simple-enum")
                             && (oldColumn.type === "enum" || oldColumn.type === "simple-enum")
@@ -1322,13 +1175,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             oldEnumNameWithSchema_old = this.buildEnumName(table, oldColumn, true, false, true);
                             oldEnumNameWithoutSchema_old = this.buildEnumName(table, oldColumn, false, false, true);
                             // rename old ENUM
-<<<<<<< HEAD
-                            upQueries.push(new Query("ALTER TYPE ".concat(oldEnumName, " RENAME TO ").concat(oldEnumNameWithoutSchema_old)));
-                            downQueries.push(new Query("ALTER TYPE ".concat(oldEnumNameWithSchema_old, " RENAME TO ").concat(oldEnumNameWithoutSchema)));
-=======
                             upQueries.push(new Query("ALTER TYPE " + oldEnumName + " RENAME TO " + oldEnumNameWithoutSchema_old));
                             downQueries.push(new Query("ALTER TYPE " + oldEnumNameWithSchema_old + " RENAME TO " + oldEnumNameWithoutSchema));
->>>>>>> a3495c7 (INIT)
                             // create new ENUM
                             upQueries.push(this.createEnumTypeSql(table, newColumn, newEnumName));
                             downQueries.push(this.dropEnumTypeSql(table, newColumn, newEnumName));
@@ -1336,20 +1184,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             if (oldColumn.default !== null && oldColumn.default !== undefined) {
                                 // mark default as changed to prevent double update
                                 defaultValueChanged = true;
-<<<<<<< HEAD
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" DROP DEFAULT")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" SET DEFAULT ").concat(oldColumn.default)));
-                            }
-                            upType = "".concat(newEnumName).concat(arraySuffix, " USING \"").concat(newColumn.name, "\"::\"text\"::").concat(newEnumName).concat(arraySuffix);
-                            downType = "".concat(oldEnumNameWithSchema_old).concat(arraySuffix, " USING \"").concat(newColumn.name, "\"::\"text\"::").concat(oldEnumNameWithSchema_old).concat(arraySuffix);
-                            // update column to use new type
-                            upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" TYPE ").concat(upType)));
-                            downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" TYPE ").concat(downType)));
-                            // restore column default or create new one
-                            if (newColumn.default !== null && newColumn.default !== undefined) {
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT ").concat(newColumn.default)));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-=======
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + oldColumn.name + "\" DROP DEFAULT"));
                                 downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + oldColumn.name + "\" SET DEFAULT " + oldColumn.default));
                             }
@@ -1362,7 +1196,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             if (newColumn.default !== null && newColumn.default !== undefined) {
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT " + newColumn.default));
                                 downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" DROP DEFAULT"));
->>>>>>> a3495c7 (INIT)
                             }
                             // remove old ENUM
                             upQueries.push(this.dropEnumTypeSql(table, oldColumn, oldEnumNameWithSchema_old));
@@ -1370,19 +1203,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         }
                         if (oldColumn.isNullable !== newColumn.isNullable) {
                             if (newColumn.isNullable) {
-<<<<<<< HEAD
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" DROP NOT NULL")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" SET NOT NULL")));
-                            }
-                            else {
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" SET NOT NULL")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" DROP NOT NULL")));
-                            }
-                        }
-                        if (oldColumn.comment !== newColumn.comment) {
-                            upQueries.push(new Query("COMMENT ON COLUMN ".concat(this.escapePath(table), ".\"").concat(oldColumn.name, "\" IS ").concat(this.escapeComment(newColumn.comment))));
-                            downQueries.push(new Query("COMMENT ON COLUMN ".concat(this.escapePath(table), ".\"").concat(newColumn.name, "\" IS ").concat(this.escapeComment(oldColumn.comment))));
-=======
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + oldColumn.name + "\" DROP NOT NULL"));
                                 downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + oldColumn.name + "\" SET NOT NULL"));
                             }
@@ -1394,37 +1214,24 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         if (oldColumn.comment !== newColumn.comment) {
                             upQueries.push(new Query("COMMENT ON COLUMN " + this.escapePath(table) + ".\"" + oldColumn.name + "\" IS " + this.escapeComment(newColumn.comment)));
                             downQueries.push(new Query("COMMENT ON COLUMN " + this.escapePath(table) + ".\"" + newColumn.name + "\" IS " + this.escapeComment(oldColumn.comment)));
->>>>>>> a3495c7 (INIT)
                         }
                         if (newColumn.isPrimary !== oldColumn.isPrimary) {
                             primaryColumns = clonedTable.primaryColumns;
                             // if primary column state changed, we must always drop existed constraint.
                             if (primaryColumns.length > 0) {
                                 pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-=======
                                 columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
                                 downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
->>>>>>> a3495c7 (INIT)
                             }
                             if (newColumn.isPrimary === true) {
                                 primaryColumns.push(newColumn);
                                 column = clonedTable.columns.find(function (column) { return column.name === newColumn.name; });
                                 column.isPrimary = true;
                                 pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                                 columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
                                 downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                             else {
                                 primaryColumn = primaryColumns.find(function (c) { return c.name === newColumn.name; });
@@ -1434,15 +1241,9 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                 // if we have another primary keys, we must recreate constraint.
                                 if (primaryColumns.length > 0) {
                                     pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                    columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                    upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-                                    downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                                     columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                     upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
                                     downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                                 }
                             }
                         }
@@ -1453,42 +1254,22 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                     columnNames: [newColumn.name]
                                 });
                                 clonedTable.uniques.push(uniqueConstraint);
-<<<<<<< HEAD
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(uniqueConstraint.name, "\" UNIQUE (\"").concat(newColumn.name, "\")")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(uniqueConstraint.name, "\"")));
-=======
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + uniqueConstraint.name + "\" UNIQUE (\"" + newColumn.name + "\")"));
                                 downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + uniqueConstraint.name + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                             else {
                                 uniqueConstraint = clonedTable.uniques.find(function (unique) {
                                     return unique.columnNames.length === 1 && !!unique.columnNames.find(function (columnName) { return columnName === newColumn.name; });
                                 });
                                 clonedTable.uniques.splice(clonedTable.uniques.indexOf(uniqueConstraint), 1);
-<<<<<<< HEAD
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(uniqueConstraint.name, "\"")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(uniqueConstraint.name, "\" UNIQUE (\"").concat(newColumn.name, "\")")));
-=======
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + uniqueConstraint.name + "\""));
                                 downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + uniqueConstraint.name + "\" UNIQUE (\"" + newColumn.name + "\")"));
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         if (oldColumn.isGenerated !== newColumn.isGenerated) {
                             // if old column was "generated", we should clear defaults
                             if (oldColumn.isGenerated) {
                                 if (oldColumn.generationStrategy === "uuid") {
-<<<<<<< HEAD
-                                    upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" DROP DEFAULT")));
-                                    downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" SET DEFAULT ").concat(this.driver.uuidGenerator)));
-                                }
-                                else if (oldColumn.generationStrategy === "increment") {
-                                    upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                    downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT nextval('").concat(this.escapePath(this.buildSequencePath(table, newColumn)), "')")));
-                                    upQueries.push(new Query("DROP SEQUENCE ".concat(this.escapePath(this.buildSequencePath(table, newColumn)))));
-                                    downQueries.push(new Query("CREATE SEQUENCE IF NOT EXISTS ".concat(this.escapePath(this.buildSequencePath(table, newColumn)), " OWNED BY ").concat(this.escapePath(table), ".\"").concat(newColumn.name, "\"")));
-=======
                                     upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + oldColumn.name + "\" DROP DEFAULT"));
                                     downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + oldColumn.name + "\" SET DEFAULT " + this.driver.uuidGenerator));
                                 }
@@ -1497,42 +1278,20 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                     downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT nextval('" + this.escapePath(this.buildSequencePath(table, newColumn)) + "')"));
                                     upQueries.push(new Query("DROP SEQUENCE " + this.escapePath(this.buildSequencePath(table, newColumn))));
                                     downQueries.push(new Query("CREATE SEQUENCE IF NOT EXISTS " + this.escapePath(this.buildSequencePath(table, newColumn)) + " OWNED BY " + this.escapePath(table) + ".\"" + newColumn.name + "\""));
->>>>>>> a3495c7 (INIT)
                                 }
                             }
                             if (newColumn.generationStrategy === "uuid") {
                                 if (newColumn.isGenerated === true) {
-<<<<<<< HEAD
-                                    upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT ").concat(this.driver.uuidGenerator)));
-                                    downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                }
-                                else {
-                                    upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                    downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT ").concat(this.driver.uuidGenerator)));
-=======
                                     upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT " + this.driver.uuidGenerator));
                                     downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" DROP DEFAULT"));
                                 }
                                 else {
                                     upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" DROP DEFAULT"));
                                     downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT " + this.driver.uuidGenerator));
->>>>>>> a3495c7 (INIT)
                                 }
                             }
                             else if (newColumn.generationStrategy === "increment") {
                                 if (newColumn.isGenerated === true) {
-<<<<<<< HEAD
-                                    upQueries.push(new Query("CREATE SEQUENCE IF NOT EXISTS ".concat(this.escapePath(this.buildSequencePath(table, newColumn)), " OWNED BY ").concat(this.escapePath(table), ".\"").concat(newColumn.name, "\"")));
-                                    downQueries.push(new Query("DROP SEQUENCE ".concat(this.escapePath(this.buildSequencePath(table, newColumn)))));
-                                    upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT nextval('").concat(this.escapePath(this.buildSequencePath(table, newColumn)), "')")));
-                                    downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                }
-                                else {
-                                    upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                    downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT nextval('").concat(this.escapePath(this.buildSequencePath(table, newColumn)), "')")));
-                                    upQueries.push(new Query("DROP SEQUENCE ".concat(this.escapePath(this.buildSequencePath(table, newColumn)))));
-                                    downQueries.push(new Query("CREATE SEQUENCE IF NOT EXISTS ".concat(this.escapePath(this.buildSequencePath(table, newColumn)), " OWNED BY ").concat(this.escapePath(table), ".\"").concat(newColumn.name, "\"")));
-=======
                                     upQueries.push(new Query("CREATE SEQUENCE IF NOT EXISTS " + this.escapePath(this.buildSequencePath(table, newColumn)) + " OWNED BY " + this.escapePath(table) + ".\"" + newColumn.name + "\""));
                                     downQueries.push(new Query("DROP SEQUENCE " + this.escapePath(this.buildSequencePath(table, newColumn))));
                                     upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT nextval('" + this.escapePath(this.buildSequencePath(table, newColumn)) + "')"));
@@ -1543,31 +1302,12 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                     downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT nextval('" + this.escapePath(this.buildSequencePath(table, newColumn)) + "')"));
                                     upQueries.push(new Query("DROP SEQUENCE " + this.escapePath(this.buildSequencePath(table, newColumn))));
                                     downQueries.push(new Query("CREATE SEQUENCE IF NOT EXISTS " + this.escapePath(this.buildSequencePath(table, newColumn)) + " OWNED BY " + this.escapePath(table) + ".\"" + newColumn.name + "\""));
->>>>>>> a3495c7 (INIT)
                                 }
                             }
                         }
                         // the default might have changed when the enum changed
                         if (newColumn.default !== oldColumn.default && !defaultValueChanged) {
                             if (newColumn.default !== null && newColumn.default !== undefined) {
-<<<<<<< HEAD
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT ").concat(newColumn.default)));
-                                if (oldColumn.default !== null && oldColumn.default !== undefined) {
-                                    downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT ").concat(oldColumn.default)));
-                                }
-                                else {
-                                    downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                }
-                            }
-                            else if (oldColumn.default !== null && oldColumn.default !== undefined) {
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT ").concat(oldColumn.default)));
-                            }
-                        }
-                        if ((newColumn.spatialFeatureType || "").toLowerCase() !== (oldColumn.spatialFeatureType || "").toLowerCase() || newColumn.srid !== oldColumn.srid) {
-                            upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" TYPE ").concat(this.driver.createFullType(newColumn))));
-                            downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" TYPE ").concat(this.driver.createFullType(oldColumn))));
-=======
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT " + newColumn.default));
                                 if (oldColumn.default !== null && oldColumn.default !== undefined) {
                                     downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT " + oldColumn.default));
@@ -1584,7 +1324,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         if ((newColumn.spatialFeatureType || "").toLowerCase() !== (oldColumn.spatialFeatureType || "").toLowerCase() || newColumn.srid !== oldColumn.srid) {
                             upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" TYPE " + this.driver.createFullType(newColumn)));
                             downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" TYPE " + this.driver.createFullType(oldColumn)));
->>>>>>> a3495c7 (INIT)
                         }
                         if (!(newColumn.generatedType !== oldColumn.generatedType)) return [3 /*break*/, 11];
                         if (!(!newColumn.generatedType || newColumn.generatedType === "VIRTUAL")) return [3 /*break*/, 11];
@@ -1593,17 +1332,10 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         tableNameWithSchema = (_b.sent()).split('.');
                         tableName = tableNameWithSchema[1];
                         schema = tableNameWithSchema[0];
-<<<<<<< HEAD
-                        upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME COLUMN \"").concat(oldColumn.name, "\" TO \"TEMP_OLD_").concat(oldColumn.name, "\"")));
-                        upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(table, newColumn))));
-                        upQueries.push(new Query("UPDATE ".concat(this.escapePath(table), " SET \"").concat(newColumn.name, "\" = \"TEMP_OLD_").concat(oldColumn.name, "\"")));
-                        upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN \"TEMP_OLD_").concat(oldColumn.name, "\"")));
-=======
                         upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " RENAME COLUMN \"" + oldColumn.name + "\" TO \"TEMP_OLD_" + oldColumn.name + "\""));
                         upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(table, newColumn)));
                         upQueries.push(new Query("UPDATE " + this.escapePath(table) + " SET \"" + newColumn.name + "\" = \"TEMP_OLD_" + oldColumn.name + "\""));
                         upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN \"TEMP_OLD_" + oldColumn.name + "\""));
->>>>>>> a3495c7 (INIT)
                         upQueries.push(this.deleteTypeormMetadataSql({
                             database: this.driver.database,
                             schema: schema,
@@ -1612,13 +1344,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             name: oldColumn.name
                         }));
                         // However, we can't copy it back on downgrade. It needs to regenerate.
-<<<<<<< HEAD
-                        downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN \"").concat(newColumn.name, "\"")));
-                        downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(table, oldColumn))));
-=======
                         downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN \"" + newColumn.name + "\""));
                         downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(table, oldColumn)));
->>>>>>> a3495c7 (INIT)
                         downQueries.push(this.deleteTypeormMetadataSql({
                             database: this.driver.database,
                             schema: schema,
@@ -1703,40 +1430,24 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         column = columnOrName instanceof TableColumn ? columnOrName : table.findColumnByName(columnOrName);
                         if (!column)
-<<<<<<< HEAD
-                            throw new TypeORMError("Column \"".concat(columnOrName, "\" was not found in table \"").concat(table.name, "\""));
-=======
                             throw new TypeORMError("Column \"" + columnOrName + "\" was not found in table \"" + table.name + "\"");
->>>>>>> a3495c7 (INIT)
                         clonedTable = table.clone();
                         upQueries = [];
                         downQueries = [];
                         // drop primary key constraint
                         if (column.isPrimary) {
                             pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, clonedTable.primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                            columnNames = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"".concat(primaryColumn.name, "\""); }).join(", ");
-                            upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-=======
                             columnNames = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"" + primaryColumn.name + "\""; }).join(", ");
                             upQueries.push(new Query("ALTER TABLE " + this.escapePath(clonedTable) + " DROP CONSTRAINT \"" + pkName + "\""));
                             downQueries.push(new Query("ALTER TABLE " + this.escapePath(clonedTable) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
->>>>>>> a3495c7 (INIT)
                             tableColumn = clonedTable.findColumnByName(column.name);
                             tableColumn.isPrimary = false;
                             // if primary key have multiple columns, we must recreate it without dropped column
                             if (clonedTable.primaryColumns.length > 0) {
                                 pkName_2 = this.connection.namingStrategy.primaryKeyName(clonedTable, clonedTable.primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames_2 = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"".concat(primaryColumn.name, "\""); }).join(", ");
-                                upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " ADD CONSTRAINT \"").concat(pkName_2, "\" PRIMARY KEY (").concat(columnNames_2, ")")));
-                                downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " DROP CONSTRAINT \"").concat(pkName_2, "\"")));
-=======
                                 columnNames_2 = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"" + primaryColumn.name + "\""; }).join(", ");
                                 upQueries.push(new Query("ALTER TABLE " + this.escapePath(clonedTable) + " ADD CONSTRAINT \"" + pkName_2 + "\" PRIMARY KEY (" + columnNames_2 + ")"));
                                 downQueries.push(new Query("ALTER TABLE " + this.escapePath(clonedTable) + " DROP CONSTRAINT \"" + pkName_2 + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         columnIndex = clonedTable.indices.find(function (index) { return index.columnNames.length === 1 && index.columnNames[0] === column.name; });
@@ -1757,13 +1468,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             upQueries.push(this.dropUniqueConstraintSql(table, columnUnique));
                             downQueries.push(this.createUniqueConstraintSql(table, columnUnique));
                         }
-<<<<<<< HEAD
-                        upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN \"").concat(column.name, "\"")));
-                        downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(table, column))));
-=======
                         upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN \"" + column.name + "\""));
                         downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(table, column)));
->>>>>>> a3495c7 (INIT)
                         if (!(column.type === "enum" || column.type === "simple-enum")) return [3 /*break*/, 6];
                         return [4 /*yield*/, this.hasEnumType(table, column)];
                     case 4:
@@ -1772,11 +1478,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         return [4 /*yield*/, this.getUserDefinedTypeName(table, column)];
                     case 5:
                         enumType = _b.sent();
-<<<<<<< HEAD
-                        escapedEnumName = "\"".concat(enumType.schema, "\".\"").concat(enumType.name, "\"");
-=======
                         escapedEnumName = "\"" + enumType.schema + "\".\"" + enumType.name + "\"";
->>>>>>> a3495c7 (INIT)
                         upQueries.push(this.dropEnumTypeSql(table, column, escapedEnumName));
                         downQueries.push(this.createEnumTypeSql(table, column, escapedEnumName));
                         _b.label = 6;
@@ -1914,30 +1616,18 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         primaryColumns = clonedTable.primaryColumns;
                         if (primaryColumns.length > 0) {
                             pkName_3 = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                            columnNamesString_1 = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                            upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName_3, "\"")));
-                            downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName_3, "\" PRIMARY KEY (").concat(columnNamesString_1, ")")));
-=======
                             columnNamesString_1 = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                             upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName_3 + "\""));
                             downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName_3 + "\" PRIMARY KEY (" + columnNamesString_1 + ")"));
->>>>>>> a3495c7 (INIT)
                         }
                         // update columns in table.
                         clonedTable.columns
                             .filter(function (column) { return columnNames.indexOf(column.name) !== -1; })
                             .forEach(function (column) { return column.isPrimary = true; });
                         pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, columnNames);
-<<<<<<< HEAD
-                        columnNamesString = columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                        upQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNamesString, ")")));
-                        downQueries.push(new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                         columnNamesString = columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
                         upQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNamesString + ")"));
                         downQueries.push(new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
                         _b.sent();
@@ -2069,11 +1759,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         uniqueConstraint = uniqueOrName instanceof TableUnique ? uniqueOrName : table.uniques.find(function (u) { return u.name === uniqueOrName; });
                         if (!uniqueConstraint)
-<<<<<<< HEAD
-                            throw new TypeORMError("Supplied unique constraint was not found in table ".concat(table.name));
-=======
                             throw new TypeORMError("Supplied unique constraint was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropUniqueConstraintSql(table, uniqueConstraint);
                         down = this.createUniqueConstraintSql(table, uniqueConstraint);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -2195,11 +1881,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         checkConstraint = checkOrName instanceof TableCheck ? checkOrName : table.checks.find(function (c) { return c.name === checkOrName; });
                         if (!checkConstraint)
-<<<<<<< HEAD
-                            throw new TypeORMError("Supplied check constraint was not found in table ".concat(table.name));
-=======
                             throw new TypeORMError("Supplied check constraint was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropCheckConstraintSql(table, checkConstraint);
                         down = this.createCheckConstraintSql(table, checkConstraint);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -2301,11 +1983,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         exclusionConstraint = exclusionOrName instanceof TableExclusion ? exclusionOrName : table.exclusions.find(function (c) { return c.name === exclusionOrName; });
                         if (!exclusionConstraint)
-<<<<<<< HEAD
-                            throw new TypeORMError("Supplied exclusion constraint was not found in table ".concat(table.name));
-=======
                             throw new TypeORMError("Supplied exclusion constraint was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropExclusionConstraintSql(table, exclusionConstraint);
                         down = this.createExclusionConstraintSql(table, exclusionConstraint);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -2427,11 +2105,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         foreignKey = foreignKeyOrName instanceof TableForeignKey ? foreignKeyOrName : table.foreignKeys.find(function (fk) { return fk.name === foreignKeyOrName; });
                         if (!foreignKey)
-<<<<<<< HEAD
-                            throw new TypeORMError("Supplied foreign key was not found in table ".concat(table.name));
-=======
                             throw new TypeORMError("Supplied foreign key was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropForeignKeySql(table, foreignKey);
                         down = this.createForeignKeySql(table, foreignKey);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -2573,11 +2247,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         index = indexOrName instanceof TableIndex ? indexOrName : table.indices.find(function (i) { return i.name === indexOrName; });
                         if (!index)
-<<<<<<< HEAD
-                            throw new TypeORMError("Supplied index ".concat(indexOrName, " was not found in table ").concat(table.name));
-=======
                             throw new TypeORMError("Supplied index " + indexOrName + " was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropIndexSql(table, index);
                         down = this.createIndexSql(table, index);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -2636,11 +2306,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-<<<<<<< HEAD
-                    case 0: return [4 /*yield*/, this.query("TRUNCATE TABLE ".concat(this.escapePath(tableName)))];
-=======
                     case 0: return [4 /*yield*/, this.query("TRUNCATE TABLE " + this.escapePath(tableName))];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -2682,11 +2348,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                     case 3:
                         version = _a.sent();
                         selectViewDropsQuery = "SELECT 'DROP VIEW IF EXISTS \"' || schemaname || '\".\"' || viewname || '\" CASCADE;' as \"query\" " +
-<<<<<<< HEAD
-                            "FROM \"pg_views\" WHERE \"schemaname\" IN (".concat(schemaNamesString, ") AND \"viewname\" NOT IN ('geography_columns', 'geometry_columns', 'raster_columns', 'raster_overviews')");
-=======
                             ("FROM \"pg_views\" WHERE \"schemaname\" IN (" + schemaNamesString + ") AND \"viewname\" NOT IN ('geography_columns', 'geometry_columns', 'raster_columns', 'raster_overviews')");
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(selectViewDropsQuery)];
                     case 4:
                         dropViewQueries = _a.sent();
@@ -2695,11 +2357,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         _a.sent();
                         if (!VersionUtils.isGreaterOrEqual(version, "9.3")) return [3 /*break*/, 8];
                         selectMatViewDropsQuery = "SELECT 'DROP MATERIALIZED VIEW IF EXISTS \"' || schemaname || '\".\"' || matviewname || '\" CASCADE;' as \"query\" " +
-<<<<<<< HEAD
-                            "FROM \"pg_matviews\" WHERE \"schemaname\" IN (".concat(schemaNamesString, ")");
-=======
                             ("FROM \"pg_matviews\" WHERE \"schemaname\" IN (" + schemaNamesString + ")");
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(selectMatViewDropsQuery)];
                     case 6:
                         dropMatViewQueries = _a.sent();
@@ -2708,11 +2366,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         _a.sent();
                         _a.label = 8;
                     case 8:
-<<<<<<< HEAD
-                        selectTableDropsQuery = "SELECT 'DROP TABLE IF EXISTS \"' || schemaname || '\".\"' || tablename || '\" CASCADE;' as \"query\" FROM \"pg_tables\" WHERE \"schemaname\" IN (".concat(schemaNamesString, ") AND \"tablename\" NOT IN ('spatial_ref_sys')");
-=======
                         selectTableDropsQuery = "SELECT 'DROP TABLE IF EXISTS \"' || schemaname || '\".\"' || tablename || '\" CASCADE;' as \"query\" FROM \"pg_tables\" WHERE \"schemaname\" IN (" + schemaNamesString + ") AND \"tablename\" NOT IN ('spatial_ref_sys')";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(selectTableDropsQuery)];
                     case 9:
                         dropTableQueries = _a.sent();
@@ -2776,21 +2430,12 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             if (!schema) {
                                 schema = _this.driver.options.schema || currentSchema;
                             }
-<<<<<<< HEAD
-                            return "(\"t\".\"schema\" = '".concat(schema, "' AND \"t\".\"name\" = '").concat(tableName, "')");
-                        }).join(" OR ");
-                        query = "SELECT \"t\".* FROM ".concat(this.escapePath(this.getTypeormMetadataTableName()), " \"t\" ") +
-                            "INNER JOIN \"pg_catalog\".\"pg_class\" \"c\" ON \"c\".\"relname\" = \"t\".\"name\" " +
-                            "INNER JOIN \"pg_namespace\" \"n\" ON \"n\".\"oid\" = \"c\".\"relnamespace\" AND \"n\".\"nspname\" = \"t\".\"schema\" " +
-                            "WHERE \"t\".\"type\" IN ('".concat(MetadataTableType.VIEW, "', '").concat(MetadataTableType.MATERIALIZED_VIEW, "') ").concat(viewsCondition ? "AND (".concat(viewsCondition, ")") : "");
-=======
                             return "(\"t\".\"schema\" = '" + schema + "' AND \"t\".\"name\" = '" + tableName + "')";
                         }).join(" OR ");
                         query = "SELECT \"t\".* FROM " + this.escapePath(this.getTypeormMetadataTableName()) + " \"t\" " +
                             "INNER JOIN \"pg_catalog\".\"pg_class\" \"c\" ON \"c\".\"relname\" = \"t\".\"name\" " +
                             "INNER JOIN \"pg_namespace\" \"n\" ON \"n\".\"oid\" = \"c\".\"relnamespace\" AND \"n\".\"nspname\" = \"t\".\"schema\" " +
                             ("WHERE \"t\".\"type\" IN ('" + MetadataTableType.VIEW + "', '" + MetadataTableType.MATERIALIZED_VIEW + "') " + (viewsCondition ? "AND (" + viewsCondition + ")" : ""));
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(query)];
                     case 4:
                         dbViews = _a.sent();
@@ -2843,11 +2488,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             .map(function (tableName) { return _this.driver.parseTableName(tableName); })
                             .map(function (_a) {
                             var schema = _a.schema, tableName = _a.tableName;
-<<<<<<< HEAD
-                            return "(\"table_schema\" = '".concat(schema || currentSchema, "' AND \"table_name\" = '").concat(tableName, "')");
-=======
                             return "(\"table_schema\" = '" + (schema || currentSchema) + "' AND \"table_name\" = '" + tableName + "')";
->>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         tablesSql = "SELECT \"table_schema\", \"table_name\" FROM \"information_schema\".\"tables\" WHERE " + tablesCondition;
                         _f = (_e = dbTables.push).apply;
@@ -2864,11 +2505,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         }
                         columnsCondition = dbTables.map(function (_a) {
                             var table_schema = _a.table_schema, table_name = _a.table_name;
-<<<<<<< HEAD
-                            return "(\"table_schema\" = '".concat(table_schema, "' AND \"table_name\" = '").concat(table_name, "')");
-=======
                             return "(\"table_schema\" = '" + table_schema + "' AND \"table_name\" = '" + table_name + "')";
->>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         columnsSql = "SELECT columns.*, pg_catalog.col_description(('\"' || table_catalog || '\".\"' || table_schema || '\".\"' || table_name || '\"')::regclass::oid, ordinal_position) AS description, " +
                             "('\"' || \"udt_schema\" || '\".\"' || \"udt_name\" || '\"')::\"regtype\" AS \"regtype\", pg_catalog.format_type(\"col_attr\".\"atttypid\", \"col_attr\".\"atttypmod\") AS \"format_type\" " +
@@ -2883,11 +2520,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             "WHERE " + columnsCondition;
                         constraintsCondition = dbTables.map(function (_a) {
                             var table_schema = _a.table_schema, table_name = _a.table_name;
-<<<<<<< HEAD
-                            return "(\"ns\".\"nspname\" = '".concat(table_schema, "' AND \"t\".\"relname\" = '").concat(table_name, "')");
-=======
                             return "(\"ns\".\"nspname\" = '" + table_schema + "' AND \"t\".\"relname\" = '" + table_name + "')";
->>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         constraintsSql = "SELECT \"ns\".\"nspname\" AS \"table_schema\", \"t\".\"relname\" AS \"table_name\", \"cnst\".\"conname\" AS \"constraint_name\", " +
                             "pg_get_constraintdef(\"cnst\".\"oid\") AS \"expression\", " +
@@ -2896,11 +2529,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             "INNER JOIN \"pg_class\" \"t\" ON \"t\".\"oid\" = \"cnst\".\"conrelid\" " +
                             "INNER JOIN \"pg_namespace\" \"ns\" ON \"ns\".\"oid\" = \"cnst\".\"connamespace\" " +
                             "LEFT JOIN \"pg_attribute\" \"a\" ON \"a\".\"attrelid\" = \"cnst\".\"conrelid\" AND \"a\".\"attnum\" = ANY (\"cnst\".\"conkey\") " +
-<<<<<<< HEAD
-                            "WHERE \"t\".\"relkind\" IN ('r', 'p') AND (".concat(constraintsCondition, ")");
-=======
                             ("WHERE \"t\".\"relkind\" IN ('r', 'p') AND (" + constraintsCondition + ")");
->>>>>>> a3495c7 (INIT)
                         indicesSql = "SELECT \"ns\".\"nspname\" AS \"table_schema\", \"t\".\"relname\" AS \"table_name\", \"i\".\"relname\" AS \"constraint_name\", \"a\".\"attname\" AS \"column_name\", " +
                             "CASE \"ix\".\"indisunique\" WHEN 't' THEN 'TRUE' ELSE'FALSE' END AS \"is_unique\", pg_get_expr(\"ix\".\"indpred\", \"ix\".\"indrelid\") AS \"condition\", " +
                             "\"types\".\"typname\" AS \"type_name\" " +
@@ -2911,17 +2540,10 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             "INNER JOIN \"pg_class\" \"i\" ON \"i\".\"oid\" = \"ix\".\"indexrelid\" " +
                             "INNER JOIN \"pg_type\" \"types\" ON \"types\".\"oid\" = \"a\".\"atttypid\" " +
                             "LEFT JOIN \"pg_constraint\" \"cnst\" ON \"cnst\".\"conname\" = \"i\".\"relname\" " +
-<<<<<<< HEAD
-                            "WHERE \"t\".\"relkind\" IN ('r', 'p') AND \"cnst\".\"contype\" IS NULL AND (".concat(constraintsCondition, ")");
-                        foreignKeysCondition = dbTables.map(function (_a) {
-                            var table_schema = _a.table_schema, table_name = _a.table_name;
-                            return "(\"ns\".\"nspname\" = '".concat(table_schema, "' AND \"cl\".\"relname\" = '").concat(table_name, "')");
-=======
                             ("WHERE \"t\".\"relkind\" IN ('r', 'p') AND \"cnst\".\"contype\" IS NULL AND (" + constraintsCondition + ")");
                         foreignKeysCondition = dbTables.map(function (_a) {
                             var table_schema = _a.table_schema, table_name = _a.table_name;
                             return "(\"ns\".\"nspname\" = '" + table_schema + "' AND \"cl\".\"relname\" = '" + table_name + "')";
->>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         return [4 /*yield*/, this.hasSupportForPartitionedTables()];
                     case 7:
@@ -2939,17 +2561,10 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                             "FROM \"pg_class\" \"cl\" " +
                             "INNER JOIN \"pg_namespace\" \"ns\" ON \"cl\".\"relnamespace\" = \"ns\".\"oid\" " +
                             "INNER JOIN \"pg_constraint\" \"con1\" ON \"con1\".\"conrelid\" = \"cl\".\"oid\" " +
-<<<<<<< HEAD
-                            "WHERE \"con1\".\"contype\" = 'f' AND (".concat(foreignKeysCondition, ") ") +
-                            ") \"con\" " +
-                            "INNER JOIN \"pg_attribute\" \"att\" ON \"att\".\"attrelid\" = \"con\".\"confrelid\" AND \"att\".\"attnum\" = \"con\".\"child\" " +
-                            "INNER JOIN \"pg_class\" \"cl\" ON \"cl\".\"oid\" = \"con\".\"confrelid\" ".concat(isPartitionCondition) +
-=======
                             ("WHERE \"con1\".\"contype\" = 'f' AND (" + foreignKeysCondition + ") ") +
                             ") \"con\" " +
                             "INNER JOIN \"pg_attribute\" \"att\" ON \"att\".\"attrelid\" = \"con\".\"confrelid\" AND \"att\".\"attnum\" = \"con\".\"child\" " +
                             ("INNER JOIN \"pg_class\" \"cl\" ON \"cl\".\"oid\" = \"con\".\"confrelid\" " + isPartitionCondition) +
->>>>>>> a3495c7 (INIT)
                             "INNER JOIN \"pg_namespace\" \"ns\" ON \"cl\".\"relnamespace\" = \"ns\".\"oid\" " +
                             "INNER JOIN \"pg_attribute\" \"att2\" ON \"att2\".\"attrelid\" = \"con\".\"conrelid\" AND \"att2\".\"attnum\" = \"con\".\"parent\"";
                         return [4 /*yield*/, Promise.all([
@@ -3028,11 +2643,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                                                 sql = "SELECT \"e\".\"enumlabel\" AS \"value\" FROM \"pg_enum\" \"e\" " +
                                                                     "INNER JOIN \"pg_type\" \"t\" ON \"t\".\"oid\" = \"e\".\"enumtypid\" " +
                                                                     "INNER JOIN \"pg_namespace\" \"n\" ON \"n\".\"oid\" = \"t\".\"typnamespace\" " +
-<<<<<<< HEAD
-                                                                    "WHERE \"n\".\"nspname\" = '".concat(dbTable["table_schema"], "' AND \"t\".\"typname\" = '").concat(enumName || name_1, "'");
-=======
                                                                     ("WHERE \"n\".\"nspname\" = '" + dbTable["table_schema"] + "' AND \"t\".\"typname\" = '" + (enumName || name_1) + "'");
->>>>>>> a3495c7 (INIT)
                                                                 return [4 /*yield*/, this.query(sql)];
                                                             case 2:
                                                                 results = _a.sent();
@@ -3049,11 +2660,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                                                 _a.label = 3;
                                                             case 3:
                                                                 if (!(tableColumn.type === "geometry")) return [3 /*break*/, 5];
-<<<<<<< HEAD
-                                                                geometryColumnSql = "SELECT * FROM (\n                        SELECT\n                          \"f_table_schema\" \"table_schema\",\n                          \"f_table_name\" \"table_name\",\n                          \"f_geometry_column\" \"column_name\",\n                          \"srid\",\n                          \"type\"\n                        FROM \"geometry_columns\"\n                      ) AS _\n                      WHERE\n                          \"column_name\" = '".concat(dbColumn["column_name"], "' AND\n                          \"table_schema\" = '").concat(dbColumn["table_schema"], "' AND\n                          \"table_name\" = '").concat(dbColumn["table_name"], "'");
-=======
                                                                 geometryColumnSql = "SELECT * FROM (\n                        SELECT\n                          \"f_table_schema\" \"table_schema\",\n                          \"f_table_name\" \"table_name\",\n                          \"f_geometry_column\" \"column_name\",\n                          \"srid\",\n                          \"type\"\n                        FROM \"geometry_columns\"\n                      ) AS _\n                      WHERE\n                          \"column_name\" = '" + dbColumn["column_name"] + "' AND\n                          \"table_schema\" = '" + dbColumn["table_schema"] + "' AND\n                          \"table_name\" = '" + dbColumn["table_name"] + "'";
->>>>>>> a3495c7 (INIT)
                                                                 return [4 /*yield*/, this.query(geometryColumnSql)];
                                                             case 4:
                                                                 results = _a.sent();
@@ -3064,11 +2671,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                                                 _a.label = 5;
                                                             case 5:
                                                                 if (!(tableColumn.type === "geography")) return [3 /*break*/, 7];
-<<<<<<< HEAD
-                                                                geographyColumnSql = "SELECT * FROM (\n                        SELECT\n                          \"f_table_schema\" \"table_schema\",\n                          \"f_table_name\" \"table_name\",\n                          \"f_geography_column\" \"column_name\",\n                          \"srid\",\n                          \"type\"\n                        FROM \"geography_columns\"\n                      ) AS _\n                      WHERE\n                          \"column_name\" = '".concat(dbColumn["column_name"], "' AND\n                          \"table_schema\" = '").concat(dbColumn["table_schema"], "' AND\n                          \"table_name\" = '").concat(dbColumn["table_name"], "'");
-=======
                                                                 geographyColumnSql = "SELECT * FROM (\n                        SELECT\n                          \"f_table_schema\" \"table_schema\",\n                          \"f_table_name\" \"table_name\",\n                          \"f_geography_column\" \"column_name\",\n                          \"srid\",\n                          \"type\"\n                        FROM \"geography_columns\"\n                      ) AS _\n                      WHERE\n                          \"column_name\" = '" + dbColumn["column_name"] + "' AND\n                          \"table_schema\" = '" + dbColumn["table_schema"] + "' AND\n                          \"table_name\" = '" + dbColumn["table_name"] + "'";
->>>>>>> a3495c7 (INIT)
                                                                 return [4 /*yield*/, this.query(geographyColumnSql)];
                                                             case 6:
                                                                 results = _a.sent();
@@ -3106,13 +2709,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                                                     tableColumn.generatedIdentity = dbColumn.identity_generation;
                                                                 }
                                                                 else if (dbColumn["column_default"] !== null && dbColumn["column_default"] !== undefined) {
-<<<<<<< HEAD
-                                                                    serialDefaultName = "nextval('".concat(this.buildSequenceName(table, dbColumn["column_name"]), "'::regclass)");
-                                                                    serialDefaultPath = "nextval('".concat(this.buildSequencePath(table, dbColumn["column_name"]), "'::regclass)");
-=======
                                                                     serialDefaultName = "nextval('" + this.buildSequenceName(table, dbColumn["column_name"]) + "'::regclass)";
                                                                     serialDefaultPath = "nextval('" + this.buildSequencePath(table, dbColumn["column_name"]) + "'::regclass)";
->>>>>>> a3495c7 (INIT)
                                                                     defaultWithoutQuotes = dbColumn["column_default"].replace(/"/g, "");
                                                                     if (defaultWithoutQuotes === serialDefaultName || defaultWithoutQuotes === serialDefaultPath) {
                                                                         tableColumn.isGenerated = true;
@@ -3133,21 +2731,12 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                                                                 if (!(dbColumn["is_generated"] === "ALWAYS" && dbColumn["generation_expression"])) return [3 /*break*/, 9];
                                                                 // In postgres there is no VIRTUAL generated column type
                                                                 tableColumn.generatedType = "STORED";
-<<<<<<< HEAD
-                                                                asExpressionQuery = "SELECT * FROM \"".concat(this.connection.metadataTableName, "\" ")
-                                                                    + " WHERE \"table\" = '".concat(dbTable["table_name"], "'")
-                                                                    + " AND \"name\" = '".concat(tableColumn.name, "'")
-                                                                    + " AND \"schema\" = '".concat(dbTable["table_schema"], "'")
-                                                                    + " AND \"database\" = '".concat(this.driver.database, "'")
-                                                                    + " AND \"type\" = '".concat(MetadataTableType.GENERATED_COLUMN, "'");
-=======
                                                                 asExpressionQuery = "SELECT * FROM \"" + this.connection.metadataTableName + "\" "
                                                                     + (" WHERE \"table\" = '" + dbTable["table_name"] + "'")
                                                                     + (" AND \"name\" = '" + tableColumn.name + "'")
                                                                     + (" AND \"schema\" = '" + dbTable["table_schema"] + "'")
                                                                     + (" AND \"database\" = '" + this.driver.database + "'")
                                                                     + (" AND \"type\" = '" + MetadataTableType.GENERATED_COLUMN + "'");
->>>>>>> a3495c7 (INIT)
                                                                 return [4 /*yield*/, this.query(asExpressionQuery)];
                                                             case 8:
                                                                 results = _a.sent();
@@ -3262,11 +2851,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
     PostgresQueryRunner.prototype.createTableSql = function (table, createForeignKeys) {
         var _this = this;
         var columnDefinitions = table.columns.map(function (column) { return _this.buildCreateColumnSql(table, column); }).join(", ");
-<<<<<<< HEAD
-        var sql = "CREATE TABLE ".concat(this.escapePath(table), " (").concat(columnDefinitions);
-=======
         var sql = "CREATE TABLE " + this.escapePath(table) + " (" + columnDefinitions;
->>>>>>> a3495c7 (INIT)
         table.columns
             .filter(function (column) { return column.isUnique; })
             .forEach(function (column) {
@@ -3280,15 +2865,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
         if (table.uniques.length > 0) {
             var uniquesSql = table.uniques.map(function (unique) {
                 var uniqueName = unique.name ? unique.name : _this.connection.namingStrategy.uniqueConstraintName(table, unique.columnNames);
-<<<<<<< HEAD
-                var columnNames = unique.columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                var constraint = "CONSTRAINT \"".concat(uniqueName, "\" UNIQUE (").concat(columnNames, ")");
-                if (unique.deferrable)
-                    constraint += " DEFERRABLE ".concat(unique.deferrable);
-                return constraint;
-            }).join(", ");
-            sql += ", ".concat(uniquesSql);
-=======
                 var columnNames = unique.columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
                 var constraint = "CONSTRAINT \"" + uniqueName + "\" UNIQUE (" + columnNames + ")";
                 if (unique.deferrable)
@@ -3296,46 +2872,17 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                 return constraint;
             }).join(", ");
             sql += ", " + uniquesSql;
->>>>>>> a3495c7 (INIT)
         }
         if (table.checks.length > 0) {
             var checksSql = table.checks.map(function (check) {
                 var checkName = check.name ? check.name : _this.connection.namingStrategy.checkConstraintName(table, check.expression);
-<<<<<<< HEAD
-                return "CONSTRAINT \"".concat(checkName, "\" CHECK (").concat(check.expression, ")");
-            }).join(", ");
-            sql += ", ".concat(checksSql);
-=======
                 return "CONSTRAINT \"" + checkName + "\" CHECK (" + check.expression + ")";
             }).join(", ");
             sql += ", " + checksSql;
->>>>>>> a3495c7 (INIT)
         }
         if (table.exclusions.length > 0) {
             var exclusionsSql = table.exclusions.map(function (exclusion) {
                 var exclusionName = exclusion.name ? exclusion.name : _this.connection.namingStrategy.exclusionConstraintName(table, exclusion.expression);
-<<<<<<< HEAD
-                return "CONSTRAINT \"".concat(exclusionName, "\" EXCLUDE ").concat(exclusion.expression);
-            }).join(", ");
-            sql += ", ".concat(exclusionsSql);
-        }
-        if (table.foreignKeys.length > 0 && createForeignKeys) {
-            var foreignKeysSql = table.foreignKeys.map(function (fk) {
-                var columnNames = fk.columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                if (!fk.name)
-                    fk.name = _this.connection.namingStrategy.foreignKeyName(table, fk.columnNames, _this.getTablePath(fk), fk.referencedColumnNames);
-                var referencedColumnNames = fk.referencedColumnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                var constraint = "CONSTRAINT \"".concat(fk.name, "\" FOREIGN KEY (").concat(columnNames, ") REFERENCES ").concat(_this.escapePath(_this.getTablePath(fk)), " (").concat(referencedColumnNames, ")");
-                if (fk.onDelete)
-                    constraint += " ON DELETE ".concat(fk.onDelete);
-                if (fk.onUpdate)
-                    constraint += " ON UPDATE ".concat(fk.onUpdate);
-                if (fk.deferrable)
-                    constraint += " DEFERRABLE ".concat(fk.deferrable);
-                return constraint;
-            }).join(", ");
-            sql += ", ".concat(foreignKeysSql);
-=======
                 return "CONSTRAINT \"" + exclusionName + "\" EXCLUDE " + exclusion.expression;
             }).join(", ");
             sql += ", " + exclusionsSql;
@@ -3356,27 +2903,17 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                 return constraint;
             }).join(", ");
             sql += ", " + foreignKeysSql;
->>>>>>> a3495c7 (INIT)
         }
         var primaryColumns = table.columns.filter(function (column) { return column.isPrimary; });
         if (primaryColumns.length > 0) {
             var primaryKeyName = this.connection.namingStrategy.primaryKeyName(table, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-            var columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-            sql += ", CONSTRAINT \"".concat(primaryKeyName, "\" PRIMARY KEY (").concat(columnNames, ")");
-=======
             var columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
             sql += ", CONSTRAINT \"" + primaryKeyName + "\" PRIMARY KEY (" + columnNames + ")";
->>>>>>> a3495c7 (INIT)
         }
         sql += ")";
         table.columns
             .filter(function (it) { return it.comment; })
-<<<<<<< HEAD
-            .forEach(function (it) { return sql += "; COMMENT ON COLUMN ".concat(_this.escapePath(table), ".\"").concat(it.name, "\" IS ").concat(_this.escapeComment(it.comment)); });
-=======
             .forEach(function (it) { return sql += "; COMMENT ON COLUMN " + _this.escapePath(table) + ".\"" + it.name + "\" IS " + _this.escapeComment(it.comment); });
->>>>>>> a3495c7 (INIT)
         return new Query(sql);
     };
     /**
@@ -3399,27 +2936,16 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
      * Builds drop table sql.
      */
     PostgresQueryRunner.prototype.dropTableSql = function (tableOrPath) {
-<<<<<<< HEAD
-        return new Query("DROP TABLE ".concat(this.escapePath(tableOrPath)));
-=======
         return new Query("DROP TABLE " + this.escapePath(tableOrPath));
->>>>>>> a3495c7 (INIT)
     };
     PostgresQueryRunner.prototype.createViewSql = function (view) {
         var materializedClause = view.materialized ? "MATERIALIZED " : "";
         var viewName = this.escapePath(view);
         if (typeof view.expression === "string") {
-<<<<<<< HEAD
-            return new Query("CREATE ".concat(materializedClause, "VIEW ").concat(viewName, " AS ").concat(view.expression));
-        }
-        else {
-            return new Query("CREATE ".concat(materializedClause, "VIEW ").concat(viewName, " AS ").concat(view.expression(this.connection).getQuery()));
-=======
             return new Query("CREATE " + materializedClause + "VIEW " + viewName + " AS " + view.expression);
         }
         else {
             return new Query("CREATE " + materializedClause + "VIEW " + viewName + " AS " + view.expression(this.connection).getQuery());
->>>>>>> a3495c7 (INIT)
         }
     };
     PostgresQueryRunner.prototype.insertViewDefinitionSql = function (view) {
@@ -3446,11 +2972,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
      */
     PostgresQueryRunner.prototype.dropViewSql = function (view) {
         var materializedClause = view.materialized ? "MATERIALIZED " : "";
-<<<<<<< HEAD
-        return new Query("DROP ".concat(materializedClause, "VIEW ").concat(this.escapePath(view)));
-=======
         return new Query("DROP " + materializedClause + "VIEW " + this.escapePath(view));
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds remove view sql.
@@ -3486,11 +3008,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         selectDropsQuery = "SELECT 'DROP TYPE IF EXISTS \"' || n.nspname || '\".\"' || t.typname || '\" CASCADE;' as \"query\" FROM \"pg_type\" \"t\" " +
                             "INNER JOIN \"pg_enum\" \"e\" ON \"e\".\"enumtypid\" = \"t\".\"oid\" " +
                             "INNER JOIN \"pg_namespace\" \"n\" ON \"n\".\"oid\" = \"t\".\"typnamespace\" " +
-<<<<<<< HEAD
-                            "WHERE \"n\".\"nspname\" IN (".concat(schemaNames, ") GROUP BY \"n\".\"nspname\", \"t\".\"typname\"");
-=======
                             ("WHERE \"n\".\"nspname\" IN (" + schemaNames + ") GROUP BY \"n\".\"nspname\", \"t\".\"typname\"");
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(selectDropsQuery)];
                     case 1:
                         dropQueries = _a.sent();
@@ -3521,11 +3039,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         enumName = this.buildEnumName(table, column, false, true);
                         sql = "SELECT \"n\".\"nspname\", \"t\".\"typname\" FROM \"pg_type\" \"t\" " +
                             "INNER JOIN \"pg_namespace\" \"n\" ON \"n\".\"oid\" = \"t\".\"typnamespace\" " +
-<<<<<<< HEAD
-                            "WHERE \"n\".\"nspname\" = '".concat(schema, "' AND \"t\".\"typname\" = '").concat(enumName, "'");
-=======
                             ("WHERE \"n\".\"nspname\" = '" + schema + "' AND \"t\".\"typname\" = '" + enumName + "'");
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(sql)];
                     case 3:
                         result = _a.sent();
@@ -3540,13 +3054,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
     PostgresQueryRunner.prototype.createEnumTypeSql = function (table, column, enumName) {
         if (!enumName)
             enumName = this.buildEnumName(table, column);
-<<<<<<< HEAD
-        var enumValues = column.enum.map(function (value) { return "'".concat(value.replace("'", "''"), "'"); }).join(", ");
-        return new Query("CREATE TYPE ".concat(enumName, " AS ENUM(").concat(enumValues, ")"));
-=======
         var enumValues = column.enum.map(function (value) { return "'" + value.replace("'", "''") + "'"; }).join(", ");
         return new Query("CREATE TYPE " + enumName + " AS ENUM(" + enumValues + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create ENUM type sql.
@@ -3554,23 +3063,14 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
     PostgresQueryRunner.prototype.dropEnumTypeSql = function (table, column, enumName) {
         if (!enumName)
             enumName = this.buildEnumName(table, column);
-<<<<<<< HEAD
-        return new Query("DROP TYPE ".concat(enumName));
-=======
         return new Query("DROP TYPE " + enumName);
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create index sql.
      */
     PostgresQueryRunner.prototype.createIndexSql = function (table, index) {
-<<<<<<< HEAD
-        var columns = index.columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-        return new Query("CREATE ".concat(index.isUnique ? "UNIQUE " : "", "INDEX \"").concat(index.name, "\" ON ").concat(this.escapePath(table), " ").concat(index.isSpatial ? "USING GiST " : "", "(").concat(columns, ") ").concat(index.where ? "WHERE " + index.where : ""));
-=======
         var columns = index.columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
         return new Query("CREATE " + (index.isUnique ? "UNIQUE " : "") + "INDEX \"" + index.name + "\" ON " + this.escapePath(table) + " " + (index.isSpatial ? "USING GiST " : "") + "(" + columns + ") " + (index.where ? "WHERE " + index.where : ""));
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop index sql.
@@ -3578,24 +3078,15 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
     PostgresQueryRunner.prototype.dropIndexSql = function (table, indexOrName) {
         var indexName = indexOrName instanceof TableIndex ? indexOrName.name : indexOrName;
         var schema = this.driver.parseTableName(table).schema;
-<<<<<<< HEAD
-        return schema ? new Query("DROP INDEX \"".concat(schema, "\".\"").concat(indexName, "\"")) : new Query("DROP INDEX \"".concat(indexName, "\""));
-=======
         return schema ? new Query("DROP INDEX \"" + schema + "\".\"" + indexName + "\"") : new Query("DROP INDEX \"" + indexName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create primary key sql.
      */
     PostgresQueryRunner.prototype.createPrimaryKeySql = function (table, columnNames) {
         var primaryKeyName = this.connection.namingStrategy.primaryKeyName(table, columnNames);
-<<<<<<< HEAD
-        var columnNamesString = columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-        return new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(primaryKeyName, "\" PRIMARY KEY (").concat(columnNamesString, ")"));
-=======
         var columnNamesString = columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
         return new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + primaryKeyName + "\" PRIMARY KEY (" + columnNamesString + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop primary key sql.
@@ -3603,26 +3094,16 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
     PostgresQueryRunner.prototype.dropPrimaryKeySql = function (table) {
         var columnNames = table.primaryColumns.map(function (column) { return column.name; });
         var primaryKeyName = this.connection.namingStrategy.primaryKeyName(table, columnNames);
-<<<<<<< HEAD
-        return new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(primaryKeyName, "\""));
-=======
         return new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + primaryKeyName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create unique constraint sql.
      */
     PostgresQueryRunner.prototype.createUniqueConstraintSql = function (table, uniqueConstraint) {
         var columnNames = uniqueConstraint.columnNames.map(function (column) { return "\"" + column + "\""; }).join(", ");
-<<<<<<< HEAD
-        var sql = "ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(uniqueConstraint.name, "\" UNIQUE (").concat(columnNames, ")");
-        if (uniqueConstraint.deferrable)
-            sql += " DEFERRABLE ".concat(uniqueConstraint.deferrable);
-=======
         var sql = "ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + uniqueConstraint.name + "\" UNIQUE (" + columnNames + ")";
         if (uniqueConstraint.deferrable)
             sql += " DEFERRABLE " + uniqueConstraint.deferrable;
->>>>>>> a3495c7 (INIT)
         return new Query(sql);
     };
     /**
@@ -3630,53 +3111,33 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
      */
     PostgresQueryRunner.prototype.dropUniqueConstraintSql = function (table, uniqueOrName) {
         var uniqueName = uniqueOrName instanceof TableUnique ? uniqueOrName.name : uniqueOrName;
-<<<<<<< HEAD
-        return new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(uniqueName, "\""));
-=======
         return new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + uniqueName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create check constraint sql.
      */
     PostgresQueryRunner.prototype.createCheckConstraintSql = function (table, checkConstraint) {
-<<<<<<< HEAD
-        return new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(checkConstraint.name, "\" CHECK (").concat(checkConstraint.expression, ")"));
-=======
         return new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + checkConstraint.name + "\" CHECK (" + checkConstraint.expression + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop check constraint sql.
      */
     PostgresQueryRunner.prototype.dropCheckConstraintSql = function (table, checkOrName) {
         var checkName = checkOrName instanceof TableCheck ? checkOrName.name : checkOrName;
-<<<<<<< HEAD
-        return new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(checkName, "\""));
-=======
         return new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + checkName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create exclusion constraint sql.
      */
     PostgresQueryRunner.prototype.createExclusionConstraintSql = function (table, exclusionConstraint) {
-<<<<<<< HEAD
-        return new Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(exclusionConstraint.name, "\" EXCLUDE ").concat(exclusionConstraint.expression));
-=======
         return new Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + exclusionConstraint.name + "\" EXCLUDE " + exclusionConstraint.expression);
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop exclusion constraint sql.
      */
     PostgresQueryRunner.prototype.dropExclusionConstraintSql = function (table, exclusionOrName) {
         var exclusionName = exclusionOrName instanceof TableExclusion ? exclusionOrName.name : exclusionOrName;
-<<<<<<< HEAD
-        return new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(exclusionName, "\""));
-=======
         return new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + exclusionName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create foreign key sql.
@@ -3684,16 +3145,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
     PostgresQueryRunner.prototype.createForeignKeySql = function (table, foreignKey) {
         var columnNames = foreignKey.columnNames.map(function (column) { return "\"" + column + "\""; }).join(", ");
         var referencedColumnNames = foreignKey.referencedColumnNames.map(function (column) { return "\"" + column + "\""; }).join(",");
-<<<<<<< HEAD
-        var sql = "ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(foreignKey.name, "\" FOREIGN KEY (").concat(columnNames, ") ") +
-            "REFERENCES ".concat(this.escapePath(this.getTablePath(foreignKey)), "(").concat(referencedColumnNames, ")");
-        if (foreignKey.onDelete)
-            sql += " ON DELETE ".concat(foreignKey.onDelete);
-        if (foreignKey.onUpdate)
-            sql += " ON UPDATE ".concat(foreignKey.onUpdate);
-        if (foreignKey.deferrable)
-            sql += " DEFERRABLE ".concat(foreignKey.deferrable);
-=======
         var sql = "ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + foreignKey.name + "\" FOREIGN KEY (" + columnNames + ") " +
             ("REFERENCES " + this.escapePath(this.getTablePath(foreignKey)) + "(" + referencedColumnNames + ")");
         if (foreignKey.onDelete)
@@ -3702,7 +3153,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
             sql += " ON UPDATE " + foreignKey.onUpdate;
         if (foreignKey.deferrable)
             sql += " DEFERRABLE " + foreignKey.deferrable;
->>>>>>> a3495c7 (INIT)
         return new Query(sql);
     };
     /**
@@ -3710,11 +3160,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
      */
     PostgresQueryRunner.prototype.dropForeignKeySql = function (table, foreignKeyOrName) {
         var foreignKeyName = foreignKeyOrName instanceof TableForeignKey ? foreignKeyOrName.name : foreignKeyOrName;
-<<<<<<< HEAD
-        return new Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(foreignKeyName, "\""));
-=======
         return new Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + foreignKeyName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds sequence name from given table and column.
@@ -3722,27 +3168,16 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
     PostgresQueryRunner.prototype.buildSequenceName = function (table, columnOrName) {
         var tableName = this.driver.parseTableName(table).tableName;
         var columnName = columnOrName instanceof TableColumn ? columnOrName.name : columnOrName;
-<<<<<<< HEAD
-        var seqName = "".concat(tableName, "_").concat(columnName, "_seq");
-        if (seqName.length > this.connection.driver.maxAliasLength) {
-            // note doesn't yet handle corner cases where .length differs from number of UTF-8 bytes
-            seqName = "".concat(tableName.substring(0, 29), "_").concat(columnName.substring(0, Math.max(29, 63 - (table.name.length) - 5)), "_seq");
-=======
         var seqName = tableName + "_" + columnName + "_seq";
         if (seqName.length > this.connection.driver.maxAliasLength) {
             // note doesn't yet handle corner cases where .length differs from number of UTF-8 bytes
             seqName = tableName.substring(0, 29) + "_" + columnName.substring(0, Math.max(29, 63 - (table.name.length) - 5)) + "_seq";
->>>>>>> a3495c7 (INIT)
         }
         return seqName;
     };
     PostgresQueryRunner.prototype.buildSequencePath = function (table, columnOrName) {
         var schema = this.driver.parseTableName(table).schema;
-<<<<<<< HEAD
-        return schema ? "".concat(schema, ".").concat(this.buildSequenceName(table, columnOrName)) : this.buildSequenceName(table, columnOrName);
-=======
         return schema ? schema + "." + this.buildSequenceName(table, columnOrName) : this.buildSequenceName(table, columnOrName);
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds ENUM type name from given table and column.
@@ -3750,15 +3185,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
     PostgresQueryRunner.prototype.buildEnumName = function (table, column, withSchema, disableEscape, toOld) {
         if (withSchema === void 0) { withSchema = true; }
         var _a = this.driver.parseTableName(table), schema = _a.schema, tableName = _a.tableName;
-<<<<<<< HEAD
-        var enumName = column.enumName ? column.enumName : "".concat(tableName, "_").concat(column.name.toLowerCase(), "_enum");
-        if (schema && withSchema)
-            enumName = "".concat(schema, ".").concat(enumName);
-        if (toOld)
-            enumName = enumName + "_old";
-        return enumName.split(".").map(function (i) {
-            return disableEscape ? i : "\"".concat(i, "\"");
-=======
         var enumName = column.enumName ? column.enumName : tableName + "_" + column.name.toLowerCase() + "_enum";
         if (schema && withSchema)
             enumName = schema + "." + enumName;
@@ -3766,7 +3192,6 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
             enumName = enumName + "_old";
         return enumName.split(".").map(function (i) {
             return disableEscape ? i : "\"" + i + "\"";
->>>>>>> a3495c7 (INIT)
         }).join(".");
     };
     PostgresQueryRunner.prototype.getUserDefinedTypeName = function (table, column) {
@@ -3782,11 +3207,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                         schema = _b.sent();
                         _b.label = 2;
                     case 2: return [4 /*yield*/, this.query("SELECT \"udt_schema\", \"udt_name\" " +
-<<<<<<< HEAD
-                            "FROM \"information_schema\".\"columns\" WHERE \"table_schema\" = '".concat(schema, "' AND \"table_name\" = '").concat(name, "' AND \"column_name\"='").concat(column.name, "'"))];
-=======
                             ("FROM \"information_schema\".\"columns\" WHERE \"table_schema\" = '" + schema + "' AND \"table_name\" = '" + name + "' AND \"column_name\"='" + column.name + "'"))];
->>>>>>> a3495c7 (INIT)
                     case 3:
                         result = _b.sent();
                         udtName = result[0]["udt_name"];
@@ -3811,11 +3232,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
         comment = comment
             .replace(/'/g, "''")
             .replace(/\u0000/g, ""); // Null bytes aren't allowed in comments
-<<<<<<< HEAD
-        return "'".concat(comment, "'");
-=======
         return "'" + comment + "'";
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Escapes given table or view path.
@@ -3823,15 +3240,9 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
     PostgresQueryRunner.prototype.escapePath = function (target) {
         var _a = this.driver.parseTableName(target), schema = _a.schema, tableName = _a.tableName;
         if (schema && schema !== this.driver.searchSchema) {
-<<<<<<< HEAD
-            return "\"".concat(schema, "\".\"").concat(tableName, "\"");
-        }
-        return "\"".concat(tableName, "\"");
-=======
             return "\"" + schema + "\".\"" + tableName + "\"";
         }
         return "\"" + tableName + "\"";
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Get the table name with table schema
@@ -3849,13 +3260,8 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
                     case 1:
                         schemaResult = _a.sent();
                         schema = schemaResult[0]["current_schema"];
-<<<<<<< HEAD
-                        return [2 /*return*/, "".concat(schema, ".").concat(tableName)];
-                    case 2: return [2 /*return*/, "".concat(tableName.split(".")[0], ".").concat(tableName.split(".")[1])];
-=======
                         return [2 /*return*/, schema + "." + tableName];
                     case 2: return [2 /*return*/, tableName.split(".")[0] + "." + tableName.split(".")[1]];
->>>>>>> a3495c7 (INIT)
                 }
             });
         });
@@ -3868,11 +3274,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
         if (column.isGenerated === true && column.generationStrategy !== "uuid") {
             if (column.generationStrategy === "identity") { // Postgres 10+ Identity generated column
                 var generatedIdentityOrDefault = column.generatedIdentity || "BY DEFAULT";
-<<<<<<< HEAD
-                c += " ".concat(column.type, " GENERATED ").concat(generatedIdentityOrDefault, " AS IDENTITY");
-=======
                 c += " " + column.type + " GENERATED " + generatedIdentityOrDefault + " AS IDENTITY";
->>>>>>> a3495c7 (INIT)
             }
             else { // classic SERIAL primary column
                 if (column.type === "integer" || column.type === "int" || column.type === "int4")
@@ -3894,11 +3296,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
         // CHARACTER SET, COLLATE, NOT NULL and DEFAULT do not exist on generated (virtual) columns
         // Also, postgres only supports the stored generated column type
         if (column.generatedType === "STORED" && column.asExpression) {
-<<<<<<< HEAD
-            c += " GENERATED ALWAYS AS (".concat(column.asExpression, ") STORED");
-=======
             c += " GENERATED ALWAYS AS (" + column.asExpression + ") STORED";
->>>>>>> a3495c7 (INIT)
         }
         else {
             if (column.charset)
@@ -3910,11 +3308,7 @@ var PostgresQueryRunner = /** @class */ (function (_super) {
             if (column.default !== undefined && column.default !== null)
                 c += " DEFAULT " + column.default;
             if (column.isGenerated && column.generationStrategy === "uuid" && !column.default)
-<<<<<<< HEAD
-                c += " DEFAULT ".concat(this.driver.uuidGenerator);
-=======
                 c += " DEFAULT " + this.driver.uuidGenerator;
->>>>>>> a3495c7 (INIT)
         }
         return c;
     };

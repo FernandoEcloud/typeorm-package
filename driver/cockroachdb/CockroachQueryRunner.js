@@ -353,11 +353,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
             var result;
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
-<<<<<<< HEAD
-                    case 0: return [4 /*yield*/, this.query("SELECT * FROM \"pg_database\" WHERE \"datname\" = '".concat(database, "'"))];
-=======
                     case 0: return [4 /*yield*/, this.query("SELECT * FROM \"pg_database\" WHERE \"datname\" = '" + database + "'")];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result.length ? true : false];
@@ -389,11 +385,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
             var result;
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
-<<<<<<< HEAD
-                    case 0: return [4 /*yield*/, this.query("SELECT * FROM \"information_schema\".\"schemata\" WHERE \"schema_name\" = '".concat(schema, "'"))];
-=======
                     case 0: return [4 /*yield*/, this.query("SELECT * FROM \"information_schema\".\"schemata\" WHERE \"schema_name\" = '" + schema + "'")];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result.length ? true : false];
@@ -434,11 +426,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         _a.schema = _b.sent();
                         _b.label = 2;
                     case 2:
-<<<<<<< HEAD
-                        sql = "SELECT * FROM \"information_schema\".\"tables\" WHERE \"table_schema\" = '".concat(parsedTableName.schema, "' AND \"table_name\" = '").concat(parsedTableName.tableName, "'");
-=======
                         sql = "SELECT * FROM \"information_schema\".\"tables\" WHERE \"table_schema\" = '" + parsedTableName.schema + "' AND \"table_name\" = '" + parsedTableName.tableName + "'";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(sql)];
                     case 3:
                         result = _b.sent();
@@ -464,11 +452,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         _a.schema = _b.sent();
                         _b.label = 2;
                     case 2:
-<<<<<<< HEAD
-                        sql = "SELECT * FROM \"information_schema\".\"columns\" WHERE \"table_schema\" = '".concat(parsedTableName.schema, "' AND \"table_name\" = '").concat(parsedTableName.tableName, "' AND \"column_name\" = '").concat(columnName, "'");
-=======
                         sql = "SELECT * FROM \"information_schema\".\"columns\" WHERE \"table_schema\" = '" + parsedTableName.schema + "' AND \"table_name\" = '" + parsedTableName.tableName + "' AND \"column_name\" = '" + columnName + "'";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(sql)];
                     case 3:
                         result = _b.sent();
@@ -486,13 +470,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-<<<<<<< HEAD
-                        up = "CREATE DATABASE ".concat(ifNotExist ? "IF NOT EXISTS " : "", " \"").concat(database, "\"");
-                        down = "DROP DATABASE \"".concat(database, "\"");
-=======
                         up = "CREATE DATABASE " + (ifNotExist ? "IF NOT EXISTS " : "") + " \"" + database + "\"";
                         down = "DROP DATABASE \"" + database + "\"";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query_1.Query(up), new Query_1.Query(down))];
                     case 1:
                         _a.sent();
@@ -510,13 +489,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-<<<<<<< HEAD
-                        up = "DROP DATABASE ".concat(ifExist ? "IF EXISTS " : "", " \"").concat(database, "\"");
-                        down = "CREATE DATABASE \"".concat(database, "\"");
-=======
                         up = "DROP DATABASE " + (ifExist ? "IF EXISTS " : "") + " \"" + database + "\"";
                         down = "CREATE DATABASE \"" + database + "\"";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query_1.Query(up), new Query_1.Query(down))];
                     case 1:
                         _a.sent();
@@ -535,13 +509,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         schema = schemaPath.indexOf(".") === -1 ? schemaPath : schemaPath.split(".")[1];
-<<<<<<< HEAD
-                        up = ifNotExist ? "CREATE SCHEMA IF NOT EXISTS \"".concat(schema, "\"") : "CREATE SCHEMA \"".concat(schema, "\"");
-                        down = "DROP SCHEMA \"".concat(schema, "\" CASCADE");
-=======
                         up = ifNotExist ? "CREATE SCHEMA IF NOT EXISTS \"" + schema + "\"" : "CREATE SCHEMA \"" + schema + "\"";
                         down = "DROP SCHEMA \"" + schema + "\" CASCADE";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query_1.Query(up), new Query_1.Query(down))];
                     case 1:
                         _a.sent();
@@ -560,13 +529,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         schema = schemaPath.indexOf(".") === -1 ? schemaPath : schemaPath.split(".")[1];
-<<<<<<< HEAD
-                        up = ifExist ? "DROP SCHEMA IF EXISTS \"".concat(schema, "\" ").concat(isCascade ? "CASCADE" : "") : "DROP SCHEMA \"".concat(schema, "\" ").concat(isCascade ? "CASCADE" : "");
-                        down = "CREATE SCHEMA \"".concat(schema, "\"");
-=======
                         up = ifExist ? "DROP SCHEMA IF EXISTS \"" + schema + "\" " + (isCascade ? "CASCADE" : "") : "DROP SCHEMA \"" + schema + "\" " + (isCascade ? "CASCADE" : "");
                         down = "CREATE SCHEMA \"" + schema + "\"";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query_1.Query(up), new Query_1.Query(down))];
                     case 1:
                         _a.sent();
@@ -601,13 +565,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         table.columns
                             .filter(function (column) { return column.isGenerated && column.generationStrategy === "increment"; })
                             .forEach(function (column) {
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("CREATE SEQUENCE ".concat(_this.escapePath(_this.buildSequencePath(table, column)))));
-                            downQueries.push(new Query_1.Query("DROP SEQUENCE ".concat(_this.escapePath(_this.buildSequencePath(table, column)))));
-=======
                             upQueries.push(new Query_1.Query("CREATE SEQUENCE " + _this.escapePath(_this.buildSequencePath(table, column))));
                             downQueries.push(new Query_1.Query("DROP SEQUENCE " + _this.escapePath(_this.buildSequencePath(table, column))));
->>>>>>> a3495c7 (INIT)
                         });
                         upQueries.push(this.createTableSql(table, createForeignKeys));
                         downQueries.push(this.dropTableSql(table));
@@ -675,13 +634,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         table.columns
                             .filter(function (column) { return column.isGenerated && column.generationStrategy === "increment"; })
                             .forEach(function (column) {
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("DROP SEQUENCE ".concat(_this.escapePath(_this.buildSequencePath(table, column)))));
-                            downQueries.push(new Query_1.Query("CREATE SEQUENCE ".concat(_this.escapePath(_this.buildSequencePath(table, column)))));
-=======
                             upQueries.push(new Query_1.Query("DROP SEQUENCE " + _this.escapePath(_this.buildSequencePath(table, column))));
                             downQueries.push(new Query_1.Query("CREATE SEQUENCE " + _this.escapePath(_this.buildSequencePath(table, column))));
->>>>>>> a3495c7 (INIT)
                         });
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
@@ -776,40 +730,24 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         oldTable = _a;
                         newTable = oldTable.clone();
                         _b = this.driver.parseTableName(oldTable), schemaName = _b.schema, oldTableName = _b.tableName;
-<<<<<<< HEAD
-                        newTable.name = schemaName ? "".concat(schemaName, ".").concat(newTableName) : newTableName;
-                        upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(oldTable), " RENAME TO \"").concat(newTableName, "\"")));
-                        downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(newTable), " RENAME TO \"").concat(oldTableName, "\"")));
-=======
                         newTable.name = schemaName ? schemaName + "." + newTableName : newTableName;
                         upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(oldTable) + " RENAME TO \"" + newTableName + "\""));
                         downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(newTable) + " RENAME TO \"" + oldTableName + "\""));
->>>>>>> a3495c7 (INIT)
                         // rename column primary key constraint
                         if (newTable.primaryColumns.length > 0) {
                             columnNames = newTable.primaryColumns.map(function (column) { return column.name; });
                             oldPkName = this.connection.namingStrategy.primaryKeyName(oldTable, columnNames);
                             newPkName = this.connection.namingStrategy.primaryKeyName(newTable, columnNames);
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(oldPkName, "\" TO \"").concat(newPkName, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(newPkName, "\" TO \"").concat(oldPkName, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(newTable) + " RENAME CONSTRAINT \"" + oldPkName + "\" TO \"" + newPkName + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(newTable) + " RENAME CONSTRAINT \"" + newPkName + "\" TO \"" + oldPkName + "\""));
->>>>>>> a3495c7 (INIT)
                         }
                         // rename unique constraints
                         newTable.uniques.forEach(function (unique) {
                             // build new constraint name
                             var newUniqueName = _this.connection.namingStrategy.uniqueConstraintName(newTable, unique.columnNames);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(unique.name, "\" TO \"").concat(newUniqueName, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(newUniqueName, "\" TO \"").concat(unique.name, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + unique.name + "\" TO \"" + newUniqueName + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + newUniqueName + "\" TO \"" + unique.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             unique.name = newUniqueName;
                         });
@@ -819,13 +757,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             var schema = _this.driver.parseTableName(newTable).schema;
                             var newIndexName = _this.connection.namingStrategy.indexName(newTable, index.columnNames, index.where);
                             // build queries
-<<<<<<< HEAD
-                            var up = schema ? "ALTER INDEX \"".concat(schema, "\".\"").concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"") : "ALTER INDEX \"".concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"");
-                            var down = schema ? "ALTER INDEX \"".concat(schema, "\".\"").concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"") : "ALTER INDEX \"".concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"");
-=======
                             var up = schema ? "ALTER INDEX \"" + schema + "\".\"" + index.name + "\" RENAME TO \"" + newIndexName + "\"" : "ALTER INDEX \"" + index.name + "\" RENAME TO \"" + newIndexName + "\"";
                             var down = schema ? "ALTER INDEX \"" + schema + "\".\"" + newIndexName + "\" RENAME TO \"" + index.name + "\"" : "ALTER INDEX \"" + newIndexName + "\" RENAME TO \"" + index.name + "\"";
->>>>>>> a3495c7 (INIT)
                             upQueries.push(new Query_1.Query(up));
                             downQueries.push(new Query_1.Query(down));
                             // replace constraint name
@@ -836,13 +769,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             // build new constraint name
                             var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(newTable, foreignKey.columnNames, _this.getTablePath(foreignKey), foreignKey.referencedColumnNames);
                             // build queries
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(foreignKey.name, "\" TO \"").concat(newForeignKeyName, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " RENAME CONSTRAINT \"").concat(newForeignKeyName, "\" TO \"").concat(foreignKey.name, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + foreignKey.name + "\" TO \"" + newForeignKeyName + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " RENAME CONSTRAINT \"" + newForeignKeyName + "\" TO \"" + foreignKey.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             foreignKey.name = newForeignKeyName;
                         });
@@ -878,13 +806,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         if (column.generationStrategy === "increment") {
                             throw new error_1.TypeORMError("Adding sequential generated columns into existing table is not supported");
                         }
-<<<<<<< HEAD
-                        upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(table, column))));
-                        downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN \"").concat(column.name, "\"")));
-=======
                         upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(table, column)));
                         downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN \"" + column.name + "\""));
->>>>>>> a3495c7 (INIT)
                         // create or update primary key constraint
                         if (column.isPrimary) {
                             primaryColumns = clonedTable.primaryColumns;
@@ -892,17 +815,6 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             // todo: altering pk is not supported yet https://github.com/cockroachdb/cockroach/issues/19141
                             if (primaryColumns.length > 0) {
                                 pkName_1 = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames_1 = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName_1, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName_1, "\" PRIMARY KEY (").concat(columnNames_1, ")")));
-                            }
-                            primaryColumns.push(column);
-                            pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-                            columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                                 columnNames_1 = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName_1 + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName_1 + "\" PRIMARY KEY (" + columnNames_1 + ")"));
@@ -912,7 +824,6 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                         }
                         columnIndex = clonedTable.indices.find(function (index) { return index.columnNames.length === 1 && index.columnNames[0] === column.name; });
                         if (columnIndex) {
@@ -943,13 +854,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         }
                         // create column's comment
                         if (column.comment) {
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("COMMENT ON COLUMN ".concat(this.escapePath(table), ".\"").concat(column.name, "\" IS ").concat(this.escapeComment(column.comment))));
-                            downQueries.push(new Query_1.Query("COMMENT ON COLUMN ".concat(this.escapePath(table), ".\"").concat(column.name, "\" IS ").concat(this.escapeComment(column.comment))));
-=======
                             upQueries.push(new Query_1.Query("COMMENT ON COLUMN " + this.escapePath(table) + ".\"" + column.name + "\" IS " + this.escapeComment(column.comment)));
                             downQueries.push(new Query_1.Query("COMMENT ON COLUMN " + this.escapePath(table) + ".\"" + column.name + "\" IS " + this.escapeComment(column.comment)));
->>>>>>> a3495c7 (INIT)
                         }
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
@@ -1020,11 +926,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         oldColumn = oldTableColumnOrName instanceof TableColumn_1.TableColumn ? oldTableColumnOrName : table.columns.find(function (c) { return c.name === oldTableColumnOrName; });
                         if (!oldColumn)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Column \"".concat(oldTableColumnOrName, "\" was not found in the \"").concat(table.name, "\" table."));
-=======
                             throw new error_1.TypeORMError("Column \"" + oldTableColumnOrName + "\" was not found in the \"" + table.name + "\" table.");
->>>>>>> a3495c7 (INIT)
                         if (newTableColumnOrName instanceof TableColumn_1.TableColumn) {
                             newColumn = newTableColumnOrName;
                         }
@@ -1063,11 +965,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             ? oldTableColumnOrName
                             : table.columns.find(function (column) { return column.name === oldTableColumnOrName; });
                         if (!oldColumn)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Column \"".concat(oldTableColumnOrName, "\" was not found in the \"").concat(table.name, "\" table."));
-=======
                             throw new error_1.TypeORMError("Column \"" + oldTableColumnOrName + "\" was not found in the \"" + table.name + "\" table.");
->>>>>>> a3495c7 (INIT)
                         if (!(oldColumn.type !== newColumn.type || oldColumn.length !== newColumn.length)) return [3 /*break*/, 6];
                         // To avoid data conversion, we just recreate column
                         return [4 /*yield*/, this.dropColumn(table, oldColumn)];
@@ -1083,13 +981,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                     case 6:
                         if (oldColumn.name !== newColumn.name) {
                             // rename column
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME COLUMN \"").concat(oldColumn.name, "\" TO \"").concat(newColumn.name, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME COLUMN \"").concat(newColumn.name, "\" TO \"").concat(oldColumn.name, "\"")));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " RENAME COLUMN \"" + oldColumn.name + "\" TO \"" + newColumn.name + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " RENAME COLUMN \"" + newColumn.name + "\" TO \"" + oldColumn.name + "\""));
->>>>>>> a3495c7 (INIT)
                             // rename column primary key constraint
                             if (oldColumn.isPrimary === true) {
                                 primaryColumns = clonedTable.primaryColumns;
@@ -1099,13 +992,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                                 columnNames.splice(columnNames.indexOf(oldColumn.name), 1);
                                 columnNames.push(newColumn.name);
                                 newPkName = this.connection.namingStrategy.primaryKeyName(clonedTable, columnNames);
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME CONSTRAINT \"").concat(oldPkName, "\" TO \"").concat(newPkName, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " RENAME CONSTRAINT \"").concat(newPkName, "\" TO \"").concat(oldPkName, "\"")));
-=======
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " RENAME CONSTRAINT \"" + oldPkName + "\" TO \"" + newPkName + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " RENAME CONSTRAINT \"" + newPkName + "\" TO \"" + oldPkName + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                             // rename unique constraints
                             clonedTable.findColumnUniques(oldColumn).forEach(function (unique) {
@@ -1114,13 +1002,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                                 unique.columnNames.push(newColumn.name);
                                 var newUniqueName = _this.connection.namingStrategy.uniqueConstraintName(clonedTable, unique.columnNames);
                                 // build queries
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(unique.name, "\" TO \"").concat(newUniqueName, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(newUniqueName, "\" TO \"").concat(unique.name, "\"")));
-=======
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + unique.name + "\" TO \"" + newUniqueName + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + newUniqueName + "\" TO \"" + unique.name + "\""));
->>>>>>> a3495c7 (INIT)
                                 // replace constraint name
                                 unique.name = newUniqueName;
                             });
@@ -1132,13 +1015,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                                 var schema = _this.driver.parseTableName(table).schema;
                                 var newIndexName = _this.connection.namingStrategy.indexName(clonedTable, index.columnNames, index.where);
                                 // build queries
-<<<<<<< HEAD
-                                var up = schema ? "ALTER INDEX \"".concat(schema, "\".\"").concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"") : "ALTER INDEX \"".concat(index.name, "\" RENAME TO \"").concat(newIndexName, "\"");
-                                var down = schema ? "ALTER INDEX \"".concat(schema, "\".\"").concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"") : "ALTER INDEX \"".concat(newIndexName, "\" RENAME TO \"").concat(index.name, "\"");
-=======
                                 var up = schema ? "ALTER INDEX \"" + schema + "\".\"" + index.name + "\" RENAME TO \"" + newIndexName + "\"" : "ALTER INDEX \"" + index.name + "\" RENAME TO \"" + newIndexName + "\"";
                                 var down = schema ? "ALTER INDEX \"" + schema + "\".\"" + newIndexName + "\" RENAME TO \"" + index.name + "\"" : "ALTER INDEX \"" + newIndexName + "\" RENAME TO \"" + index.name + "\"";
->>>>>>> a3495c7 (INIT)
                                 upQueries.push(new Query_1.Query(up));
                                 downQueries.push(new Query_1.Query(down));
                                 // replace constraint name
@@ -1151,13 +1029,8 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                                 foreignKey.columnNames.push(newColumn.name);
                                 var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(clonedTable, foreignKey.columnNames, _this.getTablePath(foreignKey), foreignKey.referencedColumnNames);
                                 // build queries
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(foreignKey.name, "\" TO \"").concat(newForeignKeyName, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " RENAME CONSTRAINT \"").concat(newForeignKeyName, "\" TO \"").concat(foreignKey.name, "\"")));
-=======
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + foreignKey.name + "\" TO \"" + newForeignKeyName + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " RENAME CONSTRAINT \"" + newForeignKeyName + "\" TO \"" + foreignKey.name + "\""));
->>>>>>> a3495c7 (INIT)
                                 // replace constraint name
                                 foreignKey.name = newForeignKeyName;
                             });
@@ -1166,24 +1039,6 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             oldColumn.name = newColumn.name;
                         }
                         if (newColumn.precision !== oldColumn.precision || newColumn.scale !== oldColumn.scale) {
-<<<<<<< HEAD
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" TYPE ").concat(this.driver.createFullType(newColumn))));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" TYPE ").concat(this.driver.createFullType(oldColumn))));
-                        }
-                        if (oldColumn.isNullable !== newColumn.isNullable) {
-                            if (newColumn.isNullable) {
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" DROP NOT NULL")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" SET NOT NULL")));
-                            }
-                            else {
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" SET NOT NULL")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(oldColumn.name, "\" DROP NOT NULL")));
-                            }
-                        }
-                        if (oldColumn.comment !== newColumn.comment) {
-                            upQueries.push(new Query_1.Query("COMMENT ON COLUMN ".concat(this.escapePath(table), ".\"").concat(oldColumn.name, "\" IS ").concat(this.escapeComment(newColumn.comment))));
-                            downQueries.push(new Query_1.Query("COMMENT ON COLUMN ".concat(this.escapePath(table), ".\"").concat(newColumn.name, "\" IS ").concat(this.escapeComment(oldColumn.comment))));
-=======
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" TYPE " + this.driver.createFullType(newColumn)));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" TYPE " + this.driver.createFullType(oldColumn)));
                         }
@@ -1200,37 +1055,24 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         if (oldColumn.comment !== newColumn.comment) {
                             upQueries.push(new Query_1.Query("COMMENT ON COLUMN " + this.escapePath(table) + ".\"" + oldColumn.name + "\" IS " + this.escapeComment(newColumn.comment)));
                             downQueries.push(new Query_1.Query("COMMENT ON COLUMN " + this.escapePath(table) + ".\"" + newColumn.name + "\" IS " + this.escapeComment(oldColumn.comment)));
->>>>>>> a3495c7 (INIT)
                         }
                         if (newColumn.isPrimary !== oldColumn.isPrimary) {
                             primaryColumns = clonedTable.primaryColumns;
                             // if primary column state changed, we must always drop existed constraint.
                             if (primaryColumns.length > 0) {
                                 pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-=======
                                 columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
->>>>>>> a3495c7 (INIT)
                             }
                             if (newColumn.isPrimary === true) {
                                 primaryColumns.push(newColumn);
                                 column = clonedTable.columns.find(function (column) { return column.name === newColumn.name; });
                                 column.isPrimary = true;
                                 pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                                 columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                             else {
                                 primaryColumn = primaryColumns.find(function (c) { return c.name === newColumn.name; });
@@ -1240,15 +1082,9 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                                 // if we have another primary keys, we must recreate constraint.
                                 if (primaryColumns.length > 0) {
                                     pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                    columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                                    upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-                                    downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                                     columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                                     upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
                                     downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                                 }
                             }
                         }
@@ -1281,15 +1117,6 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                                     throw new error_1.TypeORMError("Adding sequential generated columns into existing table is not supported");
                                 }
                                 else if (newColumn.generationStrategy === "rowid") {
-<<<<<<< HEAD
-                                    upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT unique_rowid()")));
-                                    downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                }
-                            }
-                            else {
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT unique_rowid()")));
-=======
                                     upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT unique_rowid()"));
                                     downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" DROP DEFAULT"));
                                 }
@@ -1297,24 +1124,10 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             else {
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" DROP DEFAULT"));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT unique_rowid()"));
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         if (newColumn.default !== oldColumn.default) {
                             if (newColumn.default !== null && newColumn.default !== undefined) {
-<<<<<<< HEAD
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT ").concat(newColumn.default)));
-                                if (oldColumn.default !== null && oldColumn.default !== undefined) {
-                                    downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT ").concat(oldColumn.default)));
-                                }
-                                else {
-                                    downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                }
-                            }
-                            else if (oldColumn.default !== null && oldColumn.default !== undefined) {
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" DROP DEFAULT")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ALTER COLUMN \"").concat(newColumn.name, "\" SET DEFAULT ").concat(oldColumn.default)));
-=======
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT " + newColumn.default));
                                 if (oldColumn.default !== null && oldColumn.default !== undefined) {
                                     downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT " + oldColumn.default));
@@ -1326,7 +1139,6 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             else if (oldColumn.default !== null && oldColumn.default !== undefined) {
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" DROP DEFAULT"));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ALTER COLUMN \"" + newColumn.name + "\" SET DEFAULT " + oldColumn.default));
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         _b.label = 7;
@@ -1398,11 +1210,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         column = columnOrName instanceof TableColumn_1.TableColumn ? columnOrName : table.findColumnByName(columnOrName);
                         if (!column)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Column \"".concat(columnOrName, "\" was not found in table \"").concat(table.name, "\""));
-=======
                             throw new error_1.TypeORMError("Column \"" + columnOrName + "\" was not found in table \"" + table.name + "\"");
->>>>>>> a3495c7 (INIT)
                         clonedTable = table.clone();
                         upQueries = [];
                         downQueries = [];
@@ -1410,29 +1218,17 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         // todo: altering pk is not supported yet https://github.com/cockroachdb/cockroach/issues/19141
                         if (column.isPrimary) {
                             pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, clonedTable.primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                            columnNames = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"".concat(primaryColumn.name, "\""); }).join(", ");
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNames, ")")));
-=======
                             columnNames = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"" + primaryColumn.name + "\""; }).join(", ");
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " DROP CONSTRAINT \"" + pkName + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNames + ")"));
->>>>>>> a3495c7 (INIT)
                             tableColumn = clonedTable.findColumnByName(column.name);
                             tableColumn.isPrimary = false;
                             // if primary key have multiple columns, we must recreate it without dropped column
                             if (clonedTable.primaryColumns.length > 0) {
                                 pkName_2 = this.connection.namingStrategy.primaryKeyName(clonedTable, clonedTable.primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                                columnNames_2 = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"".concat(primaryColumn.name, "\""); }).join(", ");
-                                upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " ADD CONSTRAINT \"").concat(pkName_2, "\" PRIMARY KEY (").concat(columnNames_2, ")")));
-                                downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " DROP CONSTRAINT \"").concat(pkName_2, "\"")));
-=======
                                 columnNames_2 = clonedTable.primaryColumns.map(function (primaryColumn) { return "\"" + primaryColumn.name + "\""; }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " ADD CONSTRAINT \"" + pkName_2 + "\" PRIMARY KEY (" + columnNames_2 + ")"));
                                 downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " DROP CONSTRAINT \"" + pkName_2 + "\""));
->>>>>>> a3495c7 (INIT)
                             }
                         }
                         columnIndex = clonedTable.indices.find(function (index) { return index.columnNames.length === 1 && index.columnNames[0] === column.name; });
@@ -1453,19 +1249,11 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             upQueries.push(this.dropIndexSql(table, columnUnique.name)); // CockroachDB creates indices for unique constraints
                             downQueries.push(this.createUniqueConstraintSql(table, columnUnique));
                         }
-<<<<<<< HEAD
-                        upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN \"").concat(column.name, "\"")));
-                        downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(table, column))));
-                        if (column.generationStrategy === "increment") {
-                            upQueries.push(new Query_1.Query("DROP SEQUENCE ".concat(this.escapePath(this.buildSequencePath(table, column)))));
-                            downQueries.push(new Query_1.Query("CREATE SEQUENCE ".concat(this.escapePath(this.buildSequencePath(table, column)))));
-=======
                         upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN \"" + column.name + "\""));
                         downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(table, column)));
                         if (column.generationStrategy === "increment") {
                             upQueries.push(new Query_1.Query("DROP SEQUENCE " + this.escapePath(this.buildSequencePath(table, column))));
                             downQueries.push(new Query_1.Query("CREATE SEQUENCE " + this.escapePath(this.buildSequencePath(table, column))));
->>>>>>> a3495c7 (INIT)
                         }
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
@@ -1576,30 +1364,18 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         primaryColumns = clonedTable.primaryColumns;
                         if (primaryColumns.length > 0) {
                             pkName_3 = this.connection.namingStrategy.primaryKeyName(clonedTable, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-                            columnNamesString_1 = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-                            upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName_3, "\"")));
-                            downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName_3, "\" PRIMARY KEY (").concat(columnNamesString_1, ")")));
-=======
                             columnNamesString_1 = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
                             upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName_3 + "\""));
                             downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName_3 + "\" PRIMARY KEY (" + columnNamesString_1 + ")"));
->>>>>>> a3495c7 (INIT)
                         }
                         // update columns in table.
                         clonedTable.columns
                             .filter(function (column) { return columnNames.indexOf(column.name) !== -1; })
                             .forEach(function (column) { return column.isPrimary = true; });
                         pkName = this.connection.namingStrategy.primaryKeyName(clonedTable, columnNames);
-<<<<<<< HEAD
-                        columnNamesString = columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                        upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(pkName, "\" PRIMARY KEY (").concat(columnNamesString, ")")));
-                        downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(pkName, "\"")));
-=======
                         columnNamesString = columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
                         upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + pkName + "\" PRIMARY KEY (" + columnNamesString + ")"));
                         downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + pkName + "\""));
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
                         _b.sent();
@@ -1731,11 +1507,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         uniqueConstraint = uniqueOrName instanceof TableUnique_1.TableUnique ? uniqueOrName : table.uniques.find(function (u) { return u.name === uniqueOrName; });
                         if (!uniqueConstraint)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Supplied unique constraint was not found in table ".concat(table.name));
-=======
                             throw new error_1.TypeORMError("Supplied unique constraint was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropIndexSql(table, uniqueConstraint);
                         down = this.createUniqueConstraintSql(table, uniqueConstraint);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -1857,11 +1629,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         checkConstraint = checkOrName instanceof TableCheck_1.TableCheck ? checkOrName : table.checks.find(function (c) { return c.name === checkOrName; });
                         if (!checkConstraint)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Supplied check constraint was not found in table ".concat(table.name));
-=======
                             throw new error_1.TypeORMError("Supplied check constraint was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropCheckConstraintSql(table, checkConstraint);
                         down = this.createCheckConstraintSql(table, checkConstraint);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -2023,11 +1791,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         foreignKey = foreignKeyOrName instanceof TableForeignKey_1.TableForeignKey ? foreignKeyOrName : table.foreignKeys.find(function (fk) { return fk.name === foreignKeyOrName; });
                         if (!foreignKey)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Supplied foreign key was not found in table ".concat(table.name));
-=======
                             throw new error_1.TypeORMError("Supplied foreign key was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropForeignKeySql(table, foreignKey);
                         down = this.createForeignKeySql(table, foreignKey);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -2183,11 +1947,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         index = indexOrName instanceof TableIndex_1.TableIndex ? indexOrName : table.indices.find(function (i) { return i.name === indexOrName; });
                         if (!index)
-<<<<<<< HEAD
-                            throw new error_1.TypeORMError("Supplied index ".concat(indexOrName, " was not found in table ").concat(table.name));
-=======
                             throw new error_1.TypeORMError("Supplied index " + indexOrName + " was not found in table " + table.name);
->>>>>>> a3495c7 (INIT)
                         up = this.dropIndexSql(table, index);
                         down = this.createIndexSql(table, index);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -2246,11 +2006,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
         return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
-<<<<<<< HEAD
-                    case 0: return [4 /*yield*/, this.query("TRUNCATE TABLE ".concat(this.escapePath(tableName)))];
-=======
                     case 0: return [4 /*yield*/, this.query("TRUNCATE TABLE " + this.escapePath(tableName))];
->>>>>>> a3495c7 (INIT)
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -2287,33 +2043,21 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                     case 2:
                         _a.trys.push([2, 10, , 15]);
                         selectViewDropsQuery = "SELECT 'DROP VIEW IF EXISTS \"' || schemaname || '\".\"' || viewname || '\" CASCADE;' as \"query\" " +
-<<<<<<< HEAD
-                            "FROM \"pg_views\" WHERE \"schemaname\" IN (".concat(schemaNamesString, ")");
-=======
                             ("FROM \"pg_views\" WHERE \"schemaname\" IN (" + schemaNamesString + ")");
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(selectViewDropsQuery)];
                     case 3:
                         dropViewQueries = _a.sent();
                         return [4 /*yield*/, Promise.all(dropViewQueries.map(function (q) { return _this.query(q["query"]); }))];
                     case 4:
                         _a.sent();
-<<<<<<< HEAD
-                        selectDropsQuery = "SELECT 'DROP TABLE IF EXISTS \"' || table_schema || '\".\"' || table_name || '\" CASCADE;' as \"query\" FROM \"information_schema\".\"tables\" WHERE \"table_schema\" IN (".concat(schemaNamesString, ")");
-=======
                         selectDropsQuery = "SELECT 'DROP TABLE IF EXISTS \"' || table_schema || '\".\"' || table_name || '\" CASCADE;' as \"query\" FROM \"information_schema\".\"tables\" WHERE \"table_schema\" IN (" + schemaNamesString + ")";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(selectDropsQuery)];
                     case 5:
                         dropQueries = _a.sent();
                         return [4 /*yield*/, Promise.all(dropQueries.map(function (q) { return _this.query(q["query"]); }))];
                     case 6:
                         _a.sent();
-<<<<<<< HEAD
-                        selectSequenceDropsQuery = "SELECT 'DROP SEQUENCE \"' || sequence_schema || '\".\"' || sequence_name || '\";' as \"query\" FROM \"information_schema\".\"sequences\" WHERE \"sequence_schema\" IN (".concat(schemaNamesString, ")");
-=======
                         selectSequenceDropsQuery = "SELECT 'DROP SEQUENCE \"' || sequence_schema || '\".\"' || sequence_name || '\";' as \"query\" FROM \"information_schema\".\"sequences\" WHERE \"sequence_schema\" IN (" + schemaNamesString + ")";
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(selectSequenceDropsQuery)];
                     case 7:
                         sequenceDropQueries = _a.sent();
@@ -2368,17 +2112,10 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         currentSchema = _a.sent();
                         viewsCondition = viewNames.map(function (viewName) {
                             var _a = _this.driver.parseTableName(viewName), schema = _a.schema, tableName = _a.tableName;
-<<<<<<< HEAD
-                            return "(\"t\".\"schema\" = '".concat(schema || currentSchema, "' AND \"t\".\"name\" = '").concat(tableName, "')");
-                        }).join(" OR ");
-                        query = "SELECT \"t\".*, \"v\".\"check_option\" FROM ".concat(this.escapePath(this.getTypeormMetadataTableName()), " \"t\" ") +
-                            "INNER JOIN \"information_schema\".\"views\" \"v\" ON \"v\".\"table_schema\" = \"t\".\"schema\" AND \"v\".\"table_name\" = \"t\".\"name\" WHERE \"t\".\"type\" = '".concat(MetadataTableType_1.MetadataTableType.VIEW, "' ").concat(viewsCondition ? "AND (".concat(viewsCondition, ")") : "");
-=======
                             return "(\"t\".\"schema\" = '" + (schema || currentSchema) + "' AND \"t\".\"name\" = '" + tableName + "')";
                         }).join(" OR ");
                         query = "SELECT \"t\".*, \"v\".\"check_option\" FROM " + this.escapePath(this.getTypeormMetadataTableName()) + " \"t\" " +
                             ("INNER JOIN \"information_schema\".\"views\" \"v\" ON \"v\".\"table_schema\" = \"t\".\"schema\" AND \"v\".\"table_name\" = \"t\".\"name\" WHERE \"t\".\"type\" = '" + MetadataTableType_1.MetadataTableType.VIEW + "' " + (viewsCondition ? "AND (" + viewsCondition + ")" : ""));
->>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(query)];
                     case 4:
                         dbViews = _a.sent();
@@ -2430,11 +2167,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             .map(function (tableName) { return _this.driver.parseTableName(tableName); })
                             .map(function (_a) {
                             var schema = _a.schema, tableName = _a.tableName;
-<<<<<<< HEAD
-                            return "(\"table_schema\" = '".concat(schema || currentSchema, "' AND \"table_name\" = '").concat(tableName, "')");
-=======
                             return "(\"table_schema\" = '" + (schema || currentSchema) + "' AND \"table_name\" = '" + tableName + "')";
->>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         tablesSql = "SELECT \"table_schema\", \"table_name\" FROM \"information_schema\".\"tables\" WHERE " + tablesCondition;
                         _f = (_e = dbTables.push).apply;
@@ -2450,20 +2183,12 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                         }
                         columnsCondiiton = dbTables.map(function (_a) {
                             var table_name = _a.table_name, table_schema = _a.table_schema;
-<<<<<<< HEAD
-                            return "(\"table_schema\" = '".concat(table_schema, "' AND \"table_name\" = '").concat(table_name, "')");
-=======
                             return "(\"table_schema\" = '" + table_schema + "' AND \"table_name\" = '" + table_name + "')";
->>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         columnsSql = "\n            SELECT\n                *,\n                pg_catalog.col_description(('\"' || table_catalog || '\".\"' || table_schema || '\".\"' || table_name || '\"')::regclass::oid, ordinal_position) as description\n            FROM \"information_schema\".\"columns\"\n            WHERE \"is_hidden\" = 'NO' AND " + columnsCondiiton;
                         constraintsCondition = dbTables.map(function (_a) {
                             var table_name = _a.table_name, table_schema = _a.table_schema;
-<<<<<<< HEAD
-                            return "(\"ns\".\"nspname\" = '".concat(table_schema, "' AND \"t\".\"relname\" = '").concat(table_name, "')");
-=======
                             return "(\"ns\".\"nspname\" = '" + table_schema + "' AND \"t\".\"relname\" = '" + table_name + "')";
->>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         constraintsSql = "SELECT \"ns\".\"nspname\" AS \"table_schema\", \"t\".\"relname\" AS \"table_name\", \"cnst\".\"conname\" AS \"constraint_name\", " +
                             "pg_get_constraintdef(\"cnst\".\"oid\") AS \"expression\", " +
@@ -2472,11 +2197,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             "INNER JOIN \"pg_class\" \"t\" ON \"t\".\"oid\" = \"cnst\".\"conrelid\" " +
                             "INNER JOIN \"pg_namespace\" \"ns\" ON \"ns\".\"oid\" = \"cnst\".\"connamespace\" " +
                             "LEFT JOIN \"pg_attribute\" \"a\" ON \"a\".\"attrelid\" = \"cnst\".\"conrelid\" AND \"a\".\"attnum\" = ANY (\"cnst\".\"conkey\") " +
-<<<<<<< HEAD
-                            "WHERE \"t\".\"relkind\" = 'r' AND (".concat(constraintsCondition, ")");
-=======
                             ("WHERE \"t\".\"relkind\" = 'r' AND (" + constraintsCondition + ")");
->>>>>>> a3495c7 (INIT)
                         indicesSql = "SELECT \"ns\".\"nspname\" AS \"table_schema\", \"t\".\"relname\" AS \"table_name\", \"i\".\"relname\" AS \"constraint_name\", \"a\".\"attname\" AS \"column_name\", " +
                             "CASE \"ix\".\"indisunique\" WHEN 't' THEN 'TRUE' ELSE'FALSE' END AS \"is_unique\", pg_get_expr(\"ix\".\"indpred\", \"ix\".\"indrelid\") AS \"condition\", " +
                             "\"types\".\"typname\" AS \"type_name\" " +
@@ -2487,17 +2208,10 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             "INNER JOIN \"pg_class\" \"i\" ON \"i\".\"oid\" = \"ix\".\"indexrelid\" " +
                             "INNER JOIN \"pg_type\" \"types\" ON \"types\".\"oid\" = \"a\".\"atttypid\" " +
                             "LEFT JOIN \"pg_constraint\" \"cnst\" ON \"cnst\".\"conname\" = \"i\".\"relname\" " +
-<<<<<<< HEAD
-                            "WHERE \"t\".\"relkind\" = 'r' AND \"cnst\".\"contype\" IS NULL AND (".concat(constraintsCondition, ")");
-                        foreignKeysCondition = dbTables.map(function (_a) {
-                            var table_name = _a.table_name, table_schema = _a.table_schema;
-                            return "(\"ns\".\"nspname\" = '".concat(table_schema, "' AND \"cl\".\"relname\" = '").concat(table_name, "')");
-=======
                             ("WHERE \"t\".\"relkind\" = 'r' AND \"cnst\".\"contype\" IS NULL AND (" + constraintsCondition + ")");
                         foreignKeysCondition = dbTables.map(function (_a) {
                             var table_name = _a.table_name, table_schema = _a.table_schema;
                             return "(\"ns\".\"nspname\" = '" + table_schema + "' AND \"cl\".\"relname\" = '" + table_name + "')";
->>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         foreignKeysSql = "SELECT \"con\".\"conname\" AS \"constraint_name\", \"con\".\"nspname\" AS \"table_schema\", \"con\".\"relname\" AS \"table_name\", \"att2\".\"attname\" AS \"column_name\", " +
                             "\"ns\".\"nspname\" AS \"referenced_table_schema\", \"cl\".\"relname\" AS \"referenced_table_name\", \"att\".\"attname\" AS \"referenced_column_name\", \"con\".\"confdeltype\" AS \"on_delete\", \"con\".\"confupdtype\" AS \"on_update\" " +
@@ -2508,11 +2222,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                             "FROM \"pg_class\" \"cl\" " +
                             "INNER JOIN \"pg_namespace\" \"ns\" ON \"cl\".\"relnamespace\" = \"ns\".\"oid\" " +
                             "INNER JOIN \"pg_constraint\" \"con1\" ON \"con1\".\"conrelid\" = \"cl\".\"oid\" " +
-<<<<<<< HEAD
-                            "WHERE \"con1\".\"contype\" = 'f' AND (".concat(foreignKeysCondition, ") ") +
-=======
                             ("WHERE \"con1\".\"contype\" = 'f' AND (" + foreignKeysCondition + ") ") +
->>>>>>> a3495c7 (INIT)
                             ") \"con\" " +
                             "INNER JOIN \"pg_attribute\" \"att\" ON \"att\".\"attrelid\" = \"con\".\"confrelid\" AND \"att\".\"attnum\" = \"con\".\"child\" " +
                             "INNER JOIN \"pg_class\" \"cl\" ON \"cl\".\"oid\" = \"con\".\"confrelid\" " +
@@ -2709,11 +2419,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
     CockroachQueryRunner.prototype.createTableSql = function (table, createForeignKeys) {
         var _this = this;
         var columnDefinitions = table.columns.map(function (column) { return _this.buildCreateColumnSql(table, column); }).join(", ");
-<<<<<<< HEAD
-        var sql = "CREATE TABLE ".concat(this.escapePath(table), " (").concat(columnDefinitions);
-=======
         var sql = "CREATE TABLE " + this.escapePath(table) + " (" + columnDefinitions;
->>>>>>> a3495c7 (INIT)
         table.columns
             .filter(function (column) { return column.isUnique; })
             .forEach(function (column) {
@@ -2735,41 +2441,14 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
         if (table.uniques.length > 0) {
             var uniquesSql = table.uniques.map(function (unique) {
                 var uniqueName = unique.name ? unique.name : _this.connection.namingStrategy.uniqueConstraintName(table, unique.columnNames);
-<<<<<<< HEAD
-                var columnNames = unique.columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                return "CONSTRAINT \"".concat(uniqueName, "\" UNIQUE (").concat(columnNames, ")");
-            }).join(", ");
-            sql += ", ".concat(uniquesSql);
-=======
                 var columnNames = unique.columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
                 return "CONSTRAINT \"" + uniqueName + "\" UNIQUE (" + columnNames + ")";
             }).join(", ");
             sql += ", " + uniquesSql;
->>>>>>> a3495c7 (INIT)
         }
         if (table.checks.length > 0) {
             var checksSql = table.checks.map(function (check) {
                 var checkName = check.name ? check.name : _this.connection.namingStrategy.checkConstraintName(table, check.expression);
-<<<<<<< HEAD
-                return "CONSTRAINT \"".concat(checkName, "\" CHECK (").concat(check.expression, ")");
-            }).join(", ");
-            sql += ", ".concat(checksSql);
-        }
-        if (table.foreignKeys.length > 0 && createForeignKeys) {
-            var foreignKeysSql = table.foreignKeys.map(function (fk) {
-                var columnNames = fk.columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                if (!fk.name)
-                    fk.name = _this.connection.namingStrategy.foreignKeyName(table, fk.columnNames, _this.getTablePath(fk), fk.referencedColumnNames);
-                var referencedColumnNames = fk.referencedColumnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-                var constraint = "CONSTRAINT \"".concat(fk.name, "\" FOREIGN KEY (").concat(columnNames, ") REFERENCES ").concat(_this.escapePath(_this.getTablePath(fk)), " (").concat(referencedColumnNames, ")");
-                if (fk.onDelete)
-                    constraint += " ON DELETE ".concat(fk.onDelete);
-                if (fk.onUpdate)
-                    constraint += " ON UPDATE ".concat(fk.onUpdate);
-                return constraint;
-            }).join(", ");
-            sql += ", ".concat(foreignKeysSql);
-=======
                 return "CONSTRAINT \"" + checkName + "\" CHECK (" + check.expression + ")";
             }).join(", ");
             sql += ", " + checksSql;
@@ -2788,43 +2467,23 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
                 return constraint;
             }).join(", ");
             sql += ", " + foreignKeysSql;
->>>>>>> a3495c7 (INIT)
         }
         var primaryColumns = table.columns.filter(function (column) { return column.isPrimary; });
         if (primaryColumns.length > 0) {
             var primaryKeyName = this.connection.namingStrategy.primaryKeyName(table, primaryColumns.map(function (column) { return column.name; }));
-<<<<<<< HEAD
-            var columnNames = primaryColumns.map(function (column) { return "\"".concat(column.name, "\""); }).join(", ");
-            sql += ", CONSTRAINT \"".concat(primaryKeyName, "\" PRIMARY KEY (").concat(columnNames, ")");
-=======
             var columnNames = primaryColumns.map(function (column) { return "\"" + column.name + "\""; }).join(", ");
             sql += ", CONSTRAINT \"" + primaryKeyName + "\" PRIMARY KEY (" + columnNames + ")";
->>>>>>> a3495c7 (INIT)
         }
         sql += ")";
         table.columns
             .filter(function (it) { return it.comment; })
-<<<<<<< HEAD
-            .forEach(function (it) { return sql += "; COMMENT ON COLUMN ".concat(_this.escapePath(table), ".\"").concat(it.name, "\" IS ").concat(_this.escapeComment(it.comment)); });
-=======
             .forEach(function (it) { return sql += "; COMMENT ON COLUMN " + _this.escapePath(table) + ".\"" + it.name + "\" IS " + _this.escapeComment(it.comment); });
->>>>>>> a3495c7 (INIT)
         return new Query_1.Query(sql);
     };
     /**
      * Builds drop table sql.
      */
     CockroachQueryRunner.prototype.dropTableSql = function (tableOrPath) {
-<<<<<<< HEAD
-        return new Query_1.Query("DROP TABLE ".concat(this.escapePath(tableOrPath)));
-    };
-    CockroachQueryRunner.prototype.createViewSql = function (view) {
-        if (typeof view.expression === "string") {
-            return new Query_1.Query("CREATE VIEW ".concat(this.escapePath(view), " AS ").concat(view.expression));
-        }
-        else {
-            return new Query_1.Query("CREATE VIEW ".concat(this.escapePath(view), " AS ").concat(view.expression(this.connection).getQuery()));
-=======
         return new Query_1.Query("DROP TABLE " + this.escapePath(tableOrPath));
     };
     CockroachQueryRunner.prototype.createViewSql = function (view) {
@@ -2833,7 +2492,6 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
         }
         else {
             return new Query_1.Query("CREATE VIEW " + this.escapePath(view) + " AS " + view.expression(this.connection).getQuery());
->>>>>>> a3495c7 (INIT)
         }
     };
     CockroachQueryRunner.prototype.insertViewDefinitionSql = function (view) {
@@ -2863,11 +2521,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
      * Builds drop view sql.
      */
     CockroachQueryRunner.prototype.dropViewSql = function (viewOrPath) {
-<<<<<<< HEAD
-        return new Query_1.Query("DROP VIEW ".concat(this.escapePath(viewOrPath)));
-=======
         return new Query_1.Query("DROP VIEW " + this.escapePath(viewOrPath));
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds remove view sql.
@@ -2894,37 +2548,23 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
      * UNIQUE indices creates as UNIQUE constraints.
      */
     CockroachQueryRunner.prototype.createIndexSql = function (table, index) {
-<<<<<<< HEAD
-        var columns = index.columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-        return new Query_1.Query("CREATE INDEX \"".concat(index.name, "\" ON ").concat(this.escapePath(table), " (").concat(columns, ") ").concat(index.where ? "WHERE " + index.where : ""));
-=======
         var columns = index.columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
         return new Query_1.Query("CREATE INDEX \"" + index.name + "\" ON " + this.escapePath(table) + " (" + columns + ") " + (index.where ? "WHERE " + index.where : ""));
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop index sql.
      */
     CockroachQueryRunner.prototype.dropIndexSql = function (table, indexOrName) {
         var indexName = (indexOrName instanceof TableIndex_1.TableIndex || indexOrName instanceof TableUnique_1.TableUnique) ? indexOrName.name : indexOrName;
-<<<<<<< HEAD
-        return new Query_1.Query("DROP INDEX ".concat(this.escapePath(table), "@\"").concat(indexName, "\" CASCADE"));
-=======
         return new Query_1.Query("DROP INDEX " + this.escapePath(table) + "@\"" + indexName + "\" CASCADE");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create primary key sql.
      */
     CockroachQueryRunner.prototype.createPrimaryKeySql = function (table, columnNames) {
         var primaryKeyName = this.connection.namingStrategy.primaryKeyName(table, columnNames);
-<<<<<<< HEAD
-        var columnNamesString = columnNames.map(function (columnName) { return "\"".concat(columnName, "\""); }).join(", ");
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(primaryKeyName, "\" PRIMARY KEY (").concat(columnNamesString, ")"));
-=======
         var columnNamesString = columnNames.map(function (columnName) { return "\"" + columnName + "\""; }).join(", ");
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + primaryKeyName + "\" PRIMARY KEY (" + columnNamesString + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop primary key sql.
@@ -2932,54 +2572,34 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
     CockroachQueryRunner.prototype.dropPrimaryKeySql = function (table) {
         var columnNames = table.primaryColumns.map(function (column) { return column.name; });
         var primaryKeyName = this.connection.namingStrategy.primaryKeyName(table, columnNames);
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(primaryKeyName, "\""));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + primaryKeyName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create unique constraint sql.
      */
     CockroachQueryRunner.prototype.createUniqueConstraintSql = function (table, uniqueConstraint) {
         var columnNames = uniqueConstraint.columnNames.map(function (column) { return "\"" + column + "\""; }).join(", ");
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(uniqueConstraint.name, "\" UNIQUE (").concat(columnNames, ")"));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + uniqueConstraint.name + "\" UNIQUE (" + columnNames + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop unique constraint sql.
      */
     CockroachQueryRunner.prototype.dropUniqueConstraintSql = function (table, uniqueOrName) {
         var uniqueName = uniqueOrName instanceof TableUnique_1.TableUnique ? uniqueOrName.name : uniqueOrName;
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(uniqueName, "\""));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + uniqueName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create check constraint sql.
      */
     CockroachQueryRunner.prototype.createCheckConstraintSql = function (table, checkConstraint) {
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(checkConstraint.name, "\" CHECK (").concat(checkConstraint.expression, ")"));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + checkConstraint.name + "\" CHECK (" + checkConstraint.expression + ")");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop check constraint sql.
      */
     CockroachQueryRunner.prototype.dropCheckConstraintSql = function (table, checkOrName) {
         var checkName = checkOrName instanceof TableCheck_1.TableCheck ? checkOrName.name : checkOrName;
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(checkName, "\""));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + checkName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create foreign key sql.
@@ -2987,21 +2607,12 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
     CockroachQueryRunner.prototype.createForeignKeySql = function (table, foreignKey) {
         var columnNames = foreignKey.columnNames.map(function (column) { return "\"" + column + "\""; }).join(", ");
         var referencedColumnNames = foreignKey.referencedColumnNames.map(function (column) { return "\"" + column + "\""; }).join(",");
-<<<<<<< HEAD
-        var sql = "ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT \"").concat(foreignKey.name, "\" FOREIGN KEY (").concat(columnNames, ") ") +
-            "REFERENCES ".concat(this.escapePath(this.getTablePath(foreignKey)), "(").concat(referencedColumnNames, ")");
-        if (foreignKey.onDelete)
-            sql += " ON DELETE ".concat(foreignKey.onDelete);
-        if (foreignKey.onUpdate)
-            sql += " ON UPDATE ".concat(foreignKey.onUpdate);
-=======
         var sql = "ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT \"" + foreignKey.name + "\" FOREIGN KEY (" + columnNames + ") " +
             ("REFERENCES " + this.escapePath(this.getTablePath(foreignKey)) + "(" + referencedColumnNames + ")");
         if (foreignKey.onDelete)
             sql += " ON DELETE " + foreignKey.onDelete;
         if (foreignKey.onUpdate)
             sql += " ON UPDATE " + foreignKey.onUpdate;
->>>>>>> a3495c7 (INIT)
         return new Query_1.Query(sql);
     };
     /**
@@ -3009,11 +2620,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
      */
     CockroachQueryRunner.prototype.dropForeignKeySql = function (table, foreignKeyOrName) {
         var foreignKeyName = foreignKeyOrName instanceof TableForeignKey_1.TableForeignKey ? foreignKeyOrName.name : foreignKeyOrName;
-<<<<<<< HEAD
-        return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP CONSTRAINT \"").concat(foreignKeyName, "\""));
-=======
         return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP CONSTRAINT \"" + foreignKeyName + "\"");
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds sequence name from given table and column.
@@ -3021,19 +2628,11 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
     CockroachQueryRunner.prototype.buildSequenceName = function (table, columnOrName) {
         var tableName = this.driver.parseTableName(table).tableName;
         var columnName = columnOrName instanceof TableColumn_1.TableColumn ? columnOrName.name : columnOrName;
-<<<<<<< HEAD
-        return "".concat(tableName, "_").concat(columnName, "_seq");
-    };
-    CockroachQueryRunner.prototype.buildSequencePath = function (table, columnOrName) {
-        var schema = this.driver.parseTableName(table).schema;
-        return schema ? "".concat(schema, ".").concat(this.buildSequenceName(table, columnOrName)) : this.buildSequenceName(table, columnOrName);
-=======
         return tableName + "_" + columnName + "_seq";
     };
     CockroachQueryRunner.prototype.buildSequencePath = function (table, columnOrName) {
         var schema = this.driver.parseTableName(table).schema;
         return schema ? schema + "." + this.buildSequenceName(table, columnOrName) : this.buildSequenceName(table, columnOrName);
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Escapes a given comment so it's safe to include in a query.
@@ -3045,11 +2644,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
         comment = comment
             .replace(/'/g, "''")
             .replace(/\u0000/g, ""); // Null bytes aren't allowed in comments
-<<<<<<< HEAD
-        return "'".concat(comment, "'");
-=======
         return "'" + comment + "'";
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Escapes given table or view path.
@@ -3057,15 +2652,9 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
     CockroachQueryRunner.prototype.escapePath = function (target) {
         var _a = this.driver.parseTableName(target), schema = _a.schema, tableName = _a.tableName;
         if (schema && schema !== this.driver.searchSchema) {
-<<<<<<< HEAD
-            return "\"".concat(schema, "\".\"").concat(tableName, "\"");
-        }
-        return "\"".concat(tableName, "\"");
-=======
             return "\"" + schema + "\".\"" + tableName + "\"";
         }
         return "\"" + tableName + "\"";
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds a query for create column.
@@ -3074,11 +2663,7 @@ var CockroachQueryRunner = /** @class */ (function (_super) {
         var c = "\"" + column.name + "\"";
         if (column.isGenerated) {
             if (column.generationStrategy === "increment") {
-<<<<<<< HEAD
-                c += " INT DEFAULT nextval('".concat(this.escapePath(this.buildSequencePath(table, column)), "')");
-=======
                 c += " INT DEFAULT nextval('" + this.escapePath(this.buildSequencePath(table, column)) + "')";
->>>>>>> a3495c7 (INIT)
             }
             else if (column.generationStrategy === "rowid") {
                 c += " INT DEFAULT unique_rowid()";

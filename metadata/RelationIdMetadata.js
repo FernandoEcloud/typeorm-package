@@ -50,11 +50,7 @@ var RelationIdMetadata = /** @class */ (function () {
         var propertyPath = this.relationNameOrFactory instanceof Function ? this.relationNameOrFactory(this.entityMetadata.propertiesMap) : this.relationNameOrFactory;
         var relation = this.entityMetadata.findRelationWithPropertyPath(propertyPath);
         if (!relation)
-<<<<<<< HEAD
-            throw new error_1.TypeORMError("Cannot find relation ".concat(propertyPath, ". Wrong relation specified for @RelationId decorator."));
-=======
             throw new error_1.TypeORMError("Cannot find relation " + propertyPath + ". Wrong relation specified for @RelationId decorator.");
->>>>>>> a3495c7 (INIT)
         this.relation = relation;
     };
     return RelationIdMetadata;

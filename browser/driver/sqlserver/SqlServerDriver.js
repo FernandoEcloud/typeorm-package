@@ -329,11 +329,7 @@ var SqlServerDriver = /** @class */ (function () {
      * Escapes a column name.
      */
     SqlServerDriver.prototype.escape = function (columnName) {
-<<<<<<< HEAD
-        return "\"".concat(columnName, "\"");
-=======
         return "\"" + columnName + "\"";
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Build full table name with database name, schema name and table name.
@@ -524,11 +520,7 @@ var SqlServerDriver = /** @class */ (function () {
     SqlServerDriver.prototype.normalizeDefault = function (columnMetadata) {
         var defaultValue = columnMetadata.default;
         if (typeof defaultValue === "number") {
-<<<<<<< HEAD
-            return "".concat(defaultValue);
-=======
             return "" + defaultValue;
->>>>>>> a3495c7 (INIT)
         }
         if (typeof defaultValue === "boolean") {
             return defaultValue ? "1" : "0";
@@ -541,20 +533,12 @@ var SqlServerDriver = /** @class */ (function () {
             return value;
         }
         if (typeof defaultValue === "string") {
-<<<<<<< HEAD
-            return "'".concat(defaultValue, "'");
-=======
             return "'" + defaultValue + "'";
->>>>>>> a3495c7 (INIT)
         }
         if (defaultValue === undefined || defaultValue === null) {
             return undefined;
         }
-<<<<<<< HEAD
-        return "".concat(defaultValue);
-=======
         return "" + defaultValue;
->>>>>>> a3495c7 (INIT)
     };
     /**
      * Normalizes "isUnique" value of the column.
@@ -579,15 +563,6 @@ var SqlServerDriver = /** @class */ (function () {
         var type = column.type;
         // used 'getColumnLength()' method, because SqlServer sets `varchar` and `nvarchar` length to 1 by default.
         if (this.getColumnLength(column)) {
-<<<<<<< HEAD
-            type += "(".concat(this.getColumnLength(column), ")");
-        }
-        else if (column.precision !== null && column.precision !== undefined && column.scale !== null && column.scale !== undefined) {
-            type += "(".concat(column.precision, ",").concat(column.scale, ")");
-        }
-        else if (column.precision !== null && column.precision !== undefined) {
-            type += "(".concat(column.precision, ")");
-=======
             type += "(" + this.getColumnLength(column) + ")";
         }
         else if (column.precision !== null && column.precision !== undefined && column.scale !== null && column.scale !== undefined) {
@@ -595,7 +570,6 @@ var SqlServerDriver = /** @class */ (function () {
         }
         else if (column.precision !== null && column.precision !== undefined) {
             type += "(" + column.precision + ")";
->>>>>>> a3495c7 (INIT)
         }
         if (column.isArray)
             type += " array";
@@ -762,25 +736,15 @@ var SqlServerDriver = /** @class */ (function () {
     SqlServerDriver.prototype.buildTableVariableDeclaration = function (identifier, columns) {
         var _this = this;
         var outputColumns = columns.map(function (column) {
-<<<<<<< HEAD
-            return "".concat(_this.escape(column.databaseName), " ").concat(_this.createFullType(new TableColumn({
-=======
             return _this.escape(column.databaseName) + " " + _this.createFullType(new TableColumn({
->>>>>>> a3495c7 (INIT)
                 name: column.databaseName,
                 type: _this.normalizeType(column),
                 length: column.length,
                 isNullable: column.isNullable,
                 isArray: column.isArray,
-<<<<<<< HEAD
-            })));
-        });
-        return "DECLARE ".concat(identifier, " TABLE (").concat(outputColumns.join(", "), ")");
-=======
             }));
         });
         return "DECLARE " + identifier + " TABLE (" + outputColumns.join(", ") + ")";
->>>>>>> a3495c7 (INIT)
     };
     // -------------------------------------------------------------------------
     // Protected Methods
@@ -842,11 +806,7 @@ var SqlServerDriver = /** @class */ (function () {
         return new Promise(function (ok, fail) {
             var pool = new _this.mssql.ConnectionPool(connectionOptions);
             var logger = _this.connection.logger;
-<<<<<<< HEAD
-            var poolErrorHandler = (options.pool && options.pool.errorHandler) || (function (error) { return logger.log("warn", "MSSQL pool raised an error. ".concat(error)); });
-=======
             var poolErrorHandler = (options.pool && options.pool.errorHandler) || (function (error) { return logger.log("warn", "MSSQL pool raised an error. " + error); });
->>>>>>> a3495c7 (INIT)
             /**
              * Attaching an error handler to pool errors is essential, as, otherwise, errors raised will go unhandled and
              * cause the hosting app to crash.

@@ -23,11 +23,7 @@ var Alias = /** @class */ (function () {
     Object.defineProperty(Alias.prototype, "metadata", {
         get: function () {
             if (!this._metadata)
-<<<<<<< HEAD
-                throw new TypeORMError("Cannot get entity metadata for the given alias \"".concat(this.name, "\""));
-=======
                 throw new TypeORMError("Cannot get entity metadata for the given alias \"" + this.name + "\"");
->>>>>>> a3495c7 (INIT)
             return this._metadata;
         },
         set: function (metadata) {
