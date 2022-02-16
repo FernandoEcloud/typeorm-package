@@ -9,7 +9,11 @@ var TypeORMError_1 = require("./TypeORMError");
 var NoVersionOrUpdateDateColumnError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(NoVersionOrUpdateDateColumnError, _super);
     function NoVersionOrUpdateDateColumnError(entity) {
+<<<<<<< HEAD
         return _super.call(this, "Entity ".concat(entity, " does not have version or update date columns.")) || this;
+=======
+        return _super.call(this, "Entity " + entity + " does not have version or update date columns.") || this;
+>>>>>>> a3495c7 (INIT)
     }
     return NoVersionOrUpdateDateColumnError;
 }(TypeORMError_1.TypeORMError));

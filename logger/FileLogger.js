@@ -35,8 +35,13 @@ var FileLogger = /** @class */ (function () {
         if (this.options === "all" || this.options === true || (Array.isArray(this.options) && this.options.indexOf("error") !== -1)) {
             var sql = query + (parameters && parameters.length ? " -- PARAMETERS: " + this.stringifyParams(parameters) : "");
             this.write([
+<<<<<<< HEAD
                 "[FAILED QUERY]: ".concat(sql),
                 "[QUERY ERROR]: ".concat(error)
+=======
+                "[FAILED QUERY]: " + sql,
+                "[QUERY ERROR]: " + error
+>>>>>>> a3495c7 (INIT)
             ]);
         }
     };
@@ -45,7 +50,11 @@ var FileLogger = /** @class */ (function () {
      */
     FileLogger.prototype.logQuerySlow = function (time, query, parameters, queryRunner) {
         var sql = query + (parameters && parameters.length ? " -- PARAMETERS: " + this.stringifyParams(parameters) : "");
+<<<<<<< HEAD
         this.write("[SLOW QUERY: ".concat(time, " ms]: ") + sql);
+=======
+        this.write("[SLOW QUERY: " + time + " ms]: " + sql);
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Logs events from the schema build process.

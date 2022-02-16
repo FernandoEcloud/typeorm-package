@@ -62,6 +62,17 @@ export declare class MongoQueryRunner implements QueryRunner {
     databaseConnection: MongoClient;
     constructor(connection: Connection, databaseConnection: MongoClient);
     /**
+<<<<<<< HEAD
+=======
+     * Called before migrations are run.
+     */
+    beforeMigration(): Promise<void>;
+    /**
+     * Called after migrations are run.
+     */
+    afterMigration(): Promise<void>;
+    /**
+>>>>>>> a3495c7 (INIT)
      * Creates a cursor for a query that can be used to iterate over results from MongoDB.
      */
     cursor(collectionName: string, query?: ObjectLiteral): Cursor<any>;

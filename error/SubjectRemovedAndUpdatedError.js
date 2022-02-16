@@ -9,7 +9,11 @@ var TypeORMError_1 = require("./TypeORMError");
 var SubjectRemovedAndUpdatedError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(SubjectRemovedAndUpdatedError, _super);
     function SubjectRemovedAndUpdatedError(subject) {
+<<<<<<< HEAD
         return _super.call(this, "Removed entity \"".concat(subject.metadata.name, "\" is also scheduled for update operation. ") +
+=======
+        return _super.call(this, "Removed entity \"" + subject.metadata.name + "\" is also scheduled for update operation. " +
+>>>>>>> a3495c7 (INIT)
             "Make sure you are not updating and removing same object (note that update or remove may be executed by cascade operations).") || this;
     }
     return SubjectRemovedAndUpdatedError;

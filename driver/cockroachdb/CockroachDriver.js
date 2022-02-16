@@ -500,9 +500,15 @@ var CockroachDriver = /** @class */ (function () {
      */
     CockroachDriver.prototype.normalizeDefault = function (columnMetadata) {
         var defaultValue = columnMetadata.default;
+<<<<<<< HEAD
         var arrayCast = columnMetadata.isArray ? "::".concat(columnMetadata.type, "[]") : "";
         if (typeof defaultValue === "number") {
             return "(".concat(defaultValue, ")");
+=======
+        var arrayCast = columnMetadata.isArray ? "::" + columnMetadata.type + "[]" : "";
+        if (typeof defaultValue === "number") {
+            return "(" + defaultValue + ")";
+>>>>>>> a3495c7 (INIT)
         }
         if (typeof defaultValue === "boolean") {
             return defaultValue ? "true" : "false";
@@ -518,15 +524,26 @@ var CockroachDriver = /** @class */ (function () {
             return value;
         }
         if (typeof defaultValue === "string") {
+<<<<<<< HEAD
             return "'".concat(defaultValue, "'").concat(arrayCast);
         }
         if (typeof defaultValue === "object" && defaultValue !== null) {
             return "'".concat(JSON.stringify(defaultValue), "'");
+=======
+            return "'" + defaultValue + "'" + arrayCast;
+        }
+        if (typeof defaultValue === "object" && defaultValue !== null) {
+            return "'" + JSON.stringify(defaultValue) + "'";
+>>>>>>> a3495c7 (INIT)
         }
         if (defaultValue === undefined || defaultValue === null) {
             return undefined;
         }
+<<<<<<< HEAD
         return "".concat(defaultValue);
+=======
+        return "" + defaultValue;
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Normalizes "isUnique" value of the column.
@@ -739,7 +756,11 @@ var CockroachDriver = /** @class */ (function () {
                 }, options.extra || {});
                 pool = new this.postgres.Pool(connectionOptions);
                 logger = this.connection.logger;
+<<<<<<< HEAD
                 poolErrorHandler = options.poolErrorHandler || (function (error) { return logger.log("warn", "Postgres pool raised an error. ".concat(error)); });
+=======
+                poolErrorHandler = options.poolErrorHandler || (function (error) { return logger.log("warn", "Postgres pool raised an error. " + error); });
+>>>>>>> a3495c7 (INIT)
                 /*
                   Attaching an error handler to pool errors is essential, as, otherwise, errors raised will go unhandled and
                   cause the hosting app to crash.

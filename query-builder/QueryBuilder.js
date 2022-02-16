@@ -184,7 +184,11 @@ var QueryBuilder = /** @class */ (function () {
      */
     QueryBuilder.prototype.setParameter = function (key, value) {
         if (value instanceof Function) {
+<<<<<<< HEAD
             throw new error_1.TypeORMError("Function parameter isn't supported in the parameters. Please check \"".concat(key, "\" parameter."));
+=======
+            throw new error_1.TypeORMError("Function parameter isn't supported in the parameters. Please check \"" + key + "\" parameter.");
+>>>>>>> a3495c7 (INIT)
         }
         if (!key.match(/^([A-Za-z0-9_.]+)$/)) {
             throw new error_1.TypeORMError("QueryBuilder parameter keys may only contain numbers, letters, underscores, or periods.");
@@ -218,10 +222,17 @@ var QueryBuilder = /** @class */ (function () {
     QueryBuilder.prototype.createParameter = function (value) {
         var parameterName;
         do {
+<<<<<<< HEAD
             parameterName = "orm_param_".concat(this.parameterIndex++);
         } while (this.hasParameter(parameterName));
         this.setParameter(parameterName, value);
         return ":".concat(parameterName);
+=======
+            parameterName = "orm_param_" + this.parameterIndex++;
+        } while (this.hasParameter(parameterName));
+        this.setParameter(parameterName, value);
+        return ":" + parameterName;
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Adds native parameters from the given object.
@@ -447,8 +458,13 @@ var QueryBuilder = /** @class */ (function () {
             var e_3, _d, e_4, _e, e_5, _f, e_6, _g, e_7, _h, e_8, _j;
             if (!alias.hasMetadata)
                 return "continue";
+<<<<<<< HEAD
             var replaceAliasNamePrefix = this_1.expressionMap.aliasNamePrefixingEnabled ? "".concat(alias.name, ".") : "";
             var replacementAliasNamePrefix = this_1.expressionMap.aliasNamePrefixingEnabled ? "".concat(this_1.escape(alias.name), ".") : "";
+=======
+            var replaceAliasNamePrefix = this_1.expressionMap.aliasNamePrefixingEnabled ? alias.name + "." : "";
+            var replacementAliasNamePrefix = this_1.expressionMap.aliasNamePrefixingEnabled ? this_1.escape(alias.name) + "." : "";
+>>>>>>> a3495c7 (INIT)
             var replacements = {};
             try {
                 // Insert & overwrite the replacements from least to most relevant in our replacements object.
@@ -478,7 +494,11 @@ var QueryBuilder = /** @class */ (function () {
                     try {
                         for (var _p = (e_5 = void 0, (0, tslib_1.__values)((0, tslib_1.__spreadArray)((0, tslib_1.__spreadArray)([], (0, tslib_1.__read)(relation.joinColumns), false), (0, tslib_1.__read)(relation.inverseJoinColumns), false))), _q = _p.next(); !_q.done; _q = _p.next()) {
                             var joinColumn = _q.value;
+<<<<<<< HEAD
                             var propertyKey = "".concat(relation.propertyPath, ".").concat(joinColumn.referencedColumn.propertyPath);
+=======
+                            var propertyKey = relation.propertyPath + "." + joinColumn.referencedColumn.propertyPath;
+>>>>>>> a3495c7 (INIT)
                             replacements[propertyKey] = joinColumn.databaseName;
                         }
                     }
@@ -542,9 +562,15 @@ var QueryBuilder = /** @class */ (function () {
                 statement = statement.replace(new RegExp(
                 // Avoid a lookbehind here since it's not well supported
                 "([ =(]|^.{0})" +
+<<<<<<< HEAD
                     "".concat(escapeRegExp(replaceAliasNamePrefix), "(").concat(replacementKeys.map(escapeRegExp).join("|"), ")") +
                     "(?=[ =),]|.{0}$)", "gm"), function (_, pre, p) {
                     return "".concat(pre).concat(replacementAliasNamePrefix).concat(_this.escape(replacements[p]));
+=======
+                    (escapeRegExp(replaceAliasNamePrefix) + "(" + replacementKeys.map(escapeRegExp).join("|") + ")") +
+                    "(?=[ =),]|.{0}$)", "gm"), function (_, pre, p) {
+                    return "" + pre + replacementAliasNamePrefix + _this.escape(replacements[p]);
+>>>>>>> a3495c7 (INIT)
                 });
             }
         };
@@ -572,7 +598,11 @@ var QueryBuilder = /** @class */ (function () {
         // In some dialects query nesting is available - but not all.  Because of this, we'll need
         // to scrub "ending" characters from the SQL but otherwise we can leave everything else
         // as-is and it should be valid.
+<<<<<<< HEAD
         return "/* ".concat(this.expressionMap.comment.replace("*/", ""), " */ ");
+=======
+        return "/* " + this.expressionMap.comment.replace("*/", "") + " */ ";
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Creates "WHERE" expression.
@@ -590,14 +620,22 @@ var QueryBuilder = /** @class */ (function () {
                 var column = this.expressionMap.aliasNamePrefixingEnabled
                     ? this.expressionMap.mainAlias.name + "." + metadata.deleteDateColumn.propertyName
                     : metadata.deleteDateColumn.propertyName;
+<<<<<<< HEAD
                 var condition = "".concat(this.replacePropertyNames(column), " IS NULL");
+=======
+                var condition = this.replacePropertyNames(column) + " IS NULL";
+>>>>>>> a3495c7 (INIT)
                 conditionsArray.push(condition);
             }
             if (metadata.discriminatorColumn && metadata.parentEntityMetadata) {
                 var column = this.expressionMap.aliasNamePrefixingEnabled
                     ? this.expressionMap.mainAlias.name + "." + metadata.discriminatorColumn.databaseName
                     : metadata.discriminatorColumn.databaseName;
+<<<<<<< HEAD
                 var condition = "".concat(this.replacePropertyNames(column), " IN (:...discriminatorColumnValues)");
+=======
+                var condition = this.replacePropertyNames(column) + " IN (:...discriminatorColumnValues)";
+>>>>>>> a3495c7 (INIT)
                 conditionsArray.push(condition);
             }
         }
@@ -609,10 +647,17 @@ var QueryBuilder = /** @class */ (function () {
             return "";
         }
         else if (conditionsArray.length === 1) {
+<<<<<<< HEAD
             return " WHERE ".concat(conditionsArray[0]);
         }
         else {
             return " WHERE ( ".concat(conditionsArray.join(" ) AND ( "), " )");
+=======
+            return " WHERE " + conditionsArray[0];
+        }
+        else {
+            return " WHERE ( " + conditionsArray.join(" ) AND ( ") + " )";
+>>>>>>> a3495c7 (INIT)
         }
     };
     /**
@@ -713,6 +758,7 @@ var QueryBuilder = /** @class */ (function () {
         var driver = this.connection.driver;
         switch (condition.operator) {
             case "lessThan":
+<<<<<<< HEAD
                 return "".concat(condition.parameters[0], " < ").concat(condition.parameters[1]);
             case "lessThanOrEqual":
                 return "".concat(condition.parameters[0], " <= ").concat(condition.parameters[1]);
@@ -733,10 +779,33 @@ var QueryBuilder = /** @class */ (function () {
                 return "".concat(condition.parameters[0], " LIKE ").concat(condition.parameters[1]);
             case "between":
                 return "".concat(condition.parameters[0], " BETWEEN ").concat(condition.parameters[1], " AND ").concat(condition.parameters[2]);
+=======
+                return condition.parameters[0] + " < " + condition.parameters[1];
+            case "lessThanOrEqual":
+                return condition.parameters[0] + " <= " + condition.parameters[1];
+            case "moreThan":
+                return condition.parameters[0] + " > " + condition.parameters[1];
+            case "moreThanOrEqual":
+                return condition.parameters[0] + " >= " + condition.parameters[1];
+            case "notEqual":
+                return condition.parameters[0] + " != " + condition.parameters[1];
+            case "equal":
+                return condition.parameters[0] + " = " + condition.parameters[1];
+            case "ilike":
+                if (driver instanceof PostgresDriver_1.PostgresDriver || driver instanceof CockroachDriver_1.CockroachDriver) {
+                    return condition.parameters[0] + " ILIKE " + condition.parameters[1];
+                }
+                return "UPPER(" + condition.parameters[0] + ") LIKE UPPER(" + condition.parameters[1] + ")";
+            case "like":
+                return condition.parameters[0] + " LIKE " + condition.parameters[1];
+            case "between":
+                return condition.parameters[0] + " BETWEEN " + condition.parameters[1] + " AND " + condition.parameters[2];
+>>>>>>> a3495c7 (INIT)
             case "in":
                 if (condition.parameters.length <= 1) {
                     return "0=1";
                 }
+<<<<<<< HEAD
                 return "".concat(condition.parameters[0], " IN (").concat(condition.parameters.slice(1).join(", "), ")");
             case "any":
                 return "".concat(condition.parameters[0], " = ANY(").concat(condition.parameters[1], ")");
@@ -748,6 +817,19 @@ var QueryBuilder = /** @class */ (function () {
                 return "".concat(this.createWhereConditionExpression(condition.condition, true));
         }
         throw new TypeError("Unsupported FindOperator ".concat(FindOperator_1.FindOperator.constructor.name));
+=======
+                return condition.parameters[0] + " IN (" + condition.parameters.slice(1).join(", ") + ")";
+            case "any":
+                return condition.parameters[0] + " = ANY(" + condition.parameters[1] + ")";
+            case "isNull":
+                return condition.parameters[0] + " IS NULL";
+            case "not":
+                return "NOT(" + this.createWhereConditionExpression(condition.condition) + ")";
+            case "brackets":
+                return "" + this.createWhereConditionExpression(condition.condition, true);
+        }
+        throw new TypeError("Unsupported FindOperator " + FindOperator_1.FindOperator.constructor.name);
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Creates "WHERE" condition for an in-ids condition.
@@ -804,7 +886,11 @@ var QueryBuilder = /** @class */ (function () {
                 // If this is an embedded then we should combine the two as part of our lookup.
                 // Instead of just breaking, we keep going with this in case there's an embedded/relation
                 // inside an embedded.
+<<<<<<< HEAD
                 propertyPathParts.unshift("".concat(propertyPathParts.shift(), ".").concat(propertyPathParts.shift()));
+=======
+                propertyPathParts.unshift(propertyPathParts.shift() + "." + propertyPathParts.shift());
+>>>>>>> a3495c7 (INIT)
                 return "continue";
             }
             if (alias.metadata.hasRelationWithPropertyPath(part)) {
@@ -813,8 +899,13 @@ var QueryBuilder = /** @class */ (function () {
                 // the property path
                 var joinAttr = this_2.expressionMap.joinAttributes.find(function (joinAttr) { return joinAttr.relationPropertyPath === part; });
                 if (!(joinAttr === null || joinAttr === void 0 ? void 0 : joinAttr.alias)) {
+<<<<<<< HEAD
                     var fullRelationPath = root.length > 0 ? "".concat(root.join("."), ".").concat(part) : part;
                     throw new Error("Cannot find alias for relation at ".concat(fullRelationPath));
+=======
+                    var fullRelationPath = root.length > 0 ? root.join(".") + "." + part : part;
+                    throw new Error("Cannot find alias for relation at " + fullRelationPath);
+>>>>>>> a3495c7 (INIT)
                 }
                 alias = joinAttr.alias;
                 root.push.apply(root, (0, tslib_1.__spreadArray)([], (0, tslib_1.__read)(part.split(".")), false));
@@ -830,7 +921,11 @@ var QueryBuilder = /** @class */ (function () {
                 break;
         }
         if (!alias) {
+<<<<<<< HEAD
             throw new Error("Cannot find alias for property ".concat(propertyPath));
+=======
+            throw new Error("Cannot find alias for property " + propertyPath);
+>>>>>>> a3495c7 (INIT)
         }
         // Remaining parts are combined back and used to find the actual property path
         var aliasPropertyPath = propertyPathParts.join(".");
@@ -848,7 +943,11 @@ var QueryBuilder = /** @class */ (function () {
         if (prefix === void 0) { prefix = ""; }
         var paths = [];
         var _loop_4 = function (key) {
+<<<<<<< HEAD
             var path = prefix ? "".concat(prefix, ".").concat(key) : key;
+=======
+            var path = prefix ? prefix + "." + key : key;
+>>>>>>> a3495c7 (INIT)
             // There's times where we don't actually want to traverse deeper.
             // If the value is a `FindOperator`, or null, or not an object, then we don't, for example.
             if (entity[key] === null || typeof entity[key] !== "object" || entity[key] instanceof FindOperator_1.FindOperator) {
@@ -878,9 +977,15 @@ var QueryBuilder = /** @class */ (function () {
                         return "continue";
                     }
                 }
+<<<<<<< HEAD
                 // if (relation.relationType === "one-to-many" || relation.relationType === "many-to-many") {
                 //     throw new Error(`Cannot query across ${relation.relationType} for property ${path}`);
                 // }
+=======
+                if (relation.relationType === "one-to-many" || relation.relationType === "many-to-many") {
+                    throw new Error("Cannot query across " + relation.relationType + " for property " + path);
+                }
+>>>>>>> a3495c7 (INIT)
                 // For any other case, if the `entity[key]` contains all of the primary keys we can do a
                 // lookup via these.  We don't need to look up via any other values 'cause these are
                 // the unique primary keys.
@@ -889,13 +994,21 @@ var QueryBuilder = /** @class */ (function () {
                 var primaryColumns = relation.inverseEntityMetadata.primaryColumns;
                 var hasAllPrimaryKeys = primaryColumns.length > 0 && primaryColumns.every(function (column) { return column.getEntityValue(entity[key], false); });
                 if (hasAllPrimaryKeys) {
+<<<<<<< HEAD
                     var subPaths_1 = primaryColumns.map(function (column) { return "".concat(path, ".").concat(column.propertyPath); });
+=======
+                    var subPaths_1 = primaryColumns.map(function (column) { return path + "." + column.propertyPath; });
+>>>>>>> a3495c7 (INIT)
                     paths.push.apply(paths, (0, tslib_1.__spreadArray)([], (0, tslib_1.__read)(subPaths_1), false));
                     return "continue";
                 }
                 // If nothing else, just return every property that's being passed to us.
                 var subPaths = this_3.createPropertyPath(relation.inverseEntityMetadata, entity[key])
+<<<<<<< HEAD
                     .map(function (p) { return "".concat(path, ".").concat(p); });
+=======
+                    .map(function (p) { return path + "." + p; });
+>>>>>>> a3495c7 (INIT)
                 paths.push.apply(paths, (0, tslib_1.__spreadArray)([], (0, tslib_1.__read)(subPaths), false));
                 return "continue";
             }
@@ -961,7 +1074,11 @@ var QueryBuilder = /** @class */ (function () {
                         finally { if (e_14) throw e_14.error; }
                     }
                     aliasPath = this.expressionMap.aliasNamePrefixingEnabled ?
+<<<<<<< HEAD
                         "".concat(alias.name, ".").concat(column.propertyPath) :
+=======
+                        alias.name + "." + column.propertyPath :
+>>>>>>> a3495c7 (INIT)
                         column.propertyPath;
                     parameterValue = column.getEntityValue(containedWhere, true);
                     return [4 /*yield*/, [aliasPath, parameterValue]];
@@ -1005,7 +1122,11 @@ var QueryBuilder = /** @class */ (function () {
                     if (!!_c.done) return [3 /*break*/, 19];
                     key = _c.value;
                     parameterValue = where[key];
+<<<<<<< HEAD
                     aliasPath = this.expressionMap.aliasNamePrefixingEnabled ? "".concat(this.alias, ".").concat(key) : key;
+=======
+                    aliasPath = this.expressionMap.aliasNamePrefixingEnabled ? this.alias + "." + key : key;
+>>>>>>> a3495c7 (INIT)
                     return [4 /*yield*/, [aliasPath, parameterValue]];
                 case 17:
                     _h.sent();

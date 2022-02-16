@@ -55,10 +55,17 @@ var NestedSetSubjectExecutor = /** @class */ (function () {
                         _a.label = 2;
                     case 2:
                         if (!(parentNsRight !== undefined)) return [3 /*break*/, 4];
+<<<<<<< HEAD
                         return [4 /*yield*/, this.queryRunner.query("UPDATE ".concat(tableName, " SET ") +
                                 "".concat(leftColumnName, " = CASE WHEN ").concat(leftColumnName, " > ").concat(parentNsRight, " THEN ").concat(leftColumnName, " + 2 ELSE ").concat(leftColumnName, " END,") +
                                 "".concat(rightColumnName, " = ").concat(rightColumnName, " + 2 ") +
                                 "WHERE ".concat(rightColumnName, " >= ").concat(parentNsRight))];
+=======
+                        return [4 /*yield*/, this.queryRunner.query("UPDATE " + tableName + " SET " +
+                                (leftColumnName + " = CASE WHEN " + leftColumnName + " > " + parentNsRight + " THEN " + leftColumnName + " + 2 ELSE " + leftColumnName + " END,") +
+                                (rightColumnName + " = " + rightColumnName + " + 2 ") +
+                                ("WHERE " + rightColumnName + " >= " + parentNsRight))];
+>>>>>>> a3495c7 (INIT)
                     case 3:
                         _a.sent();
                         OrmUtils.mergeDeep(subject.insertedValueSet, subject.metadata.nestedSetLeftColumn.createValueMap(parentNsRight), subject.metadata.nestedSetRightColumn.createValueMap(parentNsRight + 1));
@@ -138,6 +145,7 @@ var NestedSetSubjectExecutor = /** @class */ (function () {
                         else {
                             entitySize = parentNs.right - entityNs.left;
                         }
+<<<<<<< HEAD
                         updateLeftSide = "WHEN ".concat(leftColumnName, " >= ").concat(entityNs.left, " AND ") +
                             "".concat(leftColumnName, " < ").concat(entityNs.right, " ") +
                             "THEN ".concat(leftColumnName, " + ").concat(entitySize, " ");
@@ -159,10 +167,34 @@ var NestedSetSubjectExecutor = /** @class */ (function () {
                                 "THEN ".concat(rightColumnName, " - ").concat(treeSize, " ") +
                                 updateRightSide +
                                 "ELSE ".concat(rightColumnName, " ") +
+=======
+                        updateLeftSide = "WHEN " + leftColumnName + " >= " + entityNs.left + " AND " +
+                            (leftColumnName + " < " + entityNs.right + " ") +
+                            ("THEN " + leftColumnName + " + " + entitySize + " ");
+                        updateRightSide = "WHEN " + rightColumnName + " > " + entityNs.left + " AND " +
+                            (rightColumnName + " <= " + entityNs.right + " ") +
+                            ("THEN " + rightColumnName + " + " + entitySize + " ");
+                        if (!isMovingUp) return [3 /*break*/, 6];
+                        return [4 /*yield*/, this.queryRunner.query("UPDATE " + tableName + " " +
+                                ("SET " + leftColumnName + " = CASE ") +
+                                ("WHEN " + leftColumnName + " > " + entityNs.right + " AND ") +
+                                (leftColumnName + " <= " + parentNs.left + " ") +
+                                ("THEN " + leftColumnName + " - " + treeSize + " ") +
+                                updateLeftSide +
+                                ("ELSE " + leftColumnName + " ") +
+                                "END, " +
+                                (rightColumnName + " = CASE ") +
+                                ("WHEN " + rightColumnName + " > " + entityNs.right + " AND ") +
+                                (rightColumnName + " < " + parentNs.left + " ") +
+                                ("THEN " + rightColumnName + " - " + treeSize + " ") +
+                                updateRightSide +
+                                ("ELSE " + rightColumnName + " ") +
+>>>>>>> a3495c7 (INIT)
                                 "END")];
                     case 5:
                         _a.sent();
                         return [3 /*break*/, 8];
+<<<<<<< HEAD
                     case 6: return [4 /*yield*/, this.queryRunner.query("UPDATE ".concat(tableName, " ") +
                             "SET ".concat(leftColumnName, " = CASE ") +
                             "WHEN ".concat(leftColumnName, " < ").concat(entityNs.left, " AND ") +
@@ -177,6 +209,22 @@ var NestedSetSubjectExecutor = /** @class */ (function () {
                             "THEN ".concat(rightColumnName, " + ").concat(treeSize, " ") +
                             updateRightSide +
                             "ELSE ".concat(rightColumnName, " ") +
+=======
+                    case 6: return [4 /*yield*/, this.queryRunner.query("UPDATE " + tableName + " " +
+                            ("SET " + leftColumnName + " = CASE ") +
+                            ("WHEN " + leftColumnName + " < " + entityNs.left + " AND ") +
+                            (leftColumnName + " > " + parentNs.right + " ") +
+                            ("THEN " + leftColumnName + " + " + treeSize + " ") +
+                            updateLeftSide +
+                            ("ELSE " + leftColumnName + " ") +
+                            "END, " +
+                            (rightColumnName + " = CASE ") +
+                            ("WHEN " + rightColumnName + " < " + entityNs.left + " AND ") +
+                            (rightColumnName + " >= " + parentNs.right + " ") +
+                            ("THEN " + rightColumnName + " + " + treeSize + " ") +
+                            updateRightSide +
+                            ("ELSE " + rightColumnName + " ") +
+>>>>>>> a3495c7 (INIT)
                             "END")];
                     case 7:
                         _a.sent();
@@ -241,6 +289,7 @@ var NestedSetSubjectExecutor = /** @class */ (function () {
                         if (!!entitiesNs_1_1.done) return [3 /*break*/, 6];
                         entity = entitiesNs_1_1.value;
                         treeSize = entity.right - entity.left + 1;
+<<<<<<< HEAD
                         return [4 /*yield*/, this.queryRunner.query("UPDATE ".concat(tableName, " ") +
                                 "SET ".concat(leftColumnName, " = CASE ") +
                                 "WHEN ".concat(leftColumnName, " > ").concat(entity.left, " THEN ").concat(leftColumnName, " - ").concat(treeSize, " ") +
@@ -249,6 +298,16 @@ var NestedSetSubjectExecutor = /** @class */ (function () {
                                 "".concat(rightColumnName, " = CASE ") +
                                 "WHEN ".concat(rightColumnName, " > ").concat(entity.right, " THEN ").concat(rightColumnName, " - ").concat(treeSize, " ") +
                                 "ELSE ".concat(rightColumnName, " ") +
+=======
+                        return [4 /*yield*/, this.queryRunner.query("UPDATE " + tableName + " " +
+                                ("SET " + leftColumnName + " = CASE ") +
+                                ("WHEN " + leftColumnName + " > " + entity.left + " THEN " + leftColumnName + " - " + treeSize + " ") +
+                                ("ELSE " + leftColumnName + " ") +
+                                "END, " +
+                                (rightColumnName + " = CASE ") +
+                                ("WHEN " + rightColumnName + " > " + entity.right + " THEN " + rightColumnName + " - " + treeSize + " ") +
+                                ("ELSE " + rightColumnName + " ") +
+>>>>>>> a3495c7 (INIT)
                                 "END")];
                     case 4:
                         _c.sent();
@@ -277,8 +336,13 @@ var NestedSetSubjectExecutor = /** @class */ (function () {
      */
     NestedSetSubjectExecutor.prototype.getNestedSetIds = function (metadata, ids) {
         var select = {
+<<<<<<< HEAD
             left: "".concat(metadata.targetName, ".").concat(metadata.nestedSetLeftColumn.propertyPath),
             right: "".concat(metadata.targetName, ".").concat(metadata.nestedSetRightColumn.propertyPath)
+=======
+            left: metadata.targetName + "." + metadata.nestedSetLeftColumn.propertyPath,
+            right: metadata.targetName + "." + metadata.nestedSetRightColumn.propertyPath
+>>>>>>> a3495c7 (INIT)
         };
         var queryBuilder = this.queryRunner.manager.createQueryBuilder();
         Object.entries(select).forEach(function (_a) {
@@ -339,6 +403,7 @@ var NestedSetSubjectExecutor = /** @class */ (function () {
                             var columnName = escape(column.databaseName);
                             var parameter = column.getEntityValue(parent);
                             if (parameter == null) {
+<<<<<<< HEAD
                                 return "".concat(columnName, " IS NULL");
                             }
                             parameters.push(parameter);
@@ -347,6 +412,16 @@ var NestedSetSubjectExecutor = /** @class */ (function () {
                         }).join(" AND ");
                         countAlias = "count";
                         return [4 /*yield*/, this.queryRunner.query("SELECT COUNT(1) AS ".concat(escape(countAlias), " FROM ").concat(tableName, " WHERE ").concat(whereCondition), parameters, true)];
+=======
+                                return columnName + " IS NULL";
+                            }
+                            parameters.push(parameter);
+                            var parameterName = _this.queryRunner.connection.driver.createParameter("entity_" + column.databaseName, parameters.length - 1);
+                            return columnName + " = " + parameterName;
+                        }).join(" AND ");
+                        countAlias = "count";
+                        return [4 /*yield*/, this.queryRunner.query("SELECT COUNT(1) AS " + escape(countAlias) + " FROM " + tableName + " WHERE " + whereCondition, parameters, true)];
+>>>>>>> a3495c7 (INIT)
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, parseInt(result.records[0][countAlias]) === 0];

@@ -98,7 +98,11 @@ var RelationJoinColumnBuilder = /** @class */ (function () {
             return joinColumns.map(function (joinColumn) {
                 var referencedColumn = relation.inverseEntityMetadata.ownColumns.find(function (column) { return column.propertyName === joinColumn.referencedColumnName; }); // todo: can we also search in relations?
                 if (!referencedColumn)
+<<<<<<< HEAD
                     throw new TypeORMError("Referenced column ".concat(joinColumn.referencedColumnName, " was not found in entity ").concat(relation.inverseEntityMetadata.name));
+=======
+                    throw new TypeORMError("Referenced column " + joinColumn.referencedColumnName + " was not found in entity " + relation.inverseEntityMetadata.name);
+>>>>>>> a3495c7 (INIT)
                 return referencedColumn;
             });
         }

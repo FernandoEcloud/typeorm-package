@@ -160,7 +160,11 @@ var EmbeddedMetadata = /** @class */ (function () {
         if (typeof this.customPrefix === "string") {
             return [this.customPrefix];
         }
+<<<<<<< HEAD
         throw new TypeORMError("Invalid prefix option given for ".concat(this.entityMetadata.targetName, "#").concat(this.propertyName));
+=======
+        throw new TypeORMError("Invalid prefix option given for " + this.entityMetadata.targetName + "#" + this.propertyName);
+>>>>>>> a3495c7 (INIT)
     };
     EmbeddedMetadata.prototype.buildPrefix = function (connection) {
         if (connection.driver instanceof MongoDriver)

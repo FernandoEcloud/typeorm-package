@@ -24,8 +24,13 @@ var RepositoryNotFoundError = /** @class */ (function (_super) {
         else {
             targetName = entityClass;
         }
+<<<<<<< HEAD
         _this.message = "No repository for \"".concat(targetName, "\" was found. Looks like this entity is not registered in ") +
             "current \"".concat(connectionName, "\" connection?");
+=======
+        _this.message = "No repository for \"" + targetName + "\" was found. Looks like this entity is not registered in " +
+            ("current \"" + connectionName + "\" connection?");
+>>>>>>> a3495c7 (INIT)
         return _this;
     }
     return RepositoryNotFoundError;

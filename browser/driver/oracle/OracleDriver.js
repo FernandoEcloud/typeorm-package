@@ -322,7 +322,11 @@ var OracleDriver = /** @class */ (function () {
      * Escapes a column name.
      */
     OracleDriver.prototype.escape = function (columnName) {
+<<<<<<< HEAD
         return "\"".concat(columnName, "\"");
+=======
+        return "\"" + columnName + "\"";
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Build full table name with database name, schema name and table name.
@@ -402,7 +406,11 @@ var OracleDriver = /** @class */ (function () {
         else if (columnMetadata.type === "date") {
             if (typeof value === "string")
                 value = value.replace(/[^0-9-]/g, "");
+<<<<<<< HEAD
             return function () { return "TO_DATE('".concat(DateUtils.mixedDateToDateString(value), "', 'YYYY-MM-DD')"); };
+=======
+            return function () { return "TO_DATE('" + DateUtils.mixedDateToDateString(value) + "', 'YYYY-MM-DD')"; };
+>>>>>>> a3495c7 (INIT)
         }
         else if (columnMetadata.type === Date
             || columnMetadata.type === "timestamp"
@@ -501,12 +509,20 @@ var OracleDriver = /** @class */ (function () {
             return defaultValue();
         }
         if (typeof defaultValue === "string") {
+<<<<<<< HEAD
             return "'".concat(defaultValue, "'");
+=======
+            return "'" + defaultValue + "'";
+>>>>>>> a3495c7 (INIT)
         }
         if (defaultValue === null || defaultValue === undefined) {
             return undefined;
         }
+<<<<<<< HEAD
         return "".concat(defaultValue);
+=======
+        return "" + defaultValue;
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Normalizes "isUnique" value of the column.
@@ -538,7 +554,11 @@ var OracleDriver = /** @class */ (function () {
         var type = column.type;
         // used 'getColumnLength()' method, because in Oracle column length is required for some data types.
         if (this.getColumnLength(column)) {
+<<<<<<< HEAD
             type += "(".concat(this.getColumnLength(column), ")");
+=======
+            type += "(" + this.getColumnLength(column) + ")";
+>>>>>>> a3495c7 (INIT)
         }
         else if (column.precision !== null && column.precision !== undefined && column.scale !== null && column.scale !== undefined) {
             type += "(" + column.precision + "," + column.scale + ")";
@@ -729,6 +749,7 @@ var OracleDriver = /** @class */ (function () {
                 if (!credentials.connectString) {
                     address = "(PROTOCOL=TCP)";
                     if (credentials.host) {
+<<<<<<< HEAD
                         address += "(HOST=".concat(credentials.host, ")");
                     }
                     if (credentials.port) {
@@ -742,6 +763,21 @@ var OracleDriver = /** @class */ (function () {
                         connectData += "(SERVICE_NAME=".concat(credentials.serviceName, ")");
                     }
                     connectString = "(DESCRIPTION=(ADDRESS=".concat(address, ")(CONNECT_DATA=").concat(connectData, "))");
+=======
+                        address += "(HOST=" + credentials.host + ")";
+                    }
+                    if (credentials.port) {
+                        address += "(PORT=" + credentials.port + ")";
+                    }
+                    connectData = "(SERVER=DEDICATED)";
+                    if (credentials.sid) {
+                        connectData += "(SID=" + credentials.sid + ")";
+                    }
+                    if (credentials.serviceName) {
+                        connectData += "(SERVICE_NAME=" + credentials.serviceName + ")";
+                    }
+                    connectString = "(DESCRIPTION=(ADDRESS=" + address + ")(CONNECT_DATA=" + connectData + "))";
+>>>>>>> a3495c7 (INIT)
                     Object.assign(credentials, { connectString: connectString });
                 }
                 connectionOptions = Object.assign({}, {

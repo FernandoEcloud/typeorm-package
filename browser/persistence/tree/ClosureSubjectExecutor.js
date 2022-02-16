@@ -69,10 +69,17 @@ var ClosureSubjectExecutor = /** @class */ (function () {
                                 throw new CannotAttachTreeChildrenEntityError(subject.metadata.name);
                             queryParams_1.push(parentId);
                             var parameterName = _this.queryRunner.connection.driver.createParameter("parent_entity_" + column.referencedColumn.databaseName, queryParams_1.length - 1);
+<<<<<<< HEAD
                             return "".concat(columnName, " = ").concat(parameterName);
                         });
                         return [4 /*yield*/, this.queryRunner.query("INSERT INTO ".concat(tableName, " (").concat(__spreadArray(__spreadArray([], __read(ancestorColumnNames), false), __read(descendantColumnNames), false).join(", "), ") ") +
                                 "SELECT ".concat(ancestorColumnNames.join(", "), ", ").concat(childEntityIds1.join(", "), " FROM ").concat(tableName, " WHERE ").concat(whereCondition.join(" AND ")), queryParams_1)];
+=======
+                            return columnName + " = " + parameterName;
+                        });
+                        return [4 /*yield*/, this.queryRunner.query("INSERT INTO " + tableName + " (" + __spreadArray(__spreadArray([], __read(ancestorColumnNames), false), __read(descendantColumnNames), false).join(", ") + ") " +
+                                ("SELECT " + ancestorColumnNames.join(", ") + ", " + childEntityIds1.join(", ") + " FROM " + tableName + " WHERE " + whereCondition.join(" AND ")), queryParams_1)];
+>>>>>>> a3495c7 (INIT)
                     case 2:
                         _a.sent();
                         _a.label = 3;
@@ -124,7 +131,11 @@ var ClosureSubjectExecutor = /** @class */ (function () {
                         });
                         createSubQuery = function (qb, alias) {
                             var e_2, _a;
+<<<<<<< HEAD
                             var subAlias = "sub".concat(alias);
+=======
+                            var subAlias = "sub" + alias;
+>>>>>>> a3495c7 (INIT)
                             var subSelect = qb.createQueryBuilder()
                                 .select(descendantColumnNames.join(", "))
                                 .from(closureTable.tablePath, subAlias);
@@ -132,7 +143,11 @@ var ClosureSubjectExecutor = /** @class */ (function () {
                                 // Create where conditions e.g. (WHERE "subdescendant"."id_ancestor" = :value_id)
                                 for (var _b = __values(closureTable.ancestorColumns), _c = _b.next(); !_c.done; _c = _b.next()) {
                                     var column = _c.value;
+<<<<<<< HEAD
                                     subSelect.andWhere("".concat(escape(subAlias), ".").concat(escape(column.databaseName), " = :value_").concat(column.referencedColumn.databaseName));
+=======
+                                    subSelect.andWhere(escape(subAlias) + "." + escape(column.databaseName) + " = :value_" + column.referencedColumn.databaseName);
+>>>>>>> a3495c7 (INIT)
                                 }
                             }
                             catch (e_2_1) { e_2 = { error: e_2_1 }; }
@@ -144,7 +159,11 @@ var ClosureSubjectExecutor = /** @class */ (function () {
                             }
                             return qb.createQueryBuilder()
                                 .select(descendantColumnNames.join(", "))
+<<<<<<< HEAD
                                 .from("(".concat(subSelect.getQuery(), ")"), alias)
+=======
+                                .from("(" + subSelect.getQuery() + ")", alias)
+>>>>>>> a3495c7 (INIT)
                                 .setParameters(subSelect.getParameters())
                                 .getQuery();
                         };
@@ -152,7 +171,11 @@ var ClosureSubjectExecutor = /** @class */ (function () {
                         try {
                             for (_a = __values(subject.metadata.primaryColumns), _b = _a.next(); !_b.done; _b = _a.next()) {
                                 column = _b.value;
+<<<<<<< HEAD
                                 parameters["value_".concat(column.databaseName)] = entity[column.databaseName];
+=======
+                                parameters["value_" + column.databaseName] = entity[column.databaseName];
+>>>>>>> a3495c7 (INIT)
                             }
                         }
                         catch (e_1_1) { e_1 = { error: e_1_1 }; }
@@ -167,8 +190,13 @@ var ClosureSubjectExecutor = /** @class */ (function () {
                                 .createQueryBuilder()
                                 .delete()
                                 .from(closureTable.tablePath)
+<<<<<<< HEAD
                                 .where(function (qb) { return "(".concat(descendantColumnNames.join(", "), ") IN (").concat(createSubQuery(qb, "descendant"), ")"); })
                                 .andWhere(function (qb) { return "(".concat(ancestorColumnNames.join(", "), ") NOT IN (").concat(createSubQuery(qb, "ancestor"), ")"); })
+=======
+                                .where(function (qb) { return "(" + descendantColumnNames.join(", ") + ") IN (" + createSubQuery(qb, "descendant") + ")"; })
+                                .andWhere(function (qb) { return "(" + ancestorColumnNames.join(", ") + ") NOT IN (" + createSubQuery(qb, "ancestor") + ")"; })
+>>>>>>> a3495c7 (INIT)
                                 .setParameters(parameters)
                                 .execute()];
                     case 1:
@@ -178,13 +206,21 @@ var ClosureSubjectExecutor = /** @class */ (function () {
                         tableName = this.getTableName(closureTable.tablePath);
                         superAlias_1 = escape("supertree");
                         subAlias_1 = escape("subtree");
+<<<<<<< HEAD
                         select = __spreadArray(__spreadArray([], __read(ancestorColumnNames.map(function (columnName) { return "".concat(superAlias_1, ".").concat(columnName); })), false), __read(descendantColumnNames.map(function (columnName) { return "".concat(subAlias_1, ".").concat(columnName); })), false);
+=======
+                        select = __spreadArray(__spreadArray([], __read(ancestorColumnNames.map(function (columnName) { return superAlias_1 + "." + columnName; })), false), __read(descendantColumnNames.map(function (columnName) { return subAlias_1 + "." + columnName; })), false);
+>>>>>>> a3495c7 (INIT)
                         entityWhereCondition = subject.metadata.closureJunctionTable.ancestorColumns.map(function (column) {
                             var columnName = escape(column.databaseName);
                             var entityId = column.referencedColumn.getEntityValue(entity);
                             queryParams_2.push(entityId);
                             var parameterName = _this.queryRunner.connection.driver.createParameter("entity_" + column.referencedColumn.databaseName, queryParams_2.length - 1);
+<<<<<<< HEAD
                             return "".concat(subAlias_1, ".").concat(columnName, " = ").concat(parameterName);
+=======
+                            return subAlias_1 + "." + columnName + " = " + parameterName;
+>>>>>>> a3495c7 (INIT)
                         });
                         parentWhereCondition = subject.metadata.closureJunctionTable.descendantColumns.map(function (column) {
                             var columnName = escape(column.databaseName);
@@ -193,12 +229,21 @@ var ClosureSubjectExecutor = /** @class */ (function () {
                                 throw new CannotAttachTreeChildrenEntityError(subject.metadata.name);
                             queryParams_2.push(parentId);
                             var parameterName = _this.queryRunner.connection.driver.createParameter("parent_entity_" + column.referencedColumn.databaseName, queryParams_2.length - 1);
+<<<<<<< HEAD
                             return "".concat(superAlias_1, ".").concat(columnName, " = ").concat(parameterName);
                         });
                         return [4 /*yield*/, this.queryRunner.query("INSERT INTO ".concat(tableName, " (").concat(__spreadArray(__spreadArray([], __read(ancestorColumnNames), false), __read(descendantColumnNames), false).join(", "), ") ") +
                                 "SELECT ".concat(select.join(", "), " ") +
                                 "FROM ".concat(tableName, " AS ").concat(superAlias_1, ", ").concat(tableName, " AS ").concat(subAlias_1, " ") +
                                 "WHERE ".concat(__spreadArray(__spreadArray([], __read(entityWhereCondition), false), __read(parentWhereCondition), false).join(" AND ")), queryParams_2)];
+=======
+                            return superAlias_1 + "." + columnName + " = " + parameterName;
+                        });
+                        return [4 /*yield*/, this.queryRunner.query("INSERT INTO " + tableName + " (" + __spreadArray(__spreadArray([], __read(ancestorColumnNames), false), __read(descendantColumnNames), false).join(", ") + ") " +
+                                ("SELECT " + select.join(", ") + " ") +
+                                ("FROM " + tableName + " AS " + superAlias_1 + ", " + tableName + " AS " + subAlias_1 + " ") +
+                                ("WHERE " + __spreadArray(__spreadArray([], __read(entityWhereCondition), false), __read(parentWhereCondition), false).join(" AND ")), queryParams_2)];
+>>>>>>> a3495c7 (INIT)
                     case 2:
                         _d.sent();
                         _d.label = 3;
@@ -229,7 +274,11 @@ var ClosureSubjectExecutor = /** @class */ (function () {
                         generateWheres = function (columns) {
                             return columns.map(function (column) {
                                 var data = identifiers.map(function (identifier) { return identifier[column.referencedColumn.databaseName]; });
+<<<<<<< HEAD
                                 return "".concat(escape(column.databaseName), " IN (").concat(data.join(", "), ")");
+=======
+                                return escape(column.databaseName) + " IN (" + data.join(", ") + ")";
+>>>>>>> a3495c7 (INIT)
                             }).join(" AND ");
                         };
                         ancestorWhere = generateWheres(closureTable.ancestorColumns);

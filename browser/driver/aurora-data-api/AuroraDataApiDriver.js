@@ -533,6 +533,7 @@ var AuroraDataApiDriver = /** @class */ (function () {
             return undefined;
         }
         if ((columnMetadata.type === "enum" || columnMetadata.type === "simple-enum") && defaultValue !== undefined) {
+<<<<<<< HEAD
             return "'".concat(defaultValue, "'");
         }
         if ((columnMetadata.type === "set") && defaultValue !== undefined) {
@@ -540,6 +541,15 @@ var AuroraDataApiDriver = /** @class */ (function () {
         }
         if (typeof defaultValue === "number") {
             return "".concat(defaultValue);
+=======
+            return "'" + defaultValue + "'";
+        }
+        if ((columnMetadata.type === "set") && defaultValue !== undefined) {
+            return "'" + DateUtils.simpleArrayToString(defaultValue) + "'";
+        }
+        if (typeof defaultValue === "number") {
+            return "" + defaultValue;
+>>>>>>> a3495c7 (INIT)
         }
         if (typeof defaultValue === "boolean") {
             return defaultValue ? "1" : "0";
@@ -548,12 +558,20 @@ var AuroraDataApiDriver = /** @class */ (function () {
             return defaultValue();
         }
         if (typeof defaultValue === "string") {
+<<<<<<< HEAD
             return "'".concat(defaultValue, "'");
+=======
+            return "'" + defaultValue + "'";
+>>>>>>> a3495c7 (INIT)
         }
         if (defaultValue === undefined) {
             return undefined;
         }
+<<<<<<< HEAD
         return "".concat(defaultValue);
+=======
+        return "" + defaultValue;
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Normalizes "isUnique" value of the column.
@@ -591,6 +609,7 @@ var AuroraDataApiDriver = /** @class */ (function () {
         var type = column.type;
         // used 'getColumnLength()' method, because MySQL requires column length for `varchar`, `nvarchar` and `varbinary` data types
         if (this.getColumnLength(column)) {
+<<<<<<< HEAD
             type += "(".concat(this.getColumnLength(column), ")");
         }
         else if (column.width) {
@@ -601,6 +620,18 @@ var AuroraDataApiDriver = /** @class */ (function () {
         }
         else if (column.precision !== null && column.precision !== undefined) {
             type += "(".concat(column.precision, ")");
+=======
+            type += "(" + this.getColumnLength(column) + ")";
+        }
+        else if (column.width) {
+            type += "(" + column.width + ")";
+        }
+        else if (column.precision !== null && column.precision !== undefined && column.scale !== null && column.scale !== undefined) {
+            type += "(" + column.precision + "," + column.scale + ")";
+        }
+        else if (column.precision !== null && column.precision !== undefined) {
+            type += "(" + column.precision + ")";
+>>>>>>> a3495c7 (INIT)
         }
         if (column.isArray)
             type += " array";
@@ -796,7 +827,11 @@ var AuroraDataApiDriver = /** @class */ (function () {
          * cause the hosting app to crash.
          */
         if (connection.listeners("error").length === 0) {
+<<<<<<< HEAD
             connection.on("error", function (error) { return logger.log("warn", "MySQL connection raised an error. ".concat(error)); });
+=======
+            connection.on("error", function (error) { return logger.log("warn", "MySQL connection raised an error. " + error); });
+>>>>>>> a3495c7 (INIT)
         }
         return connection;
     };

@@ -110,6 +110,39 @@ var ExpoQueryRunner = /** @class */ (function (_super) {
         });
     };
     /**
+<<<<<<< HEAD
+=======
+     * Called before migrations are run.
+     */
+    ExpoQueryRunner.prototype.beforeMigration = function () {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            return (0, tslib_1.__generator)(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.query("PRAGMA foreign_keys = OFF")];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * Called after migrations are run.
+     */
+    ExpoQueryRunner.prototype.afterMigration = function () {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            return (0, tslib_1.__generator)(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.query("PRAGMA foreign_keys = ON")];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+>>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     ExpoQueryRunner.prototype.query = function (query, parameters, useStructuredResult) {

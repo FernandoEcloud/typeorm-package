@@ -9,7 +9,11 @@ var TypeORMError_1 = require("./TypeORMError");
 var CannotExecuteNotConnectedError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(CannotExecuteNotConnectedError, _super);
     function CannotExecuteNotConnectedError(connectionName) {
+<<<<<<< HEAD
         return _super.call(this, "Cannot execute operation on \"".concat(connectionName, "\" connection because connection is not yet established.")) || this;
+=======
+        return _super.call(this, "Cannot execute operation on \"" + connectionName + "\" connection because connection is not yet established.") || this;
+>>>>>>> a3495c7 (INIT)
     }
     return CannotExecuteNotConnectedError;
 }(TypeORMError_1.TypeORMError));

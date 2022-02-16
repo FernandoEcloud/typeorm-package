@@ -71,7 +71,11 @@ var UniqueMetadata = /** @class */ (function () {
                 }
                 var indexName = _this.givenName ? "\"" + _this.givenName + "\" " : "";
                 var entityName = _this.entityMetadata.targetName;
+<<<<<<< HEAD
                 throw new TypeORMError("Unique constraint ".concat(indexName, "contains column that is missing in the entity (").concat(entityName, "): ") + propertyName);
+=======
+                throw new TypeORMError("Unique constraint " + indexName + "contains column that is missing in the entity (" + entityName + "): " + propertyName);
+>>>>>>> a3495c7 (INIT)
             })
                 .reduce(function (a, b) { return a.concat(b); });
         }

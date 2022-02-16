@@ -9,7 +9,11 @@ var TypeORMError_1 = require("./TypeORMError");
 var ConnectionNotFoundError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(ConnectionNotFoundError, _super);
     function ConnectionNotFoundError(name) {
+<<<<<<< HEAD
         return _super.call(this, "Connection \"".concat(name, "\" was not found.")) || this;
+=======
+        return _super.call(this, "Connection \"" + name + "\" was not found.") || this;
+>>>>>>> a3495c7 (INIT)
     }
     return ConnectionNotFoundError;
 }(TypeORMError_1.TypeORMError));

@@ -11,7 +11,11 @@ var TypeORMError_1 = require("./TypeORMError");
 var SubjectWithoutIdentifierError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(SubjectWithoutIdentifierError, _super);
     function SubjectWithoutIdentifierError(subject) {
+<<<<<<< HEAD
         return _super.call(this, "Internal error. Subject ".concat(subject.metadata.targetName, " must have an identifier to perform operation.")) || this;
+=======
+        return _super.call(this, "Internal error. Subject " + subject.metadata.targetName + " must have an identifier to perform operation.") || this;
+>>>>>>> a3495c7 (INIT)
     }
     return SubjectWithoutIdentifierError;
 }(TypeORMError_1.TypeORMError));

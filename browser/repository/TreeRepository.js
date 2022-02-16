@@ -48,7 +48,11 @@ var TreeRepository = /** @class */ (function (_super) {
         var qb = this.createQueryBuilder("treeEntity");
         FindOptionsUtils.applyOptionsToTreeQueryBuilder(qb, options);
         return qb
+<<<<<<< HEAD
             .where("".concat(escapeAlias("treeEntity"), ".").concat(escapeColumn(parentPropertyName), " IS NULL"))
+=======
+            .where(escapeAlias("treeEntity") + "." + escapeColumn(parentPropertyName) + " IS NULL")
+>>>>>>> a3495c7 (INIT)
             .getMany();
     };
     /**
@@ -129,6 +133,7 @@ var TreeRepository = /** @class */ (function (_super) {
                 .createQueryBuilder(alias)
                 .where(function (qb) {
                 var subQuery = qb.subQuery()
+<<<<<<< HEAD
                     .select("".concat(_this.metadata.targetName, ".").concat(_this.metadata.materializedPathColumn.propertyPath), "path")
                     .from(_this.metadata.target, _this.metadata.targetName)
                     .whereInIds(_this.metadata.getEntityIdMap(entity));
@@ -137,6 +142,16 @@ var TreeRepository = /** @class */ (function (_super) {
                 }
                 else {
                     return "".concat(alias, ".").concat(_this.metadata.materializedPathColumn.propertyPath, " LIKE NULLIF(CONCAT(").concat(subQuery.getQuery(), ", '%'), '%')");
+=======
+                    .select(_this.metadata.targetName + "." + _this.metadata.materializedPathColumn.propertyPath, "path")
+                    .from(_this.metadata.target, _this.metadata.targetName)
+                    .whereInIds(_this.metadata.getEntityIdMap(entity));
+                if (_this.manager.connection.driver instanceof AbstractSqliteDriver) {
+                    return alias + "." + _this.metadata.materializedPathColumn.propertyPath + " LIKE " + subQuery.getQuery() + " || '%'";
+                }
+                else {
+                    return alias + "." + _this.metadata.materializedPathColumn.propertyPath + " LIKE NULLIF(CONCAT(" + subQuery.getQuery() + ", '%'), '%')";
+>>>>>>> a3495c7 (INIT)
                 }
             });
         }
@@ -221,6 +236,7 @@ var TreeRepository = /** @class */ (function (_super) {
                 .createQueryBuilder(alias)
                 .where(function (qb) {
                 var subQuery = qb.subQuery()
+<<<<<<< HEAD
                     .select("".concat(_this.metadata.targetName, ".").concat(_this.metadata.materializedPathColumn.propertyPath), "path")
                     .from(_this.metadata.target, _this.metadata.targetName)
                     .whereInIds(_this.metadata.getEntityIdMap(entity));
@@ -229,6 +245,16 @@ var TreeRepository = /** @class */ (function (_super) {
                 }
                 else {
                     return "".concat(subQuery.getQuery(), " LIKE CONCAT(").concat(alias, ".").concat(_this.metadata.materializedPathColumn.propertyPath, ", '%')");
+=======
+                    .select(_this.metadata.targetName + "." + _this.metadata.materializedPathColumn.propertyPath, "path")
+                    .from(_this.metadata.target, _this.metadata.targetName)
+                    .whereInIds(_this.metadata.getEntityIdMap(entity));
+                if (_this.manager.connection.driver instanceof AbstractSqliteDriver) {
+                    return subQuery.getQuery() + " LIKE " + alias + "." + _this.metadata.materializedPathColumn.propertyPath + " || '%'";
+                }
+                else {
+                    return subQuery.getQuery() + " LIKE CONCAT(" + alias + "." + _this.metadata.materializedPathColumn.propertyPath + ", '%')";
+>>>>>>> a3495c7 (INIT)
                 }
             });
         }

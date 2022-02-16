@@ -13,6 +13,17 @@ export declare class SqljsQueryRunner extends AbstractSqliteQueryRunner {
      */
     driver: SqljsDriver;
     constructor(driver: SqljsDriver);
+<<<<<<< HEAD
+=======
+    /**
+     * Called before migrations are run.
+     */
+    beforeMigration(): Promise<void>;
+    /**
+     * Called after migrations are run.
+     */
+    afterMigration(): Promise<void>;
+>>>>>>> a3495c7 (INIT)
     private flush;
     release(): Promise<void>;
     /**

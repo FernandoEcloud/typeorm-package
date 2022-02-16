@@ -11,6 +11,17 @@ export declare class ReactNativeQueryRunner extends AbstractSqliteQueryRunner {
     driver: ReactNativeDriver;
     constructor(driver: ReactNativeDriver);
     /**
+<<<<<<< HEAD
+=======
+     * Called before migrations are run.
+     */
+    beforeMigration(): Promise<void>;
+    /**
+     * Called after migrations are run.
+     */
+    afterMigration(): Promise<void>;
+    /**
+>>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     query(query: string, parameters?: any[], useStructuredResult?: boolean): Promise<any>;

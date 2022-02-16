@@ -25,7 +25,11 @@ var Broadcaster = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         result = new BroadcasterResult();
+<<<<<<< HEAD
                         broadcastFunction = this["broadcast".concat(event, "Event")];
+=======
+                        broadcastFunction = this["broadcast" + event + "Event"];
+>>>>>>> a3495c7 (INIT)
                         if (typeof broadcastFunction === "function") {
                             (_a = broadcastFunction).call.apply(_a, __spreadArray([this,
                                 result], __read(args), false));
@@ -562,6 +566,7 @@ var Broadcaster = /** @class */ (function () {
      */
     Broadcaster.prototype.broadcastLoadEvent = function (result, metadata, entities) {
         var _this = this;
+<<<<<<< HEAD
         entities.forEach(function (entity) {
             if (entity instanceof Promise) // todo: check why need this?
                 return;
@@ -574,10 +579,29 @@ var Broadcaster = /** @class */ (function () {
                     var value = relation.getEntityValue(entity);
                     if (value instanceof Object)
                         _this.broadcastLoadEvent(result, relation.inverseEntityMetadata, Array.isArray(value) ? value : [value]);
+=======
+        // Calculate which subscribers are fitting for the given entity type
+        var fittingSubscribers = this.queryRunner.connection.subscribers.filter(function (subscriber) { return _this.isAllowedSubscriber(subscriber, metadata.target) && subscriber.afterLoad; });
+        if (metadata.relations.length || metadata.afterLoadListeners.length || fittingSubscribers.length) {
+            // todo: check why need this?
+            var nonPromiseEntities_1 = entities.filter(function (entity) { return !(entity instanceof Promise); });
+            // collect load events for all children entities that were loaded with the main entity
+            if (metadata.relations.length) {
+                metadata.relations.forEach(function (relation) {
+                    nonPromiseEntities_1.forEach(function (entity) {
+                        // in lazy relations we cannot simply access to entity property because it will cause a getter and a database query
+                        if (relation.isLazy && !entity.hasOwnProperty(relation.propertyName))
+                            return;
+                        var value = relation.getEntityValue(entity);
+                        if (value instanceof Object)
+                            _this.broadcastLoadEvent(result, relation.inverseEntityMetadata, Array.isArray(value) ? value : [value]);
+                    });
+>>>>>>> a3495c7 (INIT)
                 });
             }
             if (metadata.afterLoadListeners.length) {
                 metadata.afterLoadListeners.forEach(function (listener) {
+<<<<<<< HEAD
                     if (listener.isAllowed(entity)) {
                         var executionResult = listener.execute(entity);
                         if (executionResult instanceof Promise)
@@ -603,6 +627,33 @@ var Broadcaster = /** @class */ (function () {
                 });
             }
         });
+=======
+                    nonPromiseEntities_1.forEach(function (entity) {
+                        if (listener.isAllowed(entity)) {
+                            var executionResult = listener.execute(entity);
+                            if (executionResult instanceof Promise)
+                                result.promises.push(executionResult);
+                            result.count++;
+                        }
+                    });
+                });
+            }
+            fittingSubscribers.forEach(function (subscriber) {
+                nonPromiseEntities_1.forEach(function (entity) {
+                    var executionResult = subscriber.afterLoad(entity, {
+                        entity: entity,
+                        metadata: metadata,
+                        connection: _this.queryRunner.connection,
+                        queryRunner: _this.queryRunner,
+                        manager: _this.queryRunner.manager,
+                    });
+                    if (executionResult instanceof Promise)
+                        result.promises.push(executionResult);
+                    result.count++;
+                });
+            });
+        }
+>>>>>>> a3495c7 (INIT)
     };
     // -------------------------------------------------------------------------
     // Protected Methods

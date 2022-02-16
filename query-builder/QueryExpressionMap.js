@@ -235,7 +235,11 @@ var QueryExpressionMap = /** @class */ (function () {
     QueryExpressionMap.prototype.findAliasByName = function (aliasName) {
         var alias = this.aliases.find(function (alias) { return alias.name === aliasName; });
         if (!alias)
+<<<<<<< HEAD
             throw new error_1.TypeORMError("\"".concat(aliasName, "\" alias was not found. Maybe you forgot to join it?"));
+=======
+            throw new error_1.TypeORMError("\"" + aliasName + "\" alias was not found. Maybe you forgot to join it?");
+>>>>>>> a3495c7 (INIT)
         return alias;
     };
     QueryExpressionMap.prototype.findColumnByAliasExpression = function (aliasExpression) {
@@ -254,7 +258,11 @@ var QueryExpressionMap = /** @class */ (function () {
                 throw new error_1.TypeORMError("Entity to work with is not specified!"); // todo: better message
             var relationMetadata = this.mainAlias.metadata.findRelationWithPropertyPath(this.relationPropertyPath);
             if (!relationMetadata)
+<<<<<<< HEAD
                 throw new error_1.TypeORMError("Relation ".concat(this.relationPropertyPath, " was not found in entity ").concat(this.mainAlias.name)); // todo: better message
+=======
+                throw new error_1.TypeORMError("Relation " + this.relationPropertyPath + " was not found in entity " + this.mainAlias.name); // todo: better message
+>>>>>>> a3495c7 (INIT)
             return relationMetadata;
         },
         enumerable: false,

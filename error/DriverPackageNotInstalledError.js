@@ -9,8 +9,13 @@ var TypeORMError_1 = require("./TypeORMError");
 var DriverPackageNotInstalledError = /** @class */ (function (_super) {
     (0, tslib_1.__extends)(DriverPackageNotInstalledError, _super);
     function DriverPackageNotInstalledError(driverName, packageName) {
+<<<<<<< HEAD
         return _super.call(this, "".concat(driverName, " package has not been found installed. ") +
             "Try to install it: npm install ".concat(packageName, " --save")) || this;
+=======
+        return _super.call(this, driverName + " package has not been found installed. " +
+            ("Try to install it: npm install " + packageName + " --save")) || this;
+>>>>>>> a3495c7 (INIT)
     }
     return DriverPackageNotInstalledError;
 }(TypeORMError_1.TypeORMError));

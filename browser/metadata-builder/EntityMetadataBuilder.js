@@ -110,7 +110,11 @@ var EntityMetadataBuilder = /** @class */ (function () {
                         });
                         if (_this.connection.driver instanceof SqlServerDriver) {
                             index.where = index.columns.map(function (column) {
+<<<<<<< HEAD
                                 return "".concat(_this.connection.driver.escape(column.databaseName), " IS NOT NULL");
+=======
+                                return _this.connection.driver.escape(column.databaseName) + " IS NOT NULL";
+>>>>>>> a3495c7 (INIT)
                             }).join(" AND ");
                         }
                         if (relation.embeddedMetadata) {

@@ -697,10 +697,18 @@ var SubjectExecutor = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, Promise.all(this.softRemoveSubjects.map(function (subject) { return __awaiter(_this, void 0, void 0, function () {
+<<<<<<< HEAD
                             var updateResult, partialEntity, manager, softDeleteQueryBuilder;
                             var _this = this;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
+=======
+                            var updateResult, partialEntity, manager, softDeleteQueryBuilder, _a, _b, relation, e_7_1;
+                            var e_7, _c;
+                            var _this = this;
+                            return __generator(this, function (_d) {
+                                switch (_d.label) {
+>>>>>>> a3495c7 (INIT)
                                     case 0:
                                         if (!subject.identifier)
                                             throw new SubjectWithoutIdentifierError(subject);
@@ -721,8 +729,13 @@ var SubjectExecutor = /** @class */ (function () {
                                         manager = this.queryRunner.manager;
                                         return [4 /*yield*/, manager.update(subject.metadata.target, subject.identifier, partialEntity)];
                                     case 1:
+<<<<<<< HEAD
                                         updateResult = _a.sent();
                                         return [3 /*break*/, 4];
+=======
+                                        updateResult = _d.sent();
+                                        return [3 /*break*/, 11];
+>>>>>>> a3495c7 (INIT)
                                     case 2:
                                         softDeleteQueryBuilder = this.queryRunner
                                             .manager
@@ -739,9 +752,42 @@ var SubjectExecutor = /** @class */ (function () {
                                         }
                                         return [4 /*yield*/, softDeleteQueryBuilder.execute()];
                                     case 3:
+<<<<<<< HEAD
                                         updateResult = _a.sent();
                                         _a.label = 4;
                                     case 4:
+=======
+                                        updateResult = _d.sent();
+                                        _d.label = 4;
+                                    case 4:
+                                        _d.trys.push([4, 9, 10, 11]);
+                                        _a = __values(subject.metadata.relations), _b = _a.next();
+                                        _d.label = 5;
+                                    case 5:
+                                        if (!!_b.done) return [3 /*break*/, 8];
+                                        relation = _b.value;
+                                        // Call recursive function that get the parents primary keys that in used on the inverse side in all one to many relations
+                                        return [4 /*yield*/, this.executeSoftRemoveRecursive(relation, [Reflect.get(subject.identifier, subject.metadata.primaryColumns[0].propertyName)])];
+                                    case 6:
+                                        // Call recursive function that get the parents primary keys that in used on the inverse side in all one to many relations
+                                        _d.sent();
+                                        _d.label = 7;
+                                    case 7:
+                                        _b = _a.next();
+                                        return [3 /*break*/, 5];
+                                    case 8: return [3 /*break*/, 11];
+                                    case 9:
+                                        e_7_1 = _d.sent();
+                                        e_7 = { error: e_7_1 };
+                                        return [3 /*break*/, 11];
+                                    case 10:
+                                        try {
+                                            if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+                                        }
+                                        finally { if (e_7) throw e_7.error; }
+                                        return [7 /*endfinally*/];
+                                    case 11:
+>>>>>>> a3495c7 (INIT)
                                         subject.generatedMap = updateResult.generatedMaps[0];
                                         if (subject.generatedMap) {
                                             subject.metadata.columns.forEach(function (column) {
@@ -766,6 +812,73 @@ var SubjectExecutor = /** @class */ (function () {
     /**
      * Recovers all given subjects in the database.
      */
+<<<<<<< HEAD
+=======
+    SubjectExecutor.prototype.executeSoftRemoveRecursive = function (relation, ids) {
+        return __awaiter(this, void 0, void 0, function () {
+            var primaryPropertyName, updateResult, softDeleteQueryBuilder, parentIds, _a, _b, subRelation, e_8_1;
+            var e_8, _c;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
+                    case 0:
+                        if (!relation.isCascadeSoftRemove) return [3 /*break*/, 9];
+                        primaryPropertyName = relation.inverseEntityMetadata.primaryColumns[0].propertyName;
+                        updateResult = void 0;
+                        softDeleteQueryBuilder = this.queryRunner
+                            .manager
+                            .createQueryBuilder()
+                            .softDelete()
+                            .from(relation.inverseEntityMetadata.target)
+                            // We get back list of the affected rows primary keys for call again
+                            .returning([primaryPropertyName])
+                            .updateEntity(this.options && this.options.reload === false ? false : true)
+                            .callListeners(false);
+                        // soft remove only where parent id is in the list
+                        softDeleteQueryBuilder.where(relation.inverseSidePropertyPath + " in (:...ids)", { ids: ids });
+                        return [4 /*yield*/, softDeleteQueryBuilder.execute()];
+                    case 1:
+                        updateResult = _d.sent();
+                        parentIds = void 0;
+                        // Only in oracle the returning value is a list of the affected row primary keys and not list of dictionary
+                        if (this.queryRunner.connection.driver instanceof OracleDriver) {
+                            parentIds = updateResult.raw[0];
+                        }
+                        else {
+                            parentIds = updateResult.raw.map(function (row) { return row[Object.keys(row)[0]]; });
+                        }
+                        if (!parentIds.length) return [3 /*break*/, 9];
+                        _d.label = 2;
+                    case 2:
+                        _d.trys.push([2, 7, 8, 9]);
+                        _a = __values(relation.inverseEntityMetadata.relations), _b = _a.next();
+                        _d.label = 3;
+                    case 3:
+                        if (!!_b.done) return [3 /*break*/, 6];
+                        subRelation = _b.value;
+                        return [4 /*yield*/, this.executeSoftRemoveRecursive(subRelation, parentIds)];
+                    case 4:
+                        _d.sent();
+                        _d.label = 5;
+                    case 5:
+                        _b = _a.next();
+                        return [3 /*break*/, 3];
+                    case 6: return [3 /*break*/, 9];
+                    case 7:
+                        e_8_1 = _d.sent();
+                        e_8 = { error: e_8_1 };
+                        return [3 /*break*/, 9];
+                    case 8:
+                        try {
+                            if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+                        }
+                        finally { if (e_8) throw e_8.error; }
+                        return [7 /*endfinally*/];
+                    case 9: return [2 /*return*/];
+                }
+            });
+        });
+    };
+>>>>>>> a3495c7 (INIT)
     SubjectExecutor.prototype.executeRecoverOperations = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;

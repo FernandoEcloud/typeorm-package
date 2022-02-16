@@ -19,7 +19,11 @@
   <br>
   <br>
 </div>
+<<<<<<< HEAD
 
+=======
+Fer
+>>>>>>> a3495c7 (INIT)
 TypeORM is an [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping)
 that can run in NodeJS, Browser, Cordova, PhoneGap, Ionic, React Native, NativeScript, Expo, and Electron platforms
 and can be used with TypeScript and JavaScript (ES5, ES6, ES7, ES8).
@@ -27,7 +31,11 @@ Its goal is to always support the latest JavaScript features and provide additio
 that help you to develop any kind of application that uses databases - from
 small applications with a few tables to large scale enterprise applications
 with multiple databases.
+<<<<<<< HEAD
 Fernando
+=======
+
+>>>>>>> a3495c7 (INIT)
 TypeORM supports both [Active Record](./docs/active-record-data-mapper.md#what-is-the-active-record-pattern) and [Data Mapper](./docs/active-record-data-mapper.md#what-is-the-data-mapper-pattern) patterns,
 unlike all other JavaScript ORMs currently in existence,
 which means you can write high quality, loosely coupled, scalable,

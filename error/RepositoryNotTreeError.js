@@ -24,7 +24,11 @@ var RepositoryNotTreeError = /** @class */ (function (_super) {
         else {
             targetName = entityClass;
         }
+<<<<<<< HEAD
         _this.message = "Repository of the \"".concat(targetName, "\" class is not a TreeRepository. Try to apply @Tree decorator on your entity.");
+=======
+        _this.message = "Repository of the \"" + targetName + "\" class is not a TreeRepository. Try to apply @Tree decorator on your entity.";
+>>>>>>> a3495c7 (INIT)
         return _this;
     }
     return RepositoryNotTreeError;

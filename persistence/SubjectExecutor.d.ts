@@ -3,6 +3,10 @@ import { Subject } from "./Subject";
 import { SaveOptions } from "../repository/SaveOptions";
 import { RemoveOptions } from "../repository/RemoveOptions";
 import { BroadcasterResult } from "../subscriber/BroadcasterResult";
+<<<<<<< HEAD
+=======
+import { RelationMetadata } from "../metadata/RelationMetadata";
+>>>>>>> a3495c7 (INIT)
 /**
  * Executes all database operations (inserts, updated, deletes) that must be executed
  * with given persistence subjects.
@@ -90,6 +94,10 @@ export declare class SubjectExecutor {
     /**
      * Recovers all given subjects in the database.
      */
+<<<<<<< HEAD
+=======
+    protected executeSoftRemoveRecursive(relation: RelationMetadata, ids: any[]): Promise<void>;
+>>>>>>> a3495c7 (INIT)
     protected executeRecoverOperations(): Promise<void>;
     /**
      * Updates all special columns of the saving entities (create date, update date, version, etc.).

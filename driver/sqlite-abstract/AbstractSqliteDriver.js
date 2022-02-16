@@ -145,6 +145,16 @@ var AbstractSqliteDriver = /** @class */ (function () {
             metadataName: "varchar",
             metadataValue: "text",
         };
+<<<<<<< HEAD
+=======
+        // -------------------------------------------------------------------------
+        // Protected Properties
+        // -------------------------------------------------------------------------
+        /**
+         * Any attached databases (excepting default 'main')
+         */
+        this.attachedDatabases = {};
+>>>>>>> a3495c7 (INIT)
         this.connection = connection;
         this.options = connection.options;
         this.database = DriverUtils_1.DriverUtils.buildDriverOptions(this.options).database;
@@ -190,6 +200,23 @@ var AbstractSqliteDriver = /** @class */ (function () {
             });
         });
     };
+<<<<<<< HEAD
+=======
+    AbstractSqliteDriver.prototype.hasAttachedDatabases = function () {
+        return !!Object.keys(this.attachedDatabases).length;
+    };
+    AbstractSqliteDriver.prototype.getAttachedDatabaseHandleByRelativePath = function (path) {
+        var _a, _b;
+        return (_b = (_a = this.attachedDatabases) === null || _a === void 0 ? void 0 : _a[path]) === null || _b === void 0 ? void 0 : _b.attachHandle;
+    };
+    AbstractSqliteDriver.prototype.getAttachedDatabasePathRelativeByHandle = function (handle) {
+        var _a;
+        return (_a = Object.values(this.attachedDatabases).find(function (_a) {
+            var attachHandle = _a.attachHandle;
+            return handle === attachHandle;
+        })) === null || _a === void 0 ? void 0 : _a.attachFilepathRelative;
+    };
+>>>>>>> a3495c7 (INIT)
     /**
      * Creates a schema builder used to build and sync a schema.
      */
@@ -335,10 +362,18 @@ var AbstractSqliteDriver = /** @class */ (function () {
      * Parse a target table name or other types and return a normalized table definition.
      */
     AbstractSqliteDriver.prototype.parseTableName = function (target) {
+<<<<<<< HEAD
         var driverDatabase = this.database;
         var driverSchema = undefined;
         if (target instanceof Table_1.Table || target instanceof View_1.View) {
             var parsed = this.parseTableName(target.name);
+=======
+        var _a;
+        var driverDatabase = this.database;
+        var driverSchema = undefined;
+        if (target instanceof Table_1.Table || target instanceof View_1.View) {
+            var parsed = this.parseTableName(target.schema ? "\"" + target.schema + "\".\"" + target.name + "\"" : target.name);
+>>>>>>> a3495c7 (INIT)
             return {
                 database: target.database || parsed.database || driverDatabase,
                 schema: target.schema || parsed.schema || driverSchema,
@@ -370,8 +405,14 @@ var AbstractSqliteDriver = /** @class */ (function () {
             };
         }
         else if (parts.length === 2) {
+<<<<<<< HEAD
             return {
                 database: driverDatabase,
+=======
+            var database = (_a = this.getAttachedDatabasePathRelativeByHandle(parts[0])) !== null && _a !== void 0 ? _a : driverDatabase;
+            return {
+                database: database,
+>>>>>>> a3495c7 (INIT)
                 schema: parts[0],
                 tableName: parts[1]
             };
@@ -431,12 +472,20 @@ var AbstractSqliteDriver = /** @class */ (function () {
             return defaultValue();
         }
         if (typeof defaultValue === "string") {
+<<<<<<< HEAD
             return "'".concat(defaultValue, "'");
+=======
+            return "'" + defaultValue + "'";
+>>>>>>> a3495c7 (INIT)
         }
         if (defaultValue === null || defaultValue === undefined) {
             return undefined;
         }
+<<<<<<< HEAD
         return "".concat(defaultValue);
+=======
+        return "" + defaultValue;
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Normalizes "isUnique" value of the column.

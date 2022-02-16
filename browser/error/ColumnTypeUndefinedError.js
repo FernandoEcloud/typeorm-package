@@ -7,7 +7,11 @@ import { TypeORMError } from "./TypeORMError";
 var ColumnTypeUndefinedError = /** @class */ (function (_super) {
     __extends(ColumnTypeUndefinedError, _super);
     function ColumnTypeUndefinedError(object, propertyName) {
+<<<<<<< HEAD
         return _super.call(this, "Column type for ".concat(object.constructor.name, "#").concat(propertyName, " is not defined and cannot be guessed. ") +
+=======
+        return _super.call(this, "Column type for " + object.constructor.name + "#" + propertyName + " is not defined and cannot be guessed. " +
+>>>>>>> a3495c7 (INIT)
             "Make sure you have turned on an \"emitDecoratorMetadata\": true option in tsconfig.json. " +
             "Also make sure you have imported \"reflect-metadata\" on top of the main entry file in your application (before any entity imported)." +
             "If you are using JavaScript instead of TypeScript you must explicitly provide a column type.") || this;

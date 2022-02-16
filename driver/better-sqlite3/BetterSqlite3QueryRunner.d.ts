@@ -16,7 +16,23 @@ export declare class BetterSqlite3QueryRunner extends AbstractSqliteQueryRunner 
     private stmtCache;
     private getStmt;
     /**
+<<<<<<< HEAD
      * Executes a given SQL query.
      */
     query(query: string, parameters?: any[], useStructuredResult?: boolean): Promise<any>;
+=======
+     * Called before migrations are run.
+     */
+    beforeMigration(): Promise<void>;
+    /**
+     * Called after migrations are run.
+     */
+    afterMigration(): Promise<void>;
+    /**
+     * Executes a given SQL query.
+     */
+    query(query: string, parameters?: any[], useStructuredResult?: boolean): Promise<any>;
+    protected loadTableRecords(tablePath: string, tableOrIndex: "table" | "index"): Promise<any>;
+    protected loadPragmaRecords(tablePath: string, pragma: string): Promise<any>;
+>>>>>>> a3495c7 (INIT)
 }

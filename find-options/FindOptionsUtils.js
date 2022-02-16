@@ -90,9 +90,15 @@ var FindOptionsUtils = /** @class */ (function () {
             qb.select([]);
             options.select.forEach(function (select) {
                 var e_1, _a;
+<<<<<<< HEAD
                 if (!metadata.hasColumnWithPropertyPath("".concat(select)))
                     throw new error_1.TypeORMError("".concat(select, " column was not found in the ").concat(metadata.name, " entity."));
                 var columns = metadata.findColumnsWithPropertyPath("".concat(select));
+=======
+                if (!metadata.hasColumnWithPropertyPath("" + select))
+                    throw new error_1.TypeORMError(select + " column was not found in the " + metadata.name + " entity.");
+                var columns = metadata.findColumnsWithPropertyPath("" + select);
+>>>>>>> a3495c7 (INIT)
                 try {
                     for (var columns_1 = (0, tslib_1.__values)(columns), columns_1_1 = columns_1.next(); !columns_1_1.done; columns_1_1 = columns_1.next()) {
                         var column = columns_1_1.value;
@@ -160,7 +166,11 @@ var FindOptionsUtils = /** @class */ (function () {
                         return alias.metadata.tableNameWithoutPrefix === table;
                     });
                     if (!tableAlias) {
+<<<<<<< HEAD
                         throw new error_1.TypeORMError("\"".concat(table, "\" is not part of this query"));
+=======
+                        throw new error_1.TypeORMError("\"" + table + "\" is not part of this query");
+>>>>>>> a3495c7 (INIT)
                     }
                     return qb.escape(tableAlias.name);
                 }) : undefined;
@@ -183,7 +193,11 @@ var FindOptionsUtils = /** @class */ (function () {
             Object.keys(options.order).forEach(function (key) {
                 var order = options.order[key];
                 if (!metadata.findColumnWithPropertyPath(key))
+<<<<<<< HEAD
                     throw new Error("".concat(key, " column was not found in the ").concat(metadata.name, " entity."));
+=======
+                    throw new Error(key + " column was not found in the " + metadata.name + " entity.");
+>>>>>>> a3495c7 (INIT)
                 switch (order) {
                     case 1:
                         qb.addOrderBy(qb.alias + "." + key, "ASC");
@@ -269,7 +283,11 @@ var FindOptionsUtils = /** @class */ (function () {
                         join.mapToProperty !== undefined ||
                         join.isMappingMany !== undefined ||
                         join.direction !== "LEFT" ||
+<<<<<<< HEAD
                         join.entityOrProperty !== "".concat(alias, ".").concat(relation.propertyPath)) {
+=======
+                        join.entityOrProperty !== alias + "." + relation.propertyPath) {
+>>>>>>> a3495c7 (INIT)
                         continue;
                     }
                     addJoin = false;

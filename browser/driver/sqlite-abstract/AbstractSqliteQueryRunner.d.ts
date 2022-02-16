@@ -251,8 +251,15 @@ export declare abstract class AbstractSqliteQueryRunner extends BaseQueryRunner 
     /**
      * Removes all tables from the currently connected database.
      */
+<<<<<<< HEAD
     clearDatabase(): Promise<void>;
     protected loadViews(viewNames?: string[]): Promise<View[]>;
+=======
+    clearDatabase(database?: string): Promise<void>;
+    protected loadViews(viewNames?: string[]): Promise<View[]>;
+    protected loadTableRecords(tablePath: string, tableOrIndex: "table" | "index"): Promise<any>;
+    protected loadPragmaRecords(tablePath: string, pragma: string): Promise<any>;
+>>>>>>> a3495c7 (INIT)
     /**
      * Loads all tables (with given names) from the database and creates a Table from them.
      */
@@ -288,4 +295,15 @@ export declare abstract class AbstractSqliteQueryRunner extends BaseQueryRunner 
      */
     protected buildCreateColumnSql(column: TableColumn, skipPrimary?: boolean): string;
     protected recreateTable(newTable: Table, oldTable: Table, migrateData?: boolean): Promise<void>;
+<<<<<<< HEAD
+=======
+    /**
+     * tablePath e.g. "myDB.myTable", "myTable"
+     */
+    protected splitTablePath(tablePath: string): [string | undefined, string];
+    /**
+     * Escapes given table or view path. Tolerates leading/trailing dots
+     */
+    protected escapePath(target: Table | View | string, disableEscape?: boolean): string;
+>>>>>>> a3495c7 (INIT)
 }

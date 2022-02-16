@@ -64,7 +64,11 @@ var SchemaLogCommand = /** @class */ (function () {
                         else {
                             lengthSeparators = String(sqlInMemory.upQueries.length).split("").map(function (char) { return "-"; }).join("");
                             console.log(chalk_1.default.yellow("---------------------------------------------------------------" + lengthSeparators));
+<<<<<<< HEAD
                             console.log(chalk_1.default.yellow.bold("-- Schema synchronization will execute following sql queries (".concat(chalk_1.default.white(sqlInMemory.upQueries.length.toString()), "):")));
+=======
+                            console.log(chalk_1.default.yellow.bold("-- Schema synchronization will execute following sql queries (" + chalk_1.default.white(sqlInMemory.upQueries.length.toString()) + "):"));
+>>>>>>> a3495c7 (INIT)
                             console.log(chalk_1.default.yellow("---------------------------------------------------------------" + lengthSeparators));
                             sqlInMemory.upQueries.forEach(function (upQuery) {
                                 var sqlString = upQuery.query;

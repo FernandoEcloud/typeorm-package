@@ -102,7 +102,11 @@ var IndexMetadata = /** @class */ (function () {
                 }
                 var indexName = _this.givenName ? "\"" + _this.givenName + "\" " : "";
                 var entityName = _this.entityMetadata.targetName;
+<<<<<<< HEAD
                 throw new TypeORMError("Index ".concat(indexName, "contains column that is missing in the entity (").concat(entityName, "): ") + propertyPath);
+=======
+                throw new TypeORMError("Index " + indexName + "contains column that is missing in the entity (" + entityName + "): " + propertyPath);
+>>>>>>> a3495c7 (INIT)
             })
                 .reduce(function (a, b) { return a.concat(b); });
         }

@@ -23,6 +23,39 @@ var NativescriptQueryRunner = /** @class */ (function (_super) {
         return _this;
     }
     /**
+<<<<<<< HEAD
+=======
+     * Called before migrations are run.
+     */
+    NativescriptQueryRunner.prototype.beforeMigration = function () {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            return (0, tslib_1.__generator)(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.query("PRAGMA foreign_keys = OFF")];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * Called after migrations are run.
+     */
+    NativescriptQueryRunner.prototype.afterMigration = function () {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            return (0, tslib_1.__generator)(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.query("PRAGMA foreign_keys = ON")];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+>>>>>>> a3495c7 (INIT)
      * Executes a given SQL query.
      */
     NativescriptQueryRunner.prototype.query = function (query, parameters, useStructuredResult) {
@@ -91,7 +124,11 @@ var NativescriptQueryRunner = /** @class */ (function (_super) {
      */
     NativescriptQueryRunner.prototype.parametrize = function (objectLiteral, startIndex) {
         if (startIndex === void 0) { startIndex = 0; }
+<<<<<<< HEAD
         return Object.keys(objectLiteral).map(function (key, index) { return "\"".concat(key, "\"") + "=?"; });
+=======
+        return Object.keys(objectLiteral).map(function (key, index) { return "\"" + key + "\"" + "=?"; });
+>>>>>>> a3495c7 (INIT)
     };
     return NativescriptQueryRunner;
 }(AbstractSqliteQueryRunner_1.AbstractSqliteQueryRunner));

@@ -15,7 +15,11 @@ var CannotCreateEntityIdMapError = /** @class */ (function (_super) {
             column.setEntityValue(object, index + 1);
             return object;
         }, {});
+<<<<<<< HEAD
         _this.message = "Cannot use given entity id \"".concat(id, "\" because \"").concat(metadata.targetName, "\" contains multiple primary columns, you must provide object in following form: ").concat(JSON.stringify(objectExample), " as an id.");
+=======
+        _this.message = "Cannot use given entity id \"" + id + "\" because \"" + metadata.targetName + "\" contains multiple primary columns, you must provide object in following form: " + JSON.stringify(objectExample) + " as an id.";
+>>>>>>> a3495c7 (INIT)
         return _this;
     }
     return CannotCreateEntityIdMapError;

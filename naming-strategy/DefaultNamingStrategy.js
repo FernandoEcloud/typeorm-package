@@ -51,7 +51,11 @@ var DefaultNamingStrategy = /** @class */ (function () {
         clonedColumnNames.sort();
         var tableName = this.getTableName(tableOrName);
         var replacedTableName = tableName.replace(".", "_");
+<<<<<<< HEAD
         var key = "".concat(replacedTableName, "_").concat(clonedColumnNames.join("_"));
+=======
+        var key = replacedTableName + "_" + clonedColumnNames.join("_");
+>>>>>>> a3495c7 (INIT)
         return "PK_" + RandomGenerator_1.RandomGenerator.sha1(key).substr(0, 27);
     };
     DefaultNamingStrategy.prototype.uniqueConstraintName = function (tableOrName, columnNames) {
@@ -60,7 +64,11 @@ var DefaultNamingStrategy = /** @class */ (function () {
         clonedColumnNames.sort();
         var tableName = this.getTableName(tableOrName);
         var replacedTableName = tableName.replace(".", "_");
+<<<<<<< HEAD
         var key = "".concat(replacedTableName, "_").concat(clonedColumnNames.join("_"));
+=======
+        var key = replacedTableName + "_" + clonedColumnNames.join("_");
+>>>>>>> a3495c7 (INIT)
         return "UQ_" + RandomGenerator_1.RandomGenerator.sha1(key).substr(0, 27);
     };
     DefaultNamingStrategy.prototype.relationConstraintName = function (tableOrName, columnNames, where) {
@@ -69,15 +77,25 @@ var DefaultNamingStrategy = /** @class */ (function () {
         clonedColumnNames.sort();
         var tableName = this.getTableName(tableOrName);
         var replacedTableName = tableName.replace(".", "_");
+<<<<<<< HEAD
         var key = "".concat(replacedTableName, "_").concat(clonedColumnNames.join("_"));
         if (where)
             key += "_".concat(where);
+=======
+        var key = replacedTableName + "_" + clonedColumnNames.join("_");
+        if (where)
+            key += "_" + where;
+>>>>>>> a3495c7 (INIT)
         return "REL_" + RandomGenerator_1.RandomGenerator.sha1(key).substr(0, 26);
     };
     DefaultNamingStrategy.prototype.defaultConstraintName = function (tableOrName, columnName) {
         var tableName = this.getTableName(tableOrName);
         var replacedTableName = tableName.replace(".", "_");
+<<<<<<< HEAD
         var key = "".concat(replacedTableName, "_").concat(columnName);
+=======
+        var key = replacedTableName + "_" + columnName;
+>>>>>>> a3495c7 (INIT)
         return "DF_" + RandomGenerator_1.RandomGenerator.sha1(key).substr(0, 27);
     };
     DefaultNamingStrategy.prototype.foreignKeyName = function (tableOrName, columnNames, _referencedTablePath, _referencedColumnNames) {
@@ -86,7 +104,11 @@ var DefaultNamingStrategy = /** @class */ (function () {
         clonedColumnNames.sort();
         var tableName = this.getTableName(tableOrName);
         var replacedTableName = tableName.replace(".", "_");
+<<<<<<< HEAD
         var key = "".concat(replacedTableName, "_").concat(clonedColumnNames.join("_"));
+=======
+        var key = replacedTableName + "_" + clonedColumnNames.join("_");
+>>>>>>> a3495c7 (INIT)
         return "FK_" + RandomGenerator_1.RandomGenerator.sha1(key).substr(0, 27);
     };
     DefaultNamingStrategy.prototype.indexName = function (tableOrName, columnNames, where) {
@@ -95,22 +117,38 @@ var DefaultNamingStrategy = /** @class */ (function () {
         clonedColumnNames.sort();
         var tableName = this.getTableName(tableOrName);
         var replacedTableName = tableName.replace(".", "_");
+<<<<<<< HEAD
         var key = "".concat(replacedTableName, "_").concat(clonedColumnNames.join("_"));
         if (where)
             key += "_".concat(where);
+=======
+        var key = replacedTableName + "_" + clonedColumnNames.join("_");
+        if (where)
+            key += "_" + where;
+>>>>>>> a3495c7 (INIT)
         return "IDX_" + RandomGenerator_1.RandomGenerator.sha1(key).substr(0, 26);
     };
     DefaultNamingStrategy.prototype.checkConstraintName = function (tableOrName, expression, isEnum) {
         var tableName = this.getTableName(tableOrName);
         var replacedTableName = tableName.replace(".", "_");
+<<<<<<< HEAD
         var key = "".concat(replacedTableName, "_").concat(expression);
         var name = "CHK_" + RandomGenerator_1.RandomGenerator.sha1(key).substr(0, 26);
         return isEnum ? "".concat(name, "_ENUM") : name;
+=======
+        var key = replacedTableName + "_" + expression;
+        var name = "CHK_" + RandomGenerator_1.RandomGenerator.sha1(key).substr(0, 26);
+        return isEnum ? name + "_ENUM" : name;
+>>>>>>> a3495c7 (INIT)
     };
     DefaultNamingStrategy.prototype.exclusionConstraintName = function (tableOrName, expression) {
         var tableName = this.getTableName(tableOrName);
         var replacedTableName = tableName.replace(".", "_");
+<<<<<<< HEAD
         var key = "".concat(replacedTableName, "_").concat(expression);
+=======
+        var key = replacedTableName + "_" + expression;
+>>>>>>> a3495c7 (INIT)
         return "XCL_" + RandomGenerator_1.RandomGenerator.sha1(key).substr(0, 26);
     };
     DefaultNamingStrategy.prototype.joinColumnName = function (relationName, referencedColumnName) {

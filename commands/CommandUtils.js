@@ -62,7 +62,11 @@ var CommandUtils = /** @class */ (function () {
      */
     CommandUtils.getTimestamp = function (timestampOptionArgument) {
         if (timestampOptionArgument && (isNaN(timestampOptionArgument) || timestampOptionArgument < 0)) {
+<<<<<<< HEAD
             throw new error_1.TypeORMError("timestamp option should be a non-negative number. received: ".concat(timestampOptionArgument));
+=======
+            throw new error_1.TypeORMError("timestamp option should be a non-negative number. received: " + timestampOptionArgument);
+>>>>>>> a3495c7 (INIT)
         }
         return timestampOptionArgument ? new Date(Number(timestampOptionArgument)).getTime() : Date.now();
     };

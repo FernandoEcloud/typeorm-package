@@ -821,7 +821,11 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
                         cacheId = this.expressionMap.cacheId;
                         // Creates a new cacheId for the count query, or it will retreive the above query results
                         // and count will return 0.
+<<<<<<< HEAD
                         this.expressionMap.cacheId = (cacheId) ? "".concat(cacheId, "-count") : cacheId;
+=======
+                        this.expressionMap.cacheId = (cacheId) ? cacheId + "-count" : cacheId;
+>>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeCountQuery(queryRunner)];
                     case 5:
                         count = _a.sent();
@@ -955,8 +959,13 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
         this.expressionMap.joinAttributes.push(joinAttribute);
         if (joinAttribute.metadata) {
             if (joinAttribute.metadata.deleteDateColumn && !this.expressionMap.withDeleted) {
+<<<<<<< HEAD
                 var conditionDeleteColumn = "".concat(aliasName, ".").concat(joinAttribute.metadata.deleteDateColumn.propertyName, " IS NULL");
                 joinAttribute.condition = joinAttribute.condition ? " ".concat(joinAttribute.condition, " AND ").concat(conditionDeleteColumn) : "".concat(conditionDeleteColumn);
+=======
+                var conditionDeleteColumn = aliasName + "." + joinAttribute.metadata.deleteDateColumn.propertyName + " IS NULL";
+                joinAttribute.condition = joinAttribute.condition ? " " + joinAttribute.condition + " AND " + conditionDeleteColumn : "" + conditionDeleteColumn;
+>>>>>>> a3495c7 (INIT)
             }
             // todo: find and set metadata right there?
             joinAttribute.alias = this.expressionMap.createAlias({
@@ -1033,7 +1042,11 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
         var useIndex = "";
         if (this.expressionMap.useIndex) {
             if (this.connection.driver instanceof MysqlDriver_1.MysqlDriver) {
+<<<<<<< HEAD
                 useIndex = " USE INDEX (".concat(this.expressionMap.useIndex, ")");
+=======
+                useIndex = " USE INDEX (" + this.expressionMap.useIndex + ")";
+>>>>>>> a3495c7 (INIT)
             }
         }
         // create a selection query
@@ -1058,12 +1071,20 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
         var select = "SELECT ";
         if (maxExecutionTime > 0) {
             if (driver instanceof MysqlDriver_1.MysqlDriver) {
+<<<<<<< HEAD
                 select += "/*+ MAX_EXECUTION_TIME(".concat(this.expressionMap.maxExecutionTime, ") */ ");
+=======
+                select += "/*+ MAX_EXECUTION_TIME(" + this.expressionMap.maxExecutionTime + ") */ ";
+>>>>>>> a3495c7 (INIT)
             }
         }
         if (driver instanceof PostgresDriver_1.PostgresDriver && selectDistinctOn.length > 0) {
             var selectDistinctOnMap = selectDistinctOn.map(function (on) { return _this.replacePropertyNames(on); }).join(", ");
+<<<<<<< HEAD
             select = "SELECT DISTINCT ON (".concat(selectDistinctOnMap, ") ");
+=======
+            select = "SELECT DISTINCT ON (" + selectDistinctOnMap + ") ";
+>>>>>>> a3495c7 (INIT)
         }
         else if (selectDistinct) {
             select = "SELECT DISTINCT ";
@@ -1376,11 +1397,16 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
                 if (_this.connection.driver instanceof MysqlDriver_1.MysqlDriver || _this.connection.driver instanceof AuroraDataApiDriver_1.AuroraDataApiDriver) {
                     var useLegacy = _this.connection.driver.options.legacySpatialSupport;
                     var asText = useLegacy ? "AsText" : "ST_AsText";
+<<<<<<< HEAD
                     selectionPath = "".concat(asText, "(").concat(selectionPath, ")");
+=======
+                    selectionPath = asText + "(" + selectionPath + ")";
+>>>>>>> a3495c7 (INIT)
                 }
                 if (_this.connection.driver instanceof PostgresDriver_1.PostgresDriver)
                     // cast to JSON to trigger parsing in the driver
                     if (column.precision) {
+<<<<<<< HEAD
                         selectionPath = "ST_AsGeoJSON(".concat(selectionPath, ", ").concat(column.precision, ")::json");
                     }
                     else {
@@ -1388,6 +1414,15 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
                     }
                 if (_this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver)
                     selectionPath = "".concat(selectionPath, ".ToString()");
+=======
+                        selectionPath = "ST_AsGeoJSON(" + selectionPath + ", " + column.precision + ")::json";
+                    }
+                    else {
+                        selectionPath = "ST_AsGeoJSON(" + selectionPath + ")::json";
+                    }
+                if (_this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver)
+                    selectionPath = selectionPath + ".ToString()";
+>>>>>>> a3495c7 (INIT)
             }
             return {
                 selection: selectionPath,
@@ -1423,14 +1458,22 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
             // Postgres and CockroachDB can pass multiple parameters to the `DISTINCT` function
             // https://www.postgresql.org/docs/9.5/sql-select.html#SQL-DISTINCT
             return "COUNT(DISTINCT(" +
+<<<<<<< HEAD
                 primaryColumns.map(function (c) { return "".concat(distinctAlias, ".").concat(_this.escape(c.databaseName)); }).join(", ") +
+=======
+                primaryColumns.map(function (c) { return distinctAlias + "." + _this.escape(c.databaseName); }).join(", ") +
+>>>>>>> a3495c7 (INIT)
                 "))";
         }
         if (this.connection.driver instanceof MysqlDriver_1.MysqlDriver) {
             // MySQL & MariaDB can pass multiple parameters to the `DISTINCT` language construct
             // https://mariadb.com/kb/en/count-distinct/
             return "COUNT(DISTINCT " +
+<<<<<<< HEAD
                 primaryColumns.map(function (c) { return "".concat(distinctAlias, ".").concat(_this.escape(c.databaseName)); }).join(", ") +
+=======
+                primaryColumns.map(function (c) { return distinctAlias + "." + _this.escape(c.databaseName); }).join(", ") +
+>>>>>>> a3495c7 (INIT)
                 ")";
         }
         if (this.connection.driver instanceof SqlServerDriver_1.SqlServerDriver) {
@@ -1438,11 +1481,19 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
             // distinct counting multiple columns & they don't have the same operator
             // characteristic for concatenating, so we gotta use the `CONCAT` function.
             // However, If it's exactly 1 column we can omit the `CONCAT` for better performance.
+<<<<<<< HEAD
             var columnsExpression = primaryColumns.map(function (primaryColumn) { return "".concat(distinctAlias, ".").concat(_this.escape(primaryColumn.databaseName)); }).join(", '|;|', ");
             if (primaryColumns.length === 1) {
                 return "COUNT(DISTINCT(".concat(columnsExpression, "))");
             }
             return "COUNT(DISTINCT(CONCAT(".concat(columnsExpression, ")))");
+=======
+            var columnsExpression = primaryColumns.map(function (primaryColumn) { return distinctAlias + "." + _this.escape(primaryColumn.databaseName); }).join(", '|;|', ");
+            if (primaryColumns.length === 1) {
+                return "COUNT(DISTINCT(" + columnsExpression + "))";
+            }
+            return "COUNT(DISTINCT(CONCAT(" + columnsExpression + ")))";
+>>>>>>> a3495c7 (INIT)
         }
         // If all else fails, fall back to a `COUNT` and `DISTINCT` across all the primary columns concatenated.
         // Per the SQL spec, this is the canonical string concatenation mechanism which is most
@@ -1450,7 +1501,11 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
         // Please note, if there is only one primary column that the concatenation does not occur in this
         // query and the query is a standard `COUNT DISTINCT` in that case.
         return "COUNT(DISTINCT(" +
+<<<<<<< HEAD
             primaryColumns.map(function (c) { return "".concat(distinctAlias, ".").concat(_this.escape(c.databaseName)); }).join(" || '|;|' || ") +
+=======
+            primaryColumns.map(function (c) { return distinctAlias + "." + _this.escape(c.databaseName); }).join(" || '|;|' || ") +
+>>>>>>> a3495c7 (INIT)
             "))";
     };
     SelectQueryBuilder.prototype.executeCountQuery = function (queryRunner) {
@@ -1515,12 +1570,21 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
                             if (!orderBys_1[columnAlias]) // make sure we aren't overriding user-defined order in inverse direction
                                 orderBys_1[columnAlias] = "ASC";
                             var alias = DriverUtils_1.DriverUtils.buildAlias(_this.connection.driver, "ids_" + mainAliasName_1, primaryColumn.databaseName);
+<<<<<<< HEAD
                             return "".concat(distinctAlias, ".").concat(columnAlias, " as \"").concat(alias, "\"");
                         });
                         return [4 /*yield*/, new SelectQueryBuilder(this.connection, queryRunner)
                                 .select("DISTINCT ".concat(querySelects.join(", ")))
                                 .addSelect(selects)
                                 .from("(".concat(this.clone().orderBy().getQuery(), ")"), "distinctAlias")
+=======
+                            return distinctAlias + "." + columnAlias + " as \"" + alias + "\"";
+                        });
+                        return [4 /*yield*/, new SelectQueryBuilder(this.connection, queryRunner)
+                                .select("DISTINCT " + querySelects.join(", "))
+                                .addSelect(selects)
+                                .from("(" + this.clone().orderBy().getQuery() + ")", "distinctAlias")
+>>>>>>> a3495c7 (INIT)
                                 .offset(this.expressionMap.skip)
                                 .limit(this.expressionMap.take)
                                 .orderBy(orderBys_1)
@@ -1536,9 +1600,15 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
                         if (metadata_1.hasMultiplePrimaryKeys) {
                             condition = rawResults.map(function (result, index) {
                                 return metadata_1.primaryColumns.map(function (primaryColumn) {
+<<<<<<< HEAD
                                     var paramKey = "orm_distinct_ids_".concat(index, "_").concat(primaryColumn.databaseName);
                                     parameters_1[paramKey] = result["ids_".concat(mainAliasName_1, "_").concat(primaryColumn.databaseName)];
                                     return "".concat(mainAliasName_1, ".").concat(primaryColumn.propertyPath, "=:").concat(paramKey);
+=======
+                                    var paramKey = "orm_distinct_ids_" + index + "_" + primaryColumn.databaseName;
+                                    parameters_1[paramKey] = result["ids_" + mainAliasName_1 + "_" + primaryColumn.databaseName];
+                                    return mainAliasName_1 + "." + primaryColumn.propertyPath + "=:" + paramKey;
+>>>>>>> a3495c7 (INIT)
                                 }).join(" AND ");
                             }).join(" OR ");
                         }
@@ -1548,7 +1618,11 @@ var SelectQueryBuilder = /** @class */ (function (_super) {
                             areAllNumbers = ids.every(function (id) { return typeof id === "number"; });
                             if (areAllNumbers) {
                                 // fixes #190. if all numbers then its safe to perform query without parameter
+<<<<<<< HEAD
                                 condition = "".concat(mainAliasName_1, ".").concat(metadata_1.primaryColumns[0].propertyPath, " IN (").concat(ids.join(", "), ")");
+=======
+                                condition = mainAliasName_1 + "." + metadata_1.primaryColumns[0].propertyPath + " IN (" + ids.join(", ") + ")";
+>>>>>>> a3495c7 (INIT)
                             }
                             else {
                                 parameters_1["orm_distinct_ids"] = ids;

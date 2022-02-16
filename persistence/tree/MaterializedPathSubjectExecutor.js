@@ -105,9 +105,15 @@ var MaterializedPathSubjectExecutor = /** @class */ (function () {
                                 .createQueryBuilder()
                                 .update(subject.metadata.target)
                                 .set((_a = {},
+<<<<<<< HEAD
                                 _a[propertyPath] = function () { return "REPLACE(".concat(propertyPath, ", '").concat(oldParentPath).concat(entityPath, ".', '").concat(newParentPath).concat(entityPath, ".')"); },
                                 _a))
                                 .where("".concat(propertyPath, " LIKE :path"), { path: "".concat(oldParentPath).concat(entityPath, ".%") })
+=======
+                                _a[propertyPath] = function () { return "REPLACE(" + propertyPath + ", '" + oldParentPath + entityPath + ".', '" + newParentPath + entityPath + ".')"; },
+                                _a))
+                                .where(propertyPath + " LIKE :path", { path: "" + oldParentPath + entityPath + ".%" })
+>>>>>>> a3495c7 (INIT)
                                 .execute()];
                     case 5:
                         _b.sent();
@@ -123,7 +129,11 @@ var MaterializedPathSubjectExecutor = /** @class */ (function () {
             .from(subject.metadata.target, subject.metadata.targetName)
             .whereInIds(id)
             .getRawOne()
+<<<<<<< HEAD
             .then(function (result) { return result ? result["path"] : undefined; });
+=======
+            .then(function (result) { return result ? result["path"] : ""; });
+>>>>>>> a3495c7 (INIT)
     };
     return MaterializedPathSubjectExecutor;
 }());

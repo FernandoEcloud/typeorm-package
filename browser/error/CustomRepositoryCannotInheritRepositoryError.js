@@ -6,7 +6,11 @@ import { TypeORMError } from "./TypeORMError";
 var CustomRepositoryCannotInheritRepositoryError = /** @class */ (function (_super) {
     __extends(CustomRepositoryCannotInheritRepositoryError, _super);
     function CustomRepositoryCannotInheritRepositoryError(repository) {
+<<<<<<< HEAD
         return _super.call(this, "Custom entity repository ".concat(repository instanceof Function ? repository.name : repository.constructor.name, " ") +
+=======
+        return _super.call(this, "Custom entity repository " + (repository instanceof Function ? repository.name : repository.constructor.name) + " " +
+>>>>>>> a3495c7 (INIT)
             " cannot inherit Repository class without entity being set in the @EntityRepository decorator.") || this;
     }
     return CustomRepositoryCannotInheritRepositoryError;

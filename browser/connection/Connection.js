@@ -18,6 +18,10 @@ import { SqljsEntityManager } from "../entity-manager/SqljsEntityManager";
 import { RelationLoader } from "../query-builder/RelationLoader";
 import { EntitySchema } from "../entity-schema/EntitySchema";
 import { SqlServerDriver } from "../driver/sqlserver/SqlServerDriver";
+<<<<<<< HEAD
+=======
+import { AbstractSqliteDriver } from "../driver/sqlite-abstract/AbstractSqliteDriver";
+>>>>>>> a3495c7 (INIT)
 import { MysqlDriver } from "../driver/mysql/MysqlDriver";
 import { ObjectUtils } from "../util/ObjectUtils";
 import { AuroraDataApiDriver } from "../driver/aurora-data-api/AuroraDataApiDriver";
@@ -233,13 +237,20 @@ var Connection = /** @class */ (function () {
                         queryRunner = this.createQueryRunner();
                         _b.label = 1;
                     case 1:
+<<<<<<< HEAD
                         _b.trys.push([1, , 13, 15]);
                         if (!(this.driver instanceof SqlServerDriver || this.driver instanceof MysqlDriver || this.driver instanceof AuroraDataApiDriver)) return [3 /*break*/, 10];
                         databases_2 = this.driver.database ? [this.driver.database] : [];
+=======
+                        _b.trys.push([1, , 14, 16]);
+                        if (!(this.driver instanceof SqlServerDriver || this.driver instanceof MysqlDriver || this.driver instanceof AuroraDataApiDriver || this.driver instanceof AbstractSqliteDriver)) return [3 /*break*/, 11];
+                        databases_2 = [];
+>>>>>>> a3495c7 (INIT)
                         this.entityMetadatas.forEach(function (metadata) {
                             if (metadata.database && databases_2.indexOf(metadata.database) === -1)
                                 databases_2.push(metadata.database);
                         });
+<<<<<<< HEAD
                         _b.label = 2;
                     case 2:
                         _b.trys.push([2, 7, 8, 9]);
@@ -261,11 +272,43 @@ var Connection = /** @class */ (function () {
                         e_1 = { error: e_1_1 };
                         return [3 /*break*/, 9];
                     case 8:
+=======
+                        if (databases_2.length === 0 && this.driver.database) {
+                            databases_2.push(this.driver.database);
+                        }
+                        ;
+                        if (!(databases_2.length === 0)) return [3 /*break*/, 3];
+                        return [4 /*yield*/, queryRunner.clearDatabase()];
+                    case 2:
+                        _b.sent();
+                        return [3 /*break*/, 10];
+                    case 3:
+                        _b.trys.push([3, 8, 9, 10]);
+                        databases_1 = __values(databases_2), databases_1_1 = databases_1.next();
+                        _b.label = 4;
+                    case 4:
+                        if (!!databases_1_1.done) return [3 /*break*/, 7];
+                        database = databases_1_1.value;
+                        return [4 /*yield*/, queryRunner.clearDatabase(database)];
+                    case 5:
+                        _b.sent();
+                        _b.label = 6;
+                    case 6:
+                        databases_1_1 = databases_1.next();
+                        return [3 /*break*/, 4];
+                    case 7: return [3 /*break*/, 10];
+                    case 8:
+                        e_1_1 = _b.sent();
+                        e_1 = { error: e_1_1 };
+                        return [3 /*break*/, 10];
+                    case 9:
+>>>>>>> a3495c7 (INIT)
                         try {
                             if (databases_1_1 && !databases_1_1.done && (_a = databases_1.return)) _a.call(databases_1);
                         }
                         finally { if (e_1) throw e_1.error; }
                         return [7 /*endfinally*/];
+<<<<<<< HEAD
                     case 9: return [3 /*break*/, 12];
                     case 10: return [4 /*yield*/, queryRunner.clearDatabase()];
                     case 11:
@@ -277,6 +320,19 @@ var Connection = /** @class */ (function () {
                         _b.sent();
                         return [7 /*endfinally*/];
                     case 15: return [2 /*return*/];
+=======
+                    case 10: return [3 /*break*/, 13];
+                    case 11: return [4 /*yield*/, queryRunner.clearDatabase()];
+                    case 12:
+                        _b.sent();
+                        _b.label = 13;
+                    case 13: return [3 /*break*/, 16];
+                    case 14: return [4 /*yield*/, queryRunner.release()];
+                    case 15:
+                        _b.sent();
+                        return [7 /*endfinally*/];
+                    case 16: return [2 /*return*/];
+>>>>>>> a3495c7 (INIT)
                 }
             });
         });
@@ -465,9 +521,15 @@ var Connection = /** @class */ (function () {
     Connection.prototype.getManyToManyMetadata = function (entityTarget, relationPropertyPath) {
         var relationMetadata = this.getMetadata(entityTarget).findRelationWithPropertyPath(relationPropertyPath);
         if (!relationMetadata)
+<<<<<<< HEAD
             throw new TypeORMError("Relation \"".concat(relationPropertyPath, "\" was not found in ").concat(entityTarget, " entity."));
         if (!relationMetadata.isManyToMany)
             throw new TypeORMError("Relation \"".concat(entityTarget, "#").concat(relationPropertyPath, "\" does not have a many-to-many relationship.") +
+=======
+            throw new TypeORMError("Relation \"" + relationPropertyPath + "\" was not found in " + entityTarget + " entity.");
+        if (!relationMetadata.isManyToMany)
+            throw new TypeORMError("Relation \"" + entityTarget + "#" + relationPropertyPath + "\" does not have a many-to-many relationship." +
+>>>>>>> a3495c7 (INIT)
                 "You can use this method only on many-to-many relations.");
         return relationMetadata.junctionEntityMetadata;
     };

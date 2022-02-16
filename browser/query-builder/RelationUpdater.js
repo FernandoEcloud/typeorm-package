@@ -59,7 +59,11 @@ var RelationUpdater = /** @class */ (function () {
                             relation.inverseRelation.joinColumns.map(function (column, columnIndex) {
                                 var parameterName = "joinColumn_" + ofIndex + "_" + columnIndex;
                                 parameters_1[parameterName] = of instanceof Object ? column.referencedColumn.getEntityValue(of) : of;
+<<<<<<< HEAD
                                 conditions_1.push("".concat(column.propertyPath, " = :").concat(parameterName));
+=======
+                                conditions_1.push(column.propertyPath + " = :" + parameterName);
+>>>>>>> a3495c7 (INIT)
                             });
                         });
                         condition = conditions_1.map(function (str) { return "(" + str + ")"; }).join(" OR ");

@@ -36,6 +36,29 @@ var MongoQueryRunner = /** @class */ (function () {
     // Public Methods
     // -------------------------------------------------------------------------
     /**
+<<<<<<< HEAD
+=======
+     * Called before migrations are run.
+     */
+    MongoQueryRunner.prototype.beforeMigration = function () {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            return (0, tslib_1.__generator)(this, function (_a) {
+                return [2 /*return*/];
+            });
+        });
+    };
+    /**
+     * Called after migrations are run.
+     */
+    MongoQueryRunner.prototype.afterMigration = function () {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            return (0, tslib_1.__generator)(this, function (_a) {
+                return [2 /*return*/];
+            });
+        });
+    };
+    /**
+>>>>>>> a3495c7 (INIT)
      * Creates a cursor for a query that can be used to iterate over results from MongoDB.
      */
     MongoQueryRunner.prototype.cursor = function (collectionName, query) {

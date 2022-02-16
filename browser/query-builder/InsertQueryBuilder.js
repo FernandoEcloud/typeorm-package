@@ -261,12 +261,21 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
         var columnsExpression = this.createColumnNamesExpression();
         var query = "INSERT ";
         if (this.connection.driver instanceof MysqlDriver || this.connection.driver instanceof AuroraDataApiDriver) {
+<<<<<<< HEAD
             query += "".concat(this.expressionMap.onIgnore ? " IGNORE " : "");
         }
         query += "INTO ".concat(tableName);
         // add columns expression
         if (columnsExpression) {
             query += "(".concat(columnsExpression, ")");
+=======
+            query += "" + (this.expressionMap.onIgnore ? " IGNORE " : "");
+        }
+        query += "INTO " + tableName;
+        // add columns expression
+        if (columnsExpression) {
+            query += "(" + columnsExpression + ")";
+>>>>>>> a3495c7 (INIT)
         }
         else {
             if (!valuesExpression && (this.connection.driver instanceof MysqlDriver || this.connection.driver instanceof AuroraDataApiDriver)) // special syntax for mysql DEFAULT VALUES insertion
@@ -274,15 +283,26 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
         }
         // add OUTPUT expression
         if (returningExpression && this.connection.driver instanceof SqlServerDriver) {
+<<<<<<< HEAD
             query += " OUTPUT ".concat(returningExpression);
+=======
+            query += " OUTPUT " + returningExpression;
+>>>>>>> a3495c7 (INIT)
         }
         // add VALUES expression
         if (valuesExpression) {
             if (this.connection.driver instanceof OracleDriver && this.getValueSets().length > 1) {
+<<<<<<< HEAD
                 query += " ".concat(valuesExpression);
             }
             else {
                 query += " VALUES ".concat(valuesExpression);
+=======
+                query += " " + valuesExpression;
+            }
+            else {
+                query += " VALUES " + valuesExpression;
+>>>>>>> a3495c7 (INIT)
             }
         }
         else {
@@ -298,12 +318,17 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
                 query += " ON CONFLICT DO NOTHING ";
             }
             else if (this.expressionMap.onConflict) {
+<<<<<<< HEAD
                 query += " ON CONFLICT ".concat(this.expressionMap.onConflict, " ");
+=======
+                query += " ON CONFLICT " + this.expressionMap.onConflict + " ";
+>>>>>>> a3495c7 (INIT)
             }
             else if (this.expressionMap.onUpdate) {
                 var _a = this.expressionMap.onUpdate, overwrite = _a.overwrite, columns = _a.columns, conflict = _a.conflict;
                 var conflictTarget = "ON CONFLICT";
                 if (Array.isArray(conflict)) {
+<<<<<<< HEAD
                     conflictTarget += " ( ".concat(conflict.map(function (column) { return _this.escape(column); }).join(", "), " )");
                 }
                 else if (conflict) {
@@ -317,6 +342,21 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
                 else if (columns) {
                     query += " ".concat(conflictTarget, " DO UPDATE SET ");
                     query += columns.map(function (column) { return "".concat(_this.escape(column), " = :").concat(column); }).join(", ");
+=======
+                    conflictTarget += " ( " + conflict.map(function (column) { return _this.escape(column); }).join(", ") + " )";
+                }
+                else if (conflict) {
+                    conflictTarget += " ON CONSTRAINT " + this.escape(conflict);
+                }
+                if (Array.isArray(overwrite)) {
+                    query += " " + conflictTarget + " DO UPDATE SET ";
+                    query += overwrite === null || overwrite === void 0 ? void 0 : overwrite.map(function (column) { return _this.escape(column) + " = EXCLUDED." + _this.escape(column); }).join(", ");
+                    query += " ";
+                }
+                else if (columns) {
+                    query += " " + conflictTarget + " DO UPDATE SET ";
+                    query += columns.map(function (column) { return _this.escape(column) + " = :" + column; }).join(", ");
+>>>>>>> a3495c7 (INIT)
                     query += " ";
                 }
             }
@@ -326,12 +366,20 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
                 var _b = this.expressionMap.onUpdate, overwrite = _b.overwrite, columns = _b.columns;
                 if (Array.isArray(overwrite)) {
                     query += " ON DUPLICATE KEY UPDATE ";
+<<<<<<< HEAD
                     query += overwrite.map(function (column) { return "".concat(_this.escape(column), " = VALUES(").concat(_this.escape(column), ")"); }).join(", ");
+=======
+                    query += overwrite.map(function (column) { return _this.escape(column) + " = VALUES(" + _this.escape(column) + ")"; }).join(", ");
+>>>>>>> a3495c7 (INIT)
                     query += " ";
                 }
                 else if (Array.isArray(columns)) {
                     query += " ON DUPLICATE KEY UPDATE ";
+<<<<<<< HEAD
                     query += columns.map(function (column) { return "".concat(_this.escape(column), " = :").concat(column); }).join(", ");
+=======
+                    query += columns.map(function (column) { return _this.escape(column) + " = :" + column; }).join(", ");
+>>>>>>> a3495c7 (INIT)
                     query += " ";
                 }
             }
@@ -343,7 +391,11 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
         }
         // add RETURNING expression
         if (returningExpression && (this.connection.driver instanceof PostgresDriver || this.connection.driver instanceof OracleDriver || this.connection.driver instanceof CockroachDriver)) {
+<<<<<<< HEAD
             query += " RETURNING ".concat(returningExpression);
+=======
+            query += " RETURNING " + returningExpression;
+>>>>>>> a3495c7 (INIT)
         }
         // Inserting a specific value for an auto-increment primary key in mssql requires enabling IDENTITY_INSERT
         // IDENTITY_INSERT can only be enabled for tables where there is an IDENTITY column and only if there is a value to be inserted (i.e. supplying DEFAULT is prohibited if IDENTITY_INSERT is enabled)
@@ -352,7 +404,11 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
             && this.expressionMap.mainAlias.metadata.columns
                 .filter(function (column) { return _this.expressionMap.insertColumns.length > 0 ? _this.expressionMap.insertColumns.indexOf(column.propertyPath) !== -1 : column.isInsert; })
                 .some(function (column) { return _this.isOverridingAutoIncrementBehavior(column); })) {
+<<<<<<< HEAD
             query = "SET IDENTITY_INSERT ".concat(tableName, " ON; ").concat(query, "; SET IDENTITY_INSERT ").concat(tableName, " OFF");
+=======
+            query = "SET IDENTITY_INSERT " + tableName + " ON; " + query + "; SET IDENTITY_INSERT " + tableName + " OFF";
+>>>>>>> a3495c7 (INIT)
         }
         return query;
     };
@@ -417,6 +473,12 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
                         if (_this.connection.driver instanceof OracleDriver && valueSets.length > 1) {
                             expression_1 += " SELECT ";
                         }
+<<<<<<< HEAD
+=======
+                        else if (_this.connection.driver instanceof SapDriver && valueSets.length > 1) {
+                            expression_1 += " SELECT ";
+                        }
+>>>>>>> a3495c7 (INIT)
                         else {
                             expression_1 += "(";
                         }
@@ -497,18 +559,32 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
                             var useLegacy = _this.connection.driver.options.legacySpatialSupport;
                             var geomFromText = useLegacy ? "GeomFromText" : "ST_GeomFromText";
                             if (column.srid != null) {
+<<<<<<< HEAD
                                 expression_1 += "".concat(geomFromText, "(").concat(paramName, ", ").concat(column.srid, ")");
                             }
                             else {
                                 expression_1 += "".concat(geomFromText, "(").concat(paramName, ")");
+=======
+                                expression_1 += geomFromText + "(" + paramName + ", " + column.srid + ")";
+                            }
+                            else {
+                                expression_1 += geomFromText + "(" + paramName + ")";
+>>>>>>> a3495c7 (INIT)
                             }
                         }
                         else if (_this.connection.driver instanceof PostgresDriver && _this.connection.driver.spatialTypes.indexOf(column.type) !== -1) {
                             if (column.srid != null) {
+<<<<<<< HEAD
                                 expression_1 += "ST_SetSRID(ST_GeomFromGeoJSON(".concat(paramName, "), ").concat(column.srid, ")::").concat(column.type);
                             }
                             else {
                                 expression_1 += "ST_GeomFromGeoJSON(".concat(paramName, ")::").concat(column.type);
+=======
+                                expression_1 += "ST_SetSRID(ST_GeomFromGeoJSON(" + paramName + "), " + column.srid + ")::" + column.type;
+                            }
+                            else {
+                                expression_1 += "ST_GeomFromGeoJSON(" + paramName + ")::" + column.type;
+>>>>>>> a3495c7 (INIT)
                             }
                         }
                         else if (_this.connection.driver instanceof SqlServerDriver && _this.connection.driver.spatialTypes.indexOf(column.type) !== -1) {
@@ -523,6 +599,12 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
                             if (_this.connection.driver instanceof OracleDriver && valueSets.length > 1) {
                                 expression_1 += " FROM DUAL ";
                             }
+<<<<<<< HEAD
+=======
+                            else if (_this.connection.driver instanceof SapDriver && valueSets.length > 1) {
+                                expression_1 += " FROM dummy ";
+                            }
+>>>>>>> a3495c7 (INIT)
                             else {
                                 expression_1 += ")";
                             }
@@ -531,6 +613,12 @@ var InsertQueryBuilder = /** @class */ (function (_super) {
                             if (_this.connection.driver instanceof OracleDriver && valueSets.length > 1) {
                                 expression_1 += " FROM DUAL UNION ALL ";
                             }
+<<<<<<< HEAD
+=======
+                            else if (_this.connection.driver instanceof SapDriver && valueSets.length > 1) {
+                                expression_1 += " FROM dummy UNION ALL ";
+                            }
+>>>>>>> a3495c7 (INIT)
                             else {
                                 expression_1 += "), ";
                             }

@@ -227,7 +227,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
             var result;
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
+<<<<<<< HEAD
                     case 0: return [4 /*yield*/, this.query("SELECT * FROM `INFORMATION_SCHEMA`.`SCHEMATA` WHERE `SCHEMA_NAME` = '".concat(database, "'"))];
+=======
+                    case 0: return [4 /*yield*/, this.query("SELECT * FROM `INFORMATION_SCHEMA`.`SCHEMATA` WHERE `SCHEMA_NAME` = '" + database + "'")];
+>>>>>>> a3495c7 (INIT)
                     case 1:
                         result = _a.sent();
                         return [2 /*return*/, result.length ? true : false];
@@ -287,7 +291,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         parsedTableName = this.driver.parseTableName(tableOrName);
+<<<<<<< HEAD
                         sql = "SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = '".concat(parsedTableName.database, "' AND `TABLE_NAME` = '").concat(parsedTableName.tableName, "'");
+=======
+                        sql = "SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + parsedTableName.database + "' AND `TABLE_NAME` = '" + parsedTableName.tableName + "'";
+>>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(sql)];
                     case 1:
                         result = _a.sent();
@@ -307,7 +315,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                     case 0:
                         parsedTableName = this.driver.parseTableName(tableOrName);
                         columnName = column instanceof TableColumn_1.TableColumn ? column.name : column;
+<<<<<<< HEAD
                         sql = "SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = '".concat(parsedTableName.database, "' AND `TABLE_NAME` = '").concat(parsedTableName.tableName, "' AND `COLUMN_NAME` = '").concat(columnName, "'");
+=======
+                        sql = "SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + parsedTableName.database + "' AND `TABLE_NAME` = '" + parsedTableName.tableName + "' AND `COLUMN_NAME` = '" + columnName + "'";
+>>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(sql)];
                     case 1:
                         result = _a.sent();
@@ -325,8 +337,13 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+<<<<<<< HEAD
                         up = ifNotExist ? "CREATE DATABASE IF NOT EXISTS `".concat(database, "`") : "CREATE DATABASE `".concat(database, "`");
                         down = "DROP DATABASE `".concat(database, "`");
+=======
+                        up = ifNotExist ? "CREATE DATABASE IF NOT EXISTS `" + database + "`" : "CREATE DATABASE `" + database + "`";
+                        down = "DROP DATABASE `" + database + "`";
+>>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query_1.Query(up), new Query_1.Query(down))];
                     case 1:
                         _a.sent();
@@ -344,8 +361,13 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+<<<<<<< HEAD
                         up = ifExist ? "DROP DATABASE IF EXISTS `".concat(database, "`") : "DROP DATABASE `".concat(database, "`");
                         down = "CREATE DATABASE `".concat(database, "`");
+=======
+                        up = ifExist ? "DROP DATABASE IF EXISTS `" + database + "`" : "DROP DATABASE `" + database + "`";
+                        down = "CREATE DATABASE `" + database + "`";
+>>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(new Query_1.Query(up), new Query_1.Query(down))];
                     case 1:
                         _a.sent();
@@ -536,6 +558,7 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         oldTable = _a;
                         newTable = oldTable.clone();
                         database = this.driver.parseTableName(oldTable).database;
+<<<<<<< HEAD
                         newTable.name = database ? "".concat(database, ".").concat(newTableName) : newTableName;
                         // rename table
                         upQueries.push(new Query_1.Query("RENAME TABLE ".concat(this.escapePath(oldTable), " TO ").concat(this.escapePath(newTable))));
@@ -544,6 +567,16 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         newTable.indices.forEach(function (index) {
                             // build new constraint name
                             var columnNames = index.columnNames.map(function (column) { return "`".concat(column, "`"); }).join(", ");
+=======
+                        newTable.name = database ? database + "." + newTableName : newTableName;
+                        // rename table
+                        upQueries.push(new Query_1.Query("RENAME TABLE " + this.escapePath(oldTable) + " TO " + this.escapePath(newTable)));
+                        downQueries.push(new Query_1.Query("RENAME TABLE " + this.escapePath(newTable) + " TO " + this.escapePath(oldTable)));
+                        // rename index constraints
+                        newTable.indices.forEach(function (index) {
+                            // build new constraint name
+                            var columnNames = index.columnNames.map(function (column) { return "`" + column + "`"; }).join(", ");
+>>>>>>> a3495c7 (INIT)
                             var newIndexName = _this.connection.namingStrategy.indexName(newTable, index.columnNames, index.where);
                             // build queries
                             var indexType = "";
@@ -553,14 +586,20 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 indexType += "SPATIAL ";
                             if (index.isFulltext)
                                 indexType += "FULLTEXT ";
+<<<<<<< HEAD
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " DROP INDEX `").concat(index.name, "`, ADD ").concat(indexType, "INDEX `").concat(newIndexName, "` (").concat(columnNames, ")")));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(newTable), " DROP INDEX `").concat(newIndexName, "`, ADD ").concat(indexType, "INDEX `").concat(index.name, "` (").concat(columnNames, ")")));
+=======
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " DROP INDEX `" + index.name + "`, ADD " + indexType + "INDEX `" + newIndexName + "` (" + columnNames + ")"));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(newTable) + " DROP INDEX `" + newIndexName + "`, ADD " + indexType + "INDEX `" + index.name + "` (" + columnNames + ")"));
+>>>>>>> a3495c7 (INIT)
                             // replace constraint name
                             index.name = newIndexName;
                         });
                         // rename foreign key constraint
                         newTable.foreignKeys.forEach(function (foreignKey) {
                             // build new constraint name
+<<<<<<< HEAD
                             var columnNames = foreignKey.columnNames.map(function (column) { return "`".concat(column, "`"); }).join(", ");
                             var referencedColumnNames = foreignKey.referencedColumnNames.map(function (column) { return "`".concat(column, "`"); }).join(",");
                             var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(newTable, foreignKey.columnNames);
@@ -577,6 +616,24 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 down += " ON DELETE ".concat(foreignKey.onDelete);
                             if (foreignKey.onUpdate)
                                 down += " ON UPDATE ".concat(foreignKey.onUpdate);
+=======
+                            var columnNames = foreignKey.columnNames.map(function (column) { return "`" + column + "`"; }).join(", ");
+                            var referencedColumnNames = foreignKey.referencedColumnNames.map(function (column) { return "`" + column + "`"; }).join(",");
+                            var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(newTable, foreignKey.columnNames);
+                            // build queries
+                            var up = "ALTER TABLE " + _this.escapePath(newTable) + " DROP FOREIGN KEY `" + foreignKey.name + "`, ADD CONSTRAINT `" + newForeignKeyName + "` FOREIGN KEY (" + columnNames + ") " +
+                                ("REFERENCES " + _this.escapePath(_this.getTablePath(foreignKey)) + "(" + referencedColumnNames + ")");
+                            if (foreignKey.onDelete)
+                                up += " ON DELETE " + foreignKey.onDelete;
+                            if (foreignKey.onUpdate)
+                                up += " ON UPDATE " + foreignKey.onUpdate;
+                            var down = "ALTER TABLE " + _this.escapePath(newTable) + " DROP FOREIGN KEY `" + newForeignKeyName + "`, ADD CONSTRAINT `" + foreignKey.name + "` FOREIGN KEY (" + columnNames + ") " +
+                                ("REFERENCES " + _this.escapePath(_this.getTablePath(foreignKey)) + "(" + referencedColumnNames + ")");
+                            if (foreignKey.onDelete)
+                                down += " ON DELETE " + foreignKey.onDelete;
+                            if (foreignKey.onUpdate)
+                                down += " ON UPDATE " + foreignKey.onUpdate;
+>>>>>>> a3495c7 (INIT)
                             upQueries.push(new Query_1.Query(up));
                             downQueries.push(new Query_1.Query(down));
                             // replace constraint name
@@ -615,8 +672,13 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         upQueries = [];
                         downQueries = [];
                         skipColumnLevelPrimary = clonedTable.primaryColumns.length > 0;
+<<<<<<< HEAD
                         upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(column, skipColumnLevelPrimary, false))));
                         downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN `").concat(column.name, "`")));
+=======
+                        upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(column, skipColumnLevelPrimary, false)));
+                        downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN `" + column.name + "`"));
+>>>>>>> a3495c7 (INIT)
                         // create or update primary key constraint
                         if (column.isPrimary && skipColumnLevelPrimary) {
                             generatedColumn = clonedTable.columns.find(function (column) { return column.isGenerated && column.generationStrategy === "increment"; });
@@ -624,6 +686,7 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 nonGeneratedColumn = generatedColumn.clone();
                                 nonGeneratedColumn.isGenerated = false;
                                 nonGeneratedColumn.generationStrategy = undefined;
+<<<<<<< HEAD
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(column.name, "` ").concat(this.buildCreateColumnSql(nonGeneratedColumn, true))));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(nonGeneratedColumn.name, "` ").concat(this.buildCreateColumnSql(column, true))));
                             }
@@ -635,13 +698,31 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                             columnNames = primaryColumns.map(function (column) { return "`".concat(column.name, "`"); }).join(", ");
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD PRIMARY KEY (").concat(columnNames, ")")));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP PRIMARY KEY")));
+=======
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + column.name + "` " + this.buildCreateColumnSql(nonGeneratedColumn, true)));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + nonGeneratedColumn.name + "` " + this.buildCreateColumnSql(column, true)));
+                            }
+                            primaryColumns = clonedTable.primaryColumns;
+                            columnNames = primaryColumns.map(function (column) { return "`" + column.name + "`"; }).join(", ");
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP PRIMARY KEY"));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD PRIMARY KEY (" + columnNames + ")"));
+                            primaryColumns.push(column);
+                            columnNames = primaryColumns.map(function (column) { return "`" + column.name + "`"; }).join(", ");
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD PRIMARY KEY (" + columnNames + ")"));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP PRIMARY KEY"));
+>>>>>>> a3495c7 (INIT)
                             // if we previously dropped AUTO_INCREMENT property, we must bring it back
                             if (generatedColumn) {
                                 nonGeneratedColumn = generatedColumn.clone();
                                 nonGeneratedColumn.isGenerated = false;
                                 nonGeneratedColumn.generationStrategy = undefined;
+<<<<<<< HEAD
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(nonGeneratedColumn.name, "` ").concat(this.buildCreateColumnSql(column, true))));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(column.name, "` ").concat(this.buildCreateColumnSql(nonGeneratedColumn, true))));
+=======
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + nonGeneratedColumn.name + "` " + this.buildCreateColumnSql(column, true)));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + column.name + "` " + this.buildCreateColumnSql(nonGeneratedColumn, true)));
+>>>>>>> a3495c7 (INIT)
                             }
                         }
                         columnIndex = clonedTable.indices.find(function (index) { return index.columnNames.length === 1 && index.columnNames[0] === column.name; });
@@ -660,8 +741,13 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 name: uniqueIndex.name,
                                 columnNames: uniqueIndex.columnNames
                             }));
+<<<<<<< HEAD
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD UNIQUE INDEX `").concat(uniqueIndex.name, "` (`").concat(column.name, "`)")));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP INDEX `").concat(uniqueIndex.name, "`")));
+=======
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD UNIQUE INDEX `" + uniqueIndex.name + "` (`" + column.name + "`)"));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP INDEX `" + uniqueIndex.name + "`"));
+>>>>>>> a3495c7 (INIT)
                         }
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
@@ -732,7 +818,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         oldColumn = oldTableColumnOrName instanceof TableColumn_1.TableColumn ? oldTableColumnOrName : table.columns.find(function (c) { return c.name === oldTableColumnOrName; });
                         if (!oldColumn)
+<<<<<<< HEAD
                             throw new error_1.TypeORMError("Column \"".concat(oldTableColumnOrName, "\" was not found in the \"").concat(table.name, "\" table."));
+=======
+                            throw new error_1.TypeORMError("Column \"" + oldTableColumnOrName + "\" was not found in the \"" + table.name + "\" table.");
+>>>>>>> a3495c7 (INIT)
                         newColumn = undefined;
                         if (newTableColumnOrName instanceof TableColumn_1.TableColumn) {
                             newColumn = newTableColumnOrName;
@@ -775,7 +865,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                             ? oldColumnOrName
                             : table.columns.find(function (column) { return column.name === oldColumnOrName; });
                         if (!oldColumn)
+<<<<<<< HEAD
                             throw new error_1.TypeORMError("Column \"".concat(oldColumnOrName, "\" was not found in the \"").concat(table.name, "\" table."));
+=======
+                            throw new error_1.TypeORMError("Column \"" + oldColumnOrName + "\" was not found in the \"" + table.name + "\" table.");
+>>>>>>> a3495c7 (INIT)
                         if (!((newColumn.isGenerated !== oldColumn.isGenerated && newColumn.generationStrategy !== "uuid")
                             || oldColumn.type !== newColumn.type
                             || oldColumn.length !== newColumn.length
@@ -792,14 +886,23 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                     case 6:
                         if (newColumn.name !== oldColumn.name) {
                             // We don't change any column properties, just rename it.
+<<<<<<< HEAD
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(oldColumn.name, "` `").concat(newColumn.name, "` ").concat(this.buildCreateColumnSql(oldColumn, true, true))));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(newColumn.name, "` `").concat(oldColumn.name, "` ").concat(this.buildCreateColumnSql(oldColumn, true, true))));
+=======
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + oldColumn.name + "` `" + newColumn.name + "` " + this.buildCreateColumnSql(oldColumn, true, true)));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + newColumn.name + "` `" + oldColumn.name + "` " + this.buildCreateColumnSql(oldColumn, true, true)));
+>>>>>>> a3495c7 (INIT)
                             // rename index constraints
                             clonedTable.findColumnIndices(oldColumn).forEach(function (index) {
                                 // build new constraint name
                                 index.columnNames.splice(index.columnNames.indexOf(oldColumn.name), 1);
                                 index.columnNames.push(newColumn.name);
+<<<<<<< HEAD
                                 var columnNames = index.columnNames.map(function (column) { return "`".concat(column, "`"); }).join(", ");
+=======
+                                var columnNames = index.columnNames.map(function (column) { return "`" + column + "`"; }).join(", ");
+>>>>>>> a3495c7 (INIT)
                                 var newIndexName = _this.connection.namingStrategy.indexName(clonedTable, index.columnNames, index.where);
                                 // build queries
                                 var indexType = "";
@@ -809,8 +912,13 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                     indexType += "SPATIAL ";
                                 if (index.isFulltext)
                                     indexType += "FULLTEXT ";
+<<<<<<< HEAD
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " DROP INDEX `").concat(index.name, "`, ADD ").concat(indexType, "INDEX `").concat(newIndexName, "` (").concat(columnNames, ")")));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(_this.escapePath(table), " DROP INDEX `").concat(newIndexName, "`, ADD ").concat(indexType, "INDEX `").concat(index.name, "` (").concat(columnNames, ")")));
+=======
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " DROP INDEX `" + index.name + "`, ADD " + indexType + "INDEX `" + newIndexName + "` (" + columnNames + ")"));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + _this.escapePath(table) + " DROP INDEX `" + newIndexName + "`, ADD " + indexType + "INDEX `" + index.name + "` (" + columnNames + ")"));
+>>>>>>> a3495c7 (INIT)
                                 // replace constraint name
                                 index.name = newIndexName;
                             });
@@ -819,6 +927,7 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 // build new constraint name
                                 foreignKey.columnNames.splice(foreignKey.columnNames.indexOf(oldColumn.name), 1);
                                 foreignKey.columnNames.push(newColumn.name);
+<<<<<<< HEAD
                                 var columnNames = foreignKey.columnNames.map(function (column) { return "`".concat(column, "`"); }).join(", ");
                                 var referencedColumnNames = foreignKey.referencedColumnNames.map(function (column) { return "`".concat(column, "`"); }).join(",");
                                 var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(clonedTable, foreignKey.columnNames);
@@ -835,6 +944,24 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                     down += " ON DELETE ".concat(foreignKey.onDelete);
                                 if (foreignKey.onUpdate)
                                     down += " ON UPDATE ".concat(foreignKey.onUpdate);
+=======
+                                var columnNames = foreignKey.columnNames.map(function (column) { return "`" + column + "`"; }).join(", ");
+                                var referencedColumnNames = foreignKey.referencedColumnNames.map(function (column) { return "`" + column + "`"; }).join(",");
+                                var newForeignKeyName = _this.connection.namingStrategy.foreignKeyName(clonedTable, foreignKey.columnNames);
+                                // build queries
+                                var up = "ALTER TABLE " + _this.escapePath(table) + " DROP FOREIGN KEY `" + foreignKey.name + "`, ADD CONSTRAINT `" + newForeignKeyName + "` FOREIGN KEY (" + columnNames + ") " +
+                                    ("REFERENCES " + _this.escapePath(_this.getTablePath(foreignKey)) + "(" + referencedColumnNames + ")");
+                                if (foreignKey.onDelete)
+                                    up += " ON DELETE " + foreignKey.onDelete;
+                                if (foreignKey.onUpdate)
+                                    up += " ON UPDATE " + foreignKey.onUpdate;
+                                var down = "ALTER TABLE " + _this.escapePath(table) + " DROP FOREIGN KEY `" + newForeignKeyName + "`, ADD CONSTRAINT `" + foreignKey.name + "` FOREIGN KEY (" + columnNames + ") " +
+                                    ("REFERENCES " + _this.escapePath(_this.getTablePath(foreignKey)) + "(" + referencedColumnNames + ")");
+                                if (foreignKey.onDelete)
+                                    down += " ON DELETE " + foreignKey.onDelete;
+                                if (foreignKey.onUpdate)
+                                    down += " ON UPDATE " + foreignKey.onUpdate;
+>>>>>>> a3495c7 (INIT)
                                 upQueries.push(new Query_1.Query(up));
                                 downQueries.push(new Query_1.Query(down));
                                 // replace constraint name
@@ -845,8 +972,13 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                             oldColumn.name = newColumn.name;
                         }
                         if (this.isColumnChanged(oldColumn, newColumn, true)) {
+<<<<<<< HEAD
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(oldColumn.name, "` ").concat(this.buildCreateColumnSql(newColumn, true))));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(newColumn.name, "` ").concat(this.buildCreateColumnSql(oldColumn, true))));
+=======
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + oldColumn.name + "` " + this.buildCreateColumnSql(newColumn, true)));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + newColumn.name + "` " + this.buildCreateColumnSql(oldColumn, true)));
+>>>>>>> a3495c7 (INIT)
                         }
                         if (newColumn.isPrimary !== oldColumn.isPrimary) {
                             generatedColumn = clonedTable.columns.find(function (column) { return column.isGenerated && column.generationStrategy === "increment"; });
@@ -854,23 +986,40 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 nonGeneratedColumn = generatedColumn.clone();
                                 nonGeneratedColumn.isGenerated = false;
                                 nonGeneratedColumn.generationStrategy = undefined;
+<<<<<<< HEAD
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(generatedColumn.name, "` ").concat(this.buildCreateColumnSql(nonGeneratedColumn, true))));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(nonGeneratedColumn.name, "` ").concat(this.buildCreateColumnSql(generatedColumn, true))));
+=======
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + generatedColumn.name + "` " + this.buildCreateColumnSql(nonGeneratedColumn, true)));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + nonGeneratedColumn.name + "` " + this.buildCreateColumnSql(generatedColumn, true)));
+>>>>>>> a3495c7 (INIT)
                             }
                             primaryColumns = clonedTable.primaryColumns;
                             // if primary column state changed, we must always drop existed constraint.
                             if (primaryColumns.length > 0) {
+<<<<<<< HEAD
                                 columnNames = primaryColumns.map(function (column) { return "`".concat(column.name, "`"); }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP PRIMARY KEY")));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD PRIMARY KEY (").concat(columnNames, ")")));
+=======
+                                columnNames = primaryColumns.map(function (column) { return "`" + column.name + "`"; }).join(", ");
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP PRIMARY KEY"));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD PRIMARY KEY (" + columnNames + ")"));
+>>>>>>> a3495c7 (INIT)
                             }
                             if (newColumn.isPrimary === true) {
                                 primaryColumns.push(newColumn);
                                 column = clonedTable.columns.find(function (column) { return column.name === newColumn.name; });
                                 column.isPrimary = true;
+<<<<<<< HEAD
                                 columnNames = primaryColumns.map(function (column) { return "`".concat(column.name, "`"); }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD PRIMARY KEY (").concat(columnNames, ")")));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP PRIMARY KEY")));
+=======
+                                columnNames = primaryColumns.map(function (column) { return "`" + column.name + "`"; }).join(", ");
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD PRIMARY KEY (" + columnNames + ")"));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP PRIMARY KEY"));
+>>>>>>> a3495c7 (INIT)
                             }
                             else {
                                 primaryColumn = primaryColumns.find(function (c) { return c.name === newColumn.name; });
@@ -879,9 +1028,15 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 column.isPrimary = false;
                                 // if we have another primary keys, we must recreate constraint.
                                 if (primaryColumns.length > 0) {
+<<<<<<< HEAD
                                     columnNames = primaryColumns.map(function (column) { return "`".concat(column.name, "`"); }).join(", ");
                                     upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD PRIMARY KEY (").concat(columnNames, ")")));
                                     downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP PRIMARY KEY")));
+=======
+                                    columnNames = primaryColumns.map(function (column) { return "`" + column.name + "`"; }).join(", ");
+                                    upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD PRIMARY KEY (" + columnNames + ")"));
+                                    downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP PRIMARY KEY"));
+>>>>>>> a3495c7 (INIT)
                                 }
                             }
                             // if we have generated column, and we dropped AUTO_INCREMENT property before, we must bring it back
@@ -889,8 +1044,13 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 nonGeneratedColumn = generatedColumn.clone();
                                 nonGeneratedColumn.isGenerated = false;
                                 nonGeneratedColumn.generationStrategy = undefined;
+<<<<<<< HEAD
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(nonGeneratedColumn.name, "` ").concat(this.buildCreateColumnSql(generatedColumn, true))));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(generatedColumn.name, "` ").concat(this.buildCreateColumnSql(nonGeneratedColumn, true))));
+=======
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + nonGeneratedColumn.name + "` " + this.buildCreateColumnSql(generatedColumn, true)));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + generatedColumn.name + "` " + this.buildCreateColumnSql(nonGeneratedColumn, true)));
+>>>>>>> a3495c7 (INIT)
                             }
                         }
                         if (newColumn.isUnique !== oldColumn.isUnique) {
@@ -905,8 +1065,13 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                     name: uniqueIndex.name,
                                     columnNames: uniqueIndex.columnNames
                                 }));
+<<<<<<< HEAD
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD UNIQUE INDEX `").concat(uniqueIndex.name, "` (`").concat(newColumn.name, "`)")));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP INDEX `").concat(uniqueIndex.name, "`")));
+=======
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD UNIQUE INDEX `" + uniqueIndex.name + "` (`" + newColumn.name + "`)"));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP INDEX `" + uniqueIndex.name + "`"));
+>>>>>>> a3495c7 (INIT)
                             }
                             else {
                                 uniqueIndex_1 = clonedTable.indices.find(function (index) {
@@ -915,8 +1080,13 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 clonedTable.indices.splice(clonedTable.indices.indexOf(uniqueIndex_1), 1);
                                 tableUnique = clonedTable.uniques.find(function (unique) { return unique.name === uniqueIndex_1.name; });
                                 clonedTable.uniques.splice(clonedTable.uniques.indexOf(tableUnique), 1);
+<<<<<<< HEAD
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP INDEX `").concat(uniqueIndex_1.name, "`")));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD UNIQUE INDEX `").concat(uniqueIndex_1.name, "` (`").concat(newColumn.name, "`)")));
+=======
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP INDEX `" + uniqueIndex_1.name + "`"));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD UNIQUE INDEX `" + uniqueIndex_1.name + "` (`" + newColumn.name + "`)"));
+>>>>>>> a3495c7 (INIT)
                             }
                         }
                         _b.label = 7;
@@ -988,7 +1158,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         column = columnOrName instanceof TableColumn_1.TableColumn ? columnOrName : table.findColumnByName(columnOrName);
                         if (!column)
+<<<<<<< HEAD
                             throw new error_1.TypeORMError("Column \"".concat(columnOrName, "\" was not found in table \"").concat(table.name, "\""));
+=======
+                            throw new error_1.TypeORMError("Column \"" + columnOrName + "\" was not found in table \"" + table.name + "\"");
+>>>>>>> a3495c7 (INIT)
                         clonedTable = table.clone();
                         upQueries = [];
                         downQueries = [];
@@ -999,27 +1173,47 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 nonGeneratedColumn = generatedColumn.clone();
                                 nonGeneratedColumn.isGenerated = false;
                                 nonGeneratedColumn.generationStrategy = undefined;
+<<<<<<< HEAD
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(generatedColumn.name, "` ").concat(this.buildCreateColumnSql(nonGeneratedColumn, true))));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(nonGeneratedColumn.name, "` ").concat(this.buildCreateColumnSql(generatedColumn, true))));
                             }
                             columnNames = clonedTable.primaryColumns.map(function (primaryColumn) { return "`".concat(primaryColumn.name, "`"); }).join(", ");
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " DROP PRIMARY KEY")));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " ADD PRIMARY KEY (").concat(columnNames, ")")));
+=======
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + generatedColumn.name + "` " + this.buildCreateColumnSql(nonGeneratedColumn, true)));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + nonGeneratedColumn.name + "` " + this.buildCreateColumnSql(generatedColumn, true)));
+                            }
+                            columnNames = clonedTable.primaryColumns.map(function (primaryColumn) { return "`" + primaryColumn.name + "`"; }).join(", ");
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " DROP PRIMARY KEY"));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " ADD PRIMARY KEY (" + columnNames + ")"));
+>>>>>>> a3495c7 (INIT)
                             tableColumn = clonedTable.findColumnByName(column.name);
                             tableColumn.isPrimary = false;
                             // if primary key have multiple columns, we must recreate it without dropped column
                             if (clonedTable.primaryColumns.length > 0) {
+<<<<<<< HEAD
                                 columnNames_1 = clonedTable.primaryColumns.map(function (primaryColumn) { return "`".concat(primaryColumn.name, "`"); }).join(", ");
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " ADD PRIMARY KEY (").concat(columnNames_1, ")")));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(clonedTable), " DROP PRIMARY KEY")));
+=======
+                                columnNames_1 = clonedTable.primaryColumns.map(function (primaryColumn) { return "`" + primaryColumn.name + "`"; }).join(", ");
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " ADD PRIMARY KEY (" + columnNames_1 + ")"));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(clonedTable) + " DROP PRIMARY KEY"));
+>>>>>>> a3495c7 (INIT)
                             }
                             // if we have generated column, and we dropped AUTO_INCREMENT property before, and this column is not current dropping column, we must bring it back
                             if (generatedColumn && generatedColumn.name !== column.name) {
                                 nonGeneratedColumn = generatedColumn.clone();
                                 nonGeneratedColumn.isGenerated = false;
                                 nonGeneratedColumn.generationStrategy = undefined;
+<<<<<<< HEAD
                                 upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(nonGeneratedColumn.name, "` ").concat(this.buildCreateColumnSql(generatedColumn, true))));
                                 downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(generatedColumn.name, "` ").concat(this.buildCreateColumnSql(nonGeneratedColumn, true))));
+=======
+                                upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + nonGeneratedColumn.name + "` " + this.buildCreateColumnSql(generatedColumn, true)));
+                                downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + generatedColumn.name + "` " + this.buildCreateColumnSql(nonGeneratedColumn, true)));
+>>>>>>> a3495c7 (INIT)
                             }
                         }
                         columnIndex = clonedTable.indices.find(function (index) { return index.columnNames.length === 1 && index.columnNames[0] === column.name; });
@@ -1037,11 +1231,19 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                             foundIndex = clonedTable.indices.find(function (index) { return index.name === indexName_1; });
                             if (foundIndex)
                                 clonedTable.indices.splice(clonedTable.indices.indexOf(foundIndex), 1);
+<<<<<<< HEAD
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP INDEX `").concat(indexName_1, "`")));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD UNIQUE INDEX `").concat(indexName_1, "` (`").concat(column.name, "`)")));
                         }
                         upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP COLUMN `").concat(column.name, "`")));
                         downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD ").concat(this.buildCreateColumnSql(column, true))));
+=======
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP INDEX `" + indexName_1 + "`"));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD UNIQUE INDEX `" + indexName_1 + "` (`" + column.name + "`)"));
+                        }
+                        upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP COLUMN `" + column.name + "`"));
+                        downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD " + this.buildCreateColumnSql(column, true)));
+>>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.executeQueries(upQueries, downQueries)];
                     case 4:
                         _b.sent();
@@ -1152,6 +1354,7 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                             nonGeneratedColumn = generatedColumn.clone();
                             nonGeneratedColumn.isGenerated = false;
                             nonGeneratedColumn.generationStrategy = undefined;
+<<<<<<< HEAD
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(generatedColumn.name, "` ").concat(this.buildCreateColumnSql(nonGeneratedColumn, true))));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(nonGeneratedColumn.name, "` ").concat(this.buildCreateColumnSql(generatedColumn, true))));
                         }
@@ -1160,21 +1363,42 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                             columnNames_2 = primaryColumns.map(function (column) { return "`".concat(column.name, "`"); }).join(", ");
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP PRIMARY KEY")));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD PRIMARY KEY (").concat(columnNames_2, ")")));
+=======
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + generatedColumn.name + "` " + this.buildCreateColumnSql(nonGeneratedColumn, true)));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + nonGeneratedColumn.name + "` " + this.buildCreateColumnSql(generatedColumn, true)));
+                        }
+                        primaryColumns = clonedTable.primaryColumns;
+                        if (primaryColumns.length > 0) {
+                            columnNames_2 = primaryColumns.map(function (column) { return "`" + column.name + "`"; }).join(", ");
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP PRIMARY KEY"));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD PRIMARY KEY (" + columnNames_2 + ")"));
+>>>>>>> a3495c7 (INIT)
                         }
                         // update columns in table.
                         clonedTable.columns
                             .filter(function (column) { return columnNames.indexOf(column.name) !== -1; })
                             .forEach(function (column) { return column.isPrimary = true; });
+<<<<<<< HEAD
                         columnNamesString = columnNames.map(function (columnName) { return "`".concat(columnName, "`"); }).join(", ");
                         upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD PRIMARY KEY (").concat(columnNamesString, ")")));
                         downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP PRIMARY KEY")));
+=======
+                        columnNamesString = columnNames.map(function (columnName) { return "`" + columnName + "`"; }).join(", ");
+                        upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD PRIMARY KEY (" + columnNamesString + ")"));
+                        downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP PRIMARY KEY"));
+>>>>>>> a3495c7 (INIT)
                         newOrExistGeneratedColumn = generatedColumn ? generatedColumn : columns.find(function (column) { return column.isGenerated && column.generationStrategy === "increment"; });
                         if (newOrExistGeneratedColumn) {
                             nonGeneratedColumn = newOrExistGeneratedColumn.clone();
                             nonGeneratedColumn.isGenerated = false;
                             nonGeneratedColumn.generationStrategy = undefined;
+<<<<<<< HEAD
                             upQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(nonGeneratedColumn.name, "` ").concat(this.buildCreateColumnSql(newOrExistGeneratedColumn, true))));
                             downQueries.push(new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " CHANGE `").concat(newOrExistGeneratedColumn.name, "` ").concat(this.buildCreateColumnSql(nonGeneratedColumn, true))));
+=======
+                            upQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + nonGeneratedColumn.name + "` " + this.buildCreateColumnSql(newOrExistGeneratedColumn, true)));
+                            downQueries.push(new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " CHANGE `" + newOrExistGeneratedColumn.name + "` " + this.buildCreateColumnSql(nonGeneratedColumn, true)));
+>>>>>>> a3495c7 (INIT)
                             changedGeneratedColumn = clonedTable.columns.find(function (column) { return column.name === newOrExistGeneratedColumn.name; });
                             changedGeneratedColumn.isGenerated = true;
                             changedGeneratedColumn.generationStrategy = "increment";
@@ -1410,7 +1634,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         foreignKey = foreignKeyOrName instanceof TableForeignKey_1.TableForeignKey ? foreignKeyOrName : table.foreignKeys.find(function (fk) { return fk.name === foreignKeyOrName; });
                         if (!foreignKey)
+<<<<<<< HEAD
                             throw new error_1.TypeORMError("Supplied foreign key was not found in table ".concat(table.name));
+=======
+                            throw new error_1.TypeORMError("Supplied foreign key was not found in table " + table.name);
+>>>>>>> a3495c7 (INIT)
                         up = this.dropForeignKeySql(table, foreignKey);
                         down = this.createForeignKeySql(table, foreignKey);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -1512,7 +1740,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         table = _a;
                         index = indexOrName instanceof TableIndex_1.TableIndex ? indexOrName : table.indices.find(function (i) { return i.name === indexOrName; });
                         if (!index)
+<<<<<<< HEAD
                             throw new error_1.TypeORMError("Supplied index ".concat(indexOrName, " was not found in table ").concat(table.name));
+=======
+                            throw new error_1.TypeORMError("Supplied index " + indexOrName + " was not found in table " + table.name);
+>>>>>>> a3495c7 (INIT)
                         up = this.dropIndexSql(table, index);
                         down = this.createIndexSql(table, index);
                         return [4 /*yield*/, this.executeQueries(up, down)];
@@ -1551,7 +1783,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
         return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
             return (0, tslib_1.__generator)(this, function (_a) {
                 switch (_a.label) {
+<<<<<<< HEAD
                     case 0: return [4 /*yield*/, this.query("TRUNCATE TABLE ".concat(this.escapePath(tableOrName)))];
+=======
+                    case 0: return [4 /*yield*/, this.query("TRUNCATE TABLE " + this.escapePath(tableOrName))];
+>>>>>>> a3495c7 (INIT)
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -1586,7 +1822,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         _a.label = 5;
                     case 5:
                         _a.trys.push([5, 13, , 18]);
+<<<<<<< HEAD
                         selectViewDropsQuery = "SELECT concat('DROP VIEW IF EXISTS `', table_schema, '`.`', table_name, '`') AS `query` FROM `INFORMATION_SCHEMA`.`VIEWS` WHERE `TABLE_SCHEMA` = '".concat(dbName, "'");
+=======
+                        selectViewDropsQuery = "SELECT concat('DROP VIEW IF EXISTS `', table_schema, '`.`', table_name, '`') AS `query` FROM `INFORMATION_SCHEMA`.`VIEWS` WHERE `TABLE_SCHEMA` = '" + dbName + "'";
+>>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(selectViewDropsQuery)];
                     case 6:
                         dropViewQueries = _a.sent();
@@ -1594,7 +1834,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                     case 7:
                         _a.sent();
                         disableForeignKeysCheckQuery = "SET FOREIGN_KEY_CHECKS = 0;";
+<<<<<<< HEAD
                         dropTablesQuery = "SELECT concat('DROP TABLE IF EXISTS `', table_schema, '`.`', table_name, '`') AS `query` FROM `INFORMATION_SCHEMA`.`TABLES` WHERE `TABLE_SCHEMA` = '".concat(dbName, "'");
+=======
+                        dropTablesQuery = "SELECT concat('DROP TABLE IF EXISTS `', table_schema, '`.`', table_name, '`') AS `query` FROM `INFORMATION_SCHEMA`.`TABLES` WHERE `TABLE_SCHEMA` = '" + dbName + "'";
+>>>>>>> a3495c7 (INIT)
                         enableForeignKeysCheckQuery = "SET FOREIGN_KEY_CHECKS = 1;";
                         return [4 /*yield*/, this.query(disableForeignKeysCheckQuery)];
                     case 8:
@@ -1656,10 +1900,17 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                             if (!database) {
                                 database = currentDatabase;
                             }
+<<<<<<< HEAD
                             return "(`t`.`schema` = '".concat(database, "' AND `t`.`name` = '").concat(name, "')");
                         }).join(" OR ");
                         query = "SELECT `t`.*, `v`.`check_option` FROM ".concat(this.escapePath(this.getTypeormMetadataTableName()), " `t` ") +
                             "INNER JOIN `information_schema`.`views` `v` ON `v`.`table_schema` = `t`.`schema` AND `v`.`table_name` = `t`.`name` WHERE `t`.`type` = '".concat(MetadataTableType_1.MetadataTableType.VIEW, "' ").concat(viewsCondition ? "AND (".concat(viewsCondition, ")") : "");
+=======
+                            return "(`t`.`schema` = '" + database + "' AND `t`.`name` = '" + name + "')";
+                        }).join(" OR ");
+                        query = "SELECT `t`.*, `v`.`check_option` FROM " + this.escapePath(this.getTypeormMetadataTableName()) + " `t` " +
+                            ("INNER JOIN `information_schema`.`views` `v` ON `v`.`table_schema` = `t`.`schema` AND `v`.`table_name` = `t`.`name` WHERE `t`.`type` = '" + MetadataTableType_1.MetadataTableType.VIEW + "' " + (viewsCondition ? "AND (" + viewsCondition + ")" : ""));
+>>>>>>> a3495c7 (INIT)
                         return [4 /*yield*/, this.query(query)];
                     case 3:
                         dbViews = _a.sent();
@@ -1709,7 +1960,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                 name = database;
                                 database = _this.driver.database || currentDatabase;
                             }
+<<<<<<< HEAD
                             return "(`TABLE_SCHEMA` = '".concat(database, "' AND `TABLE_NAME` = '").concat(name, "')");
+=======
+                            return "(`TABLE_SCHEMA` = '" + database + "' AND `TABLE_NAME` = '" + name + "')";
+>>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         tablesSql = "SELECT TABLE_NAME, TABLE_SCHEMA FROM `INFORMATION_SCHEMA`.`TABLES` WHERE " + tablesCondition;
                         _f = (_e = dbTables.push).apply;
@@ -1725,6 +1980,7 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         }
                         columnsCondition = dbTables.map(function (_a) {
                             var TABLE_NAME = _a.TABLE_NAME, TABLE_SCHEMA = _a.TABLE_SCHEMA;
+<<<<<<< HEAD
                             return "(`TABLE_SCHEMA` = '".concat(TABLE_SCHEMA, "' AND `TABLE_NAME` = '").concat(TABLE_NAME, "')");
                         }).join(" OR ");
                         columnsSql = "SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE " + columnsCondition;
@@ -1740,6 +1996,23 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                         foreignKeysCondition = dbTables.map(function (_a) {
                             var TABLE_NAME = _a.TABLE_NAME, TABLE_SCHEMA = _a.TABLE_SCHEMA;
                             return "(`kcu`.`TABLE_SCHEMA` = '".concat(TABLE_SCHEMA, "' AND `kcu`.`TABLE_NAME` = '").concat(TABLE_NAME, "')");
+=======
+                            return "(`TABLE_SCHEMA` = '" + TABLE_SCHEMA + "' AND `TABLE_NAME` = '" + TABLE_NAME + "')";
+                        }).join(" OR ");
+                        columnsSql = "SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE " + columnsCondition;
+                        primaryKeySql = "SELECT * FROM `INFORMATION_SCHEMA`.`KEY_COLUMN_USAGE` WHERE `CONSTRAINT_NAME` = 'PRIMARY' AND (" + columnsCondition + ")";
+                        collationsSql = "SELECT `SCHEMA_NAME`, `DEFAULT_CHARACTER_SET_NAME` as `CHARSET`, `DEFAULT_COLLATION_NAME` AS `COLLATION` FROM `INFORMATION_SCHEMA`.`SCHEMATA`";
+                        indicesCondition = dbTables.map(function (_a) {
+                            var TABLE_NAME = _a.TABLE_NAME, TABLE_SCHEMA = _a.TABLE_SCHEMA;
+                            return "(`s`.`TABLE_SCHEMA` = '" + TABLE_SCHEMA + "' AND `s`.`TABLE_NAME` = '" + TABLE_NAME + "')";
+                        }).join(" OR ");
+                        indicesSql = "SELECT `s`.* FROM `INFORMATION_SCHEMA`.`STATISTICS` `s` " +
+                            "LEFT JOIN `INFORMATION_SCHEMA`.`REFERENTIAL_CONSTRAINTS` `rc` ON `s`.`INDEX_NAME` = `rc`.`CONSTRAINT_NAME` " +
+                            ("WHERE (" + indicesCondition + ") AND `s`.`INDEX_NAME` != 'PRIMARY' AND `rc`.`CONSTRAINT_NAME` IS NULL");
+                        foreignKeysCondition = dbTables.map(function (_a) {
+                            var TABLE_NAME = _a.TABLE_NAME, TABLE_SCHEMA = _a.TABLE_SCHEMA;
+                            return "(`kcu`.`TABLE_SCHEMA` = '" + TABLE_SCHEMA + "' AND `kcu`.`TABLE_NAME` = '" + TABLE_NAME + "')";
+>>>>>>> a3495c7 (INIT)
                         }).join(" OR ");
                         foreignKeysSql = "SELECT `kcu`.`TABLE_SCHEMA`, `kcu`.`TABLE_NAME`, `kcu`.`CONSTRAINT_NAME`, `kcu`.`COLUMN_NAME`, `kcu`.`REFERENCED_TABLE_SCHEMA`, " +
                             "`kcu`.`REFERENCED_TABLE_NAME`, `kcu`.`REFERENCED_COLUMN_NAME`, `rc`.`DELETE_RULE` `ON_DELETE`, `rc`.`UPDATE_RULE` `ON_UPDATE` " +
@@ -1800,7 +2073,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                                             tableColumn.default = undefined;
                                         }
                                         else {
+<<<<<<< HEAD
                                             tableColumn.default = dbColumn["COLUMN_DEFAULT"] === "CURRENT_TIMESTAMP" ? dbColumn["COLUMN_DEFAULT"] : "'".concat(dbColumn["COLUMN_DEFAULT"], "'");
+=======
+                                            tableColumn.default = dbColumn["COLUMN_DEFAULT"] === "CURRENT_TIMESTAMP" ? dbColumn["COLUMN_DEFAULT"] : "'" + dbColumn["COLUMN_DEFAULT"] + "'";
+>>>>>>> a3495c7 (INIT)
                                         }
                                         if (dbColumn["EXTRA"].indexOf("on update") !== -1) {
                                             tableColumn.onUpdate = dbColumn["EXTRA"].substring(dbColumn["EXTRA"].indexOf("on update") + 10);
@@ -1904,7 +2181,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
     AuroraDataApiQueryRunner.prototype.createTableSql = function (table, createForeignKeys) {
         var _this = this;
         var columnDefinitions = table.columns.map(function (column) { return _this.buildCreateColumnSql(column, true); }).join(", ");
+<<<<<<< HEAD
         var sql = "CREATE TABLE ".concat(this.escapePath(table), " (").concat(columnDefinitions);
+=======
+        var sql = "CREATE TABLE " + this.escapePath(table) + " (" + columnDefinitions;
+>>>>>>> a3495c7 (INIT)
         // we create unique indexes instead of unique constraints, because MySql does not have unique constraints.
         // if we mark column as Unique, it means that we create UNIQUE INDEX.
         table.columns
@@ -1938,7 +2219,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
         }
         if (table.indices.length > 0) {
             var indicesSql = table.indices.map(function (index) {
+<<<<<<< HEAD
                 var columnNames = index.columnNames.map(function (columnName) { return "`".concat(columnName, "`"); }).join(", ");
+=======
+                var columnNames = index.columnNames.map(function (columnName) { return "`" + columnName + "`"; }).join(", ");
+>>>>>>> a3495c7 (INIT)
                 if (!index.name)
                     index.name = _this.connection.namingStrategy.indexName(table, index.columnNames, index.where);
                 var indexType = "";
@@ -1948,6 +2233,7 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
                     indexType += "SPATIAL ";
                 if (index.isFulltext)
                     indexType += "FULLTEXT ";
+<<<<<<< HEAD
                 return "".concat(indexType, "INDEX `").concat(index.name, "` (").concat(columnNames, ")");
             }).join(", ");
             sql += ", ".concat(indicesSql);
@@ -1972,12 +2258,39 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
             sql += ", PRIMARY KEY (".concat(columnNames, ")");
         }
         sql += ") ENGINE=".concat(table.engine || "InnoDB");
+=======
+                return indexType + "INDEX `" + index.name + "` (" + columnNames + ")";
+            }).join(", ");
+            sql += ", " + indicesSql;
+        }
+        if (table.foreignKeys.length > 0 && createForeignKeys) {
+            var foreignKeysSql = table.foreignKeys.map(function (fk) {
+                var columnNames = fk.columnNames.map(function (columnName) { return "`" + columnName + "`"; }).join(", ");
+                if (!fk.name)
+                    fk.name = _this.connection.namingStrategy.foreignKeyName(table, fk.columnNames);
+                var referencedColumnNames = fk.referencedColumnNames.map(function (columnName) { return "`" + columnName + "`"; }).join(", ");
+                var constraint = "CONSTRAINT `" + fk.name + "` FOREIGN KEY (" + columnNames + ") REFERENCES " + _this.escapePath(_this.getTablePath(fk)) + " (" + referencedColumnNames + ")";
+                if (fk.onDelete)
+                    constraint += " ON DELETE " + fk.onDelete;
+                if (fk.onUpdate)
+                    constraint += " ON UPDATE " + fk.onUpdate;
+                return constraint;
+            }).join(", ");
+            sql += ", " + foreignKeysSql;
+        }
+        if (table.primaryColumns.length > 0) {
+            var columnNames = table.primaryColumns.map(function (column) { return "`" + column.name + "`"; }).join(", ");
+            sql += ", PRIMARY KEY (" + columnNames + ")";
+        }
+        sql += ") ENGINE=" + (table.engine || "InnoDB");
+>>>>>>> a3495c7 (INIT)
         return new Query_1.Query(sql);
     };
     /**
      * Builds drop table sql
      */
     AuroraDataApiQueryRunner.prototype.dropTableSql = function (tableOrName) {
+<<<<<<< HEAD
         return new Query_1.Query("DROP TABLE ".concat(this.escapePath(tableOrName)));
     };
     AuroraDataApiQueryRunner.prototype.createViewSql = function (view) {
@@ -1986,6 +2299,16 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
         }
         else {
             return new Query_1.Query("CREATE VIEW ".concat(this.escapePath(view), " AS ").concat(view.expression(this.connection).getQuery()));
+=======
+        return new Query_1.Query("DROP TABLE " + this.escapePath(tableOrName));
+    };
+    AuroraDataApiQueryRunner.prototype.createViewSql = function (view) {
+        if (typeof view.expression === "string") {
+            return new Query_1.Query("CREATE VIEW " + this.escapePath(view) + " AS " + view.expression);
+        }
+        else {
+            return new Query_1.Query("CREATE VIEW " + this.escapePath(view) + " AS " + view.expression(this.connection).getQuery());
+>>>>>>> a3495c7 (INIT)
         }
     };
     AuroraDataApiQueryRunner.prototype.insertViewDefinitionSql = function (view) {
@@ -2011,7 +2334,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
      * Builds drop view sql.
      */
     AuroraDataApiQueryRunner.prototype.dropViewSql = function (viewOrPath) {
+<<<<<<< HEAD
         return new Query_1.Query("DROP VIEW ".concat(this.escapePath(viewOrPath)));
+=======
+        return new Query_1.Query("DROP VIEW " + this.escapePath(viewOrPath));
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds remove view sql.
@@ -2034,7 +2361,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
      * Builds create index sql.
      */
     AuroraDataApiQueryRunner.prototype.createIndexSql = function (table, index) {
+<<<<<<< HEAD
         var columns = index.columnNames.map(function (columnName) { return "`".concat(columnName, "`"); }).join(", ");
+=======
+        var columns = index.columnNames.map(function (columnName) { return "`" + columnName + "`"; }).join(", ");
+>>>>>>> a3495c7 (INIT)
         var indexType = "";
         if (index.isUnique)
             indexType += "UNIQUE ";
@@ -2042,32 +2373,50 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
             indexType += "SPATIAL ";
         if (index.isFulltext)
             indexType += "FULLTEXT ";
+<<<<<<< HEAD
         return new Query_1.Query("CREATE ".concat(indexType, "INDEX `").concat(index.name, "` ON ").concat(this.escapePath(table), " (").concat(columns, ")"));
+=======
+        return new Query_1.Query("CREATE " + indexType + "INDEX `" + index.name + "` ON " + this.escapePath(table) + " (" + columns + ")");
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop index sql.
      */
     AuroraDataApiQueryRunner.prototype.dropIndexSql = function (table, indexOrName) {
         var indexName = indexOrName instanceof TableIndex_1.TableIndex ? indexOrName.name : indexOrName;
+<<<<<<< HEAD
         return new Query_1.Query("DROP INDEX `".concat(indexName, "` ON ").concat(this.escapePath(table)));
+=======
+        return new Query_1.Query("DROP INDEX `" + indexName + "` ON " + this.escapePath(table));
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create primary key sql.
      */
     AuroraDataApiQueryRunner.prototype.createPrimaryKeySql = function (table, columnNames) {
+<<<<<<< HEAD
         var columnNamesString = columnNames.map(function (columnName) { return "`".concat(columnName, "`"); }).join(", ");
         return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " ADD PRIMARY KEY (").concat(columnNamesString, ")"));
+=======
+        var columnNamesString = columnNames.map(function (columnName) { return "`" + columnName + "`"; }).join(", ");
+        return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " ADD PRIMARY KEY (" + columnNamesString + ")");
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds drop primary key sql.
      */
     AuroraDataApiQueryRunner.prototype.dropPrimaryKeySql = function (table) {
+<<<<<<< HEAD
         return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP PRIMARY KEY"));
+=======
+        return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP PRIMARY KEY");
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds create foreign key sql.
      */
     AuroraDataApiQueryRunner.prototype.createForeignKeySql = function (table, foreignKey) {
+<<<<<<< HEAD
         var columnNames = foreignKey.columnNames.map(function (column) { return "`".concat(column, "`"); }).join(", ");
         var referencedColumnNames = foreignKey.referencedColumnNames.map(function (column) { return "`".concat(column, "`"); }).join(",");
         var sql = "ALTER TABLE ".concat(this.escapePath(table), " ADD CONSTRAINT `").concat(foreignKey.name, "` FOREIGN KEY (").concat(columnNames, ") ") +
@@ -2076,6 +2425,16 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
             sql += " ON DELETE ".concat(foreignKey.onDelete);
         if (foreignKey.onUpdate)
             sql += " ON UPDATE ".concat(foreignKey.onUpdate);
+=======
+        var columnNames = foreignKey.columnNames.map(function (column) { return "`" + column + "`"; }).join(", ");
+        var referencedColumnNames = foreignKey.referencedColumnNames.map(function (column) { return "`" + column + "`"; }).join(",");
+        var sql = "ALTER TABLE " + this.escapePath(table) + " ADD CONSTRAINT `" + foreignKey.name + "` FOREIGN KEY (" + columnNames + ") " +
+            ("REFERENCES " + this.escapePath(this.getTablePath(foreignKey)) + "(" + referencedColumnNames + ")");
+        if (foreignKey.onDelete)
+            sql += " ON DELETE " + foreignKey.onDelete;
+        if (foreignKey.onUpdate)
+            sql += " ON UPDATE " + foreignKey.onUpdate;
+>>>>>>> a3495c7 (INIT)
         return new Query_1.Query(sql);
     };
     /**
@@ -2083,7 +2442,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
      */
     AuroraDataApiQueryRunner.prototype.dropForeignKeySql = function (table, foreignKeyOrName) {
         var foreignKeyName = foreignKeyOrName instanceof TableForeignKey_1.TableForeignKey ? foreignKeyOrName.name : foreignKeyOrName;
+<<<<<<< HEAD
         return new Query_1.Query("ALTER TABLE ".concat(this.escapePath(table), " DROP FOREIGN KEY `").concat(foreignKeyName, "`"));
+=======
+        return new Query_1.Query("ALTER TABLE " + this.escapePath(table) + " DROP FOREIGN KEY `" + foreignKeyName + "`");
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Escapes a given comment so it's safe to include in a query.
@@ -2096,7 +2459,11 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
             .replace(/\\/g, "\\\\") // MySQL allows escaping characters via backslashes
             .replace(/'/g, "''")
             .replace(/\u0000/g, ""); // Null bytes aren't allowed in comments
+<<<<<<< HEAD
         return "'".concat(comment, "'");
+=======
+        return "'" + comment + "'";
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Escapes given table or view path.
@@ -2104,9 +2471,15 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
     AuroraDataApiQueryRunner.prototype.escapePath = function (target) {
         var _a = this.driver.parseTableName(target), database = _a.database, tableName = _a.tableName;
         if (database && database !== this.driver.database) {
+<<<<<<< HEAD
             return "`".concat(database, "`.`").concat(tableName, "`");
         }
         return "`".concat(tableName, "`");
+=======
+            return "`" + database + "`.`" + tableName + "`";
+        }
+        return "`" + tableName + "`";
+>>>>>>> a3495c7 (INIT)
     };
     /**
      * Builds a part of query to create/change a column.
@@ -2118,10 +2491,17 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
             c = this.connection.driver.createFullType(column);
         }
         else {
+<<<<<<< HEAD
             c = "`".concat(column.name, "` ").concat(this.connection.driver.createFullType(column));
         }
         if (column.asExpression)
             c += " AS (".concat(column.asExpression, ") ").concat(column.generatedType ? column.generatedType : "VIRTUAL");
+=======
+            c = "`" + column.name + "` " + this.connection.driver.createFullType(column);
+        }
+        if (column.asExpression)
+            c += " AS (" + column.asExpression + ") " + (column.generatedType ? column.generatedType : "VIRTUAL");
+>>>>>>> a3495c7 (INIT)
         // if you specify ZEROFILL for a numeric column, MySQL automatically adds the UNSIGNED attribute to that column.
         if (column.zerofill) {
             c += " ZEROFILL";
@@ -2130,11 +2510,19 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
             c += " UNSIGNED";
         }
         if (column.enum)
+<<<<<<< HEAD
             c += " (".concat(column.enum.map(function (value) { return "'" + value + "'"; }).join(", "), ")");
         if (column.charset)
             c += " CHARACTER SET \"".concat(column.charset, "\"");
         if (column.collation)
             c += " COLLATE \"".concat(column.collation, "\"");
+=======
+            c += " (" + column.enum.map(function (value) { return "'" + value + "'"; }).join(", ") + ")";
+        if (column.charset)
+            c += " CHARACTER SET \"" + column.charset + "\"";
+        if (column.collation)
+            c += " COLLATE \"" + column.collation + "\"";
+>>>>>>> a3495c7 (INIT)
         if (!column.isNullable)
             c += " NOT NULL";
         if (column.isNullable)
@@ -2144,11 +2532,19 @@ var AuroraDataApiQueryRunner = /** @class */ (function (_super) {
         if (column.isGenerated && column.generationStrategy === "increment") // don't use skipPrimary here since updates can update already exist primary without auto inc.
             c += " AUTO_INCREMENT";
         if (column.comment)
+<<<<<<< HEAD
             c += " COMMENT ".concat(this.escapeComment(column.comment));
         if (column.default !== undefined && column.default !== null)
             c += " DEFAULT ".concat(column.default);
         if (column.onUpdate)
             c += " ON UPDATE ".concat(column.onUpdate);
+=======
+            c += " COMMENT " + this.escapeComment(column.comment);
+        if (column.default !== undefined && column.default !== null)
+            c += " DEFAULT " + column.default;
+        if (column.onUpdate)
+            c += " ON UPDATE " + column.onUpdate;
+>>>>>>> a3495c7 (INIT)
         return c;
     };
     /**

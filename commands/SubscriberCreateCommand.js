@@ -70,7 +70,11 @@ var SubscriberCreateCommand = /** @class */ (function () {
                         return [4 /*yield*/, CommandUtils_1.CommandUtils.createFile(path, fileContent)];
                     case 5:
                         _a.sent();
+<<<<<<< HEAD
                         console.log(chalk_1.default.green("Subscriber ".concat(chalk_1.default.blue(path), " has been created successfully.")));
+=======
+                        console.log(chalk_1.default.green("Subscriber " + chalk_1.default.blue(path) + " has been created successfully."));
+>>>>>>> a3495c7 (INIT)
                         return [3 /*break*/, 7];
                     case 6:
                         err_2 = _a.sent();
@@ -89,7 +93,11 @@ var SubscriberCreateCommand = /** @class */ (function () {
      * Gets contents of the entity file.
      */
     SubscriberCreateCommand.getTemplate = function (name) {
+<<<<<<< HEAD
         return "import {EventSubscriber, EntitySubscriberInterface} from \"typeorm\";\nimport { PlatformTools } from '../platform/PlatformTools';\n\n@EventSubscriber()\nexport class ".concat(name, " implements EntitySubscriberInterface<any> {\n\n}\n");
+=======
+        return "import {EventSubscriber, EntitySubscriberInterface} from \"typeorm\";\nimport { PlatformTools } from '../platform/PlatformTools';\n\n@EventSubscriber()\nexport class " + name + " implements EntitySubscriberInterface<any> {\n\n}\n";
+>>>>>>> a3495c7 (INIT)
     };
     return SubscriberCreateCommand;
 }());
